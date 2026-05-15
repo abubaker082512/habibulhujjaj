@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>REHMAN - Your Trusted Partner for Umrah &amp; International Tours</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-variant": "#e1e2e4",
+                        "outline": "#717978",
+                        "secondary": "#7d5800",
+                        "tertiary-container": "#362b16",
+                        "on-surface-variant": "#404848",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-container": "#755100",
+                        "primary-container": "#013334",
+                        "on-error-container": "#93000a",
+                        "surface": "#f8f9fb",
+                        "background": "#f8f9fb",
+                        "secondary-fixed-dim": "#f6bd54",
+                        "surface-container-low": "#f3f4f6",
+                        "secondary-container": "#ffc55b",
+                        "on-background": "#191c1e",
+                        "on-primary-fixed-variant": "#234d4e",
+                        "inverse-primary": "#a3cfcf",
+                        "inverse-on-surface": "#f0f1f3",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-highest": "#e1e2e4",
+                        "surface-container-high": "#e7e8ea",
+                        "surface-dim": "#d9dadc",
+                        "tertiary": "#201705",
+                        "surface-bright": "#f8f9fb",
+                        "on-tertiary-fixed": "#241a07",
+                        "primary": "#001c1d",
+                        "outline-variant": "#c0c8c8",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed-variant": "#52452e",
+                        "on-primary": "#ffffff",
+                        "surface-tint": "#3c6566",
+                        "on-primary-container": "#729c9d",
+                        "on-tertiary-container": "#a39276",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed": "#ffdea9",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed": "#f4e0c1",
+                        "primary-fixed": "#bfebeb",
+                        "on-secondary-fixed": "#271900",
+                        "on-error": "#ffffff",
+                        "surface-container": "#edeef0",
+                        "on-primary-fixed": "#002020",
+                        "on-surface": "#191c1e",
+                        "on-secondary-fixed-variant": "#5f4100",
+                        "primary-fixed-dim": "#a3cfcf",
+                        "inverse-surface": "#2e3132",
+                        "tertiary-fixed-dim": "#d7c4a6"
+                    },
+                    fontFamily: {
+                        "notoSerif": ["Noto Serif", "serif"],
+                        "manrope": ["Manrope", "sans-serif"],
+                        "headline": ["Noto Serif"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .editorial-shadow {
+            box-shadow: 0 8px 40px rgba(1, 51, 52, 0.06);
+        }
+        .ghost-border {
+            border: 1px solid rgba(192, 200, 200, 0.15);
+        }
+    </style>
+</head>
+<body class="bg-surface font-manrope text-on-surface">
+<!-- TopNavBar -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-[#013334] dark:bg-[#001c1d] shadow-[0_8px_40px_rgba(1,51,52,0.06)]">
+<div class="flex justify-between items-center w-full px-8 py-4 max-w-screen-2xl mx-auto">
+<div class="font-notoSerif text-2xl font-bold tracking-tighter text-[#CD9933]">REHMAN</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-[#CD9933] border-b-2 border-[#CD9933] pb-1 font-semibold font-manrope text-sm tracking-wide" href="#">Home</a>
+<a class="text-white/80 font-medium hover:text-white transition-colors duration-300 font-manrope text-sm tracking-wide" href="#">Umrah Packages</a>
+<a class="text-white/80 font-medium hover:text-white transition-colors duration-300 font-manrope text-sm tracking-wide" href="#">International Tours</a>
+<a class="text-white/80 font-medium hover:text-white transition-colors duration-300 font-manrope text-sm tracking-wide" href="#">Visa Services</a>
+<a class="text-white/80 font-medium hover:text-white transition-colors duration-300 font-manrope text-sm tracking-wide" href="#">Gallery</a>
+<a class="text-white/80 font-medium hover:text-white transition-colors duration-300 font-manrope text-sm tracking-wide" href="#">Blog</a>
+</div>
+<div class="flex items-center gap-6">
+<span class="text-white/80 font-manrope text-sm cursor-pointer hover:text-[#CD9933] transition-colors">FAQ</span>
+<button class="bg-[#CD9933] text-white px-6 py-2 rounded-md font-manrope text-sm font-bold tracking-wide hover:opacity-90 transition-all">Contact</button>
+</div>
+</div>
+</nav>
+<!-- SideNavBar (WhatsApp FAB) -->
+<div class="fixed bottom-8 right-8 z-[9999] group">
+<div class="flex flex-col items-center gap-2">
+<span class="bg-white/80 backdrop-blur-md text-[#CD9933] font-manrope font-bold text-[10px] uppercase px-2 py-1 rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity">WhatsApp Support</span>
+<div class="bg-white/80 dark:bg-black/80 backdrop-blur-md text-[#CD9933] rounded-full p-4 w-16 h-16 flex items-center justify-center shadow-2xl shadow-[#013334]/20 border border-[#CD9933]/15 animate-bounce duration-[2000ms] cursor-pointer hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">chat</span>
+</div>
+</div>
+</div>
+<!-- Hero Section -->
+<section class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover" data-alt="Golden sunset over the Grand Mosque in Makkah" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBubkTzEiGLq9ecV5_P_POI2om-XGLtBdG4UhZ6Z2FTNoko77ZP0hrzDRjD1aq1xPF-psQ32LnNFxg5sr3ZK0lrA7GhF4a595_Mgjp4euDQqJzGNNOMK2lPWFL6tklR8Q5zp3ootIYqJ-zH4z2AJTQgItEet4mbPUh2a-2NMMX7dqqaMpz4LVQkMc_2Mhd5Xlaw5dikwbzDN1ckBtHfsFsVohx7APcLJLU0OSBcS_E6dfIgQwo_aIUkSmIgk_cNCfeXZpd20jDUPAvp"/>
+<div class="absolute inset-0 bg-gradient-to-r from-primary-container via-primary-container/80 to-transparent"></div>
+</div>
+<div class="relative z-10 max-w-screen-2xl mx-auto px-8 lg:px-24 w-full">
+<div class="max-w-3xl">
+<div class="w-12 h-1 bg-[#CD9933] mb-8"></div>
+<h1 class="font-notoSerif text-5xl lg:text-7xl font-bold text-white leading-tight mb-8">
+                    Your Trusted Partner for <span class="text-[#CD9933]">Umrah</span> &amp; International Tours
+                </h1>
+<p class="font-manrope text-lg text-white/80 mb-12 max-w-xl">
+                    Embark on a spiritual journey of a lifetime with our premium, all-inclusive Umrah packages and bespoke international travel experiences.
+                </p>
+<div class="flex flex-wrap gap-6">
+<button class="bg-[#CD9933] hover:bg-[#b88a2e] text-white px-8 py-4 rounded-md font-bold transition-all shadow-lg flex items-center gap-2">
+                        View Umrah Packages
+                    </button>
+<button class="bg-transparent border border-[#CD9933]/40 hover:bg-[#CD9933]/10 text-white px-8 py-4 rounded-md font-bold transition-all flex items-center gap-2 backdrop-blur-sm">
+<span class="material-symbols-outlined">chat</span>
+                        Contact on WhatsApp
+                    </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Quick Package Search -->
+<div class="relative z-20 max-w-6xl mx-auto -mt-24 px-4">
+<div class="bg-surface-container-lowest editorial-shadow p-8 rounded-xl flex flex-wrap lg:flex-nowrap gap-6 items-end">
+<div class="flex-1 min-w-[200px]">
+<label class="block font-manrope text-xs font-bold uppercase text-outline mb-2">Departure City</label>
+<select class="w-full bg-transparent border-0 border-b border-outline-variant focus:ring-0 focus:border-[#CD9933] font-manrope text-sm py-2 px-0">
+<option>Karachi</option>
+<option>Lahore</option>
+<option>Islamabad</option>
+</select>
+</div>
+<div class="flex-1 min-w-[200px]">
+<label class="block font-manrope text-xs font-bold uppercase text-outline mb-2">Month</label>
+<select class="w-full bg-transparent border-0 border-b border-outline-variant focus:ring-0 focus:border-[#CD9933] font-manrope text-sm py-2 px-0">
+<option>September 2024</option>
+<option>October 2024</option>
+<option>Ramadan 2025</option>
+</select>
+</div>
+<div class="flex-1 min-w-[200px]">
+<label class="block font-manrope text-xs font-bold uppercase text-outline mb-2">Package Type</label>
+<select class="w-full bg-transparent border-0 border-b border-outline-variant focus:ring-0 focus:border-[#CD9933] font-manrope text-sm py-2 px-0">
+<option>Economy</option>
+<option>3 Star Comfort</option>
+<option>4 Star Premium</option>
+<option>5 Star Luxury</option>
+</select>
+</div>
+<button class="bg-primary text-white w-full lg:w-auto px-10 py-3 rounded-md font-bold flex items-center justify-center gap-2 hover:bg-[#002c2e] transition-all">
+<span class="material-symbols-outlined">search</span>
+                Search
+            </button>
+</div>
+</div>
+<!-- Featured Umrah Packages -->
+<section class="py-24 px-8 max-w-screen-2xl mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16">
+<div class="max-w-2xl">
+<h6 class="font-manrope text-[#CD9933] font-bold text-sm tracking-[0.2em] uppercase mb-4">Spiritual Journeys</h6>
+<h2 class="font-notoSerif text-4xl lg:text-5xl font-bold text-primary leading-tight">Curated Umrah Packages</h2>
+</div>
+<a class="text-primary font-bold border-b-2 border-[#CD9933] pb-1 mt-6 md:mt-0 transition-all hover:pr-4" href="#">View All Packages</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<!-- Economy -->
+<div class="bg-surface-container-low group cursor-pointer">
+<div class="relative h-64 overflow-hidden rounded-t-xl lg:rounded-tr-none">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Aerial view of the Kabba in Makkah" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4Q8F_FtsvuFZGVJy2M4mCNPoPdVIucrb-qLz9KMrRnHu2y4jEomHtxH3XbUIIyVb7fx_R8ZKzpO6JLW8a6r4u3ZLuupgq0zzie6njk5Tfw4CBH4smAeMF-b77uxEfjcwrfE0bWG20icpPBH2u6gYRsM9m3qcQKyoCWfFKdTlc4W1zTDVSW_X8tKo7HpcqPSaj9bPBqhdRYe8qu6UWesjRMAZC1_LwgtnBhuYiFBjcxkTV8czsNli9D9lT7GLzq0jlRAJJ2hm4V7JG"/>
+<div class="absolute top-4 left-4 bg-[#013334] text-white text-[10px] font-bold px-3 py-1 tracking-widest uppercase">Economy</div>
+</div>
+<div class="p-6">
+<h3 class="font-notoSerif text-xl font-bold text-primary mb-2">Economy Saver</h3>
+<p class="text-outline text-sm mb-4">Saraya Iman (Makkah) • 15 Days</p>
+<div class="flex items-center justify-between mt-6">
+<div>
+<span class="block text-xs text-outline">Starting from</span>
+<span class="text-xl font-extrabold text-[#CD9933]">PKR 185,000</span>
+</div>
+<span class="material-symbols-outlined text-[#CD9933] group-hover:translate-x-2 transition-transform">arrow_forward</span>
+</div>
+</div>
+</div>
+<!-- 3 Star -->
+<div class="bg-surface-container-low group cursor-pointer">
+<div class="relative h-64 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Interior of a luxury hotel in Medina" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgeIqrjd4iZZprHhl6dvsS6TlHxSPpsRmm2Q4eJ0zVcfSsCDiAzFs_uTdG6viogBc4vtlsa9ul1Nk18k6JBhkP-xeMEttf2BqJ1jOG8pQ7cnBf6Ao3WlNsQPFRlNK9j0rbGdGfbKOnG3rdjzGKSfNDY5wKpvPKQTepPxMwUq1cLbg-SxCK5TQ5rRrkARlzPWy_VGIQZQUGsTi_0CoUUzDbyZHY6No-V79Ao-q62kF8A-wSQe15IlpAbZe8_-0Ezat1qZmyvj1c8ZAL"/>
+<div class="absolute top-4 left-4 bg-[#CD9933] text-white text-[10px] font-bold px-3 py-1 tracking-widest uppercase">3 Star</div>
+</div>
+<div class="p-6">
+<h3 class="font-notoSerif text-xl font-bold text-primary mb-2">3 Star Comfort</h3>
+<p class="text-outline text-sm mb-4">Emaar Elite (Makkah) • 15 Days</p>
+<div class="flex items-center justify-between mt-6">
+<div>
+<span class="block text-xs text-outline">Starting from</span>
+<span class="text-xl font-extrabold text-[#CD9933]">PKR 225,000</span>
+</div>
+<span class="material-symbols-outlined text-[#CD9933] group-hover:translate-x-2 transition-transform">arrow_forward</span>
+</div>
+</div>
+</div>
+<!-- 4 Star -->
+<div class="bg-surface-container-low group cursor-pointer">
+<div class="relative h-64 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Beautiful sunset over Medina" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeKAHUE-PrOvKyjvjA04CL1jr6-62S2Gq4OvwV7zH1lF0mlQjEH7m1ZghycTUjRSVtzOY5suj3gVo-PrLaXmzs2tiIW_cYJr-NSNa5pH_qsN7H7frVEt78dEk6MhB2J8Uj-Q6hheong-lQY2BU3RxegAaq6Na8Zwccq_7Zr1ZDRzOEpbEtIn9Q5EYOtLqjMcX5SNtiZrfZ4GWoCX7gId6_Df31VjHmy08Fi8IbzJqwShYHYNoTk4A1tdg-YSEzWH5ct9SdGFD2b2sQ"/>
+<div class="absolute top-4 left-4 bg-primary text-white text-[10px] font-bold px-3 py-1 tracking-widest uppercase">4 Star</div>
+</div>
+<div class="p-6">
+<h3 class="font-notoSerif text-xl font-bold text-primary mb-2">Premium Experience</h3>
+<p class="text-outline text-sm mb-4">Pullman ZamZam (Makkah) • 14 Days</p>
+<div class="flex items-center justify-between mt-6">
+<div>
+<span class="block text-xs text-outline">Starting from</span>
+<span class="text-xl font-extrabold text-[#CD9933]">PKR 295,000</span>
+</div>
+<span class="material-symbols-outlined text-[#CD9933] group-hover:translate-x-2 transition-transform">arrow_forward</span>
+</div>
+</div>
+</div>
+<!-- 5 Star -->
+<div class="bg-surface-container-low group cursor-pointer">
+<div class="relative h-64 overflow-hidden rounded-t-xl lg:rounded-tl-none">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="View of the Clock Tower in Makkah" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1TFYjcNCU1jatQI4D8YLqCDfuhWfk0cT0dMGoRBMfve9VV0lv0YzvCp9dIMEq-a05foGyu6nL0GphRF9kWJmOOUJoKETJpCojoqxl5XPI7FK5iE3wLkyS0ey_5yC3zsz96FsqZGofrd-XWR16bcukQBkRotmsfTZaX-xmFrjfUhi7Zazqb_BXhe8zYK74QxEmECK8vJaAXdzHQmhvAW-KyDZXPkR43tt1afbIF6YM7PBCOBBy-l6TuMWtejlRDSj5vmKIidlF72YJ"/>
+<div class="absolute top-4 left-4 bg-[#CD9933] text-white text-[10px] font-bold px-3 py-1 tracking-widest uppercase">Luxury</div>
+</div>
+<div class="p-6">
+<h3 class="font-notoSerif text-xl font-bold text-primary mb-2">5 Star Luxury</h3>
+<p class="text-outline text-sm mb-4">Fairmont Clock Tower • 10 Days</p>
+<div class="flex items-center justify-between mt-6">
+<div>
+<span class="block text-xs text-outline">Starting from</span>
+<span class="text-xl font-extrabold text-[#CD9933]">PKR 450,000</span>
+</div>
+<span class="material-symbols-outlined text-[#CD9933] group-hover:translate-x-2 transition-transform">arrow_forward</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Why Choose Us -->
+<section class="py-24 bg-primary-container relative overflow-hidden">
+<div class="absolute top-0 right-0 w-1/3 h-full opacity-10">
+<img class="w-full h-full object-cover" data-alt="Traditional Islamic geometric pattern" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7iqIMSWjJemycSurDzLS49I7vf1E_Ir_9JNdo7vnnjUs42efP_S1dgqe2xI0QDJaKbHo9ZRkqvdYo1bYcwBvEnTPhPclF1OSmgOVghrFtvqeq5b92V1yjUro0sxR_GnE1BNCqYps0QKr0yc_d2G0_23gzKUpiz3nt2gERaWgkbPWLcVYUd6z7noGPOWbDAz3zrOwnleugBBJWc52v2BSX_rOZLmuCn0bBOWhLLmTx7ip4AO3yKpRp0shQrdTuKpNfm0QTUA_N0WM8"/>
+</div>
+<div class="max-w-screen-2xl mx-auto px-8 relative z-10">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+<div>
+<h2 class="font-notoSerif text-4xl lg:text-5xl font-bold text-white mb-12">Setting a Sacred Standard for Travel</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+<div class="space-y-4">
+<div class="text-[#CD9933] bg-white/5 w-14 h-14 flex items-center justify-center rounded-lg">
+<span class="material-symbols-outlined text-3xl">verified_user</span>
+</div>
+<h4 class="font-bold text-white font-manrope">Approved Agency</h4>
+<p class="text-white/60 text-sm leading-relaxed">Fully certified by Ministry of Hajj &amp; Umrah for your peace of mind.</p>
+</div>
+<div class="space-y-4">
+<div class="text-[#CD9933] bg-white/5 w-14 h-14 flex items-center justify-center rounded-lg">
+<span class="material-symbols-outlined text-3xl">location_on</span>
+</div>
+<h4 class="font-bold text-white font-manrope">Haram Proximity</h4>
+<p class="text-white/60 text-sm leading-relaxed">Specially selected hotels within walking distance of the holy sites.</p>
+</div>
+<div class="space-y-4">
+<div class="text-[#CD9933] bg-white/5 w-14 h-14 flex items-center justify-center rounded-lg">
+<span class="material-symbols-outlined text-3xl">support_agent</span>
+</div>
+<h4 class="font-bold text-white font-manrope">24/7 Support</h4>
+<p class="text-white/60 text-sm leading-relaxed">Our dedicated ground staff in Makkah and Medina are always available.</p>
+</div>
+<div class="space-y-4">
+<div class="text-[#CD9933] bg-white/5 w-14 h-14 flex items-center justify-center rounded-lg">
+<span class="material-symbols-outlined text-3xl">groups</span>
+</div>
+<h4 class="font-bold text-white font-manrope">Experienced Guides</h4>
+<p class="text-white/60 text-sm leading-relaxed">Scholarly guides to assist you with religious rituals and Ziarat.</p>
+</div>
+</div>
+</div>
+<div class="relative">
+<img class="rounded-xl editorial-shadow w-full h-[600px] object-cover" data-alt="Traveler looking at historical Islamic architecture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGJr-PkCTbw2r-UbQwF17jWJZejPxRPpHZrMMerpfj2Dedl3aNiEtLUIt6uy0_l0y7RuUJvb4hE6eh-EuaIDrmOJ58cgOtfefFncGbp5yTjtSGMTFIpVFqNI-60_TRcCnPdbR4YBcfePrjheIpBnC3JZtzkkK1AkzXgy0wmuJMEmoxERn8tO3VjO33bJ8urtkI_zoedo3s-FyyVTjBFcSmNV7CX2cajChEUrqwldzPNnYqUwq1UAaY7pN8n0d1cpNoWUWoN5IHD0kl"/>
+<div class="absolute -bottom-10 -left-10 bg-[#CD9933] p-10 rounded-xl hidden xl:block">
+<span class="block text-5xl font-bold text-white mb-2">25+</span>
+<span class="text-white/80 font-bold tracking-widest uppercase text-xs">Years of Excellence</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- International Tours -->
+<section class="py-24 px-8 max-w-screen-2xl mx-auto overflow-hidden">
+<div class="mb-16 text-center max-w-2xl mx-auto">
+<h6 class="font-manrope text-[#CD9933] font-bold text-sm tracking-[0.2em] uppercase mb-4">Beyond Borders</h6>
+<h2 class="font-notoSerif text-4xl lg:text-5xl font-bold text-primary">Discover the World</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- Turkey -->
+<div class="relative h-[500px] group cursor-pointer overflow-hidden rounded-lg">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" data-alt="The Blue Mosque in Istanbul" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDo34TNKnDfPALrJLu5UciOIr7LARLN_xMd56yq9UtN280tkvjiEnxN3TtX2PclWHifVh-nu8QV_2cBRDHQyvPmPzZGIZNdK59dTjZS_Z7zyQnU3g6H9XtU6VzrOpldicf7vIybJnfw64PVqTVsjONncJK9U_xFuHg1W1wWMoj67jRKKTctsOdONWmyphd-lo0jqhdNTCIXpryZF3G0yfAhu2sIiRgcLLrXo2593SUcftSq5rTTctJCZOjzrrlvn1FRx-ijiWOD06Kn"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-transparent to-transparent"></div>
+<div class="absolute bottom-8 left-8 right-8 text-white">
+<h3 class="font-notoSerif text-2xl font-bold mb-2">Turkey</h3>
+<p class="text-sm text-white/70 mb-4">Istanbul, Cappadocia, Antalya</p>
+<span class="inline-block border border-white/30 px-4 py-2 text-xs font-bold uppercase tracking-widest">Explore Tour</span>
+</div>
+</div>
+<!-- Dubai -->
+<div class="relative h-[500px] group cursor-pointer overflow-hidden rounded-lg">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" data-alt="Burj Khalifa and Dubai skyline" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUQYOVnZnCAbJnFrX1nyML3VQoCv0DXi5Irz0Y73qxzjrCnv9Fjfew89pvxdv8ZCASmG7JXvm6ivVtlWSDgDNl6WD5Qkh9yA9ePoYhW5-2lqFxEm_UD-gdv3y855ixx1a4TNrQKs_YDGiCBrtJNtbyqSVu-OpnZy8NM7Q_OjK_9-EAJxvTxySJdH3PL-NHtQ5wCIWYnxE88P2f-rJ9uHs3kO3HDAd20k7SpB0jq8u4Sn1BDaHihQy3xKayJDzjSbhMkeSgMrymfb39"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-transparent to-transparent"></div>
+<div class="absolute bottom-8 left-8 right-8 text-white">
+<h3 class="font-notoSerif text-2xl font-bold mb-2">Dubai</h3>
+<p class="text-sm text-white/70 mb-4">City Sights &amp; Desert Safari</p>
+<span class="inline-block border border-white/30 px-4 py-2 text-xs font-bold uppercase tracking-widest">Explore Tour</span>
+</div>
+</div>
+<!-- Malaysia -->
+<div class="relative h-[500px] group cursor-pointer overflow-hidden rounded-lg">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" data-alt="Petronas Twin Towers in Kuala Lumpur" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3zaexyac9JYbgc7JJW579-lS9WPkAgTeUI7Z4f5Gl08eeqwiSxGeYnsEo-duQ9zPlj4ciIjAaAHQxZpJWRSzi7QTPiBvQTt5PnQL360TdVEtcUe8-A1xE2f5tRkgQevJB0FH9BEKMxS9GfArHkUk1mmMGLjWSTTIINCUnMLvlQIt-niCyleGQ6NoGhUF9wsVc4M84ENHV6AyrYG2HEoJD3DrsDsNwuv-5k4zPqoMOXRMxOHGoe_2H7qk6_JElzjsy7uAvRdhWRfDf"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-transparent to-transparent"></div>
+<div class="absolute bottom-8 left-8 right-8 text-white">
+<h3 class="font-notoSerif text-2xl font-bold mb-2">Malaysia</h3>
+<p class="text-sm text-white/70 mb-4">Kuala Lumpur &amp; Genting</p>
+<span class="inline-block border border-white/30 px-4 py-2 text-xs font-bold uppercase tracking-widest">Explore Tour</span>
+</div>
+</div>
+<!-- Europe -->
+<div class="relative h-[500px] group cursor-pointer overflow-hidden rounded-lg">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" data-alt="The Swiss Alps and mountain village" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBv-MVsZqKBwhFPBQ8VFiq3TU0N5EnqlsYH2DbJRB5qbT_Cq8D2o6SSJOfghgRCyIin6rAX9gA_gYojLbuUrx53KQNs5-IEFKUuQCSPDJADWJ4WR-wdlDFUu341hUW3bpPXn5i_22fhWnEfLqshrlO64tuM__-1f54SpwlxVe2bQGSh0jdBOS_x6jW2ttrKZoyb_W-fAUeq6l6DZazJ7KXpOFW-pVOA24jVsXFRRGsk7z2EjtSS0-inrhXqDyByLzKRQqLQX-m_UhJv"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-transparent to-transparent"></div>
+<div class="absolute bottom-8 left-8 right-8 text-white">
+<h3 class="font-notoSerif text-2xl font-bold mb-2">Europe</h3>
+<p class="text-sm text-white/70 mb-4">Paris, Swiss, Rome</p>
+<span class="inline-block border border-white/30 px-4 py-2 text-xs font-bold uppercase tracking-widest">Explore Tour</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonials -->
+<section class="py-24 bg-surface-container-high px-8">
+<div class="max-w-screen-2xl mx-auto">
+<div class="text-center mb-16">
+<h6 class="font-manrope text-[#CD9933] font-bold text-sm tracking-[0.2em] uppercase mb-4">Client Feedback</h6>
+<h2 class="font-notoSerif text-4xl font-bold text-primary">Voices of Gratitude</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="bg-surface-container-lowest p-8 rounded-xl editorial-shadow">
+<div class="flex gap-1 text-[#CD9933] mb-6">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="italic text-primary mb-8 leading-relaxed font-manrope">"Our Umrah journey with Rehman Travels was flawless. From the visa process to the hotels being so close to the Haram, everything was perfectly managed. May Allah reward them."</p>
+<div class="flex items-center gap-4">
+<img class="w-12 h-12 rounded-full object-cover" data-alt="Smiling customer portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFTFEGBCE5jXj6eM278TP2Ax109ogHPCfKt81ueziR3aYr7jMI04ENRCcJ4Vat5FMphSQMJq3NRdl6DUVSdm8nFooEXYlNGQI9_C-5B213ukaJ9Xj7hmEwYW6AVrwzbiywDR_z2CJefQ6hr6aFsVuYYVv5gR2huLiFxsi9Lb67BKod9sXjic742wH_Fn6ZYyp0h6ui-0gv-aNCzmnupdBLzGxeHzlxAg7MlFO_-ufV_NafC8G0jsnsNHvpAjTtcvlHuf-l48cgZVBe"/>
+<div>
+<span class="block font-bold text-primary">Ahmed Raza</span>
+<span class="text-xs text-outline uppercase">Karachi</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-xl editorial-shadow">
+<div class="flex gap-1 text-[#CD9933] mb-6">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="italic text-primary mb-8 leading-relaxed font-manrope">"I booked the Turkey tour for my family. The guide was incredibly knowledgeable and the itinerary wasn't rushed. A truly premium experience from start to finish."</p>
+<div class="flex items-center gap-4">
+<img class="w-12 h-12 rounded-full object-cover" data-alt="Professional woman customer portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYtBIK6gOk0mhtUl3IJw77r0t3KrPVBPzAB2jnlOFTw40N4dbTdNmMDE-o-U8B7NWRqYLJNQVU00R33NODc6-fQFpF_qS3HQ4Ns1jC3YE4UsVumzicObLswfujvAFvLEH0Y9sx8n-BgUJ3hw65lY6AVs22E27ixYB22eQgfF83wfON4Jmx6jrz8Mn1yAnrvpejNzMf0C5Hj_tA6fi78-r_1Q3QD5P1SQ7vY77p_Ao0y4L0T5GIOcS2hdFZFPs7IrUJSgzroNNbUpRq"/>
+<div>
+<span class="block font-bold text-primary">Saba Khan</span>
+<span class="text-xs text-outline uppercase">Lahore</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-xl editorial-shadow">
+<div class="flex gap-1 text-[#CD9933] mb-6">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="italic text-primary mb-8 leading-relaxed font-manrope">"The ground staff in Makkah were like family. They helped us with our elderly parents during Tawaaf. I highly recommend Rehman Travels for their compassion."</p>
+<div class="flex items-center gap-4">
+<img class="w-12 h-12 rounded-full object-cover" data-alt="Senior man customer portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCc5pUsNWCfg7tO9-yhbEhsmWLR3vQg8yhvrq9qB4GvnXb1unZaqrw0qOK-Hwi5u-JfvnYT0g1z0MtYppgRxP5iDR0XwPBCjXfWvQt0MPJwuIuJQPWqJLmAgYZYdnwi8iF415-FVPbgwE9pf8ASPKktSBaff--XmTPWezqEMdYXTyH94z6ov_Hillp9mm9rt9JPL-SAz8nvhrPKEMWuos3DBXCq-RAHeGlShRxei8Zj44aC41yTkVxlgBdbJTd6PS2-karlMjwZHSxh"/>
+<div>
+<span class="block font-bold text-primary">Dr. Mohammad Ali</span>
+<span class="text-xs text-outline uppercase">Islamabad</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-24 px-8">
+<div class="max-w-5xl mx-auto bg-primary rounded-3xl p-12 lg:p-24 relative overflow-hidden text-center">
+<div class="absolute inset-0 opacity-10 pointer-events-none">
+<img class="w-full h-full object-cover" data-alt="Abstract golden silk texture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzZl7ucwK5x4LN8TYbepMGi6zw8pXI9uM1IenCObm9eIDWV8U9g4t27p9DX455ME3p-LHXGymUsXBQzH4U1TlrZ8H3YEz78O69LkPrLt1NclC-XuXCxPrFm_2NDmixqQ3Cl3Bxbm2LMhvKoM-nAiokbr-I_0Q9k5656xbSpsNXu1kkcOytXqTSiaifP-ZQTWUzyKrIb9E5Zd3f5_x5_h2jVoVzylYIAIwKFlT_SETc8Sf3HujmmwyD5_vabrzwSEHSDJjxdxQHw5ns"/>
+</div>
+<div class="relative z-10">
+<h2 class="font-notoSerif text-4xl lg:text-6xl font-bold text-white mb-8">Book Your Umrah Journey Today</h2>
+<p class="text-white/70 text-lg mb-12 max-w-2xl mx-auto">Contact our travel consultants today to get a personalized quote for your spiritual or leisure travel needs.</p>
+<div class="flex flex-wrap justify-center gap-6">
+<button class="bg-[#CD9933] text-white px-10 py-4 rounded-md font-bold text-lg hover:scale-105 transition-all">Get a Quote</button>
+<button class="bg-white/10 text-white border border-white/20 px-10 py-4 rounded-md font-bold text-lg backdrop-blur-md hover:bg-white/20 transition-all">Contact Us</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-[#013334] dark:bg-[#001c1d]">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-12 py-16 w-full max-w-screen-2xl mx-auto">
+<div class="space-y-6">
+<div class="font-notoSerif text-xl text-[#CD9933]">REHMAN</div>
+<p class="text-white/60 text-sm leading-relaxed font-manrope">Rehman Umrah &amp; Travels specializes in crafting meaningful spiritual journeys and world-class international tours for the discerning traveler.</p>
+</div>
+<div>
+<h5 class="font-notoSerif text-lg text-[#CD9933] mb-6">Quick Links</h5>
+<ul class="space-y-4">
+<li><a class="text-white/60 hover:text-[#CD9933] transition-all text-sm font-manrope" href="#">About Us</a></li>
+<li><a class="text-white/60 hover:text-[#CD9933] transition-all text-sm font-manrope" href="#">Visa Services</a></li>
+<li><a class="text-white/60 hover:text-[#CD9933] transition-all text-sm font-manrope" href="#">Packages</a></li>
+<li><a class="text-white/60 hover:text-[#CD9933] transition-all text-sm font-manrope" href="#">Terms &amp; Conditions</a></li>
+<li><a class="text-white/60 hover:text-[#CD9933] transition-all text-sm font-manrope" href="#">Privacy Policy</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-notoSerif text-lg text-[#CD9933] mb-6">Offices</h5>
+<ul class="space-y-4 text-white/60 text-sm font-manrope">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-[#CD9933] text-sm mt-1">location_on</span>
+<span>Main Boulevard, Gulberg III, Lahore, Pakistan</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-[#CD9933] text-sm mt-1">location_on</span>
+<span>DHA Phase II, Karachi, Pakistan</span>
+</li>
+</ul>
+</div>
+<div>
+<h5 class="font-notoSerif text-lg text-[#CD9933] mb-6">Newsletter</h5>
+<p class="text-white/60 text-xs mb-4">Stay updated with the latest Umrah deals.</p>
+<div class="flex gap-2">
+<input class="bg-white/5 border-0 border-b border-white/20 text-white text-sm w-full focus:ring-0 focus:border-[#CD9933]" placeholder="Email Address" type="email"/>
+<button class="text-[#CD9933]"><span class="material-symbols-outlined">send</span></button>
+</div>
+</div>
+</div>
+<div class="border-t border-white/5 px-12 py-8 text-center">
+<p class="text-white/40 text-xs font-manrope">© 2024 Rehman Umrah &amp; Travels. All Rights Reserved.</p>
+</div>
+</footer>
+</body></html>

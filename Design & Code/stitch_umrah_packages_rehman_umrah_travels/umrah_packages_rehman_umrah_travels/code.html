@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-variant": "#e1e2e4",
+              "outline": "#717978",
+              "secondary": "#7d5800",
+              "tertiary-container": "#362b16",
+              "on-surface-variant": "#404848",
+              "on-secondary": "#ffffff",
+              "on-secondary-container": "#755100",
+              "primary-container": "#013334",
+              "on-error-container": "#93000a",
+              "surface": "#f8f9fb",
+              "background": "#f8f9fb",
+              "secondary-fixed-dim": "#f6bd54",
+              "surface-container-low": "#f3f4f6",
+              "secondary-container": "#ffc55b",
+              "on-background": "#191c1e",
+              "on-primary-fixed-variant": "#234d4e",
+              "inverse-primary": "#a3cfcf",
+              "inverse-on-surface": "#f0f1f3",
+              "surface-container-lowest": "#ffffff",
+              "surface-container-highest": "#e1e2e4",
+              "surface-container-high": "#e7e8ea",
+              "surface-dim": "#d9dadc",
+              "tertiary": "#201705",
+              "surface-bright": "#f8f9fb",
+              "on-tertiary-fixed": "#241a07",
+              "primary": "#001c1d",
+              "outline-variant": "#c0c8c8",
+              "error": "#ba1a1a",
+              "on-tertiary-fixed-variant": "#52452e",
+              "on-primary": "#ffffff",
+              "surface-tint": "#3c6566",
+              "on-primary-container": "#729c9d",
+              "on-tertiary-container": "#a39276",
+              "error-container": "#ffdad6",
+              "secondary-fixed": "#ffdea9",
+              "on-tertiary": "#ffffff",
+              "tertiary-fixed": "#f4e0c1",
+              "primary-fixed": "#bfebeb",
+              "on-secondary-fixed": "#271900",
+              "on-error": "#ffffff",
+              "surface-container": "#edeef0",
+              "on-primary-fixed": "#002020",
+              "on-surface": "#191c1e",
+              "on-secondary-fixed-variant": "#5f4100",
+              "primary-fixed-dim": "#a3cfcf",
+              "inverse-surface": "#2e3132",
+              "tertiary-fixed-dim": "#d7c4a6"
+            },
+            fontFamily: {
+              "notoSerif": ["Noto Serif", "serif"],
+              "manrope": ["Manrope", "sans-serif"],
+              "headline": ["Noto Serif", "serif"],
+              "body": ["Manrope", "sans-serif"],
+              "label": ["Manrope", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .editorial-shadow {
+            box-shadow: 0 8px 40px rgba(1, 51, 52, 0.06);
+        }
+        .asymmetric-clip {
+            border-top-left-radius: 2rem;
+            border-bottom-right-radius: 2rem;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-manrope selection:bg-secondary-container">
+<!-- TopNavBar -->
+<nav class="bg-[#013334] dark:bg-[#001c1d] docked full-width top-0 z-50 shadow-[0_8px_40px_rgba(1,51,52,0.06)]">
+<div class="flex justify-between items-center w-full px-8 py-4 max-w-screen-2xl mx-auto">
+<div class="font-notoSerif text-2xl font-bold tracking-tighter text-[#CD9933]">REHMAN</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-white/80 font-medium hover:text-white transition-colors duration-300 font-manrope text-sm tracking-wide" href="#">Home</a>
+<a class="text-[#CD9933] border-b-2 border-[#CD9933] pb-1 font-semibold font-manrope text-sm tracking-wide" href="#">Umrah Packages</a>
+<a class="text-white/80 font-medium hover:text-white transition-colors duration-300 font-manrope text-sm tracking-wide" href="#">International Tours</a>
+<a class="text-white/80 font-medium hover:text-white transition-colors duration-300 font-manrope text-sm tracking-wide" href="#">Visa Services</a>
+<a class="text-white/80 font-medium hover:text-white transition-colors duration-300 font-manrope text-sm tracking-wide" href="#">Gallery</a>
+<a class="text-white/80 font-medium hover:text-white transition-colors duration-300 font-manrope text-sm tracking-wide" href="#">Blog</a>
+</div>
+<div class="flex items-center gap-6">
+<button class="text-white font-medium hover:text-[#CD9933] transition-colors font-manrope text-sm">FAQ</button>
+<button class="bg-[#CD9933] text-white px-6 py-2 rounded-md font-bold hover:scale-95 duration-200 ease-in-out font-manrope text-sm">Contact</button>
+</div>
+</div>
+</nav>
+<!-- Header Section -->
+<header class="relative h-[409px] flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover opacity-30 grayscale contrast-125" data-alt="Beautiful aerial view of the Holy Kaaba in Makkah" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4NMCBl-fs_JwXhpSNh5wZDRuY3kj1glPRuI6GUCnwgY7RgshXtejdsIA_OMo1kWkl4aLrgrdh3RGeFeomHwml6Ye_UHMR_724sEpA6Uulrf9_aQjmkT-ADo-9hF60KH3OfXm8aB-XPBWvJ6YWjPnW0I-USoLZnkH5_AIbbmLUOXhodKo4PqQTCml7ShpBQCDSBl4P42qgkAUDOZl_6dXB_2l_l6AMVS93vp-cCDVZhyq59UOO1xgHVExeGK0gKwAgxabAYk5MLAgJ"/>
+<div class="absolute inset-0 bg-gradient-to-b from-[#013334] via-[#013334]/80 to-surface"></div>
+</div>
+<div class="relative z-10 text-center px-4">
+<h1 class="font-notoSerif text-5xl md:text-7xl font-bold text-[#CD9933] mb-4 tracking-tight">Umrah Packages</h1>
+<p class="text-white/70 max-w-2xl mx-auto font-manrope text-lg">Embark on a spiritual journey of a lifetime with our meticulously curated pilgrimage experiences.</p>
+</div>
+</header>
+<main class="max-w-screen-2xl mx-auto px-8 py-12">
+<div class="flex flex-col lg:flex-row gap-12">
+<!-- Filter Sidebar -->
+<aside class="w-full lg:w-72 flex-shrink-0">
+<div class="bg-surface-container-low p-8 rounded-xl sticky top-24">
+<h2 class="font-notoSerif text-xl text-primary mb-8 border-b border-outline-variant/30 pb-4">Categories</h2>
+<nav class="space-y-6">
+<label class="flex items-center group cursor-pointer">
+<input class="rounded border-outline-variant text-secondary focus:ring-secondary w-5 h-5" type="checkbox"/>
+<span class="ml-4 font-manrope text-on-surface group-hover:text-secondary transition-colors">Economy</span>
+</label>
+<label class="flex items-center group cursor-pointer">
+<input class="rounded border-outline-variant text-secondary focus:ring-secondary w-5 h-5" type="checkbox"/>
+<span class="ml-4 font-manrope text-on-surface group-hover:text-secondary transition-colors">3 Star Packages</span>
+</label>
+<label class="flex items-center group cursor-pointer">
+<input class="rounded border-outline-variant text-secondary focus:ring-secondary w-5 h-5" type="checkbox"/>
+<span class="ml-4 font-manrope text-on-surface group-hover:text-secondary transition-colors">4 Star Luxury</span>
+</label>
+<label class="flex items-center group cursor-pointer">
+<input checked="" class="rounded border-outline-variant text-secondary focus:ring-secondary w-5 h-5" type="checkbox"/>
+<span class="ml-4 font-manrope text-secondary font-bold">5 Star Premium</span>
+</label>
+<label class="flex items-center group cursor-pointer">
+<input class="rounded border-outline-variant text-secondary focus:ring-secondary w-5 h-5" type="checkbox"/>
+<span class="ml-4 font-manrope text-on-surface group-hover:text-secondary transition-colors">Ramadan 2024</span>
+</label>
+<label class="flex items-center group cursor-pointer">
+<input class="rounded border-outline-variant text-secondary focus:ring-secondary w-5 h-5" type="checkbox"/>
+<span class="ml-4 font-manrope text-on-surface group-hover:text-secondary transition-colors">December Specials</span>
+</label>
+</nav>
+<div class="mt-12">
+<div class="p-6 bg-[#013334] rounded-lg text-white">
+<p class="font-notoSerif text-lg mb-2">Need Guidance?</p>
+<p class="text-sm opacity-70 mb-4">Our travel experts are available 24/7 for consultation.</p>
+<button class="w-full py-3 bg-[#CD9933] text-white font-bold rounded hover:bg-secondary-fixed-dim transition-colors text-sm">Enquire Now</button>
+</div>
+</div>
+</div>
+</aside>
+<!-- Package Grid -->
+<section class="flex-1">
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-10">
+<!-- Package Card 1 -->
+<div class="bg-surface-container-lowest editorial-shadow rounded-xl overflow-hidden flex flex-col group">
+<div class="relative h-72 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 asymmetric-clip" data-alt="Luxury hotel room with Makkah view" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdBRKj372X3XEdAkE-8DFUWUG3imKQ3ac1b9USL1W0C7BBcveBszqF8mJwUnrjm_5pqskUDnrMUG5yx4QEV-eq5AZXw1KY6sy0X29rpzsJ0PgTNtzNIKD6UJk5_i92ULJFJC4ETiDGG5sBM3I5psHDr_G9s4mWI7IBISEwh_FOp8XWve3y6kl_TDJzu-I1o55kkiAvkMjUJOG_qFJqigRHzs8XXys3tPtXSAhE7XP1c17NsdmgiYoT9NlK4oiCiDUJZtS4VqPVr2_y"/>
+<div class="absolute top-4 left-4 bg-[#CD9933] text-white px-4 py-1 text-xs font-bold uppercase tracking-widest rounded">Best Seller</div>
+</div>
+<div class="p-8 flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-notoSerif text-2xl text-primary font-bold">Premium 5-Star Executive</h3>
+<div class="flex items-center mt-1 text-on-surface-variant text-sm">
+<span class="material-symbols-outlined text-sm mr-1">location_on</span>
+<span>Pullman ZamZam (150m from Haram)</span>
+</div>
+</div>
+<div class="text-right">
+<div class="text-xs text-on-surface-variant uppercase font-bold tracking-tighter">Starting from</div>
+<div class="text-2xl font-notoSerif font-bold text-secondary">PKR 485,000</div>
+</div>
+</div>
+<div class="flex gap-4 mb-8">
+<div class="bg-surface-container flex items-center px-3 py-1 rounded text-xs font-medium">
+<span class="material-symbols-outlined text-sm mr-2">calendar_today</span> 15 Days
+                                </div>
+<div class="bg-surface-container flex items-center px-3 py-1 rounded text-xs font-medium">
+<span class="material-symbols-outlined text-sm mr-2">flight</span> Qatar Airways
+                                </div>
+</div>
+<div class="mt-auto grid grid-cols-2 gap-4">
+<button class="py-3 bg-[#CD9933]/10 text-[#CD9933] font-bold rounded-md hover:bg-[#CD9933]/20 transition-colors border border-[#CD9933]/20 text-sm">View Details</button>
+<button class="py-3 bg-[#013334] text-white font-bold rounded-md hover:bg-primary transition-colors text-sm">Book Now</button>
+</div>
+</div>
+</div>
+<!-- Package Card 2 -->
+<div class="bg-surface-container-lowest editorial-shadow rounded-xl overflow-hidden flex flex-col group">
+<div class="relative h-72 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 asymmetric-clip" data-alt="Modern 4 star hotel building in Madinah" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3_91cdPdyWpCst8uVkcSEkdZVScCJV50Uz8dmehZ72dVc-AfHZbJoQzWGsgyEAxSfLd4WFy_TcxoatRlFL9pYi7TlRzV0SRDbRgWohXX1z0OTxHqAQTG9iS5gpGUB5Z_H6pitDxZUMKSXLEM0yFiSDg8vEdV9EQFTltpcz7I4kc00gPiHi3Ng2O0p0E9HLJPYcB4wTjtqGLQVhxvHDrhAIguL_9WFBZysggur9-whO305qAImVClX1qsUEVVKYQmL9mKjsOC2BAkA"/>
+<div class="absolute top-4 left-4 bg-primary-container text-white px-4 py-1 text-xs font-bold uppercase tracking-widest rounded">Popular Choice</div>
+</div>
+<div class="p-8 flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-notoSerif text-2xl text-primary font-bold">Silver 4-Star Comfort</h3>
+<div class="flex items-center mt-1 text-on-surface-variant text-sm">
+<span class="material-symbols-outlined text-sm mr-1">location_on</span>
+<span>Al-Shohada Hotel (300m from Haram)</span>
+</div>
+</div>
+<div class="text-right">
+<div class="text-xs text-on-surface-variant uppercase font-bold tracking-tighter">Starting from</div>
+<div class="text-2xl font-notoSerif font-bold text-secondary">PKR 325,000</div>
+</div>
+</div>
+<div class="flex gap-4 mb-8">
+<div class="bg-surface-container flex items-center px-3 py-1 rounded text-xs font-medium">
+<span class="material-symbols-outlined text-sm mr-2">calendar_today</span> 10 Days
+                                </div>
+<div class="bg-surface-container flex items-center px-3 py-1 rounded text-xs font-medium">
+<span class="material-symbols-outlined text-sm mr-2">flight</span> Saudi Airlines
+                                </div>
+</div>
+<div class="mt-auto grid grid-cols-2 gap-4">
+<button class="py-3 bg-[#CD9933]/10 text-[#CD9933] font-bold rounded-md hover:bg-[#CD9933]/20 transition-colors border border-[#CD9933]/20 text-sm">View Details</button>
+<button class="py-3 bg-[#013334] text-white font-bold rounded-md hover:bg-primary transition-colors text-sm">Book Now</button>
+</div>
+</div>
+</div>
+<!-- Package Card 3 -->
+<div class="bg-surface-container-lowest editorial-shadow rounded-xl overflow-hidden flex flex-col group">
+<div class="relative h-72 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 asymmetric-clip" data-alt="Majestic architecture of Masjid-un-Nabwi" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0LUe8DBs6mr578_8-2rCv85B1fSGUnt1I0JeY6VCP13gvKcXOSuQN20B8yyCGUalnauFjp-7PXrQHfZc81fClbi4Y51FKF3AgmNo_WAvbPfWwlMksw02OxLGeliL9fXwIDQy6zi6mBt72o6pbuQfNejTb2P8-MsB_LzXSulKKW6JIrcuX_AVIxvZtOvVNTcRjpRsjWlgLthPSmBMS7LQni7NObK0Z2NVuXC1Fwpyo0DA1bzO5JkQdnTpwDyIBxSRfImfbwrXaNF59"/>
+</div>
+<div class="p-8 flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-notoSerif text-2xl text-primary font-bold">Spiritual Ramadan 2024</h3>
+<div class="flex items-center mt-1 text-on-surface-variant text-sm">
+<span class="material-symbols-outlined text-sm mr-1">location_on</span>
+<span>Full Ramadan in Makkah &amp; Madinah</span>
+</div>
+</div>
+<div class="text-right">
+<div class="text-xs text-on-surface-variant uppercase font-bold tracking-tighter">Starting from</div>
+<div class="text-2xl font-notoSerif font-bold text-secondary">PKR 750,000</div>
+</div>
+</div>
+<div class="flex gap-4 mb-8">
+<div class="bg-surface-container flex items-center px-3 py-1 rounded text-xs font-medium">
+<span class="material-symbols-outlined text-sm mr-2">calendar_today</span> 30 Days
+                                </div>
+<div class="bg-surface-container flex items-center px-3 py-1 rounded text-xs font-medium">
+<span class="material-symbols-outlined text-sm mr-2">restaurant</span> Full Iftar/Suhur
+                                </div>
+</div>
+<div class="mt-auto grid grid-cols-2 gap-4">
+<button class="py-3 bg-[#CD9933]/10 text-[#CD9933] font-bold rounded-md hover:bg-[#CD9933]/20 transition-colors border border-[#CD9933]/20 text-sm">View Details</button>
+<button class="py-3 bg-[#013334] text-white font-bold rounded-md hover:bg-primary transition-colors text-sm">Book Now</button>
+</div>
+</div>
+</div>
+<!-- Package Card 4 -->
+<div class="bg-surface-container-lowest editorial-shadow rounded-xl overflow-hidden flex flex-col group">
+<div class="relative h-72 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 asymmetric-clip" data-alt="Luxury suite interior with elegant furnishing" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUqhQvXdmXntutgQNw439DJ2g4eby54ExQ7ovVzpherZzYoDIMWSfjuoq-pLcHYRa26UOYkjpll3nqA_UaSv0631v_QxoE7eujuTlkIq-R18tW4l1cM6J25NQ_lnmK7WjpXsbtJ0hmNiYQrzvh-U5FoYMQ_0y6HpIyCg5MUWVAnZpkpOnz4djr09D6mLQFN1gg0pbjNEZDCaRh2w_baUqbwlml3jMs6ck_bKp5H8wQ_YZyoJPk7e_YZJXJMy5WkLJZkJ31ORsCy_rb"/>
+<div class="absolute top-4 left-4 bg-[#CD9933] text-white px-4 py-1 text-xs font-bold uppercase tracking-widest rounded">Gold Standard</div>
+</div>
+<div class="p-8 flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-notoSerif text-2xl text-primary font-bold">Royal Suites Collection</h3>
+<div class="flex items-center mt-1 text-on-surface-variant text-sm">
+<span class="material-symbols-outlined text-sm mr-1">location_on</span>
+<span>Raffles Makkah (Inside Clock Tower)</span>
+</div>
+</div>
+<div class="text-right">
+<div class="text-xs text-on-surface-variant uppercase font-bold tracking-tighter">Starting from</div>
+<div class="text-2xl font-notoSerif font-bold text-secondary">PKR 980,000</div>
+</div>
+</div>
+<div class="flex gap-4 mb-8">
+<div class="bg-surface-container flex items-center px-3 py-1 rounded text-xs font-medium">
+<span class="material-symbols-outlined text-sm mr-2">calendar_today</span> 07 Days
+                                </div>
+<div class="bg-surface-container flex items-center px-3 py-1 rounded text-xs font-medium">
+<span class="material-symbols-outlined text-sm mr-2">directions_car</span> Private GMC Transfer
+                                </div>
+</div>
+<div class="mt-auto grid grid-cols-2 gap-4">
+<button class="py-3 bg-[#CD9933]/10 text-[#CD9933] font-bold rounded-md hover:bg-[#CD9933]/20 transition-colors border border-[#CD9933]/20 text-sm">View Details</button>
+<button class="py-3 bg-[#013334] text-white font-bold rounded-md hover:bg-primary transition-colors text-sm">Book Now</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- SideNavBar (FAB WhatsApp) -->
+<div class="fixed bottom-8 right-8 z-[9999]">
+<a class="bg-white/80 dark:bg-black/80 backdrop-blur-md fixed bottom-8 right-8 rounded-full p-4 w-16 h-16 flex items-center justify-center shadow-2xl shadow-[#013334]/20 ghost-border border-[#CD9933]/15 animate-bounce duration-[2000ms] hover:scale-110 hover:shadow-[#CD9933]/30 transition-all" href="#">
+<span class="material-symbols-outlined text-[#CD9933] text-3xl">chat</span>
+</a>
+</div>
+<!-- Footer -->
+<footer class="bg-[#013334] dark:bg-[#001c1d]">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-12 py-16 w-full max-w-screen-2xl mx-auto">
+<div class="col-span-1 md:col-span-1">
+<div class="font-notoSerif text-xl text-[#CD9933] mb-6">REHMAN</div>
+<p class="text-white/60 font-manrope text-sm leading-relaxed">Dedicated to providing the most serene and spiritually enriching pilgrimage experiences since 2010. Your comfort in the holy cities is our priority.</p>
+</div>
+<div>
+<h4 class="font-notoSerif text-lg text-[#CD9933] mb-6">Quick Links</h4>
+<ul class="space-y-4">
+<li><a class="text-white/60 hover:text-[#CD9933] transition-all underline-offset-4 text-sm font-manrope" href="#">About Us</a></li>
+<li><a class="text-white/60 hover:text-[#CD9933] transition-all underline-offset-4 text-sm font-manrope" href="#">Packages</a></li>
+<li><a class="text-white/60 hover:text-[#CD9933] transition-all underline-offset-4 text-sm font-manrope" href="#">Visa Services</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-notoSerif text-lg text-[#CD9933] mb-6">Legal</h4>
+<ul class="space-y-4">
+<li><a class="text-white/60 hover:text-[#CD9933] transition-all underline-offset-4 text-sm font-manrope" href="#">Terms &amp; Conditions</a></li>
+<li><a class="text-white/60 hover:text-[#CD9933] transition-all underline-offset-4 text-sm font-manrope" href="#">Privacy Policy</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-notoSerif text-lg text-[#CD9933] mb-6">Contact Us</h4>
+<div class="space-y-4 text-white/60 font-manrope text-sm">
+<p class="flex items-center"><span class="material-symbols-outlined text-sm mr-2 text-[#CD9933]">phone</span> +92 (51) 123 4567</p>
+<p class="flex items-center"><span class="material-symbols-outlined text-sm mr-2 text-[#CD9933]">mail</span> info@rehmanumrah.com</p>
+<p class="flex items-start"><span class="material-symbols-outlined text-sm mr-2 mt-1 text-[#CD9933]">location_on</span> 123 Blue Area, Islamabad, Pakistan</p>
+</div>
+</div>
+</div>
+<div class="border-t border-white/5 py-8 text-center">
+<p class="text-white/40 text-xs font-manrope">© 2024 Rehman Umrah &amp; Travels. All Rights Reserved.</p>
+</div>
+</footer>
+</body></html>

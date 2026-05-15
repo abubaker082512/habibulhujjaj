@@ -1,0 +1,19 @@
+{
+  "name": "rehman-umrah-travels",
+  "version": "1.0.0",
+  "description": "Habibulhujaj Umrah & Travels MERN Stack Website",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "server": "nodemon server/index.js",
+    "client": "cd client && npm run dev",
+    "dev": "npx concurrently \"npm run server\" \"npm run client\"",
+    "build": "cd client && npm install && npm run build",
+    "vercel-build": "cd client && npm install && npm run build"
+  },
+  "dependencies": {
+    "concurrently": "^8.2.2",
+    "jsonwebtoken": "^9.0.2",
+    "@supabase/supabase-js": "^2.100.0"
+  }
+}

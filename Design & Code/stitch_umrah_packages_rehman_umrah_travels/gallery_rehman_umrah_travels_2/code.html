@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container": "#edeef0",
+              "on-primary-fixed": "#002020",
+              "on-error": "#ffffff",
+              "primary-fixed": "#bfebeb",
+              "on-secondary-fixed": "#271900",
+              "tertiary-fixed-dim": "#d7c4a6",
+              "inverse-surface": "#2e3132",
+              "primary-fixed-dim": "#a3cfcf",
+              "on-secondary-fixed-variant": "#5f4100",
+              "on-surface": "#191c1e",
+              "on-primary-container": "#729c9d",
+              "primary": "#001c1d",
+              "outline-variant": "#c0c8c8",
+              "on-tertiary-fixed-variant": "#52452e",
+              "error": "#ba1a1a",
+              "surface-tint": "#3c6566",
+              "on-primary": "#ffffff",
+              "surface-bright": "#f8f9fb",
+              "on-tertiary-fixed": "#241a07",
+              "secondary-fixed": "#ffdea9",
+              "on-tertiary-container": "#a39276",
+              "error-container": "#ffdad6",
+              "tertiary-fixed": "#f4e0c1",
+              "on-tertiary": "#ffffff",
+              "inverse-on-surface": "#f0f1f3",
+              "on-primary-fixed-variant": "#234d4e",
+              "on-background": "#191c1e",
+              "inverse-primary": "#a3cfcf",
+              "tertiary": "#201705",
+              "surface-dim": "#d9dadc",
+              "surface-container-highest": "#e1e2e4",
+              "surface-container-high": "#e7e8ea",
+              "surface-container-lowest": "#ffffff",
+              "on-secondary-container": "#755100",
+              "tertiary-container": "#362b16",
+              "on-surface-variant": "#404848",
+              "on-secondary": "#ffffff",
+              "secondary": "#7d5800",
+              "surface-variant": "#e1e2e4",
+              "outline": "#717978",
+              "secondary-container": "#ffc55b",
+              "surface-container-low": "#f3f4f6",
+              "secondary-fixed-dim": "#f6bd54",
+              "surface": "#f8f9fb",
+              "background": "#f8f9fb",
+              "primary-container": "#013334",
+              "on-error-container": "#93000a"
+            },
+            fontFamily: {
+              "headline": ["Noto Serif"],
+              "body": ["Manrope"],
+              "label": ["Manrope"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .font-notoSerif { font-family: 'Noto Serif', serif; }
+        .font-manrope { font-family: 'Manrope', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-secondary-fixed selection:text-on-secondary-fixed">
+<!-- TopAppBar -->
+<header class="bg-[#013334] dark:bg-[#001c1d] docked full-width top-0 z-50 no-border tonal-shift bg-opacity-90 backdrop-blur-md shadow-[0_8px_40px_rgba(1,51,52,0.06)] fixed w-full">
+<div class="flex justify-between items-center w-full px-8 py-4 max-w-full mx-auto">
+<div class="font-notoSerif text-2xl font-bold text-[#CD9933] tracking-tighter">Rehman Umrah &amp; Travels</div>
+<!-- Desktop Navigation -->
+<nav class="hidden md:flex items-center space-x-8">
+<a class="text-white/80 hover:text-[#CD9933] transition-colors font-notoSerif text-lg tracking-wide" href="#">Home</a>
+<a class="text-white/80 hover:text-[#CD9933] transition-colors font-notoSerif text-lg tracking-wide" href="#">About</a>
+<a class="text-[#CD9933] border-b-2 border-[#CD9933] pb-1 font-bold font-notoSerif text-lg tracking-wide" href="#">Gallery</a>
+<a class="text-white/80 hover:text-[#CD9933] transition-colors font-notoSerif text-lg tracking-wide" href="#">Packages</a>
+<a class="text-white/80 hover:text-[#CD9933] transition-colors font-notoSerif text-lg tracking-wide" href="#">Tours</a>
+</nav>
+<div class="flex items-center space-x-4">
+<button class="text-white/80 hover:bg-white/10 p-2 rounded-full transition-all active:scale-95">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32">
+<!-- Hero Header -->
+<section class="px-8 py-16 md:py-24 max-w-7xl mx-auto">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-8">
+<div class="max-w-2xl">
+<span class="text-secondary font-label uppercase tracking-[0.3em] text-sm mb-4 block">Visual Chronicles</span>
+<h1 class="font-headline text-5xl md:text-7xl text-primary-container leading-tight mb-6">The Sacred Editorial</h1>
+<p class="text-on-surface-variant text-lg leading-relaxed font-body italic">
+                        A curation of moments from the holy cities and beyond, capturing the essence of spiritual devotion and global exploration.
+                    </p>
+</div>
+<div class="h-px flex-grow bg-outline-variant/30 mb-4 hidden md:block"></div>
+</div>
+</section>
+<!-- Filter Bar -->
+<section class="px-8 mb-12 max-w-7xl mx-auto overflow-x-auto no-scrollbar">
+<div class="flex items-center space-x-4 min-w-max">
+<button class="px-6 py-2 rounded-full bg-primary-container text-secondary font-label text-sm tracking-widest border border-secondary/20">ALL</button>
+<button class="px-6 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label text-sm tracking-widest hover:bg-secondary/10 hover:text-secondary transition-all">KAABA</button>
+<button class="px-6 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label text-sm tracking-widest hover:bg-secondary/10 hover:text-secondary transition-all">MASJID NABAWI</button>
+<button class="px-6 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label text-sm tracking-widest hover:bg-secondary/10 hover:text-secondary transition-all">ZIYARAT</button>
+<button class="px-6 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label text-sm tracking-widest hover:bg-secondary/10 hover:text-secondary transition-all">UMRAH GROUPS</button>
+<button class="px-6 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label text-sm tracking-widest hover:bg-secondary/10 hover:text-secondary transition-all">INTERNATIONAL TOURS</button>
+</div>
+</section>
+<!-- Bento Gallery Grid -->
+<section class="px-8 max-w-7xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Main Featured (Asymmetric) -->
+<div class="md:col-span-8 group relative overflow-hidden rounded-tl-[4rem] rounded-br-[4rem] bg-surface-container shadow-sm">
+<img alt="The Grand Mosque at Night" class="w-full h-[500px] object-cover transition-transform duration-700 group-hover:scale-105" data-alt="The Grand Mosque at Night showing the Kaaba" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHEe_e2Q1IoMF3hwAstJSb0J8z7TYJtGqtLL-2rBsUPWIIoi9fbGo2IY2e8gmMteuN8of5rQL0LJrh5A_lXNTr1f_vXOdUZwBj0wEy44DQbLNTjB15Wq2294cPWOdSbl4b7jS_UUr7sAv73LtBrQdDZsI-UOIli6B3uRTjhGuvSFFCH87RaJPxKN9mWpqNsgh_PSOPL9FxtZaDt9CaWy6Rm26va8cCzjd-6vGdQwQY2Ch-p94lbhjn8EBUbbkIzmXXErqk1D6HfEgi"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary-container/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
+<span class="text-secondary-fixed-dim font-label text-xs tracking-widest mb-2">MAKKAH AL-MUKARRAMAH</span>
+<h3 class="text-white font-headline text-2xl">The Sacred Heart of Islam</h3>
+</div>
+</div>
+<!-- Secondary High -->
+<div class="md:col-span-4 group relative overflow-hidden rounded-tr-[4rem] bg-surface-container">
+<img alt="Masjid Nabawi Umbrellas" class="w-full h-full min-h-[500px] object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Intricate architectural umbrellas at Masjid Nabawi in Medina" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBL8Z_1mYDaf0oVRzBjplnWTX65254Huf7LacZcwZSk_fptw1h-t8EnX0Mr_mUZ9xEGnWjw7-JZooSylD_gvNhXw13m5d9GD9ZEkDbCXNyuSouT04O3eL0-Bt8GFFfTGcubu-dRGGy47PiwgFVBe6k0Zbj2LPilxsudJKZRS2td9Y3UuEN6nnaUIqEsMAaA4CwHJVhpBT9BmSTaWKTYucjwxTL14802LvIcneWtmHM75zgXMadUMdldKDBDESHf7Ejl8xSZdHfaeveg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary-container/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
+<span class="text-secondary-fixed-dim font-label text-xs tracking-widest mb-2">AL-MADINAH AL-MUNAWARRAH</span>
+<h3 class="text-white font-headline text-2xl">The Prophet's Serenity</h3>
+</div>
+</div>
+<!-- Bento Row 2 -->
+<div class="md:col-span-4 group relative overflow-hidden bg-surface-container-low p-2">
+<div class="h-full w-full overflow-hidden rounded-bl-[4rem]">
+<img alt="Cave Hira" class="w-full h-[350px] object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Sunset view from Cave Hira overlooking the city of Makkah" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQ5SP7poaCA4MNJmsxFyIEMU9UaTrAosk8_pJ4Bmhso5OwMnzMIReHc5rdDIzoGn_Y0FbsVFH17cU6FKkjKdyXbWKEyW1CYK3GACCNjd_EKbB8kHuSM-FQXNexYaj6g1kZBjugkOabaSzVNfGZoGZWNvP92VWKc8Hyb4hU0u1QpfJAKkVMluQgywk9uVkigkhL_wRzxQqdRcYv4vq1cyKKDvneLryRZFw6Pd2nQtmQ3edIvQAMS-5xzsVztc78MHewVW-j6wpmQZFJ"/>
+</div>
+<div class="mt-4 px-2">
+<span class="text-secondary font-label text-[10px] tracking-[0.2em] uppercase">Ziyarat Series</span>
+<h4 class="text-primary font-headline text-lg">Mount of Light</h4>
+</div>
+</div>
+<div class="md:col-span-4 group relative overflow-hidden bg-surface-container-low p-2">
+<div class="h-full w-full overflow-hidden">
+<img alt="Umrah Group" class="w-full h-[350px] object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Diverse group of pilgrims in Ihram performing rituals together" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUmPH8W5ohbxKJD-UIkRayPouRiJ4FASUX6Xr0jU_mv0c91pDwXk0S3Ar1H9a_FPjUpZO0Y-4Bi7KrO9JgB2j71ihn5JpB5MUwS4EI4pLgJXbcQR4lobwSb_r7Wd421mv9Ho7rlgfD5qdSjydcxNwqq1KsJzMnst4ry0km1QE3SWoFJTK8I0BKkhfGo4qD_hLvJEBLUk-uf-3U_FzeuTrGJ1SuZdmkHLaf1ek8JncXTvs0T1OTixMcGYILJ_wcSYwoh_a_c2Q-WvOE"/>
+</div>
+<div class="mt-4 px-2">
+<span class="text-secondary font-label text-[10px] tracking-[0.2em] uppercase">Community</span>
+<h4 class="text-primary font-headline text-lg">Journey of Oneness</h4>
+</div>
+</div>
+<div class="md:col-span-4 group relative overflow-hidden bg-surface-container-low p-2">
+<div class="h-full w-full overflow-hidden rounded-tr-[4rem]">
+<img alt="International Tour Turkey" class="w-full h-[350px] object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Blue Mosque in Istanbul during the golden hour" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqZSxKRyoz_xPVQapLWsxExhTqWKwJs79jmFYs7uKnH1gMboyyXCnhS6Zgg7Fl3lc5PxVYAooEPCSQYJXBCMvdeHxRTjHfzaXPQNlywhO_sqEL5OGURhWnLL_ZKeEUkQEwCyTXZabyMWHWS1HlmrOZPuApyN9iw7DUjnN9x7IpaJlAvMq2njnDSnQ2RsUA-b6ouwZhcFuy0_NB5D4bKBdxh8421C17pXGKVcLUBCT1Se4yiA8sqLxqEQttChSYgllnOyRVR9Y4dXit"/>
+</div>
+<div class="mt-4 px-2">
+<span class="text-secondary font-label text-[10px] tracking-[0.2em] uppercase">Global Voyages</span>
+<h4 class="text-primary font-headline text-lg">Istanbul Echoes</h4>
+</div>
+</div>
+<!-- Row 3 - Large Mosaic -->
+<div class="md:col-span-12 flex flex-col md:flex-row gap-6 mt-6">
+<div class="md:w-1/2 overflow-hidden rounded-xl h-[400px] relative">
+<img alt="Tawaf" class="w-full h-full object-cover" data-alt="Blurred motion of pilgrims performing Tawaf around the Kaaba" src="https://lh3.googleusercontent.com/aida-public/AB6AXuACFpKFJl2vhowXK0DnGfOVs3KdjmCaj_vvLPSr4_2aFy4xO6Jmxkww4TwfqgacA8GgDUyac1F8SzUPZqJNqUEiLDnF0rmOM_tvUG-br2qtfkC6aYe8UjclltfSUb230yY0KNYwp-8wO1HL8EUVo-gE775aBlVQBvy1mgyWBrWClHN3Ief6BNkYuqc5vTBkt-HqtbbT2G2V9fSyzJk4HCsji8JpqFjq62pN8v0DlIROHPOKfh--xgtxubxMhw8uP7otgzrupunKZjjA"/>
+<div class="absolute inset-0 bg-primary/20 backdrop-grayscale hover:backdrop-grayscale-0 transition-all duration-700"></div>
+</div>
+<div class="md:w-1/2 flex flex-col justify-center space-y-6 px-4">
+<h2 class="font-headline text-3xl text-primary leading-snug">Capturing the <br/><span class="text-secondary italic">Unspoken Grace</span></h2>
+<p class="text-on-surface-variant leading-relaxed">Our gallery is more than just photographs; it's a testimony of the spiritual transformation our pilgrims undergo. Each frame tells a story of devotion, endurance, and ultimate peace.</p>
+<a class="inline-flex items-center space-x-3 text-primary font-semibold group" href="#">
+<span class="border-b-2 border-secondary/40 group-hover:border-secondary transition-all">Request your high-res prints</span>
+<span class="material-symbols-outlined text-secondary">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-6 pb-6 pt-3 bg-[#013334]/95 dark:bg-[#001c1d]/95 backdrop-blur-lg z-50 rounded-t-3xl shadow-[0_-4px_30px_rgba(0,0,0,0.1)]">
+<a class="flex flex-col items-center justify-center text-white/60 px-4 py-1 hover:text-white transition-all scale-110 duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-manrope text-[10px] font-medium uppercase tracking-widest mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-white/60 px-4 py-1 hover:text-white transition-all scale-110 duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="mosque">mosque</span>
+<span class="font-manrope text-[10px] font-medium uppercase tracking-widest mt-1">Packages</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-[#CD9933]/10 text-[#CD9933] rounded-xl px-4 py-1 scale-110 duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+<span class="font-manrope text-[10px] font-medium uppercase tracking-widest mt-1">Gallery</span>
+</a>
+<a class="flex flex-col items-center justify-center text-white/60 px-4 py-1 hover:text-white transition-all scale-110 duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="info">info</span>
+<span class="font-manrope text-[10px] font-medium uppercase tracking-widest mt-1">About</span>
+</a>
+</nav>
+<!-- Footer -->
+<footer class="bg-[#013334] dark:bg-[#001c1d] full-width py-12 px-8 mt-auto tonal-shift from-surface-container-low border-t border-white/5">
+<div class="flex flex-col md:flex-row justify-between items-center w-full max-w-7xl mx-auto">
+<div class="mb-8 md:mb-0">
+<div class="font-notoSerif text-xl text-[#CD9933] mb-2">Rehman Umrah &amp; Travels</div>
+<p class="font-manrope text-sm text-white/70">© 2024 Rehman Umrah &amp; Travels. The Sacred Editorial.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="text-white/50 hover:text-white font-manrope text-sm transition-opacity underline-offset-4 hover:underline decoration-[#CD9933]" href="#">Privacy Policy</a>
+<a class="text-white/50 hover:text-white font-manrope text-sm transition-opacity underline-offset-4 hover:underline decoration-[#CD9933]" href="#">Terms of Service</a>
+<a class="text-white/50 hover:text-white font-manrope text-sm transition-opacity underline-offset-4 hover:underline decoration-[#CD9933]" href="#">Contact Us</a>
+<a class="text-white/50 hover:text-white font-manrope text-sm transition-opacity underline-offset-4 hover:underline decoration-[#CD9933]" href="#">Spiritual Guides</a>
+</div>
+</div>
+</footer>
+</body></html>

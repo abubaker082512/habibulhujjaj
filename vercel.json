@@ -1,0 +1,20 @@
+{
+  "buildCommand": "cd client && npm install && npm run build",
+  "outputDirectory": "client/dist",
+  "rewrites": [
+    { "source": "/api/auth/login", "destination": "/api/auth/login" },
+    { "source": "/api/packages/:id", "destination": "/api/packages?id=:id" },
+    { "source": "/api/packages",    "destination": "/api/packages" },
+    { "source": "/api/tours/:id",   "destination": "/api/tours?id=:id" },
+    { "source": "/api/tours",       "destination": "/api/tours" },
+    { "source": "/api/visa/:id",    "destination": "/api/visa?id=:id" },
+    { "source": "/api/visa",        "destination": "/api/visa" },
+    { "source": "/api/gallery/:id", "destination": "/api/gallery?id=:id" },
+    { "source": "/api/gallery",     "destination": "/api/gallery" },
+    { "source": "/api/blog/:id",    "destination": "/api/blog?id=:id" },
+    { "source": "/api/blog",        "destination": "/api/blog" },
+    { "source": "/api/cms",         "destination": "/api/cms" },
+    { "source": "/api/health",      "destination": "/api/health" },
+    { "source": "/(.*)",            "destination": "/index.html" }
+  ]
+}

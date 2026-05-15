@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&amp;family=Manrope:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-surface-variant": "#404848",
+              "on-primary-fixed-variant": "#234d4e",
+              "surface-container-lowest": "#ffffff",
+              "primary": "#001c1d",
+              "inverse-primary": "#a3cfcf",
+              "on-tertiary-container": "#a39276",
+              "error-container": "#ffdad6",
+              "on-tertiary-fixed-variant": "#52452e",
+              "error": "#ba1a1a",
+              "tertiary": "#201705",
+              "on-secondary-fixed": "#271900",
+              "on-secondary-container": "#755100",
+              "tertiary-fixed": "#f4e0c1",
+              "tertiary-container": "#362b16",
+              "primary-container": "#013334",
+              "on-primary-fixed": "#002020",
+              "tertiary-fixed-dim": "#d7c4a6",
+              "on-secondary": "#ffffff",
+              "surface-container": "#edeef0",
+              "on-error-container": "#93000a",
+              "surface-variant": "#e1e2e4",
+              "secondary-container": "#ffc55b",
+              "on-tertiary-fixed": "#241a07",
+              "background": "#f8f9fb",
+              "secondary-fixed-dim": "#f6bd54",
+              "secondary": "#7d5800",
+              "surface-tint": "#3c6566",
+              "surface-container-highest": "#e1e2e4",
+              "on-error": "#ffffff",
+              "surface-dim": "#d9dadc",
+              "outline-variant": "#c0c8c8",
+              "outline": "#717978",
+              "on-secondary-fixed-variant": "#5f4100",
+              "surface-bright": "#f8f9fb",
+              "on-tertiary": "#ffffff",
+              "primary-fixed-dim": "#a3cfcf",
+              "primary-fixed": "#bfebeb",
+              "on-surface": "#191c1e",
+              "on-primary-container": "#729c9d",
+              "on-primary": "#ffffff",
+              "surface-container-low": "#f3f4f6",
+              "inverse-on-surface": "#f0f1f3",
+              "inverse-surface": "#2e3132",
+              "surface": "#f8f9fb",
+              "on-background": "#191c1e",
+              "surface-container-high": "#e7e8ea",
+              "secondary-fixed": "#ffdea9"
+            },
+            fontFamily: {
+              "headline": ["Noto Serif"],
+              "body": ["Manrope"],
+              "label": ["Manrope"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-auto-rows: 200px;
+            grid-auto-flow: dense;
+        }
+        .item-tall { grid-row: span 2; }
+        .item-wide { grid-column: span 2; }
+    </style>
+</head>
+<body class="bg-background font-body text-on-surface antialiased">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#013334]/80 backdrop-blur-md dark:bg-[#001c1d]/80 shadow-[0_8px_40px_rgba(1,51,52,0.06)]">
+<div class="flex justify-between items-center w-full px-8 py-4 max-w-full">
+<div class="font-headline text-xl font-bold text-[#CD9933] tracking-tight">Rehman Umrah &amp; Travels</div>
+<nav class="hidden md:flex items-center space-x-8">
+<a class="font-label tracking-widest uppercase text-xs text-white/90 font-medium hover:text-[#CD9933] transition-colors duration-300" href="#">Home</a>
+<a class="font-label tracking-widest uppercase text-xs text-white/90 font-medium hover:text-[#CD9933] transition-colors duration-300" href="#">About Us</a>
+<a class="font-label tracking-widest uppercase text-xs text-[#CD9933] border-b-2 border-[#CD9933]/60 pb-1 font-semibold" href="#">Gallery</a>
+<a class="font-label tracking-widest uppercase text-xs text-white/90 font-medium hover:text-[#CD9933] transition-colors duration-300" href="#">Packages</a>
+<a class="font-label tracking-widest uppercase text-xs text-white/90 font-medium hover:text-[#CD9933] transition-colors duration-300" href="#">Contact</a>
+</nav>
+<button class="bg-secondary text-on-secondary px-6 py-2 rounded-md font-label uppercase tracking-widest text-xs font-bold transition-all hover:opacity-90 active:scale-95 duration-150 ease-in-out">
+                Book Now
+            </button>
+</div>
+</header>
+<main class="pt-24 min-h-screen">
+<!-- Hero Section -->
+<section class="relative h-[614px] flex items-center justify-center overflow-hidden mb-12">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover" data-alt="Cinematic wide shot of the Kaaba at dusk" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxMvKGaBzbI1spkgpMFmKdzOm4xCMawjMzIuAQhLFp1UUOqf1YTeL6uXQ9gPF8FrrGCdwtr-1OKdN_rZmKJ6fVc6EvrliZFd_0W8amMRlNyXK3tPSD1-PHcBaClpfsT4uytWjklgkPBDReyPm67SPC5tznRfQGqC0Qy7kQvOjMKvf2GP1C1srbNAdhL9V5sDjhuaGxgfVbtnwie5LZPTfLKGrk2Htqx15vojrzuf6zerg6AlywtCG5x8qf2h4EJH4NB0oN-xxXnpZN"/>
+<div class="absolute inset-0 bg-gradient-to-b from-primary-container/80 via-primary-container/40 to-background"></div>
+</div>
+<div class="relative z-10 text-center px-4 max-w-4xl">
+<h1 class="font-headline italic text-5xl md:text-7xl text-white mb-6 drop-shadow-lg">Glimpses of the Divine</h1>
+<p class="font-body text-white/80 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+                    A visual chronicle of spiritual journeys, sacred architecture, and the profound serenity of the Holy Cities.
+                </p>
+</div>
+</section>
+<!-- Gallery Filter -->
+<section class="max-w-7xl mx-auto px-8 mb-16">
+<div class="flex flex-wrap items-center justify-center gap-4 md:gap-8 pb-4">
+<button class="font-label text-xs tracking-[0.2em] uppercase px-4 py-2 border-b-2 border-secondary text-primary font-bold">All</button>
+<button class="font-label text-xs tracking-[0.2em] uppercase px-4 py-2 text-on-surface-variant hover:text-secondary transition-colors">Kaaba</button>
+<button class="font-label text-xs tracking-[0.2em] uppercase px-4 py-2 text-on-surface-variant hover:text-secondary transition-colors">Masjid Nabawi</button>
+<button class="font-label text-xs tracking-[0.2em] uppercase px-4 py-2 text-on-surface-variant hover:text-secondary transition-colors">Ziyarat</button>
+<button class="font-label text-xs tracking-[0.2em] uppercase px-4 py-2 text-on-surface-variant hover:text-secondary transition-colors">Umrah Groups</button>
+<button class="font-label text-xs tracking-[0.2em] uppercase px-4 py-2 text-on-surface-variant hover:text-secondary transition-colors">International Tours</button>
+</div>
+</section>
+<!-- Gallery Grid (Bento Style) -->
+<section class="max-w-7xl mx-auto px-8 pb-32">
+<div class="gallery-grid gap-4">
+<!-- Item 1: Wide -->
+<div class="item-wide group relative overflow-hidden rounded-none cursor-pointer">
+<img class="w-full h-full object-cover grayscale-[20%] group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700" data-alt="Crowds circling the Holy Kaaba in Makkah" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCO_IRY7jvBnnEtX8feErOYDc3DDZMVDuLQ1G_-Q1DoQQayK1NTWJyzzRXm2KsAFGn339aj0b-tuGncnjQ0V3K-XmiIiHg3AijaZnqIo4UsydMi9JV0-IjYu_s4tx3NoWWTd1W9KhPH9HtlEPzGHl8nYSQlk5f7NN0qw8_LI1MzvHh3zcU_lIcPDRNAuXmmI-rnDOOdgCbLLkSCPGQ0JgN5KrWAOqKuAd3rOXOU6R652ysKci4tHEynrqMAWTIfuMyWNbpXbl-5Ymxe"/>
+<div class="absolute inset-0 bg-primary-container/0 group-hover:bg-primary-container/30 transition-all duration-500"></div>
+<div class="absolute bottom-6 left-6 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
+<span class="font-label text-[10px] tracking-widest uppercase text-secondary-fixed mb-1 block">Category</span>
+<h3 class="font-headline text-white text-xl italic">The Circle of Faith</h3>
+</div>
+</div>
+<!-- Item 2: Tall -->
+<div class="item-tall group relative overflow-hidden rounded-none cursor-pointer">
+<img class="w-full h-full object-cover grayscale-[20%] group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700" data-alt="Minaret of the Prophet's Mosque against blue sky" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUGaehS0Bt67L1RAqyen3fOEt1z86N6uxfZ0K2PEErMKMiZV4drU-2JWd6VSfjLNoysYsUCnNjngX2KNQJ8UHjzTI8wzUjn0dRQVUGEDMcsW9XzECUjxiXzwmymgp7aad5U9C29USk8o4deQVGPRq1k072Ho2jWxW8gAE9YQAYgM5vJXNh1_6Jh9RwKfOtyza-f7F_spyjDq5voWUR5oiwwbAHKawNiEgAP4RCQeVEZjXK7hsbudBi4SZ6NEt10zy6az0ztNzmz7TT"/>
+<div class="absolute inset-0 bg-primary-container/0 group-hover:bg-primary-container/30 transition-all duration-500"></div>
+<div class="absolute bottom-6 left-6 opacity-0 group-hover:opacity-100 transition-all duration-500">
+<h3 class="font-headline text-white text-xl italic">Celestial Spires</h3>
+</div>
+</div>
+<!-- Item 3: Standard -->
+<div class="group relative overflow-hidden rounded-none cursor-pointer">
+<img class="w-full h-full object-cover grayscale-[20%] group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700" data-alt="Interior architectural detail of mosque ceiling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDK2_oTGnpwIr8lGrvHvbVteJFQ_LmysVmiqZ5CPGEjvBQGYjLYOxIKAbuLI3tMM2DniH-IFinQIS_Zl3CuQI6-v0_qPMi-ADy6G-HrKVrQFGb39jox7uMyXFr5IS0jd-xe7YOjNLxfISzbJJdypjwKvZ2h-FnT5TsPIKi-1Oqd4ncbi7bu0gmX_UqH-u-KdFmnn3KHOG_45iJ5tXaRIJA9XCO-_E6R9LERBfCgUqIAEgqNZOJvwAhHVbW4i2ve3nrfIKmny2BzaQaR"/>
+<div class="absolute inset-0 bg-primary-container/0 group-hover:bg-primary-container/30 transition-all duration-500"></div>
+</div>
+<!-- Item 4: Standard -->
+<div class="group relative overflow-hidden rounded-none cursor-pointer">
+<img class="w-full h-full object-cover grayscale-[20%] group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700" data-alt="Pilgrims walking through the marble corridors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzn1-JLxXAdX_feF-ubKekQz_wAt4HqUvvdPeuTKh3tfBk99cfsH9pHef7zWZCICJHNS70tFKGeQ-d2LsqZUyHehxW0ISwfuQU6gPsaP3m3pWaRkRyE970BTN7g8b8nZTMNxe5KaXgncRVyFMZPAfegI2yk1EvcZBAntULYnm2eqJHZUhrmp-vABbcygSSWynHygdTOcq6kqOpSS9UUEK-mZBp18OFxE9AORCbA595M3yMWzAcQuG8SeGuvBQpAFlHsw7ERHUc0A3T"/>
+<div class="absolute inset-0 bg-primary-container/0 group-hover:bg-primary-container/30 transition-all duration-500"></div>
+</div>
+<!-- Item 5: Tall -->
+<div class="item-tall group relative overflow-hidden rounded-none cursor-pointer">
+<img class="w-full h-full object-cover grayscale-[20%] group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700" data-alt="Sunlight filtering through Islamic geometric screens" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNDTdnKX6NYAJ-QJo4iIhbwDoIli-XdCyKqFl3b1Dp3vRZecvJr_WhCIG7mPQD_IEnuARtnAo-nbJDE5GuYgGT6WwSIosL1A2xuXb7X5cWKhYsc-3UXkX1h1vaAvdIi-Gv0uK4DmICIgXY3dVhXhCd9gK8gkMQPvJAqgXVNdG8Nq1hgp1ru5E6Ssyynux0aFffU5qALnB-hVBp394WBESmgDJwh0Qbp1zmK7OHAZQqvLA1ygv7UctkbEAPc4GTatP-RkTuYPseLVXz"/>
+<div class="absolute inset-0 bg-primary-container/0 group-hover:bg-primary-container/30 transition-all duration-500"></div>
+</div>
+<!-- Item 6: Wide -->
+<div class="item-wide group relative overflow-hidden rounded-none cursor-pointer">
+<img class="w-full h-full object-cover grayscale-[20%] group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700" data-alt="Group of pilgrims posing in front of Mount Uhud" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcmggnP0CNRP5uiq7143MZmxCE8ru5VvAuKNkeovFm0A2rAgD1ZNRZ4knso4Qvk8LjeeXQGqmOBggt_NiMpvC9qu9ZSCVDImY6vXL9fpcQz8QlXwNOJWd32NvIBuUWQUI28JWgdG-4bo5639jTzgHwHmOqFUPM8uHHCktGtPR0LPJxIs7LSvKLv3JxvAFq0vDdodaABfSAdbQJLIW7QLfn50-XX7mbmQBL4Uk0sKmlYRy8hNQRJWeMDFx5R3ViWdiSNVdPYnVHKHkE"/>
+<div class="absolute inset-0 bg-primary-container/0 group-hover:bg-primary-container/30 transition-all duration-500"></div>
+<div class="absolute bottom-6 left-6 opacity-0 group-hover:opacity-100 transition-all duration-500">
+<h3 class="font-headline text-white text-xl italic">The Path of History</h3>
+</div>
+</div>
+<!-- Item 7: Standard -->
+<div class="group relative overflow-hidden rounded-none cursor-pointer">
+<img class="w-full h-full object-cover grayscale-[20%] group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700" data-alt="Traditional Arabian lanterns illuminating at night" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5y1PBgaoz7gr2OO5Anm-bHirxOS35chx9DgNuvh2l3gpzZnpSVkvtsklwE8kU2DvufQEFd9VmGtGRqXGufLBDzW2WKJXJBWwl-EhNn0nmK7_wehlFTH6LlZ4cljEHKUWKzEH_AlOrVia5-VUJVWke__Dgk-Psrzrs-e1QbYWd0Rjt_v2AtGGmXRGOuoEaMwI6TgiyBhhQuNveTCCGJi172qW3IGal75gfDU-0_1fqGlvdko-cBqFhMtfy3Z547fVcn3wElsNv2oZX"/>
+<div class="absolute inset-0 bg-primary-container/0 group-hover:bg-primary-container/30 transition-all duration-500"></div>
+</div>
+</div>
+</section>
+<!-- Simulated Lightbox UI Overlay (Hidden by default but present for design demonstration) -->
+<div class="hidden fixed inset-0 z-[100] bg-primary/95 flex items-center justify-center p-8 backdrop-blur-xl">
+<button class="absolute top-8 right-8 text-white">
+<span class="material-symbols-outlined text-4xl">close</span>
+</button>
+<div class="max-w-6xl w-full flex flex-col md:flex-row gap-12 items-center">
+<div class="w-full md:w-3/4 aspect-[16/10] bg-surface-container-low overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Large detailed view of sacred site" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdO03rgZZq3lv-KDKH9BiL3yNkrd2xu9HrS3f0rab3MmOHTYjf3ZeFeaVKSoqebrzGZ1w7jXrW8eTbwbNpGpWmzl0zV0Ky4-GznD1C2lDHhSiJ68xaRmSmtTTSKOLDI4dV3_bO7uA1O3ahyZwVg_W0PYkUWC7G6bzdqeTyjfwrtYQE_I5IO3JMfBLrddj_DS39hX7_kVL-d0pCy-MYWqzcC2cLhNiejJvB6TWIdvrlk40sW92mjbjrXFVrhkMSRjZ8mzGASSYlHc2r"/>
+</div>
+<div class="w-full md:w-1/4 text-white">
+<span class="font-label text-xs tracking-widest uppercase text-secondary mb-4 block">Makkah Al-Mukarramah</span>
+<h2 class="font-headline text-3xl italic mb-6">The Tawaf of Serenity</h2>
+<p class="font-body text-white/70 leading-relaxed mb-8">
+                        Captured during the late evening, this perspective highlights the immense architectural scale and the rhythmic movement of the faithful.
+                    </p>
+<div class="flex items-center gap-4">
+<button class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<button class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full border-t border-[#CD9933]/10 bg-[#013334] dark:bg-[#000e0f]">
+<div class="w-full px-12 py-16 grid grid-cols-1 md:grid-cols-4 gap-12">
+<div class="col-span-1 md:col-span-1">
+<span class="font-headline text-2xl text-[#CD9933] mb-4 block">Rehman Umrah &amp; Travels</span>
+<p class="font-body text-sm antialiased text-white/70 leading-relaxed">
+                    Facilitating sacred journeys with dignity and excellence since 1998. Your spiritual comfort is our highest priority.
+                </p>
+</div>
+<div>
+<h4 class="font-label text-xs tracking-widest uppercase text-white mb-6">Navigation</h4>
+<ul class="space-y-4">
+<li><a class="font-body text-sm text-white/70 hover:text-white transition-all duration-200" href="#">About Our Mission</a></li>
+<li><a class="font-body text-sm text-white/70 hover:text-white transition-all duration-200" href="#">Current Packages</a></li>
+<li><a class="font-body text-sm text-white/70 hover:text-white transition-all duration-200" href="#">Our Heritage</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label text-xs tracking-widest uppercase text-white mb-6">Support</h4>
+<ul class="space-y-4">
+<li><a class="font-body text-sm text-white/70 hover:text-white transition-all duration-200" href="#">Privacy Policy</a></li>
+<li><a class="font-body text-sm text-white/70 hover:text-white transition-all duration-200" href="#">Terms of Service</a></li>
+<li><a class="font-body text-sm text-white/70 hover:text-white transition-all duration-200" href="#">Hajj Guide</a></li>
+<li><a class="font-body text-sm text-white/70 hover:text-white transition-all duration-200" href="#">Umrah Requirements</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label text-xs tracking-widest uppercase text-white mb-6">Connect</h4>
+<div class="flex space-x-4 mb-6">
+<div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-secondary/20 transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-white text-lg">share</span>
+</div>
+<div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-secondary/20 transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-white text-lg">mail</span>
+</div>
+<div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-secondary/20 transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-white text-lg">call</span>
+</div>
+</div>
+</div>
+</div>
+<div class="px-12 py-8 border-t border-white/5 text-center">
+<p class="font-body text-xs text-white/40 tracking-wider uppercase">© 2024 Rehman Umrah &amp; Travels. All Rights Reserved.</p>
+</div>
+</footer>
+</body></html>
