@@ -14,7 +14,7 @@ const staticPackages = [
     price: 185000,
     days: '15 Days',
     badge: 'Economy',
-    badgeColor: 'bg-[#013334]',
+    badgeColor: 'bg-primary',
     image: 'https://images.unsplash.com/photo-1591604129909-2b4ce4e6e6d2?w=800&q=80'
   },
   {
@@ -24,8 +24,8 @@ const staticPackages = [
     price: 245000,
     days: '15 Days',
     badge: '3 Star',
-    badgeColor: 'bg-[#013334]',
-    image: 'https://images.unsplash.com/photo-1564769662533-3f5aae93cec2?w=800&q=80'
+    badgeColor: 'bg-primary',
+    image: 'https://images.unsplash.com/photo-1564507004663-b6dfb3c8924d?w=800&q=80'
   },
   {
     id: 3,
@@ -35,7 +35,7 @@ const staticPackages = [
     days: '10 Days',
     badge: '4 Star',
     badgeColor: 'bg-primary',
-    image: 'https://images.unsplash.com/photo-1580338834642-8a3acf79b1b8?w=800&q=80'
+    image: 'https://images.unsplash.com/photo-1572949645079-6416a599c6ae?w=800&q=80'
   },
   {
     id: 4,
@@ -44,8 +44,8 @@ const staticPackages = [
     price: 450000,
     days: '7 Days',
     badge: 'Luxury',
-    badgeColor: 'bg-[#013334]',
-    image: 'https://images.unsplash.com/photo-1596435688717-2d2f3b0fc47a?w=800&q=80'
+    badgeColor: 'bg-primary',
+    image: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800&q=80'
   }
 ]
 
@@ -129,7 +129,7 @@ const Home = () => {
       </div>
 
       {/* Hero Section */}
-      <section className="relative min-h-[60vh] sm:min-h-[70vh] lg:min-h-screen flex items-center pt-20 pb-24 lg:pb-32 overflow-hidden">
+      <section className="relative min-h-[60vh] sm:min-h-[70vh] lg:min-h-screen flex items-center pt-56 pb-24 lg:pb-32 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img className="w-full h-full object-cover" src={pageMedia.home_hero_image || "https://images.unsplash.com/photo-1572949645079-6416a599c6ae?w=1600&q=80"} alt="Makkah" />
           <div className="absolute inset-0 bg-gradient-to-r from-primary-container via-primary-container/80 to-transparent"></div>
