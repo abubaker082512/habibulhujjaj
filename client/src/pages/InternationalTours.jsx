@@ -82,29 +82,29 @@ const InternationalTours = () => {
   }, [])
 
   return (
-    <div className="bg-surface font-manrope text-on-surface min-h-screen">
+    <div className="bg-white font-manrope text-black min-h-screen">
       <Navbar />
       
       {/* Hero Section */}
-      <section className="relative min-h-[70vh] flex items-center pt-20 overflow-hidden">
+      <section className="relative min-h-[70vh] flex items-center pt-56 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img className="w-full h-full object-cover" src={pageMedia.tours_hero_image || "https://images.unsplash.com/photo-1530783324-1a1b1b5a51?w=1600"} alt="Tours" />
           <div className="absolute inset-0 bg-gradient-to-r from-primary-container via-primary-container/80 to-transparent"></div>
         </div>
         <div className="relative z-10 max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 lg:px-24 w-full">
           <div className="max-w-3xl">
-            <div className="w-12 h-1 bg-[#013334] mb-6 md:mb-8"></div>
-            <h1 className="font-notoSerif text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-tight mb-6">
-              Discover the <span className="text-[#013334]">World</span>
+            <div className="w-12 h-1 bg-primary mb-6 md:mb-8"></div>
+            <h1 className="font-notoSerif text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-black leading-tight mb-6">
+              Discover the <span className="text-primary">World</span>
             </h1>
-            <p className="font-manrope text-base md:text-lg text-white/80 max-w-xl mb-8">
+            <p className="font-manrope text-base md:text-lg text-black/70 max-w-xl mb-8">
               Explore the most beautiful destinations with our curated international tour packages.
             </p>
             <div className="flex flex-wrap gap-3 md:gap-4">
-              <Link to="/contact" className="bg-[#013334] text-white px-6 py-3 md:px-10 md:py-4 font-manrope font-bold tracking-widest text-sm hover:brightness-110 transition-all">
+              <Link to="/contact" className="bg-primary text-white px-6 py-3 md:px-10 md:py-4 font-manrope font-bold tracking-widest text-sm hover:brightness-110 transition-all">
                 Get a Quote
               </Link>
-              <Link to="/contact" className="bg-white/10 text-white border border-white/20 px-6 py-3 md:px-10 md:py-4 font-manrope font-bold tracking-widest text-sm backdrop-blur-md hover:bg-white/20 transition-all">
+              <Link to="/contact" className="bg-transparent text-primary border-2 border-primary px-6 py-3 md:px-10 md:py-4 font-manrope font-bold tracking-widest text-sm hover:bg-primary/5 transition-all">
                 Contact Us
               </Link>
             </div>
@@ -113,16 +113,16 @@ const InternationalTours = () => {
       </section>
 
       {/* Tours Grid */}
-      <section className="py-16 md:py-24 px-4 sm:px-6 md:px-8 max-w-screen-2xl mx-auto">
+      <section className="py-16 md:py-24 px-4 sm:px-6 md:px-8 max-w-screen-2xl mx-auto bg-white">
         <div className="mb-12 md:mb-16">
-          <span className="font-manrope text-[#013334] font-bold text-sm tracking-[0.2em] uppercase mb-4 block">Beyond Borders</span>
-          <h2 className="font-notoSerif text-3xl sm:text-4xl lg:text-5xl font-bold text-primary">Discover Our Tours</h2>
-          <div className="w-24 h-1 bg-[#013334] mt-4 opacity-50"></div>
+          <span className="font-manrope text-primary font-bold text-sm tracking-[0.2em] uppercase mb-4 block">Beyond Borders</span>
+          <h2 className="font-notoSerif text-3xl sm:text-4xl lg:text-5xl font-bold text-black">Discover Our Tours</h2>
+          <div className="w-24 h-1 bg-primary mt-4 opacity-50"></div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
           {tours.map((tour) => (
-            <div key={tour.id} className="bg-surface-container-lowest editorial-shadow overflow-hidden group cursor-pointer transition-transform hover:-translate-y-1">
+            <div key={tour.id} className="bg-white border border-gray-100 shadow-sm overflow-hidden group cursor-pointer transition-transform hover:-translate-y-1">
               <div className="relative h-56 sm:h-64 md:h-72 overflow-hidden">
                 <img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src={tour.image} alt={tour.title} />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
@@ -134,22 +134,22 @@ const InternationalTours = () => {
               <div className="p-4 md:p-6 lg:p-8">
                 <div className="flex justify-between items-start mb-4">
                   <div>
-                    <div className="flex items-center gap-2 text-on-surface-variant text-sm mb-2">
+                    <div className="flex items-center gap-2 text-black/60 text-sm mb-2">
                       <span className="material-symbols-outlined text-sm">calendar_today</span>
                       {tour.duration}
                     </div>
                   </div>
                   <div className="text-right">
-                    <div className="text-xs text-on-surface-variant uppercase font-bold tracking-tighter">Starting from</div>
-                    <div className="text-2xl font-notoSerif font-bold text-[#013334]">{tour.price}</div>
+                    <div className="text-xs text-black/40 uppercase font-bold tracking-tighter">Starting from</div>
+                    <div className="text-2xl font-notoSerif font-bold text-primary">{tour.price}</div>
                   </div>
                 </div>
                 <div className="flex flex-wrap gap-2 mb-6">
                   {(Array.isArray(tour.highlights) ? tour.highlights : typeof tour.highlights === 'string' ? tour.highlights.split(',') : []).slice(0, 3).map((hl, i) => (
-                    <span key={i} className="bg-surface-container px-3 py-1 rounded text-xs">{typeof hl === 'string' ? hl.trim() : hl}</span>
+                    <span key={i} className="bg-gray-50 text-black/70 px-3 py-1 rounded text-xs border border-gray-100">{typeof hl === 'string' ? hl.trim() : hl}</span>
                   ))}
                 </div>
-                <Link to="/contact" className="block w-full py-3 bg-[#013334] text-white font-bold rounded-md hover:brightness-110 transition-all text-sm text-center">
+                <Link to="/contact" className="block w-full py-3 bg-primary text-white font-bold rounded-md hover:opacity-90 transition-all text-sm text-center">
                   Book Now
                 </Link>
               </div>
@@ -160,20 +160,20 @@ const InternationalTours = () => {
 
       {/* CTA */}
       <section className="py-16 md:py-24 bg-primary-container relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-1/3 h-full opacity-10">
+        <div className="absolute top-0 right-0 w-1/3 h-full opacity-5">
           <img className="w-full h-full object-cover" src="https://images.unsplash.com/photo-1530783324-1a1b1b5a51?w=800" alt="Pattern" />
         </div>
         <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 relative z-10 text-center">
-          <h6 className="font-manrope text-[#013334] font-bold text-sm tracking-[0.2em] uppercase mb-4">Ready to Explore?</h6>
-          <h2 className="font-notoSerif text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">Book Your Dream Destination</h2>
-          <p className="text-white/60 mb-10 max-w-xl mx-auto">
+          <h6 className="font-manrope text-primary font-bold text-sm tracking-[0.2em] uppercase mb-4">Ready to Explore?</h6>
+          <h2 className="font-notoSerif text-3xl sm:text-4xl lg:text-5xl font-bold text-black mb-6">Book Your Dream Destination</h2>
+          <p className="text-black/60 mb-10 max-w-xl mx-auto">
             Whether it's a spiritual Umrah journey or an international adventure, our experts are here to make it happen.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/packages" className="bg-[#013334] text-white px-10 py-4 font-manrope font-bold tracking-widest text-sm hover:brightness-110 transition-all">
+            <Link to="/packages" className="bg-primary text-white px-10 py-4 font-manrope font-bold tracking-widest text-sm hover:opacity-90 transition-all">
               View Umrah Packages
             </Link>
-            <a href="tel:+923001234567" className="border border-white/30 text-white px-10 py-4 font-manrope font-bold tracking-widest text-sm hover:bg-white/10 transition-all flex items-center gap-2">
+            <a href="tel:+923001234567" className="border-2 border-primary text-primary px-10 py-4 font-manrope font-bold tracking-widest text-sm hover:bg-primary/5 transition-all flex items-center gap-2">
               <span className="material-symbols-outlined">call</span>
               Call Now
             </a>
