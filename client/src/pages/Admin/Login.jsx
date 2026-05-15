@@ -40,7 +40,7 @@ const AdminLogin = () => {
       <div className="bg-white p-6 sm:p-8 md:p-12 rounded-2xl shadow-2xl w-full max-w-md mx-4">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-notoSerif font-bold text-[#013334]">Admin Login</h1>
-          <p className="text-on-surface-variant text-sm mt-2">Habibulhujaj Umrah & Travels</p>
+          <p className="text-on-surface-variant text-sm mt-2">Habib Ul Hujjaj</p>
         </div>
         
         {error && (
@@ -53,7 +53,7 @@ const AdminLogin = () => {
           <div>
             <label className="block text-sm font-bold mb-2 text-primary">Email</label>
             <input 
-              className="w-full bg-surface border-0 border-b border-outline-variant focus:border-[#CD9933] focus:ring-0 py-3 text-sm" 
+              className="w-full bg-surface border-0 border-b border-outline-variant focus:border-[#013334] focus:ring-0 py-3 text-sm" 
               type="email" 
               value={email} 
               onChange={e => setEmail(e.target.value)} 
@@ -63,7 +63,7 @@ const AdminLogin = () => {
           <div>
             <label className="block text-sm font-bold mb-2 text-primary">Password</label>
             <input 
-              className="w-full bg-surface border-0 border-b border-outline-variant focus:border-[#CD9933] focus:ring-0 py-3 text-sm" 
+              className="w-full bg-surface border-0 border-b border-outline-variant focus:border-[#013334] focus:ring-0 py-3 text-sm" 
               type="password" 
               value={password} 
               onChange={e => setPassword(e.target.value)} 
@@ -73,7 +73,7 @@ const AdminLogin = () => {
           <button 
             type="submit" 
             disabled={loading}
-            className="w-full bg-[#CD9933] text-white p-4 rounded-lg font-bold hover:brightness-110 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            className="w-full bg-[#013334] text-white p-4 rounded-lg font-bold hover:brightness-110 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
           >
             {loading ? (
               <>
@@ -87,7 +87,7 @@ const AdminLogin = () => {
         </form>
         
         <div className="mt-6 text-center">
-          <a href="/" className="text-[#CD9933] text-sm hover:underline">← Back to Website</a>
+          <a href="/" className="text-[#013334] text-sm hover:underline">← Back to Website</a>
         </div>
       </div>
     </div>

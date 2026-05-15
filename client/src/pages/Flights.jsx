@@ -89,22 +89,22 @@ const Flights = () => {
             <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
               <div className="text-left">
                 <label className="text-xs font-bold text-[#013334] uppercase mb-2 block">Origin</label>
-                <input type="text" placeholder="From where?" className="w-full p-3 bg-surface rounded-lg border border-outline focus:border-[#CD9933] outline-none text-sm" />
+                <input type="text" placeholder="From where?" className="w-full p-3 bg-surface rounded-lg border border-outline focus:border-[#013334] outline-none text-sm" />
               </div>
               <div className="text-left">
                 <label className="text-xs font-bold text-[#013334] uppercase mb-2 block">Destination</label>
-                <input type="text" placeholder="To where?" className="w-full p-3 bg-surface rounded-lg border border-outline focus:border-[#CD9933] outline-none text-sm" />
+                <input type="text" placeholder="To where?" className="w-full p-3 bg-surface rounded-lg border border-outline focus:border-[#013334] outline-none text-sm" />
               </div>
               <div className="text-left">
                 <label className="text-xs font-bold text-[#013334] uppercase mb-2 block">Departure</label>
-                <input type="date" className="w-full p-3 bg-surface rounded-lg border border-outline focus:border-[#CD9933] outline-none text-sm" />
+                <input type="date" className="w-full p-3 bg-surface rounded-lg border border-outline focus:border-[#013334] outline-none text-sm" />
               </div>
               <div className="text-left">
                 <label className="text-xs font-bold text-[#013334] uppercase mb-2 block">Return</label>
-                <input type="date" className="w-full p-3 bg-surface rounded-lg border border-outline focus:border-[#CD9933] outline-none text-sm" />
+                <input type="date" className="w-full p-3 bg-surface rounded-lg border border-outline focus:border-[#013334] outline-none text-sm" />
               </div>
               <div className="flex items-end">
-                <button className="w-full bg-[#CD9933] text-white p-3 rounded-lg font-bold hover:brightness-110 transition-all shadow-lg flex items-center justify-center gap-2">
+                <button className="w-full bg-[#013334] text-white p-3 rounded-lg font-bold hover:brightness-110 transition-all shadow-lg flex items-center justify-center gap-2">
                   <span className="material-symbols-outlined">search</span> Search
                 </button>
               </div>
@@ -117,25 +117,25 @@ const Flights = () => {
       <section className="py-24 bg-white">
         <div className="container mx-auto px-4 text-center max-w-4xl">
           <h2 className="font-notoSerif text-3xl md:text-4xl font-bold text-[#013334] mb-6">
-            YOUR NEXT ADVENTURE <span className="text-[#CD9933]">BEGINS HERE!</span>
+            YOUR NEXT ADVENTURE <span className="text-[#013334]">BEGINS HERE!</span>
           </h2>
           <p className="text-lg text-on-surface-variant leading-relaxed">
             {cmsContent.adventureSubtitle}
           </p>
-          <div className="mt-12 h-1 w-24 bg-[#CD9933] mx-auto rounded-full"></div>
+          <div className="mt-12 h-1 w-24 bg-[#013334] mx-auto rounded-full"></div>
         </div>
       </section>
 
       {/* Narrative Section 2 (Trust) */}
       <section className="py-24 bg-[#013334] text-white">
         <div className="container mx-auto px-4 text-center max-w-4xl">
-          <h2 className="font-notoSerif text-3xl md:text-4xl font-bold text-[#CD9933] mb-6">
+          <h2 className="font-notoSerif text-3xl md:text-4xl font-bold text-[#013334] mb-6">
             TIRED OF OVERPRICED FLIGHTS?
           </h2>
           <p className="text-lg text-white/80 leading-relaxed mb-12">
             {cmsContent.trustSubtitle}
           </p>
-          <button className="bg-[#CD9933] text-white px-10 py-4 rounded-full font-bold hover:scale-105 transition-all shadow-xl">
+          <button className="bg-[#013334] text-white px-10 py-4 rounded-full font-bold hover:scale-105 transition-all shadow-xl">
             Book Your Free Consultation
           </button>
         </div>
@@ -156,7 +156,7 @@ const Flights = () => {
               <div key={dest.id} className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all group">
                 <div className="h-64 relative overflow-hidden">
                   <img src={dest.image_url} alt={dest.name} className="w-full h-full object-cover group-hover:scale-110 transition-all duration-500" />
-                  <div className="absolute top-4 left-4 bg-[#CD9933] text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+                  <div className="absolute top-4 left-4 bg-[#013334] text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
                     From Rs {dest.price_start.toLocaleString()}
                   </div>
                 </div>
@@ -181,7 +181,7 @@ const Flights = () => {
             <div className="space-y-8">
               {[1, 2, 3, 4, 5].map(i => (
                 <div key={i} className="flex items-start gap-6 group">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-[#013334] text-[#CD9933] flex items-center justify-center font-notoSerif text-2xl font-bold group-hover:scale-110 transition-all">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-[#013334] text-[#013334] flex items-center justify-center font-notoSerif text-2xl font-bold group-hover:scale-110 transition-all">
                     {i}
                   </div>
                   <div>
@@ -192,7 +192,7 @@ const Flights = () => {
             </div>
             <div className="relative">
               <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&q=80" className="rounded-3xl shadow-2xl" alt="Travel" />
-              <div className="absolute -bottom-10 -right-10 w-48 h-48 bg-[#CD9933] rounded-3xl -z-10 animate-pulse"></div>
+              <div className="absolute -bottom-10 -right-10 w-48 h-48 bg-[#013334] rounded-3xl -z-10 animate-pulse"></div>
             </div>
           </div>
         </div>

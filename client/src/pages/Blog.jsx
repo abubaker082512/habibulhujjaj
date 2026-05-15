@@ -90,8 +90,8 @@ Umrah is a chance to purify your soul and seek forgiveness.
 The Prophet ﷺ said:
 "Umrah removes the sins between one Umrah and another."
 
-Why Choose Habibulhujaj Umrah & Travels?
-At Habibulhujaj Umrah & Travels, we make your journey simple and stress-free.
+Why Choose Habib Ul Hujjaj?
+At Habib Ul Hujjaj, we make your journey simple and stress-free.
 - Affordable Packages
 - Visa Assistance
 - Comfortable Hotels
@@ -205,9 +205,9 @@ const Blog = () => {
         </div>
         <div className="relative z-10 max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 lg:px-24 w-full">
           <div className="max-w-3xl">
-            <div className="w-12 h-1 bg-[#CD9933] mb-6 md:mb-8"></div>
+            <div className="w-12 h-1 bg-[#013334] mb-6 md:mb-8"></div>
             <h1 className="font-notoSerif text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-tight mb-6">
-              Travel <span className="text-[#CD9933]">Blog</span>
+              Travel <span className="text-[#013334]">Blog</span>
             </h1>
             <p className="font-manrope text-base md:text-lg text-white/80 max-w-xl">
               Insights, guides, and spiritual wisdom to help you prepare for your journey. Stay informed with our latest articles on Umrah, travel tips, and religious guidance.
@@ -224,7 +224,7 @@ const Blog = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2">
               <div className="relative h-48 sm:h-56 md:h-64 lg:h-auto overflow-hidden">
                 <img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src={featuredPost.image} alt={featuredPost.title} />
-                <div className="absolute top-4 left-4 bg-[#CD9933] text-white px-4 py-1 text-xs font-bold uppercase tracking-widest rounded">{featuredPost.category}</div>
+                <div className="absolute top-4 left-4 bg-[#013334] text-white px-4 py-1 text-xs font-bold uppercase tracking-widest rounded">{featuredPost.category}</div>
               </div>
               <div className="p-4 md:p-6 lg:p-12 flex flex-col justify-center">
                 <div className="flex items-center gap-4 text-sm text-outline mb-4">
@@ -232,9 +232,9 @@ const Blog = () => {
                   <span>•</span>
                   <span>{featuredPost.readTime}</span>
                 </div>
-                <h2 className="font-notoSerif text-2xl sm:text-3xl lg:text-4xl font-bold text-primary mb-4 group-hover:text-[#CD9933] transition-colors">{featuredPost.title}</h2>
+                <h2 className="font-notoSerif text-2xl sm:text-3xl lg:text-4xl font-bold text-primary mb-4 group-hover:text-[#013334] transition-colors">{featuredPost.title}</h2>
                 <p className="text-on-surface-variant leading-relaxed mb-6">{featuredPost.excerpt}</p>
-                <span className="text-[#CD9933] font-bold flex items-center gap-2 hover:gap-4 transition-all">
+                <span className="text-[#013334] font-bold flex items-center gap-2 hover:gap-4 transition-all">
                   Read Article
                   <span className="material-symbols-outlined">arrow_forward</span>
                 </span>
@@ -272,9 +272,9 @@ const Blog = () => {
                     <span>•</span>
                     <span>{post.readTime}</span>
                   </div>
-                  <h3 className="font-notoSerif text-xl font-bold text-primary mb-3 group-hover:text-[#CD9933] transition-colors line-clamp-2">{post.title}</h3>
+                  <h3 className="font-notoSerif text-xl font-bold text-primary mb-3 group-hover:text-[#013334] transition-colors line-clamp-2">{post.title}</h3>
                   <p className="text-on-surface-variant text-sm leading-relaxed line-clamp-3 mb-4">{post.excerpt}</p>
-                  <span className="text-[#CD9933] font-bold text-sm flex items-center gap-2">
+                  <span className="text-[#013334] font-bold text-sm flex items-center gap-2">
                     Read More
                     <span className="material-symbols-outlined text-sm">arrow_forward</span>
                   </span>
@@ -291,12 +291,12 @@ const Blog = () => {
           <img className="w-full h-full object-cover" src="https://images.unsplash.com/photo-1469357001414-5c82ea24f067?w=800" alt="Pattern" />
         </div>
         <div className="max-w-2xl mx-auto px-4 sm:px-6 md:px-8 relative z-10 text-center">
-          <h6 className="font-manrope text-[#CD9933] font-bold text-sm tracking-[0.2em] uppercase mb-4">Stay Updated</h6>
+          <h6 className="font-manrope text-[#013334] font-bold text-sm tracking-[0.2em] uppercase mb-4">Stay Updated</h6>
           <h2 className="font-notoSerif text-3xl sm:text-4xl font-bold text-white mb-6">Subscribe to Our Newsletter</h2>
           <p className="text-white/60 mb-8">Get the latest travel tips, package deals, and spiritual guides delivered to your inbox.</p>
           <div className="flex flex-col sm:flex-row gap-2 max-w-md mx-auto">
-            <input className="flex-1 bg-white/10 border border-white/20 text-white placeholder:text-white/40 px-6 py-4 rounded-md focus:ring-2 focus:ring-[#CD9933] focus:outline-none" placeholder="Enter your email" type="email" />
-            <button className="bg-[#CD9933] text-white px-8 py-4 rounded-md font-bold hover:brightness-110 transition-all">Subscribe</button>
+            <input className="flex-1 bg-white/10 border border-white/20 text-white placeholder:text-white/40 px-6 py-4 rounded-md focus:ring-2 focus:ring-[#013334] focus:outline-none" placeholder="Enter your email" type="email" />
+            <button className="bg-[#013334] text-white px-8 py-4 rounded-md font-bold hover:brightness-110 transition-all">Subscribe</button>
           </div>
         </div>
       </section>

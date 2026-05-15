@@ -81,7 +81,7 @@ const staticPackages = [
   },
   {
     id: 4,
-    title: 'Habibulhujaj Suites Collection',
+    title: 'Habib Ul Hujjaj Suites Collection',
     location: 'Raffles Makkah (Inside Clock Tower)',
     hotel_name: 'Raffles Makkah',
     distance_from_haram: 'Inside Clock Tower',
@@ -99,7 +99,7 @@ const staticPackages = [
     itinerary: [
       { day: 'Day 01', title: 'VIP Arrival', description: 'Business class arrival, private transfer to Raffles. Suite check-in with welcome amenities.' },
       { day: 'Day 02 - 04', title: 'Makkah in Luxury', description: 'Prayers with Kaaba view. Private Ziyarat with expert guide. Butler assists with all arrangements.' },
-      { day: 'Day 05 - 06', title: 'Madinah Habibulhujaj Treatment', description: 'Helicopter or private car transfer. Stay at The Oberoi Madinah. Prayers at Masjid Nabawi.' },
+      { day: 'Day 05 - 06', title: 'Madinah Habib Ul Hujjaj Treatment', description: 'Helicopter or private car transfer. Stay at The Oberoi Madinah. Prayers at Masjid Nabawi.' },
       { day: 'Day 07', title: 'Farewell Departure', description: 'Final Tawaf, private transfer to airport. Business class departure.' }
     ]
   }
@@ -137,7 +137,7 @@ const PackageDetail = () => {
       <div className="bg-surface font-manrope text-on-surface min-h-screen flex items-center justify-center">
         <Navbar />
         <div className="text-center">
-          <div className="w-16 h-16 border-4 border-[#CD9933] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <div className="w-16 h-16 border-4 border-[#013334] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
           <p className="font-notoSerif text-xl text-primary">Loading Package Details...</p>
         </div>
       </div>
@@ -151,7 +151,7 @@ const PackageDetail = () => {
         <div className="text-center mt-24">
           <span className="material-symbols-outlined text-6xl text-error mb-4 block">error</span>
           <h2 className="font-notoSerif text-3xl text-primary mb-4">Package Not Found</h2>
-          <Link to="/packages" className="bg-[#CD9933] text-white px-8 py-3 rounded font-bold uppercase tracking-widest text-sm inline-block mt-4">Browse All Packages</Link>
+          <Link to="/packages" className="bg-[#013334] text-white px-8 py-3 rounded font-bold uppercase tracking-widest text-sm inline-block mt-4">Browse All Packages</Link>
         </div>
       </div>
     )
@@ -175,8 +175,8 @@ const PackageDetail = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8 items-end">
             <div className="lg:col-span-8">
               <div className="flex items-center gap-2 md:gap-4 mb-3 md:mb-4">
-                {pkg.badge && <span className="bg-[#CD9933] text-white font-bold text-xs tracking-widest uppercase px-3 py-1 rounded">{pkg.badge}</span>}
-                <div className="flex text-[#CD9933]">
+                {pkg.badge && <span className="bg-[#013334] text-white font-bold text-xs tracking-widest uppercase px-3 py-1 rounded">{pkg.badge}</span>}
+                <div className="flex text-[#013334]">
                   {Array.from({ length: pkg.stars || 5 }).map((_, i) => (
                     <span key={i} className="material-symbols-outlined text-sm" style={{fontVariationSettings: "'FILL' 1"}}>star</span>
                   ))}
@@ -186,7 +186,7 @@ const PackageDetail = () => {
             </div>
             <div className="lg:col-span-4 lg:text-right">
               <p className="text-white/70 font-medium mb-2">Starting from</p>
-              <div className="font-notoSerif text-2xl md:text-3xl lg:text-4xl text-[#CD9933]">PKR {price.toLocaleString()} <span className="text-sm md:text-lg font-manrope text-white/70 font-normal">/ person</span></div>
+              <div className="font-notoSerif text-2xl md:text-3xl lg:text-4xl text-[#013334]">PKR {price.toLocaleString()} <span className="text-sm md:text-lg font-manrope text-white/70 font-normal">/ person</span></div>
             </div>
           </div>
         </div>
@@ -200,17 +200,17 @@ const PackageDetail = () => {
             {/* Quick Info */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
               <div className="bg-surface-container-lowest p-4 md:p-6 lg:p-8 rounded-xl editorial-shadow">
-                <span className="material-symbols-outlined text-[#CD9933] text-3xl mb-4 block">calendar_today</span>
+                <span className="material-symbols-outlined text-[#013334] text-3xl mb-4 block">calendar_today</span>
                 <h3 className="font-notoSerif text-lg mb-1">Duration</h3>
                 <p className="text-on-surface-variant text-sm">{pkg.duration || pkg.days || 'Custom'}</p>
               </div>
               <div className="bg-surface-container-lowest p-4 md:p-6 lg:p-8 rounded-xl editorial-shadow">
-                <span className="material-symbols-outlined text-[#CD9933] text-3xl mb-4 block">hotel</span>
+                <span className="material-symbols-outlined text-[#013334] text-3xl mb-4 block">hotel</span>
                 <h3 className="font-notoSerif text-lg mb-1">Accommodation</h3>
                 <p className="text-on-surface-variant text-sm">{hotelName}</p>
               </div>
               <div className="bg-surface-container-lowest p-4 md:p-6 lg:p-8 rounded-xl editorial-shadow">
-                <span className="material-symbols-outlined text-[#CD9933] text-3xl mb-4 block">flight</span>
+                <span className="material-symbols-outlined text-[#013334] text-3xl mb-4 block">flight</span>
                 <h3 className="font-notoSerif text-lg mb-1">Flight</h3>
                 <p className="text-on-surface-variant text-sm">{pkg.airline || 'Included'}</p>
               </div>
@@ -225,7 +225,7 @@ const PackageDetail = () => {
               <div className="bg-surface-container-lowest p-6 rounded-xl editorial-shadow">
                 <div className="flex justify-between items-start mb-4">
                   <div>
-                    <p className="text-[#CD9933] text-xs font-bold uppercase tracking-widest mb-1">Makkah & Madinah</p>
+                    <p className="text-[#013334] text-xs font-bold uppercase tracking-widest mb-1">Makkah & Madinah</p>
                     <h4 className="font-notoSerif text-2xl">{hotelName}</h4>
                   </div>
                   <div className="bg-surface-container text-xs px-3 py-1 rounded font-bold">{distance}</div>
@@ -246,7 +246,7 @@ const PackageDetail = () => {
                 <ul className="space-y-4">
                   {(Array.isArray(pkg.includes) ? pkg.includes : String(pkg.includes || 'Visa Processing,Flights,Ground Transport,Guided Tours').split(',')).map((item, idx) => (
                     <li key={idx} className="flex items-center gap-3 text-sm">
-                      <span className="material-symbols-outlined text-[#CD9933] text-lg" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
+                      <span className="material-symbols-outlined text-[#013334] text-lg" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
                       {item}
                     </li>
                   ))}
@@ -275,13 +275,13 @@ const PackageDetail = () => {
             {pkg.itinerary && pkg.itinerary.length > 0 && (
               <div>
                 <h2 className="font-notoSerif text-3xl mb-8">Journey Itinerary</h2>
-                <div className="relative pl-6 md:pl-8 border-l-2 border-dashed border-[#CD9933]/30 ml-2 md:ml-4 space-y-8 md:space-y-10">
+                <div className="relative pl-6 md:pl-8 border-l-2 border-dashed border-[#013334]/30 ml-2 md:ml-4 space-y-8 md:space-y-10">
                   {pkg.itinerary.map((step, idx) => {
                     const isLast = idx === pkg.itinerary.length - 1
                     return (
                       <div key={idx} className="relative">
-                        <div className={`absolute -left-[41px] top-0 w-4 h-4 rounded-full ring-4 ${isLast ? 'bg-[#CD9933] ring-[#CD9933]/20' : 'bg-[#7d5800] ring-[#7d5800]/20'}`}></div>
-                        <p className="text-[#CD9933] font-bold text-xs uppercase mb-1">{step.day}</p>
+                        <div className={`absolute -left-[41px] top-0 w-4 h-4 rounded-full ring-4 ${isLast ? 'bg-[#013334] ring-[#013334]/20' : 'bg-[#7d5800] ring-[#7d5800]/20'}`}></div>
+                        <p className="text-[#013334] font-bold text-xs uppercase mb-1">{step.day}</p>
                         <h4 className="font-notoSerif text-lg mb-2">{step.title}</h4>
                         <p className="text-on-surface-variant text-sm leading-relaxed">{step.description}</p>
                       </div>
@@ -302,20 +302,20 @@ const PackageDetail = () => {
               <form className="space-y-6">
                 <div>
                   <label className="block text-xs font-bold uppercase tracking-widest text-outline mb-1">Full Name</label>
-                  <input className="w-full bg-transparent border-0 border-b border-outline-variant focus:border-[#CD9933] focus:ring-0 transition-colors py-2 text-sm" placeholder="Enter your name" type="text" />
+                  <input className="w-full bg-transparent border-0 border-b border-outline-variant focus:border-[#013334] focus:ring-0 transition-colors py-2 text-sm" placeholder="Enter your name" type="text" />
                 </div>
                 <div>
                   <label className="block text-xs font-bold uppercase tracking-widest text-outline mb-1">Phone Number</label>
-                  <input className="w-full bg-transparent border-0 border-b border-outline-variant focus:border-[#CD9933] focus:ring-0 transition-colors py-2 text-sm" placeholder="+92 XXXXX XXXXX" type="tel" />
+                  <input className="w-full bg-transparent border-0 border-b border-outline-variant focus:border-[#013334] focus:ring-0 transition-colors py-2 text-sm" placeholder="+92 XXXXX XXXXX" type="tel" />
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-widest text-outline mb-1">City</label>
-                    <input className="w-full bg-transparent border-0 border-b border-outline-variant focus:border-[#CD9933] focus:ring-0 transition-colors py-2 text-sm" placeholder="e.g. Lahore" type="text" />
+                    <input className="w-full bg-transparent border-0 border-b border-outline-variant focus:border-[#013334] focus:ring-0 transition-colors py-2 text-sm" placeholder="e.g. Lahore" type="text" />
                   </div>
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-widest text-outline mb-1">Travelers</label>
-                    <select className="w-full bg-transparent border-0 border-b border-outline-variant focus:border-[#CD9933] focus:ring-0 transition-colors py-2 text-sm appearance-none">
+                    <select className="w-full bg-transparent border-0 border-b border-outline-variant focus:border-[#013334] focus:ring-0 transition-colors py-2 text-sm appearance-none">
                       <option>01 Person</option>
                       <option>02 Persons</option>
                       <option>04+ Persons</option>
@@ -324,13 +324,13 @@ const PackageDetail = () => {
                 </div>
                 <div>
                   <label className="block text-xs font-bold uppercase tracking-widest text-outline mb-1">Estimated Date</label>
-                  <input className="w-full bg-transparent border-0 border-b border-outline-variant focus:border-[#CD9933] focus:ring-0 transition-colors py-2 text-sm" type="date" />
+                  <input className="w-full bg-transparent border-0 border-b border-outline-variant focus:border-[#013334] focus:ring-0 transition-colors py-2 text-sm" type="date" />
                 </div>
-                <button className="w-full bg-gradient-to-r from-[#7d5800] to-[#CD9933] text-white py-4 rounded-md font-bold text-sm tracking-widest uppercase shadow-lg shadow-[#7d5800]/20 hover:scale-[1.02] transition-transform" type="submit">Send Inquiry</button>
+                <button className="w-full bg-gradient-to-r from-[#7d5800] to-[#013334] text-white py-4 rounded-md font-bold text-sm tracking-widest uppercase shadow-lg shadow-[#7d5800]/20 hover:scale-[1.02] transition-transform" type="submit">Send Inquiry</button>
               </form>
               <div className="mt-8 pt-8 border-t border-outline-variant/20 text-center">
                 <p className="text-xs text-on-surface-variant mb-4">Or connect instantly via</p>
-                <a className="inline-flex items-center gap-2 text-[#013334] font-bold hover:text-[#CD9933] transition-colors" href="#">
+                <a className="inline-flex items-center gap-2 text-[#013334] font-bold hover:text-[#013334] transition-colors" href="#">
                   <span className="material-symbols-outlined">chat</span>
                   WhatsApp Support
                 </a>
@@ -349,12 +349,12 @@ const PackageDetail = () => {
               <Link to={`/package/${p.id}`} key={p.id} className="bg-surface-container-lowest editorial-shadow overflow-hidden group cursor-pointer transition-transform hover:-translate-y-1 block">
                 <div className="relative h-48 overflow-hidden">
                   <img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src={p.image} alt={p.title} />
-                  <div className="absolute top-4 left-4 bg-[#CD9933] text-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest rounded">{p.badge}</div>
+                  <div className="absolute top-4 left-4 bg-[#013334] text-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest rounded">{p.badge}</div>
                 </div>
                 <div className="p-6">
                   <h3 className="font-notoSerif text-lg font-bold text-primary mb-1">{p.title}</h3>
                   <p className="text-on-surface-variant text-sm mb-3">{p.days}</p>
-                  <span className="text-xl font-extrabold text-[#CD9933]">PKR {p.price.toLocaleString()}</span>
+                  <span className="text-xl font-extrabold text-[#013334]">PKR {p.price.toLocaleString()}</span>
                 </div>
               </Link>
             ))}

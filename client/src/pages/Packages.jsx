@@ -15,7 +15,7 @@ const staticPackages = [
     days: '15 Days',
     airline: 'Qatar Airways',
     badge: 'Best Seller',
-    badgeColor: 'bg-[#CD9933]',
+    badgeColor: 'bg-[#013334]',
     image: 'https://images.unsplash.com/photo-1572949645079-6416a599c6ae?w=800',
   },
   {
@@ -37,18 +37,18 @@ const staticPackages = [
     days: '30 Days',
     airline: 'Full Iftar/Suhur',
     badge: 'Limited',
-    badgeColor: 'bg-[#CD9933]',
+    badgeColor: 'bg-[#013334]',
     image: 'https://images.unslash.com/photo-1580338834642-8a3acf79b1b8?w=800',
   },
   {
     id: 4,
-    title: 'Habibulhujaj Suites Collection',
+    title: 'Habib Ul Hujjaj Suites Collection',
     location: 'Raffles Makkah (Inside Clock Tower)',
     price: 980000,
     days: '07 Days',
     airline: 'Private GMC Transfer',
     badge: 'Gold Standard',
-    badgeColor: 'bg-[#CD9933]',
+    badgeColor: 'bg-[#013334]',
     image: 'https://images.unsplash.com/photo-1596435688717-2d2f3b0fc47a?w=800',
   }
 ]
@@ -100,9 +100,9 @@ const Packages = () => {
         </div>
         <div className="relative z-10 max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 lg:px-24 w-full">
           <div className="max-w-3xl">
-            <div className="w-12 h-1 bg-[#CD9933] mb-6 md:mb-8"></div>
+            <div className="w-12 h-1 bg-[#013334] mb-6 md:mb-8"></div>
             <h1 className="font-notoSerif text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-tight mb-6">
-              Curated <span className="text-[#CD9933]">Umrah Packages</span>
+              Curated <span className="text-[#013334]">Umrah Packages</span>
             </h1>
             <p className="font-manrope text-base md:text-lg text-white/80 max-w-xl mb-8">
               Embark on a spiritual journey of a lifetime with our meticulously curated pilgrimage experiences.
@@ -128,8 +128,8 @@ const Packages = () => {
                   { label: 'December Specials', checked: false },
                 ].map((cat, i) => (
                   <label key={i} className="flex items-center group cursor-pointer">
-                    <input defaultChecked={cat.checked} className="rounded border-outline-variant text-[#CD9933] focus:ring-[#CD9933] w-5 h-5" type="checkbox" />
-                    <span className={`ml-4 font-manrope transition-colors ${cat.checked ? 'text-[#CD9933] font-bold' : 'text-on-surface group-hover:text-[#CD9933]'}`}>{cat.label}</span>
+                    <input defaultChecked={cat.checked} className="rounded border-outline-variant text-[#013334] focus:ring-[#013334] w-5 h-5" type="checkbox" />
+                    <span className={`ml-4 font-manrope transition-colors ${cat.checked ? 'text-[#013334] font-bold' : 'text-on-surface group-hover:text-[#013334]'}`}>{cat.label}</span>
                   </label>
                 ))}
               </nav>
@@ -137,7 +137,7 @@ const Packages = () => {
                 <div className="p-6 bg-[#013334] rounded-lg text-white">
                   <p className="font-notoSerif text-lg mb-2">Need Guidance?</p>
                   <p className="text-sm opacity-70 mb-4">Our travel experts are available 24/7 for consultation.</p>
-                  <Link to="/contact" className="block w-full py-3 bg-[#CD9933] text-white font-bold rounded hover:brightness-110 transition-colors text-sm text-center">Enquire Now</Link>
+                  <Link to="/contact" className="block w-full py-3 bg-[#013334] text-white font-bold rounded hover:brightness-110 transition-colors text-sm text-center">Enquire Now</Link>
                 </div>
               </div>
             </div>
@@ -150,7 +150,7 @@ const Packages = () => {
                 const staticPkg = staticPackages[i % staticPackages.length]
                 const image = pkg.image_url || pkg.image || staticPkg?.image
                 const badge = pkg.badge || staticPkg?.badge || ''
-                const badgeColor = pkg.badgeColor || staticPkg?.badgeColor || 'bg-[#CD9933]'
+                const badgeColor = pkg.badgeColor || staticPkg?.badgeColor || 'bg-[#013334]'
                 const days = pkg.days || pkg.duration || staticPkg?.days || '15 Days'
                 const airline = pkg.airline || pkg.airline || staticPkg?.airline || 'Qatar Airways'
                 const price = typeof pkg.price === 'number' ? pkg.price : (parseFloat(String(pkg.price).replace(/[^0-9.]/g, '')) || 0)
@@ -174,7 +174,7 @@ const Packages = () => {
                         </div>
                         <div className="text-right">
                           <div className="text-xs text-on-surface-variant uppercase font-bold tracking-tighter">Starting from</div>
-                          <div className="text-2xl font-notoSerif font-bold text-[#CD9933]">PKR {price > 0 ? price.toLocaleString() : 'N/A'}</div>
+                          <div className="text-2xl font-notoSerif font-bold text-[#013334]">PKR {price > 0 ? price.toLocaleString() : 'N/A'}</div>
                         </div>
                       </div>
                       <div className="flex gap-4 mb-8 flex-wrap">
@@ -186,7 +186,7 @@ const Packages = () => {
                         </div>
                       </div>
                       <div className="mt-auto grid grid-cols-2 gap-4">
-                        <Link to={`/package/${pkg.id || pkg._id || i + 1}`} className="py-3 bg-[#CD9933]/10 text-[#CD9933] font-bold rounded-md hover:bg-[#CD9933]/20 transition-colors border border-[#CD9933]/20 text-sm text-center">View Details</Link>
+                        <Link to={`/package/${pkg.id || pkg._id || i + 1}`} className="py-3 bg-[#013334]/10 text-[#013334] font-bold rounded-md hover:bg-[#013334]/20 transition-colors border border-[#013334]/20 text-sm text-center">View Details</Link>
                         <Link to="/contact" className="py-3 bg-[#013334] text-white font-bold rounded-md hover:bg-[#002c2e] transition-colors text-sm text-center">Book Now</Link>
                       </div>
                     </div>
@@ -204,11 +204,11 @@ const Packages = () => {
           <img className="w-full h-full object-cover" src="https://images.unsplash.com/photo-1465378977933-3f5aae93cec2?w=800" alt="Pattern" />
         </div>
         <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 relative z-10 text-center">
-          <h6 className="font-manrope text-[#CD9933] font-bold text-sm tracking-[0.2em] uppercase mb-4">Ready to Begin?</h6>
+          <h6 className="font-manrope text-[#013334] font-bold text-sm tracking-[0.2em] uppercase mb-4">Ready to Begin?</h6>
           <h2 className="font-notoSerif text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">Book Your Umrah Journey Today</h2>
           <p className="text-white/60 mb-10 max-w-xl mx-auto">Contact our travel experts to get a personalized quote and start your spiritual journey.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/contact" className="bg-[#CD9933] text-white px-10 py-4 font-manrope font-bold tracking-widest uppercase text-sm hover:brightness-110 transition-all">Get a Quote</Link>
+            <Link to="/contact" className="bg-[#013334] text-white px-10 py-4 font-manrope font-bold tracking-widest uppercase text-sm hover:brightness-110 transition-all">Get a Quote</Link>
             <Link to="/international-tours" className="border border-white/30 text-white px-10 py-4 font-manrope font-bold tracking-widest uppercase text-sm hover:bg-white/10 transition-all flex items-center gap-2">
               <span className="material-symbols-outlined">flight</span>
               Explore Tours
@@ -220,8 +220,8 @@ const Packages = () => {
       {/* WhatsApp FAB */}
       <div className="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-[9999] group">
         <div className="flex flex-col items-center gap-2">
-          <span className="bg-white/80 backdrop-blur-md text-[#CD9933] font-manrope font-bold text-[10px] uppercase px-2 py-1 rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity">WhatsApp Support</span>
-          <div className="bg-white/80 backdrop-blur-md text-[#CD9933] rounded-full p-3 md:p-4 w-14 h-14 md:w-16 md:h-16 flex items-center justify-center shadow-2xl shadow-[#013334]/20 border border-[#CD9933]/15 animate-bounce cursor-pointer hover:scale-110 transition-transform">
+          <span className="bg-white/80 backdrop-blur-md text-[#013334] font-manrope font-bold text-[10px] uppercase px-2 py-1 rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity">WhatsApp Support</span>
+          <div className="bg-white/80 backdrop-blur-md text-[#013334] rounded-full p-3 md:p-4 w-14 h-14 md:w-16 md:h-16 flex items-center justify-center shadow-2xl shadow-[#013334]/20 border border-[#013334]/15 animate-bounce cursor-pointer hover:scale-110 transition-transform">
             <span className="material-symbols-outlined text-2xl md:text-3xl">chat</span>
           </div>
         </div>

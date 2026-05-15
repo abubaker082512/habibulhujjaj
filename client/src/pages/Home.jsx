@@ -24,7 +24,7 @@ const staticPackages = [
     price: 245000,
     days: '15 Days',
     badge: '3 Star',
-    badgeColor: 'bg-[#CD9933]',
+    badgeColor: 'bg-[#013334]',
     image: 'https://images.unsplash.com/photo-1564769662533-3f5aae93cec2?w=800&q=80'
   },
   {
@@ -44,7 +44,7 @@ const staticPackages = [
     price: 450000,
     days: '7 Days',
     badge: 'Luxury',
-    badgeColor: 'bg-[#CD9933]',
+    badgeColor: 'bg-[#013334]',
     image: 'https://images.unsplash.com/photo-1596435688717-2d2f3b0fc47a?w=800&q=80'
   }
 ]
@@ -121,8 +121,8 @@ const Home = () => {
       {/* SideNavBar (WhatsApp FAB) */}
       <div className="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-[9999] group">
         <div className="flex flex-col items-center gap-2">
-          <span className="bg-white/80 backdrop-blur-md text-[#CD9933] font-manrope font-bold text-[10px] uppercase px-2 py-1 rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity">WhatsApp Support</span>
-          <div className="bg-white/80 dark:bg-black/80 backdrop-blur-md text-[#CD9933] rounded-full p-3 md:p-4 w-14 h-14 md:w-16 md:h-16 flex items-center justify-center shadow-2xl shadow-[#013334]/20 border border-[#CD9933]/15 animate-bounce duration-[2000ms] cursor-pointer hover:scale-110 transition-transform">
+          <span className="bg-white/80 backdrop-blur-md text-[#013334] font-manrope font-bold text-[10px] uppercase px-2 py-1 rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity">WhatsApp Support</span>
+          <div className="bg-white/80 dark:bg-black/80 backdrop-blur-md text-[#013334] rounded-full p-3 md:p-4 w-14 h-14 md:w-16 md:h-16 flex items-center justify-center shadow-2xl shadow-[#013334]/20 border border-[#013334]/15 animate-bounce duration-[2000ms] cursor-pointer hover:scale-110 transition-transform">
             <span className="material-symbols-outlined text-2xl md:text-3xl">chat</span>
           </div>
         </div>
@@ -136,24 +136,24 @@ const Home = () => {
         </div>
         <div className="relative z-10 max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 lg:px-24 w-full">
           <div className="max-w-3xl">
-            <div className="w-12 h-1 bg-[#CD9933] mb-6 md:mb-8"></div>
-            <h1 className="font-notoSerif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6 md:mb-8">
+            <div className="w-12 h-1 bg-[#013334] mb-6 md:mb-8"></div>
+            <h1 className="font-notoSerif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-black leading-tight mb-6 md:mb-8">
               {cmsContent.heroTitle.includes('Umrah') ? (
                 <>
                   {cmsContent.heroTitle.split('Umrah')[0]}
-                  <span className="text-[#CD9933]">Umrah</span>
+                  <span className="text-primary">Umrah</span>
                   {cmsContent.heroTitle.split('Umrah')[1]}
                 </>
               ) : cmsContent.heroTitle}
             </h1>
-            <p className="font-manrope text-base md:text-lg text-white/80 mb-8 md:mb-12 max-w-xl">
+            <p className="font-manrope text-base md:text-lg text-black/70 mb-8 md:mb-12 max-w-xl">
               {cmsContent.heroSubtitle}
             </p>
             <div className="flex flex-wrap gap-3 md:gap-6">
-              <Link to="/packages" className="bg-[#CD9933] hover:bg-[#b88a2e] text-white px-6 py-3 md:px-8 md:py-4 rounded-md font-bold transition-all shadow-lg flex items-center gap-2">
+              <Link to="/packages" className="bg-primary hover:opacity-90 text-white px-6 py-3 md:px-8 md:py-4 rounded-md font-bold transition-all shadow-lg flex items-center gap-2">
                 {cmsContent.heroCta}
               </Link>
-              <button className="bg-transparent border border-[#CD9933]/40 hover:bg-[#CD9933]/10 text-white px-6 py-3 md:px-8 md:py-4 rounded-md font-bold transition-all flex items-center gap-2 backdrop-blur-sm">
+              <button className="bg-transparent border border-primary/40 hover:bg-primary/5 text-black px-6 py-3 md:px-8 md:py-4 rounded-md font-bold transition-all flex items-center gap-2 backdrop-blur-sm">
                 <span className="material-symbols-outlined">chat</span>
                 {cmsContent.heroWhatsApp}
               </button>
@@ -167,7 +167,7 @@ const Home = () => {
         <div className="bg-surface-container-lowest editorial-shadow p-4 sm:p-6 md:p-8 rounded-xl flex flex-col lg:flex-row gap-4 md:gap-6 items-stretch lg:items-end">
           <div className="flex-1 min-w-0">
             <label className="block font-manrope text-xs font-bold uppercase text-outline mb-2">Departure City</label>
-            <select className="w-full bg-transparent border-0 border-b border-outline-variant focus:ring-0 focus:border-[#CD9933] font-manrope text-sm py-2 px-0">
+            <select className="w-full bg-transparent border-0 border-b border-outline-variant focus:ring-0 focus:border-[#013334] font-manrope text-sm py-2 px-0">
               <option>Karachi</option>
               <option>Lahore</option>
               <option>Islamabad</option>
@@ -175,7 +175,7 @@ const Home = () => {
           </div>
           <div className="flex-1 min-w-0">
             <label className="block font-manrope text-xs font-bold uppercase text-outline mb-2">Month</label>
-            <select className="w-full bg-transparent border-0 border-b border-outline-variant focus:ring-0 focus:border-[#CD9933] font-manrope text-sm py-2 px-0">
+            <select className="w-full bg-transparent border-0 border-b border-outline-variant focus:ring-0 focus:border-[#013334] font-manrope text-sm py-2 px-0">
               <option>September 2024</option>
               <option>October 2024</option>
               <option>Ramadan 2025</option>
@@ -183,7 +183,7 @@ const Home = () => {
           </div>
           <div className="flex-1 min-w-0">
             <label className="block font-manrope text-xs font-bold uppercase text-outline mb-2">Package Type</label>
-            <select className="w-full bg-transparent border-0 border-b border-outline-variant focus:ring-0 focus:border-[#CD9933] font-manrope text-sm py-2 px-0">
+            <select className="w-full bg-transparent border-0 border-b border-outline-variant focus:ring-0 focus:border-[#013334] font-manrope text-sm py-2 px-0">
               <option>Economy</option>
               <option>3 Star Comfort</option>
               <option>4 Star Premium</option>
@@ -201,10 +201,10 @@ const Home = () => {
       <section className="py-16 md:py-24 px-4 sm:px-6 md:px-8 max-w-screen-2xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-end mb-12 md:mb-16">
           <div className="max-w-2xl">
-            <h6 className="font-manrope text-[#CD9933] font-bold text-sm tracking-[0.2em] uppercase mb-4">Spiritual Journeys</h6>
+            <h6 className="font-manrope text-[#013334] font-bold text-sm tracking-[0.2em] uppercase mb-4">Spiritual Journeys</h6>
             <h2 className="font-notoSerif text-3xl sm:text-4xl lg:text-5xl font-bold text-primary leading-tight">Curated Umrah Packages</h2>
           </div>
-          <Link className="text-primary font-bold border-b-2 border-[#CD9933] pb-1 mt-6 md:mt-0 transition-all hover:pr-4" to="/packages">View All Packages</Link>
+          <Link className="text-primary font-bold border-b-2 border-[#013334] pb-1 mt-6 md:mt-0 transition-all hover:pr-4" to="/packages">View All Packages</Link>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           {packages.slice(0, 4).map((pkg, i) => {
@@ -228,9 +228,9 @@ const Home = () => {
                   <div className="flex items-center justify-between mt-6">
                     <div>
                       <span className="block text-xs text-outline">Starting from</span>
-                      <span className="text-xl font-extrabold text-[#CD9933]">PKR {price.toLocaleString()}</span>
+                      <span className="text-xl font-extrabold text-[#013334]">PKR {price.toLocaleString()}</span>
                     </div>
-                    <span className="material-symbols-outlined text-[#CD9933] group-hover:translate-x-2 transition-transform">arrow_forward</span>
+                    <span className="material-symbols-outlined text-[#013334] group-hover:translate-x-2 transition-transform">arrow_forward</span>
                   </div>
                 </div>
               </Link>
@@ -250,28 +250,28 @@ const Home = () => {
               <h2 className="font-notoSerif text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-8 md:mb-12">Setting a Sacred Standard for Travel</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                 <div className="space-y-4">
-                  <div className="text-[#CD9933] bg-white/5 w-14 h-14 flex items-center justify-center rounded-lg">
+                  <div className="text-[#013334] bg-white/5 w-14 h-14 flex items-center justify-center rounded-lg">
                     <span className="material-symbols-outlined text-3xl">verified_user</span>
                   </div>
                   <h4 className="font-bold text-white font-manrope">Approved Agency</h4>
                   <p className="text-white/60 text-sm leading-relaxed">Fully certified by Ministry of Hajj & Umrah for your peace of mind.</p>
                 </div>
                 <div className="space-y-4">
-                  <div className="text-[#CD9933] bg-white/5 w-14 h-14 flex items-center justify-center rounded-lg">
+                  <div className="text-[#013334] bg-white/5 w-14 h-14 flex items-center justify-center rounded-lg">
                     <span className="material-symbols-outlined text-3xl">location_on</span>
                   </div>
                   <h4 className="font-bold text-white font-manrope">Haram Proximity</h4>
                   <p className="text-white/60 text-sm leading-relaxed">Specially selected hotels within walking distance of the holy sites.</p>
                 </div>
                 <div className="space-y-4">
-                  <div className="text-[#CD9933] bg-white/5 w-14 h-14 flex items-center justify-center rounded-lg">
+                  <div className="text-[#013334] bg-white/5 w-14 h-14 flex items-center justify-center rounded-lg">
                     <span className="material-symbols-outlined text-3xl">support_agent</span>
                   </div>
                   <h4 className="font-bold text-white font-manrope">24/7 Support</h4>
                   <p className="text-white/60 text-sm leading-relaxed">Our dedicated ground staff in Makkah and Medina are always available.</p>
                 </div>
                 <div className="space-y-4">
-                  <div className="text-[#CD9933] bg-white/5 w-14 h-14 flex items-center justify-center rounded-lg">
+                  <div className="text-[#013334] bg-white/5 w-14 h-14 flex items-center justify-center rounded-lg">
                     <span className="material-symbols-outlined text-3xl">groups</span>
                   </div>
                   <h4 className="font-bold text-white font-manrope">Experienced Guides</h4>
@@ -281,7 +281,7 @@ const Home = () => {
             </div>
             <div className="relative">
               <img className="rounded-xl editorial-shadow w-full h-64 sm:h-80 md:h-96 lg:h-[500px] xl:h-[600px] object-cover" src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800&q=80" alt="Architecture" />
-              <div className="absolute -bottom-6 -left-6 md:-bottom-10 md:-left-10 bg-[#CD9933] p-6 md:p-10 rounded-xl hidden lg:block">
+              <div className="absolute -bottom-6 -left-6 md:-bottom-10 md:-left-10 bg-[#013334] p-6 md:p-10 rounded-xl hidden lg:block">
                 <span className="block text-3xl md:text-5xl font-bold text-white mb-2">25+</span>
                 <span className="text-white/80 font-bold tracking-widest uppercase text-xs">Years of Excellence</span>
               </div>
@@ -293,7 +293,7 @@ const Home = () => {
       {/* International Tours */}
       <section className="py-16 md:py-24 px-4 sm:px-6 md:px-8 max-w-screen-2xl mx-auto overflow-hidden">
         <div className="mb-12 md:mb-16 text-center max-w-2xl mx-auto">
-          <h6 className="font-manrope text-[#CD9933] font-bold text-sm tracking-[0.2em] uppercase mb-4">Beyond Borders</h6>
+          <h6 className="font-manrope text-[#013334] font-bold text-sm tracking-[0.2em] uppercase mb-4">Beyond Borders</h6>
           <h2 className="font-notoSerif text-3xl sm:text-4xl lg:text-5xl font-bold text-primary">Discover the World</h2>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -304,7 +304,7 @@ const Home = () => {
             <Link to="/international-tours" className="absolute bottom-8 left-8 right-8 text-white group cursor-pointer overflow-hidden rounded-lg block">
               <h3 className="font-notoSerif text-2xl font-bold mb-2">Turkey</h3>
               <p className="text-sm text-white/70 mb-4">Istanbul, Cappadocia, Antalya</p>
-              <span className="inline-block border border-white/30 px-4 py-2 text-xs font-bold uppercase tracking-widest group-hover:bg-[#CD9933] group-hover:border-[#CD9933] transition-all">Explore Tour</span>
+              <span className="inline-block border border-white/30 px-4 py-2 text-xs font-bold uppercase tracking-widest group-hover:bg-[#013334] group-hover:border-[#013334] transition-all">Explore Tour</span>
             </Link>
           </div>
           {/* Dubai */}
@@ -344,17 +344,17 @@ const Home = () => {
       <section className="py-16 md:py-24 bg-surface-container-high px-4 sm:px-6 md:px-8">
         <div className="max-w-screen-2xl mx-auto">
           <div className="text-center mb-12 md:mb-16">
-            <h6 className="font-manrope text-[#CD9933] font-bold text-sm tracking-[0.2em] uppercase mb-4">Client Feedback</h6>
+            <h6 className="font-manrope text-[#013334] font-bold text-sm tracking-[0.2em] uppercase mb-4">Client Feedback</h6>
             <h2 className="font-notoSerif text-3xl sm:text-4xl font-bold text-primary">Voices of Gratitude</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             <div className="bg-surface-container-lowest p-4 md:p-8 rounded-xl editorial-shadow">
-              <div className="flex gap-1 text-[#CD9933] mb-6">
+              <div className="flex gap-1 text-[#013334] mb-6">
                 {[...Array(5)].map((_, i) => (
                   <span key={i} className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
                 ))}
               </div>
-              <p className="italic text-primary mb-8 leading-relaxed font-manrope">"Our Umrah journey with Habibulhujaj Travels was flawless. From the visa process to the hotels being so close to the Haram, everything was perfectly managed. May Allah reward them."</p>
+              <p className="italic text-primary mb-8 leading-relaxed font-manrope">"Our Umrah journey with Habib Ul Hujjaj was flawless. From the visa process to the hotels being so close to the Haram, everything was perfectly managed. May Allah reward them."</p>
               <div className="flex items-center gap-4">
                 <img className="w-12 h-12 rounded-full object-cover" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="Customer" />
                 <div>
@@ -364,7 +364,7 @@ const Home = () => {
               </div>
             </div>
             <div className="bg-surface-container-lowest p-4 md:p-8 rounded-xl editorial-shadow">
-              <div className="flex gap-1 text-[#CD9933] mb-6">
+              <div className="flex gap-1 text-[#013334] mb-6">
                 {[...Array(5)].map((_, i) => (
                   <span key={i} className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
                 ))}
@@ -379,12 +379,12 @@ const Home = () => {
               </div>
             </div>
             <div className="bg-surface-container-lowest p-4 md:p-8 rounded-xl editorial-shadow">
-              <div className="flex gap-1 text-[#CD9933] mb-6">
+              <div className="flex gap-1 text-[#013334] mb-6">
                 {[...Array(5)].map((_, i) => (
                   <span key={i} className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
                 ))}
               </div>
-              <p className="italic text-primary mb-8 leading-relaxed font-manrope">"The ground staff in Makkah were like family. They helped us with our elderly parents during Tawaaf. I highly recommend Habibulhujaj Travels for their compassion."</p>
+              <p className="italic text-primary mb-8 leading-relaxed font-manrope">"The ground staff in Makkah were like family. They helped us with our elderly parents during Tawaaf. I highly recommend Habib Ul Hujjaj for their compassion."</p>
               <div className="flex items-center gap-4">
                 <img className="w-12 h-12 rounded-full object-cover" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80" alt="Customer" />
                 <div>
@@ -399,16 +399,16 @@ const Home = () => {
 
       {/* CTA Section */}
       <section className="py-16 md:py-24 px-4">
-        <div className="max-w-5xl mx-auto bg-[#013334] rounded-3xl p-8 md:p-12 lg:p-24 relative overflow-hidden text-center">
-          <div className="absolute inset-0 opacity-10 pointer-events-none">
+        <div className="max-w-5xl mx-auto bg-white border-2 border-primary rounded-3xl p-8 md:p-12 lg:p-24 relative overflow-hidden text-center shadow-xl">
+          <div className="absolute inset-0 opacity-5 pointer-events-none">
             <img className="w-full h-full object-cover" src="https://images.unsplash.com/photo-1555992457-b8fefdd09069?w=1200&q=80" alt="Silk Pattern" />
           </div>
           <div className="relative z-10">
-            <h2 className="font-notoSerif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 md:mb-8">Book Your Umrah Journey Today</h2>
-            <p className="text-white/70 text-base md:text-lg mb-8 md:mb-12 max-w-2xl mx-auto">Contact our travel consultants today to get a personalized quote for your spiritual or leisure travel needs.</p>
+            <h2 className="font-notoSerif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-primary mb-6 md:mb-8">Book Your Umrah Journey Today</h2>
+            <p className="text-black/70 text-base md:text-lg mb-8 md:mb-12 max-w-2xl mx-auto">Contact our travel consultants today to get a personalized quote for your spiritual or leisure travel needs.</p>
             <div className="flex flex-wrap justify-center gap-6">
-              <Link to="/contact" className="bg-[#CD9933] text-white px-10 py-4 rounded-md font-bold text-lg hover:scale-105 transition-all">Get a Quote</Link>
-              <Link to="/contact" className="bg-white/10 text-white border border-white/20 px-10 py-4 rounded-md font-bold text-lg backdrop-blur-md hover:bg-white/20 transition-all">Contact Us</Link>
+              <Link to="/contact" className="bg-primary text-white px-10 py-4 rounded-md font-bold text-lg hover:scale-105 transition-all">Get a Quote</Link>
+              <Link to="/contact" className="bg-transparent text-primary border-2 border-primary px-10 py-4 rounded-md font-bold text-lg hover:bg-primary/5 transition-all">Contact Us</Link>
             </div>
           </div>
         </div>

@@ -98,9 +98,9 @@ const VisaServices = () => {
         </div>
         <div className="relative z-10 max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 lg:px-24 w-full">
           <div className="max-w-3xl">
-            <div className="w-12 h-1 bg-[#CD9933] mb-6 md:mb-8"></div>
+            <div className="w-12 h-1 bg-[#013334] mb-6 md:mb-8"></div>
             <h1 className="font-notoSerif text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-tight mb-6">
-              Visa <span className="text-[#CD9933]">Services</span>
+              Visa <span className="text-[#013334]">Services</span>
             </h1>
             <p className="font-manrope text-base md:text-lg text-white/80 max-w-xl">
               Simplifying your travel documentation with expert visa processing services. From Umrah visas to international travel permits, we handle it all with precision and care.
@@ -113,14 +113,14 @@ const VisaServices = () => {
       <section className="py-16 md:py-24 px-4 sm:px-6 md:px-8 max-w-screen-2xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-end mb-12 md:mb-16">
           <div className="max-w-2xl">
-            <h6 className="font-manrope text-[#CD9933] font-bold text-sm tracking-[0.2em] uppercase mb-4">Our Services</h6>
+            <h6 className="font-manrope text-[#013334] font-bold text-sm tracking-[0.2em] uppercase mb-4">Our Services</h6>
             <h2 className="font-notoSerif text-3xl sm:text-4xl lg:text-5xl font-bold text-primary leading-tight">Visa Solutions for Every Journey</h2>
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {visaServices.map((visa) => (
             <div key={visa.id} className="bg-surface-container-lowest group cursor-pointer overflow-hidden editorial-shadow transition-transform hover:-translate-y-1 p-4 md:p-6 lg:p-8">
-              <div className="text-[#CD9933] bg-[#013334]/5 w-16 h-16 flex items-center justify-center rounded-lg mb-6">
+              <div className="text-[#013334] bg-[#013334]/5 w-16 h-16 flex items-center justify-center rounded-lg mb-6">
                 <span className="material-symbols-outlined text-3xl">{visa.icon}</span>
               </div>
               <h3 className="font-notoSerif text-2xl font-bold text-primary mb-3">{visa.title}</h3>
@@ -128,11 +128,11 @@ const VisaServices = () => {
               
               <div className="space-y-3 mb-6">
                 <div className="flex items-center gap-3 text-sm">
-                  <span className="material-symbols-outlined text-[#CD9933] text-lg">schedule</span>
+                  <span className="material-symbols-outlined text-[#013334] text-lg">schedule</span>
                   <span className="text-outline">{visa.processing}</span>
                 </div>
                 <div className="flex items-center gap-3 text-sm">
-                  <span className="material-symbols-outlined text-[#CD9933] text-lg">payments</span>
+                  <span className="material-symbols-outlined text-[#013334] text-lg">payments</span>
                   <span className="text-outline">{visa.fee}</span>
                 </div>
               </div>
@@ -165,7 +165,7 @@ const VisaServices = () => {
         </div>
         <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 relative z-10">
           <div className="text-center mb-12 md:mb-16">
-            <h6 className="font-manrope text-[#CD9933] font-bold text-sm tracking-[0.2em] uppercase mb-4">Simple Process</h6>
+            <h6 className="font-manrope text-[#013334] font-bold text-sm tracking-[0.2em] uppercase mb-4">Simple Process</h6>
             <h2 className="font-notoSerif text-3xl sm:text-4xl lg:text-5xl font-bold text-white">How It Works</h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
@@ -176,9 +176,9 @@ const VisaServices = () => {
               { step: '04', title: 'Receive Visa', desc: 'Get your approved visa delivered to your doorstep or email.', icon: 'mark_email_read' }
             ].map((item, i) => (
               <div key={i} className="text-center">
-                <div className="text-[#CD9933] bg-white/5 w-20 h-20 flex items-center justify-center rounded-full mx-auto mb-6 relative">
+                <div className="text-[#013334] bg-white/5 w-20 h-20 flex items-center justify-center rounded-full mx-auto mb-6 relative">
                   <span className="material-symbols-outlined text-3xl">{item.icon}</span>
-                  <span className="absolute -top-2 -right-2 bg-[#CD9933] text-white text-xs font-bold w-8 h-8 flex items-center justify-center rounded-full">{item.step}</span>
+                  <span className="absolute -top-2 -right-2 bg-[#013334] text-white text-xs font-bold w-8 h-8 flex items-center justify-center rounded-full">{item.step}</span>
                 </div>
                 <h4 className="font-bold text-white font-manrope text-lg mb-2">{item.title}</h4>
                 <p className="text-white/60 text-sm leading-relaxed">{item.desc}</p>
@@ -195,7 +195,7 @@ const VisaServices = () => {
             <h2 className="font-notoSerif text-3xl md:text-4xl text-primary mb-6">Need Visa Assistance?</h2>
             <p className="text-on-surface-variant font-manrope mb-10 max-w-xl mx-auto">Our visa specialists are ready to help you with any visa requirements. Contact us today for a free consultation.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/contact" className="bg-[#CD9933] text-white px-10 py-4 font-manrope font-bold tracking-widest uppercase text-sm hover:brightness-110 transition-all">Apply for Visa</Link>
+              <Link to="/contact" className="bg-[#013334] text-white px-10 py-4 font-manrope font-bold tracking-widest uppercase text-sm hover:brightness-110 transition-all">Apply for Visa</Link>
               <a href="tel:+923001234567" className="border-2 border-outline-variant text-primary px-10 py-4 font-manrope font-bold tracking-widest uppercase text-sm hover:bg-surface-container transition-all flex items-center justify-center gap-2">
                 <span className="material-symbols-outlined">call</span>
                 Call Us

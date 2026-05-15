@@ -60,12 +60,12 @@ const Contact = () => {
         </div>
         <div className="relative z-10 max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 lg:px-24 w-full">
           <div className="max-w-3xl">
-            <div className="w-12 h-1 bg-[#CD9933] mb-6 md:mb-8"></div>
+            <div className="w-12 h-1 bg-[#013334] mb-6 md:mb-8"></div>
             <h1 className="font-notoSerif text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-tight mb-6">
               {cmsContent.heroTitle.includes('Touch') ? (
                 <>
                   {cmsContent.heroTitle.split('Touch')[0]}
-                  <span className="text-[#CD9933]">Touch</span>
+                  <span className="text-[#013334]">Touch</span>
                   {cmsContent.heroTitle.split('Touch')[1]}
                 </>
               ) : cmsContent.heroTitle}
@@ -84,39 +84,39 @@ const Contact = () => {
           <div className="lg:col-span-1 space-y-6">
             {/* Phone */}
             <div className="bg-surface-container-lowest p-4 md:p-6 lg:p-8 editorial-shadow hover:-translate-y-1 transition-transform">
-              <div className="text-[#CD9933] bg-[#013334]/5 w-14 h-14 flex items-center justify-center rounded-lg mb-4">
+              <div className="text-[#013334] bg-[#013334]/5 w-14 h-14 flex items-center justify-center rounded-lg mb-4">
                 <span className="material-symbols-outlined text-2xl">call</span>
               </div>
               <h3 className="font-notoSerif text-xl font-bold text-primary mb-2">Call Us</h3>
               <p className="text-on-surface-variant text-sm mb-3">Available 24/7 for your inquiries</p>
-              <a href={`tel:${cmsContent.phone1}`} className="text-[#CD9933] font-bold hover:underline">{cmsContent.phone1}</a>
+              <a href={`tel:${cmsContent.phone1}`} className="text-[#013334] font-bold hover:underline">{cmsContent.phone1}</a>
               <br />
-              <a href={`tel:${cmsContent.phone2}`} className="text-[#CD9933] font-bold hover:underline">{cmsContent.phone2}</a>
+              <a href={`tel:${cmsContent.phone2}`} className="text-[#013334] font-bold hover:underline">{cmsContent.phone2}</a>
             </div>
 
             {/* WhatsApp */}
             <div className="bg-surface-container-lowest p-4 md:p-6 lg:p-8 editorial-shadow hover:-translate-y-1 transition-transform">
-              <div className="text-[#CD9933] bg-[#013334]/5 w-14 h-14 flex items-center justify-center rounded-lg mb-4">
+              <div className="text-[#013334] bg-[#013334]/5 w-14 h-14 flex items-center justify-center rounded-lg mb-4">
                 <span className="material-symbols-outlined text-2xl">chat</span>
               </div>
               <h3 className="font-notoSerif text-xl font-bold text-primary mb-2">WhatsApp</h3>
               <p className="text-on-surface-variant text-sm mb-3">Quick responses on WhatsApp</p>
-              <a href={`https://wa.me/${cmsContent.whatsapp.replace(/\D/g,'')}`} className="text-[#CD9933] font-bold hover:underline">{cmsContent.whatsapp}</a>
+              <a href={`https://wa.me/${cmsContent.whatsapp.replace(/\D/g,'')}`} className="text-[#013334] font-bold hover:underline">{cmsContent.whatsapp}</a>
             </div>
 
             {/* Email */}
             <div className="bg-surface-container-lowest p-4 md:p-6 lg:p-8 editorial-shadow hover:-translate-y-1 transition-transform">
-              <div className="text-[#CD9933] bg-[#013334]/5 w-14 h-14 flex items-center justify-center rounded-lg mb-4">
+              <div className="text-[#013334] bg-[#013334]/5 w-14 h-14 flex items-center justify-center rounded-lg mb-4">
                 <span className="material-symbols-outlined text-2xl">mail</span>
               </div>
               <h3 className="font-notoSerif text-xl font-bold text-primary mb-2">Email</h3>
               <p className="text-on-surface-variant text-sm mb-3">We reply within 24 hours</p>
-              <a href={`mailto:${cmsContent.email}`} className="text-[#CD9933] font-bold hover:underline">{cmsContent.email}</a>
+              <a href={`mailto:${cmsContent.email}`} className="text-[#013334] font-bold hover:underline">{cmsContent.email}</a>
             </div>
 
             {/* Office */}
             <div className="bg-surface-container-lowest p-4 md:p-6 lg:p-8 editorial-shadow hover:-translate-y-1 transition-transform">
-              <div className="text-[#CD9933] bg-[#013334]/5 w-14 h-14 flex items-center justify-center rounded-lg mb-4">
+              <div className="text-[#013334] bg-[#013334]/5 w-14 h-14 flex items-center justify-center rounded-lg mb-4">
                 <span className="material-symbols-outlined text-2xl">location_on</span>
               </div>
               <h3 className="font-notoSerif text-xl font-bold text-primary mb-2">Office</h3>
@@ -140,7 +140,7 @@ const Contact = () => {
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      className="w-full bg-surface border-0 border-b border-outline-variant focus:border-[#CD9933] focus:ring-0 transition-colors py-3 text-sm" 
+                      className="w-full bg-surface border-0 border-b border-outline-variant focus:border-[#013334] focus:ring-0 transition-colors py-3 text-sm" 
                       placeholder="Enter your name" 
                       type="text" 
                       required
@@ -152,7 +152,7 @@ const Contact = () => {
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full bg-surface border-0 border-b border-outline-variant focus:border-[#CD9933] focus:ring-0 transition-colors py-3 text-sm" 
+                      className="w-full bg-surface border-0 border-b border-outline-variant focus:border-[#013334] focus:ring-0 transition-colors py-3 text-sm" 
                       placeholder="Enter your email" 
                       type="email" 
                       required
@@ -167,7 +167,7 @@ const Contact = () => {
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      className="w-full bg-surface border-0 border-b border-outline-variant focus:border-[#CD9933] focus:ring-0 transition-colors py-3 text-sm" 
+                      className="w-full bg-surface border-0 border-b border-outline-variant focus:border-[#013334] focus:ring-0 transition-colors py-3 text-sm" 
                       placeholder="+92 XXXXX XXXXX" 
                       type="tel" 
                     />
@@ -178,7 +178,7 @@ const Contact = () => {
                       name="subject"
                       value={formData.subject}
                       onChange={handleChange}
-                      className="w-full bg-surface border-0 border-b border-outline-variant focus:border-[#CD9933] focus:ring-0 transition-colors py-3 text-sm appearance-none"
+                      className="w-full bg-surface border-0 border-b border-outline-variant focus:border-[#013334] focus:ring-0 transition-colors py-3 text-sm appearance-none"
                     >
                       <option>Umrah Packages</option>
                       <option>International Tours</option>
@@ -194,14 +194,14 @@ const Contact = () => {
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
-                    className="w-full bg-surface border-0 border-b border-outline-variant focus:border-[#CD9933] focus:ring-0 transition-colors py-3 text-sm resize-none" 
+                    className="w-full bg-surface border-0 border-b border-outline-variant focus:border-[#013334] focus:ring-0 transition-colors py-3 text-sm resize-none" 
                     placeholder="Tell us about your travel plans or questions..." 
                     rows={5}
                     required
                   ></textarea>
                 </div>
                 
-                <button type="submit" className="w-full bg-gradient-to-r from-[#7d5800] to-[#CD9933] text-white py-4 rounded-md font-bold text-sm tracking-widest uppercase shadow-lg shadow-[#7d5800]/20 hover:scale-[1.02] transition-transform flex items-center justify-center gap-2">
+                <button type="submit" className="w-full bg-gradient-to-r from-[#7d5800] to-[#013334] text-white py-4 rounded-md font-bold text-sm tracking-widest uppercase shadow-lg shadow-[#7d5800]/20 hover:scale-[1.02] transition-transform flex items-center justify-center gap-2">
                   Send Message
                   <span className="material-symbols-outlined text-sm">send</span>
                 </button>
@@ -209,7 +209,7 @@ const Contact = () => {
 
               <div className="mt-8 pt-8 border-t border-outline-variant/20 flex flex-col sm:flex-row items-center justify-center gap-4">
                 <span className="text-sm text-outline">Or reach us directly via</span>
-                <a href={`https://wa.me/${cmsContent.whatsapp.replace(/\D/g,'')}`} className="flex items-center gap-2 text-[#CD9933] font-bold hover:underline">
+                <a href={`https://wa.me/${cmsContent.whatsapp.replace(/\D/g,'')}`} className="flex items-center gap-2 text-[#013334] font-bold hover:underline">
                   <span className="material-symbols-outlined">chat</span>
                   WhatsApp
                 </a>
@@ -225,7 +225,7 @@ const Contact = () => {
           <div className="p-4 md:p-8 border-b border-outline-variant/10">
             <h3 className="font-notoSerif text-2xl font-bold text-primary mb-2">Our Location</h3>
             <p className="text-on-surface-variant text-sm flex items-center gap-2">
-              <span className="material-symbols-outlined text-[#CD9933]">location_on</span>
+              <span className="material-symbols-outlined text-[#013334]">location_on</span>
               {cmsContent.addressLahore}
             </p>
           </div>
@@ -242,11 +242,11 @@ const Contact = () => {
       {/* CTA */}
       <section className="py-16 md:py-24 bg-primary-container relative overflow-hidden">
         <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 relative z-10 text-center">
-          <h6 className="font-manrope text-[#CD9933] font-bold text-sm tracking-[0.2em] uppercase mb-4">Ready to Travel?</h6>
+          <h6 className="font-manrope text-[#013334] font-bold text-sm tracking-[0.2em] uppercase mb-4">Ready to Travel?</h6>
           <h2 className="font-notoSerif text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">Let Us Plan Your Journey</h2>
           <p className="text-white/60 mb-10 max-w-xl mx-auto">Whether it's a spiritual Umrah journey or an international adventure, our experts are here to make it happen.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/packages" className="bg-[#CD9933] text-white px-10 py-4 font-manrope font-bold tracking-widest uppercase text-sm hover:brightness-110 transition-all">View Packages</Link>
+            <Link to="/packages" className="bg-[#013334] text-white px-10 py-4 font-manrope font-bold tracking-widest uppercase text-sm hover:brightness-110 transition-all">View Packages</Link>
             <a href={`tel:${cmsContent.phone1}`} className="border border-white/30 text-white px-10 py-4 font-manrope font-bold tracking-widest uppercase text-sm hover:bg-white/10 transition-all flex items-center justify-center gap-2">
               <span className="material-symbols-outlined">call</span>
               Call Now

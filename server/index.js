@@ -28,7 +28,7 @@ app.use((req, res, next) => {
 
 // Routes
 app.get('/', (req, res) => {
-  res.send('Habibulhujaj Umrah & Travels API (Supabase) is running...');
+  res.send('Habib Ul Hujjaj API (Supabase) is running...');
 });
 
 // Admin Auth

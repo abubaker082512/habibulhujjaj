@@ -104,9 +104,9 @@ const FAQ = () => {
         </div>
         <div className="relative z-10 max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 lg:px-24 w-full">
           <div className="max-w-3xl">
-            <div className="w-12 h-1 bg-[#CD9933] mb-6 md:mb-8"></div>
+            <div className="w-12 h-1 bg-[#013334] mb-6 md:mb-8"></div>
             <h1 className="font-notoSerif text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-tight mb-6">
-              Frequently Asked <span className="text-[#CD9933]">Questions</span>
+              Frequently Asked <span className="text-[#013334]">Questions</span>
             </h1>
             <p className="font-manrope text-base md:text-lg text-white/80 max-w-xl">
               Find answers to common questions about our Umrah packages, visa services, travel arrangements, and more.
@@ -135,10 +135,10 @@ const FAQ = () => {
             </div>
 
             {/* Contact Card */}
-            <div className="mt-8 bg-[#CD9933] p-6 rounded-xl editorial-shadow">
+            <div className="mt-8 bg-[#013334] p-6 rounded-xl editorial-shadow">
               <h4 className="font-notoSerif text-xl text-white mb-3">Still have questions?</h4>
               <p className="text-white/80 text-sm mb-4">Our team is here to help you with any inquiries.</p>
-              <Link to="/contact" className="bg-white text-[#CD9933] px-6 py-3 rounded-md font-bold text-sm flex items-center justify-center gap-2 hover:bg-surface-container-lowest transition-all">
+              <Link to="/contact" className="bg-white text-[#013334] px-6 py-3 rounded-md font-bold text-sm flex items-center justify-center gap-2 hover:bg-surface-container-lowest transition-all">
                 Contact Us
                 <span className="material-symbols-outlined text-sm">arrow_forward</span>
               </Link>
@@ -156,7 +156,7 @@ const FAQ = () => {
                     className="w-full text-left p-6 flex items-center justify-between gap-4 hover:bg-surface-container-low transition-colors"
                   >
                     <span className="font-notoSerif text-lg font-bold text-primary">{faq.q}</span>
-                    <span className={`material-symbols-outlined text-[#CD9933] transition-transform duration-300 ${openIndex === i ? 'rotate-180' : ''}`}>expand_more</span>
+                    <span className={`material-symbols-outlined text-[#013334] transition-transform duration-300 ${openIndex === i ? 'rotate-180' : ''}`}>expand_more</span>
                   </button>
                   <div className={`overflow-hidden transition-all duration-300 ${openIndex === i ? 'max-h-96' : 'max-h-0'}`}>
                     <div className="px-6 pb-6 text-on-surface-variant leading-relaxed">
@@ -174,7 +174,7 @@ const FAQ = () => {
       <section className="py-16 md:py-24 bg-primary-container relative overflow-hidden">
         <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 relative z-10">
           <div className="text-center mb-12 md:mb-16">
-            <h6 className="font-manrope text-[#CD9933] font-bold text-sm tracking-[0.2em] uppercase mb-4">Quick Answers</h6>
+            <h6 className="font-manrope text-[#013334] font-bold text-sm tracking-[0.2em] uppercase mb-4">Quick Answers</h6>
             <h2 className="font-notoSerif text-3xl sm:text-4xl lg:text-5xl font-bold text-white">Most Searched Questions</h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
@@ -185,8 +185,8 @@ const FAQ = () => {
               { q: 'Documents for Umrah visa?', icon: 'description' }
             ].map((item, i) => (
               <button key={i} className="bg-white/5 border border-white/10 p-4 md:p-6 rounded-xl text-left hover:bg-white/10 transition-all group">
-                <span className="material-symbols-outlined text-[#CD9933] text-3xl mb-4 block">{item.icon}</span>
-                <span className="text-white font-bold group-hover:text-[#CD9933] transition-colors">{item.q}</span>
+                <span className="material-symbols-outlined text-[#013334] text-3xl mb-4 block">{item.icon}</span>
+                <span className="text-white font-bold group-hover:text-[#013334] transition-colors">{item.q}</span>
               </button>
             ))}
           </div>

@@ -64,9 +64,9 @@ const Gallery = () => {
         </div>
         <div className="relative z-10 max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 lg:px-24 w-full">
           <div className="max-w-3xl">
-            <div className="w-12 h-1 bg-[#CD9933] mb-6 md:mb-8"></div>
+            <div className="w-12 h-1 bg-[#013334] mb-6 md:mb-8"></div>
             <h1 className="font-notoSerif text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-tight mb-6">
-              Photo <span className="text-[#CD9933]">Gallery</span>
+              Photo <span className="text-[#013334]">Gallery</span>
             </h1>
             <p className="font-manrope text-lg text-white/80 max-w-xl">
               A visual chronicle of spiritual journeys, sacred architecture, and the profound serenity of the Holy Cities.
@@ -79,7 +79,7 @@ const Gallery = () => {
       <section className="max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 py-12 md:py-16">
         <div className="flex flex-col md:flex-row justify-between items-end mb-8 md:mb-12">
           <div className="max-w-2xl">
-            <h6 className="font-manrope text-[#CD9933] font-bold text-sm tracking-[0.2em] uppercase mb-4">Visual Chronicles</h6>
+            <h6 className="font-manrope text-[#013334] font-bold text-sm tracking-[0.2em] uppercase mb-4">Visual Chronicles</h6>
             <h2 className="font-notoSerif text-3xl sm:text-4xl lg:text-5xl font-bold text-primary leading-tight">Glimpses of the Divine</h2>
           </div>
         </div>
@@ -118,7 +118,7 @@ const Gallery = () => {
               <div className="absolute inset-0 bg-primary-container/0 group-hover:bg-primary-container/30 transition-all duration-500"></div>
               {item.label && (
                 <div className="absolute bottom-6 left-6 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
-                  <span className="font-manrope text-[10px] tracking-widest uppercase text-[#CD9933] mb-1 block">{item.category}</span>
+                  <span className="font-manrope text-[10px] tracking-widest uppercase text-[#013334] mb-1 block">{item.category}</span>
                   <h3 className="font-notoSerif text-white text-xl italic">{item.label}</h3>
                 </div>
               )}
@@ -133,11 +133,11 @@ const Gallery = () => {
           <img className="w-full h-full object-cover" src="https://images.unsplash.com/photo-1564507004663-b6dfb3c8924d?w=1200&q=80" alt="Pattern" />
         </div>
         <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 relative z-10 text-center">
-          <h6 className="font-manrope text-[#CD9933] font-bold text-sm tracking-[0.2em] uppercase mb-4">Capture Memories</h6>
+          <h6 className="font-manrope text-[#013334] font-bold text-sm tracking-[0.2em] uppercase mb-4">Capture Memories</h6>
           <h2 className="font-notoSerif text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">Experience It Yourself</h2>
           <p className="text-white/60 mb-10 max-w-xl mx-auto">These moments could be yours. Book your Umrah journey or international tour and create your own spiritual memories.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/packages" className="bg-[#CD9933] text-white px-10 py-4 font-manrope font-bold tracking-widest uppercase text-sm hover:brightness-110 transition-all">View Packages</a>
+            <a href="/packages" className="bg-[#013334] text-white px-10 py-4 font-manrope font-bold tracking-widest uppercase text-sm hover:brightness-110 transition-all">View Packages</a>
             <a href="/contact" className="border border-white/30 text-white px-10 py-4 font-manrope font-bold tracking-widest uppercase text-sm hover:bg-white/10 transition-all">Contact Us</a>
           </div>
         </div>
