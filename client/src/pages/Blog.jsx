@@ -198,18 +198,18 @@ const Blog = () => {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative min-h-[70vh] flex items-center pt-56 overflow-hidden">
+      <section className="relative min-h-[60vh] flex items-center pt-32 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img className="w-full h-full object-cover" src={pageMedia.blog_hero_image || "https://images.unsplash.com/photo-1469357001414-5c82ea24f067?w=1600"} alt="Blog" />
-          <div className="absolute inset-0 bg-gradient-to-r from-primary-container via-primary-container/80 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/40 to-transparent"></div>
         </div>
         <div className="relative z-10 max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 lg:px-24 w-full">
           <div className="max-w-3xl">
-            <div className="w-12 h-1 bg-primary mb-6 md:mb-8"></div>
-            <h1 className="font-notoSerif text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-black leading-tight mb-6">
-              Travel <span className="text-primary">Blog</span>
+            <div className="w-12 h-1 bg-white mb-6 md:mb-8"></div>
+            <h1 className="font-notoSerif text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-tight mb-6">
+              Travel <span className="text-white">Blog</span>
             </h1>
-            <p className="font-manrope text-base md:text-lg text-black/70 max-w-xl">
+            <p className="font-manrope text-base md:text-lg text-white/70 max-w-xl">
               Insights, guides, and spiritual wisdom to help you prepare for your journey. Stay informed with our latest articles on Umrah, travel tips, and religious guidance.
             </p>
           </div>

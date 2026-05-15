@@ -166,27 +166,27 @@ const PackageDetail = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="relative min-h-[60vh] flex items-center pt-56 overflow-hidden">
+      <section className="relative min-h-[50vh] flex items-center pt-32 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img className="w-full h-full object-cover" src={pkg.image_url || pkg.image || staticPackages[0].image} alt={pkg.title} />
-          <div className="absolute inset-0 bg-gradient-to-r from-primary-container via-primary-container/80 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/40 to-transparent"></div>
         </div>
         <div className="relative z-10 max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 lg:px-24 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8 items-end">
             <div className="lg:col-span-8">
               <div className="flex items-center gap-2 md:gap-4 mb-3 md:mb-4">
-                {pkg.badge && <span className="bg-primary text-white font-bold text-xs tracking-widest uppercase px-3 py-1 rounded">{pkg.badge}</span>}
-                <div className="flex text-primary">
+                {pkg.badge && <span className="bg-white text-primary font-bold text-xs tracking-widest uppercase px-3 py-1 rounded">{pkg.badge}</span>}
+                <div className="flex text-white">
                   {Array.from({ length: pkg.stars || 5 }).map((_, i) => (
                     <span key={i} className="material-symbols-outlined text-sm" style={{fontVariationSettings: "'FILL' 1"}}>star</span>
                   ))}
                 </div>
               </div>
-              <h1 className="font-notoSerif text-3xl sm:text-4xl md:text-5xl lg:text-7xl text-black leading-tight tracking-tight">{pkg.title || 'Umrah Journey'}</h1>
+              <h1 className="font-notoSerif text-3xl sm:text-4xl md:text-5xl lg:text-7xl text-white leading-tight tracking-tight">{pkg.title || 'Umrah Journey'}</h1>
             </div>
             <div className="lg:col-span-4 lg:text-right">
-              <p className="text-black/70 font-medium mb-2">Starting from</p>
-              <div className="font-notoSerif text-2xl md:text-3xl lg:text-4xl text-primary">PKR {price.toLocaleString()} <span className="text-sm md:text-lg font-manrope text-black/70 font-normal">/ person</span></div>
+              <p className="text-white/70 font-medium mb-2">Starting from</p>
+              <div className="font-notoSerif text-2xl md:text-3xl lg:text-4xl text-white">PKR {price.toLocaleString()} <span className="text-sm md:text-lg font-manrope text-white/70 font-normal">/ person</span></div>
             </div>
           </div>
         </div>

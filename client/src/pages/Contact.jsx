@@ -53,24 +53,24 @@ const Contact = () => {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative min-h-[60vh] flex items-center pt-56 overflow-hidden">
+      <section className="relative min-h-[50vh] flex items-center pt-32 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img className="w-full h-full object-cover" src={pageMedia.contact_hero_image || "https://images.unsplash.com/photo-1572949645079-6416a599c6ae?w=1600&q=80"} alt="Contact Us" />
-          <div className="absolute inset-0 bg-gradient-to-r from-primary-container via-primary-container/80 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/40 to-transparent"></div>
         </div>
         <div className="relative z-10 max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 lg:px-24 w-full">
           <div className="max-w-3xl">
-            <div className="w-12 h-1 bg-primary mb-6 md:mb-8"></div>
-            <h1 className="font-notoSerif text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-black leading-tight mb-6">
+            <div className="w-12 h-1 bg-white mb-6 md:mb-8"></div>
+            <h1 className="font-notoSerif text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-tight mb-6">
               {cmsContent.heroTitle.includes('Touch') ? (
                 <>
                   {cmsContent.heroTitle.split('Touch')[0]}
-                  <span className="text-primary">Touch</span>
+                  <span className="text-white">Touch</span>
                   {cmsContent.heroTitle.split('Touch')[1]}
                 </>
               ) : cmsContent.heroTitle}
             </h1>
-            <p className="font-manrope text-base md:text-lg text-black/70 max-w-xl">
+            <p className="font-manrope text-base md:text-lg text-white/70 max-w-xl">
               {cmsContent.heroSubtitle}
             </p>
           </div>
@@ -229,12 +229,17 @@ const Contact = () => {
               {cmsContent.addressLahore}
             </p>
           </div>
-          <div className="h-64 md:h-80 bg-gray-50 flex items-center justify-center">
-            <div className="text-center">
-              <span className="material-symbols-outlined text-6xl text-gray-300 mb-4 block">map</span>
-              <p className="text-black/60">Interactive map placeholder</p>
-              <p className="text-sm text-black/40 mt-2">Google Maps integration available</p>
-            </div>
+          <div className="h-96 md:h-[500px] w-full">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3401.3262624535314!2d74.34110367544078!3d31.515222074216345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3919045a281ab2b3%3A0xc6b3864115f79796!2sMain%20Blvd%20Gulberg%2C%20Lahore%2C%20Punjab%2C%20Pakistan!5e0!3m2!1sen!2s!4v1715774500000!5m2!1sen!2s" 
+              width="100%" 
+              height="100%" 
+              style={{ border: 0 }} 
+              allowFullScreen="" 
+              loading="lazy" 
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Habib Ul Hujjaj Office Location"
+            ></iframe>
           </div>
         </div>
       </section>

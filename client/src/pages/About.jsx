@@ -48,24 +48,24 @@ const About = () => {
 
       <main>
         {/* Hero Section */}
-        <section className="relative min-h-[70vh] flex items-center pt-56 overflow-hidden">
+        <section className="relative min-h-[60vh] flex items-center pt-32 overflow-hidden">
           <div className="absolute inset-0 z-0">
             <img className="w-full h-full object-cover" src={pageMedia.about_hero_image || "https://images.unsplash.com/photo-1572949645079-6416a599c6ae?w=1600&q=80"} alt="Grand Mosque" />
-            <div className="absolute inset-0 bg-gradient-to-r from-primary-container via-primary-container/80 to-transparent"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/40 to-transparent"></div>
           </div>
-        <div className="relative z-10 max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 lg:px-24 w-full">
+        <div className="relative z-10 max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 lg:px-24 w-full text-white">
           <div className="max-w-3xl">
-            <div className="w-12 h-1 bg-primary mb-6 md:mb-8"></div>
-            <h1 className="font-notoSerif text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-black leading-tight mb-6">
+            <div className="w-12 h-1 bg-white mb-6 md:mb-8"></div>
+            <h1 className="font-notoSerif text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-tight mb-6">
               {cmsContent.heroTitle.includes('Us') ? (
                 <>
                   {cmsContent.heroTitle.split('Us')[0]}
-                  <span className="text-primary">Us</span>
+                  <span className="text-white">Us</span>
                   {cmsContent.heroTitle.split('Us')[1]}
                 </>
               ) : cmsContent.heroTitle}
             </h1>
-              <p className="font-manrope text-lg text-black/80 max-w-xl">
+              <p className="font-manrope text-lg text-white/80 max-w-xl">
                 {cmsContent.heroSubtitle}
               </p>
             </div>

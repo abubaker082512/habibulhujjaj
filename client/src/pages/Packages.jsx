@@ -93,18 +93,18 @@ const Packages = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="relative min-h-[70vh] flex items-center pt-56 overflow-hidden">
+      <section className="relative min-h-[60vh] flex items-center pt-32 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img className="w-full h-full object-cover" src={pageMedia.packages_hero_image || "https://images.unsplash.com/photo-1572949645079-6416a599c6ae?w=1600"} alt="Makkah" />
-          <div className="absolute inset-0 bg-gradient-to-r from-primary-container via-primary-container/80 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/40 to-transparent"></div>
         </div>
         <div className="relative z-10 max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 lg:px-24 w-full">
           <div className="max-w-3xl">
-            <div className="w-12 h-1 bg-primary mb-6 md:mb-8"></div>
-            <h1 className="font-notoSerif text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-black leading-tight mb-6">
-              Curated <span className="text-primary">Umrah Packages</span>
+            <div className="w-12 h-1 bg-white mb-6 md:mb-8"></div>
+            <h1 className="font-notoSerif text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-tight mb-6">
+              Curated <span className="text-white">Umrah Packages</span>
             </h1>
-            <p className="font-manrope text-base md:text-lg text-black/70 max-w-xl mb-8">
+            <p className="font-manrope text-base md:text-lg text-white/80 max-w-xl mb-8">
               Embark on a spiritual journey of a lifetime with our meticulously curated pilgrimage experiences.
             </p>
           </div>
@@ -116,7 +116,7 @@ const Packages = () => {
         <div className="flex flex-col lg:flex-row gap-8 md:gap-12">
           {/* Filter Sidebar */}
           <aside className="w-full lg:w-72 flex-shrink-0">
-            <div className="bg-white p-4 md:p-6 lg:p-8 border border-gray-100 shadow-sm lg:sticky lg:top-56">
+            <div className="bg-white p-4 md:p-6 lg:p-8 border border-gray-100 shadow-sm lg:sticky lg:top-32">
               <h2 className="font-notoSerif text-xl text-primary font-bold mb-8 border-b border-gray-100 pb-4">Categories</h2>
               <nav className="space-y-6">
                 {[
@@ -199,17 +199,17 @@ const Packages = () => {
       </main>
 
       {/* CTA */}
-      <section className="py-16 md:py-24 bg-primary-container relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-1/3 h-full opacity-5">
+      <section className="py-16 md:py-24 bg-primary text-white relative overflow-hidden">
+        <div className="absolute inset-0 z-0 opacity-10">
           <img className="w-full h-full object-cover" src="https://images.unsplash.com/photo-1465378977933-3f5aae93cec2?w=800" alt="Pattern" />
         </div>
         <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 relative z-10 text-center">
-          <h6 className="font-manrope text-primary font-bold text-sm tracking-[0.2em] uppercase mb-4">Ready to Begin?</h6>
-          <h2 className="font-notoSerif text-3xl sm:text-4xl lg:text-5xl font-bold text-black mb-6">Book Your Umrah Journey Today</h2>
-          <p className="text-black/60 mb-10 max-w-xl mx-auto">Contact our travel experts to get a personalized quote and start your spiritual journey.</p>
+          <h6 className="font-manrope text-white/70 font-bold text-sm tracking-[0.2em] uppercase mb-4">Ready to Begin?</h6>
+          <h2 className="font-notoSerif text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">Book Your Umrah Journey Today</h2>
+          <p className="text-white/60 mb-10 max-w-xl mx-auto">Contact our travel experts to get a personalized quote and start your spiritual journey.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/contact" className="bg-primary text-white px-10 py-4 font-manrope font-bold tracking-widest uppercase text-sm hover:opacity-90 transition-all">Get a Quote</Link>
-            <Link to="/international-tours" className="border-2 border-primary text-primary px-10 py-4 font-manrope font-bold tracking-widest uppercase text-sm hover:bg-primary/5 transition-all flex items-center gap-2">
+            <Link to="/contact" className="bg-white text-primary px-10 py-4 font-manrope font-bold tracking-widest uppercase text-sm hover:bg-gray-100 transition-all">Get a Quote</Link>
+            <Link to="/international-tours" className="border-2 border-white text-white px-10 py-4 font-manrope font-bold tracking-widest uppercase text-sm hover:bg-white/10 transition-all flex items-center gap-2">
               <span className="material-symbols-outlined">flight</span>
               Explore Tours
             </Link>

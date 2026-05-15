@@ -67,13 +67,14 @@ const Flights = () => {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative min-h-[700px] pt-56 pb-20 flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[600px] pt-32 pb-20 flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
             src={pageMedia.flightsHero || "https://images.unsplash.com/photo-1436491865332-7a61a109c0f3?w=1600&q=80"} 
-            className="w-full h-full object-cover brightness-[0.4]" 
+            className="w-full h-full object-cover" 
             alt="Hero Background"
           />
+          <div className="absolute inset-0 bg-primary/60"></div>
         </div>
         
         <div className="container mx-auto px-4 relative z-10 text-center">

@@ -123,11 +123,11 @@ const BlogPost = () => {
       <Navbar />
       
       {/* Hero */}
-      <section className="relative h-[40vh] sm:h-[50vh] overflow-hidden pt-20">
+      <section className="relative h-[40vh] sm:h-[50vh] overflow-hidden pt-32">
         <img className="w-full h-full object-cover" src={post.image} alt={post.title} />
-        <div className="absolute inset-0 bg-black/40"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent"></div>
         <div className="absolute bottom-0 left-0 right-0 p-4 md:p-8 max-w-4xl mx-auto">
-          <span className="bg-primary text-white px-4 py-1 text-xs font-bold uppercase tracking-widest rounded">{post.category}</span>
+          <span className="bg-white text-primary px-4 py-1 text-xs font-bold uppercase tracking-widest rounded">{post.category}</span>
         </div>
       </section>
 

@@ -129,32 +129,32 @@ const Home = () => {
       </div>
 
       {/* Hero Section */}
-      <section className="relative min-h-[60vh] sm:min-h-[70vh] lg:min-h-screen flex items-center pt-56 pb-24 lg:pb-32 overflow-hidden">
+      <section className="relative min-h-[60vh] sm:min-h-[70vh] lg:min-h-screen flex items-center pt-32 pb-24 lg:pb-32 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img className="w-full h-full object-cover" src={pageMedia.home_hero_image || "https://images.unsplash.com/photo-1572949645079-6416a599c6ae?w=1600&q=80"} alt="Makkah" />
-          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/40 to-transparent"></div>
         </div>
-        <div className="relative z-10 max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 lg:px-24 w-full">
+        <div className="relative z-10 max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 lg:px-24 w-full text-white">
           <div className="max-w-3xl">
-            <div className="w-12 h-1 bg-primary mb-6 md:mb-8"></div>
-            <h1 className="font-notoSerif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-black leading-tight mb-6 md:mb-8 uppercase">
+            <div className="w-12 h-1 bg-white mb-6 md:mb-8"></div>
+            <h1 className="font-notoSerif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6 md:mb-8 uppercase">
               {cmsContent.heroTitle.includes('Umrah') ? (
                 <>
                   {cmsContent.heroTitle.split('Umrah')[0]}
-                  <span className="text-primary">Umrah</span>
+                  <span className="text-white">Umrah</span>
                   {cmsContent.heroTitle.split('Umrah')[1]}
                 </>
               ) : cmsContent.heroTitle}
             </h1>
-            <p className="font-manrope text-base md:text-lg text-black/70 mb-8 md:mb-12 max-w-xl">
+            <p className="font-manrope text-base md:text-lg text-white/80 mb-8 md:mb-12 max-w-xl">
               {cmsContent.heroSubtitle}
             </p>
             <div className="flex flex-wrap gap-3 md:gap-6">
-              <Link to="/packages" className="bg-primary hover:opacity-90 text-white px-6 py-3 md:px-8 md:py-4 rounded-md font-bold transition-all shadow-lg flex items-center gap-2">
+              <Link to="/packages" className="bg-white text-primary hover:bg-gray-100 px-6 py-3 md:px-8 md:py-4 rounded-md font-bold transition-all shadow-lg flex items-center gap-2">
                 {cmsContent.heroCta}
               </Link>
-              <button className="bg-transparent border border-primary/40 hover:bg-primary/5 text-black px-6 py-3 md:px-8 md:py-4 rounded-md font-bold transition-all flex items-center gap-2 backdrop-blur-sm">
-                <span className="material-symbols-outlined text-primary">chat</span>
+              <button className="bg-transparent border border-white/40 hover:bg-white/5 text-white px-6 py-3 md:px-8 md:py-4 rounded-md font-bold transition-all flex items-center gap-2 backdrop-blur-sm">
+                <span className="material-symbols-outlined">chat</span>
                 {cmsContent.heroWhatsApp}
               </button>
             </div>
@@ -241,7 +241,7 @@ const Home = () => {
 
       {/* Why Choose Us */}
       <section className="py-16 md:py-24 bg-primary text-white relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-1/3 h-full opacity-5">
+        <div className="absolute inset-0 z-0 opacity-10">
           <img className="w-full h-full object-cover" src="https://images.unsplash.com/photo-1564507004663-b6dfb3c8924d?w=1200&q=80" alt="Pattern" />
         </div>
         <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 relative z-10">
@@ -250,28 +250,28 @@ const Home = () => {
               <h2 className="font-notoSerif text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-8 md:mb-12">Setting a Sacred Standard for Travel</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                 <div className="space-y-4">
-                  <div className="text-white bg-white/10 w-14 h-14 flex items-center justify-center rounded-lg">
+                  <div className="text-primary bg-white w-14 h-14 flex items-center justify-center rounded-lg shadow-xl">
                     <span className="material-symbols-outlined text-3xl">verified_user</span>
                   </div>
                   <h4 className="font-bold text-white font-manrope">Approved Agency</h4>
                   <p className="text-white/60 text-sm leading-relaxed">Fully certified by Ministry of Hajj & Umrah for your peace of mind.</p>
                 </div>
                 <div className="space-y-4">
-                  <div className="text-white bg-white/10 w-14 h-14 flex items-center justify-center rounded-lg">
+                  <div className="text-primary bg-white w-14 h-14 flex items-center justify-center rounded-lg shadow-xl">
                     <span className="material-symbols-outlined text-3xl">location_on</span>
                   </div>
                   <h4 className="font-bold text-white font-manrope">Haram Proximity</h4>
                   <p className="text-white/60 text-sm leading-relaxed">Specially selected hotels within walking distance of the holy sites.</p>
                 </div>
                 <div className="space-y-4">
-                  <div className="text-white bg-white/10 w-14 h-14 flex items-center justify-center rounded-lg">
+                  <div className="text-primary bg-white w-14 h-14 flex items-center justify-center rounded-lg shadow-xl">
                     <span className="material-symbols-outlined text-3xl">support_agent</span>
                   </div>
                   <h4 className="font-bold text-white font-manrope">24/7 Support</h4>
                   <p className="text-white/60 text-sm leading-relaxed">Our dedicated ground staff in Makkah and Medina are always available.</p>
                 </div>
                 <div className="space-y-4">
-                  <div className="text-white bg-white/10 w-14 h-14 flex items-center justify-center rounded-lg">
+                  <div className="text-primary bg-white w-14 h-14 flex items-center justify-center rounded-lg shadow-xl">
                     <span className="material-symbols-outlined text-3xl">groups</span>
                   </div>
                   <h4 className="font-bold text-white font-manrope">Experienced Guides</h4>
@@ -280,7 +280,7 @@ const Home = () => {
               </div>
             </div>
             <div className="relative">
-              <img className="rounded-xl shadow-2xl w-full h-64 sm:h-80 md:h-96 lg:h-[500px] xl:h-[600px] object-cover" src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800&q=80" alt="Architecture" />
+              <img className="rounded-xl shadow-2xl w-full h-64 sm:h-80 md:h-96 lg:h-[500px] xl:h-[600px] object-cover border-4 border-white/10" src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800&q=80" alt="Architecture" />
               <div className="absolute -bottom-6 -left-6 md:-bottom-10 md:-left-10 bg-white p-6 md:p-10 rounded-xl hidden lg:block shadow-2xl">
                 <span className="block text-3xl md:text-5xl font-bold text-primary mb-2">25+</span>
                 <span className="text-primary/60 font-bold tracking-widest uppercase text-xs">Years of Excellence</span>

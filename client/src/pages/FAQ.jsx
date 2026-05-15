@@ -97,18 +97,18 @@ const FAQ = () => {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative min-h-[60vh] flex items-center pt-56 overflow-hidden">
+      <section className="relative min-h-[50vh] flex items-center pt-32 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img className="w-full h-full object-cover" src={pageMedia.faq_hero_image || "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=1600&q=80"} alt="FAQ" />
-          <div className="absolute inset-0 bg-gradient-to-r from-primary-container via-primary-container/80 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/40 to-transparent"></div>
         </div>
         <div className="relative z-10 max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 lg:px-24 w-full">
           <div className="max-w-3xl">
-            <div className="w-12 h-1 bg-primary mb-6 md:mb-8"></div>
-            <h1 className="font-notoSerif text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-black leading-tight mb-6">
-              Frequently Asked <span className="text-primary">Questions</span>
+            <div className="w-12 h-1 bg-white mb-6 md:mb-8"></div>
+            <h1 className="font-notoSerif text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-tight mb-6">
+              Frequently Asked <span className="text-white">Questions</span>
             </h1>
-            <p className="font-manrope text-base md:text-lg text-black/70 max-w-xl">
+            <p className="font-manrope text-base md:text-lg text-white/70 max-w-xl">
               Find answers to common questions about our Umrah packages, visa services, travel arrangements, and more.
             </p>
           </div>

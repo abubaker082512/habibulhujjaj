@@ -86,25 +86,25 @@ const InternationalTours = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="relative min-h-[70vh] flex items-center pt-56 overflow-hidden">
+      <section className="relative min-h-[60vh] flex items-center pt-32 overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img className="w-full h-full object-cover" src={pageMedia.tours_hero_image || "https://images.unsplash.com/photo-1530783324-1a1b1b5a51?w=1600"} alt="Tours" />
-          <div className="absolute inset-0 bg-gradient-to-r from-primary-container via-primary-container/80 to-transparent"></div>
+          <img className="w-full h-full object-cover" src={pageMedia.tours_hero_image || "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1600"} alt="Istanbul" />
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/40 to-transparent"></div>
         </div>
         <div className="relative z-10 max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 lg:px-24 w-full">
           <div className="max-w-3xl">
-            <div className="w-12 h-1 bg-primary mb-6 md:mb-8"></div>
-            <h1 className="font-notoSerif text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-black leading-tight mb-6">
-              Discover the <span className="text-primary">World</span>
+            <div className="w-12 h-1 bg-white mb-6 md:mb-8"></div>
+            <h1 className="font-notoSerif text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-tight mb-6">
+              International <span className="text-white">Tours</span>
             </h1>
-            <p className="font-manrope text-base md:text-lg text-black/70 max-w-xl mb-8">
-              Explore the most beautiful destinations with our curated international tour packages.
+            <p className="font-manrope text-base md:text-lg text-white/80 max-w-xl mb-8">
+              Explore the world with our curated international tour packages. From the historic streets of Istanbul to the modern skylines of Dubai.
             </p>
             <div className="flex flex-wrap gap-3 md:gap-4">
-              <Link to="/contact" className="bg-primary text-white px-6 py-3 md:px-10 md:py-4 font-manrope font-bold tracking-widest text-sm hover:brightness-110 transition-all">
+              <Link to="/contact" className="bg-white text-primary px-6 py-3 md:px-10 md:py-4 font-manrope font-bold tracking-widest text-sm hover:bg-gray-100 transition-all">
                 Get a Quote
               </Link>
-              <Link to="/contact" className="bg-transparent text-primary border-2 border-primary px-6 py-3 md:px-10 md:py-4 font-manrope font-bold tracking-widest text-sm hover:bg-primary/5 transition-all">
+              <Link to="/contact" className="bg-transparent text-white border-2 border-white px-6 py-3 md:px-10 md:py-4 font-manrope font-bold tracking-widest text-sm hover:bg-white/10 transition-all">
                 Contact Us
               </Link>
             </div>
