@@ -53,22 +53,22 @@ const Gallery = () => {
   }, [])
 
   return (
-    <div className="bg-surface font-manrope text-on-surface min-h-screen">
+    <div className="bg-white font-manrope text-black min-h-screen">
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative min-h-[70vh] flex items-center pt-20 overflow-hidden">
+      <section className="relative min-h-[70vh] flex items-center pt-56 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img className="w-full h-full object-cover" src={pageMedia.gallery_hero_image || "https://images.unsplash.com/photo-1572949645079-6416a599c6ae?w=1600&q=80"} alt="Gallery Hero" />
           <div className="absolute inset-0 bg-gradient-to-r from-primary-container via-primary-container/80 to-transparent"></div>
         </div>
         <div className="relative z-10 max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 lg:px-24 w-full">
           <div className="max-w-3xl">
-            <div className="w-12 h-1 bg-[#013334] mb-6 md:mb-8"></div>
-            <h1 className="font-notoSerif text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-tight mb-6">
-              Photo <span className="text-[#013334]">Gallery</span>
+            <div className="w-12 h-1 bg-primary mb-6 md:mb-8"></div>
+            <h1 className="font-notoSerif text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-black leading-tight mb-6">
+              Photo <span className="text-primary">Gallery</span>
             </h1>
-            <p className="font-manrope text-lg text-white/80 max-w-xl">
+            <p className="font-manrope text-lg text-black/70 max-w-xl">
               A visual chronicle of spiritual journeys, sacred architecture, and the profound serenity of the Holy Cities.
             </p>
           </div>
@@ -76,11 +76,11 @@ const Gallery = () => {
       </section>
 
       {/* Gallery Filter */}
-      <section className="max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 py-12 md:py-16">
+      <section className="max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 py-12 md:py-16 bg-white">
         <div className="flex flex-col md:flex-row justify-between items-end mb-8 md:mb-12">
           <div className="max-w-2xl">
-            <h6 className="font-manrope text-[#013334] font-bold text-sm tracking-[0.2em] uppercase mb-4">Visual Chronicles</h6>
-            <h2 className="font-notoSerif text-3xl sm:text-4xl lg:text-5xl font-bold text-primary leading-tight">Glimpses of the Divine</h2>
+            <h6 className="font-manrope text-primary font-bold text-sm tracking-[0.2em] uppercase mb-4">Visual Chronicles</h6>
+            <h2 className="font-notoSerif text-3xl sm:text-4xl lg:text-5xl font-bold text-black leading-tight">Glimpses of the Divine</h2>
           </div>
         </div>
         
@@ -89,7 +89,7 @@ const Gallery = () => {
             <button
               key={f}
               onClick={() => setActiveFilter(f)}
-              className={`px-4 md:px-6 py-2 rounded-full text-sm font-bold transition-all ${activeFilter === f ? 'bg-[#013334] text-white' : 'bg-surface-container text-on-surface-variant hover:bg-surface-container-high'}`}
+              className={`px-4 md:px-6 py-2 rounded-full text-sm font-bold transition-all ${activeFilter === f ? 'bg-primary text-white' : 'bg-gray-100 text-black/60 hover:bg-gray-200'}`}
             >
               {f}
             </button>
@@ -101,7 +101,7 @@ const Gallery = () => {
           {filtered.map(item => (
             <div
               key={item.id}
-              className="group relative overflow-hidden cursor-pointer editorial-shadow"
+              className="group relative overflow-hidden cursor-pointer border border-gray-100 shadow-sm"
               style={{
                 gridRow: item.type === 'tall' ? 'span 2' : 'span 1',
                 gridColumn: item.type === 'wide' ? 'span 2' : 'span 1',
@@ -109,16 +109,13 @@ const Gallery = () => {
             >
               <img
                 className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
-                style={{ filter: 'grayscale(20%)' }}
-                onMouseEnter={e => e.currentTarget.style.filter = 'grayscale(0%)'}
-                onMouseLeave={e => e.currentTarget.style.filter = 'grayscale(20%)'}
                 src={item.src}
                 alt={item.label}
               />
-              <div className="absolute inset-0 bg-primary-container/0 group-hover:bg-primary-container/30 transition-all duration-500"></div>
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-500"></div>
               {item.label && (
                 <div className="absolute bottom-6 left-6 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
-                  <span className="font-manrope text-[10px] tracking-widest uppercase text-[#013334] mb-1 block">{item.category}</span>
+                  <span className="font-manrope text-[10px] tracking-widest uppercase text-white mb-1 block">{item.category}</span>
                   <h3 className="font-notoSerif text-white text-xl italic">{item.label}</h3>
                 </div>
               )}
@@ -129,16 +126,16 @@ const Gallery = () => {
 
       {/* CTA */}
       <section className="py-16 md:py-24 bg-primary-container relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-1/3 h-full opacity-10">
+        <div className="absolute top-0 right-0 w-1/3 h-full opacity-5">
           <img className="w-full h-full object-cover" src="https://images.unsplash.com/photo-1564507004663-b6dfb3c8924d?w=1200&q=80" alt="Pattern" />
         </div>
         <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 relative z-10 text-center">
-          <h6 className="font-manrope text-[#013334] font-bold text-sm tracking-[0.2em] uppercase mb-4">Capture Memories</h6>
-          <h2 className="font-notoSerif text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">Experience It Yourself</h2>
-          <p className="text-white/60 mb-10 max-w-xl mx-auto">These moments could be yours. Book your Umrah journey or international tour and create your own spiritual memories.</p>
+          <h6 className="font-manrope text-primary font-bold text-sm tracking-[0.2em] uppercase mb-4">Capture Memories</h6>
+          <h2 className="font-notoSerif text-3xl sm:text-4xl lg:text-5xl font-bold text-black mb-6">Experience It Yourself</h2>
+          <p className="text-black/60 mb-10 max-w-xl mx-auto">These moments could be yours. Book your Umrah journey or international tour and create your own spiritual memories.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/packages" className="bg-[#013334] text-white px-10 py-4 font-manrope font-bold tracking-widest uppercase text-sm hover:brightness-110 transition-all">View Packages</a>
-            <a href="/contact" className="border border-white/30 text-white px-10 py-4 font-manrope font-bold tracking-widest uppercase text-sm hover:bg-white/10 transition-all">Contact Us</a>
+            <a href="/packages" className="bg-primary text-white px-10 py-4 font-manrope font-bold tracking-widest uppercase text-sm hover:opacity-90 transition-all">View Packages</a>
+            <a href="/contact" className="border-2 border-primary text-primary px-10 py-4 font-manrope font-bold tracking-widest uppercase text-sm hover:bg-primary/5 transition-all">Contact Us</a>
           </div>
         </div>
       </section>

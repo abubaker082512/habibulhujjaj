@@ -162,11 +162,11 @@ const PackageDetail = () => {
   const distance = pkg.distance_from_haram || pkg.distanceFromHaram || 'Steps to Haram'
 
   return (
-    <div className="bg-surface font-manrope text-on-surface">
+    <div className="bg-white font-manrope text-black">
       <Navbar />
       
       {/* Hero Section */}
-      <section className="relative min-h-[60vh] flex items-center pt-20 overflow-hidden">
+      <section className="relative min-h-[60vh] flex items-center pt-56 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img className="w-full h-full object-cover" src={pkg.image_url || pkg.image || staticPackages[0].image} alt={pkg.title} />
           <div className="absolute inset-0 bg-gradient-to-r from-primary-container via-primary-container/80 to-transparent"></div>
@@ -175,66 +175,66 @@ const PackageDetail = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8 items-end">
             <div className="lg:col-span-8">
               <div className="flex items-center gap-2 md:gap-4 mb-3 md:mb-4">
-                {pkg.badge && <span className="bg-[#013334] text-white font-bold text-xs tracking-widest uppercase px-3 py-1 rounded">{pkg.badge}</span>}
-                <div className="flex text-[#013334]">
+                {pkg.badge && <span className="bg-primary text-white font-bold text-xs tracking-widest uppercase px-3 py-1 rounded">{pkg.badge}</span>}
+                <div className="flex text-primary">
                   {Array.from({ length: pkg.stars || 5 }).map((_, i) => (
                     <span key={i} className="material-symbols-outlined text-sm" style={{fontVariationSettings: "'FILL' 1"}}>star</span>
                   ))}
                 </div>
               </div>
-              <h1 className="font-notoSerif text-3xl sm:text-4xl md:text-5xl lg:text-7xl text-white leading-tight tracking-tight">{pkg.title || 'Umrah Journey'}</h1>
+              <h1 className="font-notoSerif text-3xl sm:text-4xl md:text-5xl lg:text-7xl text-black leading-tight tracking-tight">{pkg.title || 'Umrah Journey'}</h1>
             </div>
             <div className="lg:col-span-4 lg:text-right">
-              <p className="text-white/70 font-medium mb-2">Starting from</p>
-              <div className="font-notoSerif text-2xl md:text-3xl lg:text-4xl text-[#013334]">PKR {price.toLocaleString()} <span className="text-sm md:text-lg font-manrope text-white/70 font-normal">/ person</span></div>
+              <p className="text-black/70 font-medium mb-2">Starting from</p>
+              <div className="font-notoSerif text-2xl md:text-3xl lg:text-4xl text-primary">PKR {price.toLocaleString()} <span className="text-sm md:text-lg font-manrope text-black/70 font-normal">/ person</span></div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Main Content Area */}
-      <section className="py-12 md:py-16 px-4 sm:px-6 md:px-8 max-w-screen-2xl mx-auto">
+      <section className="py-12 md:py-16 px-4 sm:px-6 md:px-8 max-w-screen-2xl mx-auto bg-white">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
           {/* Left Column: Details */}
           <div className="lg:col-span-8 space-y-12 md:space-y-16">
             {/* Quick Info */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-              <div className="bg-surface-container-lowest p-4 md:p-6 lg:p-8 rounded-xl editorial-shadow">
-                <span className="material-symbols-outlined text-[#013334] text-3xl mb-4 block">calendar_today</span>
+              <div className="bg-white border border-gray-100 p-4 md:p-6 lg:p-8 rounded-xl shadow-sm">
+                <span className="material-symbols-outlined text-primary text-3xl mb-4 block">calendar_today</span>
                 <h3 className="font-notoSerif text-lg mb-1">Duration</h3>
-                <p className="text-on-surface-variant text-sm">{pkg.duration || pkg.days || 'Custom'}</p>
+                <p className="text-black/60 text-sm">{pkg.duration || pkg.days || 'Custom'}</p>
               </div>
-              <div className="bg-surface-container-lowest p-4 md:p-6 lg:p-8 rounded-xl editorial-shadow">
-                <span className="material-symbols-outlined text-[#013334] text-3xl mb-4 block">hotel</span>
+              <div className="bg-white border border-gray-100 p-4 md:p-6 lg:p-8 rounded-xl shadow-sm">
+                <span className="material-symbols-outlined text-primary text-3xl mb-4 block">hotel</span>
                 <h3 className="font-notoSerif text-lg mb-1">Accommodation</h3>
-                <p className="text-on-surface-variant text-sm">{hotelName}</p>
+                <p className="text-black/60 text-sm">{hotelName}</p>
               </div>
-              <div className="bg-surface-container-lowest p-4 md:p-6 lg:p-8 rounded-xl editorial-shadow">
-                <span className="material-symbols-outlined text-[#013334] text-3xl mb-4 block">flight</span>
+              <div className="bg-white border border-gray-100 p-4 md:p-6 lg:p-8 rounded-xl shadow-sm">
+                <span className="material-symbols-outlined text-primary text-3xl mb-4 block">flight</span>
                 <h3 className="font-notoSerif text-lg mb-1">Flight</h3>
-                <p className="text-on-surface-variant text-sm">{pkg.airline || 'Included'}</p>
+                <p className="text-black/60 text-sm">{pkg.airline || 'Included'}</p>
               </div>
             </div>
 
             {/* Hotel Info */}
             <div>
-              <h2 className="font-notoSerif text-3xl mb-8 flex items-center gap-4">
+              <h2 className="font-notoSerif text-3xl mb-8 flex items-center gap-4 text-black">
                 {pkg.category === '5 Star' || pkg.category === '4 Star' ? 'Premium Accommodations' : 'Comfortable Stays'}
-                <span className="h-px flex-grow bg-outline-variant/30"></span>
+                <span className="h-px flex-grow bg-gray-100"></span>
               </h2>
-              <div className="bg-surface-container-lowest p-6 rounded-xl editorial-shadow">
+              <div className="bg-white border border-gray-100 p-6 rounded-xl shadow-sm">
                 <div className="flex justify-between items-start mb-4">
                   <div>
-                    <p className="text-[#013334] text-xs font-bold uppercase tracking-widest mb-1">Makkah & Madinah</p>
-                    <h4 className="font-notoSerif text-2xl">{hotelName}</h4>
+                    <p className="text-primary text-xs font-bold uppercase tracking-widest mb-1">Makkah & Madinah</p>
+                    <h4 className="font-notoSerif text-2xl text-black">{hotelName}</h4>
                   </div>
-                  <div className="bg-surface-container text-xs px-3 py-1 rounded font-bold">{distance}</div>
+                  <div className="bg-gray-50 text-xs px-3 py-1 rounded font-bold text-black">{distance}</div>
                 </div>
-                <p className="text-on-surface-variant text-sm leading-relaxed mb-4">{pkg.description || 'Centrally located accommodations for your spiritual journey.'}</p>
+                <p className="text-black/60 text-sm leading-relaxed mb-4">{pkg.description || 'Centrally located accommodations for your spiritual journey.'}</p>
                 <div className="flex flex-wrap gap-3 md:gap-6">
-                  <span className="flex items-center gap-2 text-sm font-bold"><span className="material-symbols-outlined">wifi</span> Free WiFi</span>
-                  <span className="flex items-center gap-2 text-sm font-bold"><span className="material-symbols-outlined">restaurant</span> Breakfast Inc.</span>
-                  <span className="flex items-center gap-2 text-sm font-bold"><span className="material-symbols-outlined">ac_unit</span> Central AC</span>
+                  <span className="flex items-center gap-2 text-sm font-bold text-black"><span className="material-symbols-outlined text-primary">wifi</span> Free WiFi</span>
+                  <span className="flex items-center gap-2 text-sm font-bold text-black"><span className="material-symbols-outlined text-primary">restaurant</span> Breakfast Inc.</span>
+                  <span className="flex items-center gap-2 text-sm font-bold text-black"><span className="material-symbols-outlined text-primary">ac_unit</span> Central AC</span>
                 </div>
               </div>
             </div>
@@ -242,29 +242,29 @@ const PackageDetail = () => {
             {/* Services Checklist */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12">
               <div>
-                <h3 className="font-notoSerif text-xl mb-6">What's Included</h3>
+                <h3 className="font-notoSerif text-xl mb-6 text-black">What's Included</h3>
                 <ul className="space-y-4">
                   {(Array.isArray(pkg.includes) ? pkg.includes : String(pkg.includes || 'Visa Processing,Flights,Ground Transport,Guided Tours').split(',')).map((item, idx) => (
-                    <li key={idx} className="flex items-center gap-3 text-sm">
-                      <span className="material-symbols-outlined text-[#013334] text-lg" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
+                    <li key={idx} className="flex items-center gap-3 text-sm text-black/70">
+                      <span className="material-symbols-outlined text-primary text-lg" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
                       {item}
                     </li>
                   ))}
                 </ul>
               </div>
               <div>
-                <h3 className="font-notoSerif text-xl mb-6">Not Included</h3>
+                <h3 className="font-notoSerif text-xl mb-6 text-black">Not Included</h3>
                 <ul className="space-y-4">
-                  <li className="flex items-center gap-3 text-sm text-on-surface-variant">
-                    <span className="material-symbols-outlined text-error/40 text-lg">cancel</span>
+                  <li className="flex items-center gap-3 text-sm text-black/40">
+                    <span className="material-symbols-outlined text-red-300 text-lg">cancel</span>
                     Personal shopping & extra meals
                   </li>
-                  <li className="flex items-center gap-3 text-sm text-on-surface-variant">
-                    <span className="material-symbols-outlined text-error/40 text-lg">cancel</span>
+                  <li className="flex items-center gap-3 text-sm text-black/40">
+                    <span className="material-symbols-outlined text-red-300 text-lg">cancel</span>
                     Travel and health insurance
                   </li>
-                  <li className="flex items-center gap-3 text-sm text-on-surface-variant">
-                    <span className="material-symbols-outlined text-error/40 text-lg">cancel</span>
+                  <li className="flex items-center gap-3 text-sm text-black/40">
+                    <span className="material-symbols-outlined text-red-300 text-lg">cancel</span>
                     Laundry and room service charges
                   </li>
                 </ul>
@@ -274,16 +274,16 @@ const PackageDetail = () => {
             {/* Itinerary Timeline */}
             {pkg.itinerary && pkg.itinerary.length > 0 && (
               <div>
-                <h2 className="font-notoSerif text-3xl mb-8">Journey Itinerary</h2>
-                <div className="relative pl-6 md:pl-8 border-l-2 border-dashed border-[#013334]/30 ml-2 md:ml-4 space-y-8 md:space-y-10">
+                <h2 className="font-notoSerif text-3xl mb-8 text-black">Journey Itinerary</h2>
+                <div className="relative pl-6 md:pl-8 border-l-2 border-dashed border-primary/30 ml-2 md:ml-4 space-y-8 md:space-y-10">
                   {pkg.itinerary.map((step, idx) => {
                     const isLast = idx === pkg.itinerary.length - 1
                     return (
                       <div key={idx} className="relative">
-                        <div className={`absolute -left-[41px] top-0 w-4 h-4 rounded-full ring-4 ${isLast ? 'bg-[#013334] ring-[#013334]/20' : 'bg-[#7d5800] ring-[#7d5800]/20'}`}></div>
-                        <p className="text-[#013334] font-bold text-xs uppercase mb-1">{step.day}</p>
-                        <h4 className="font-notoSerif text-lg mb-2">{step.title}</h4>
-                        <p className="text-on-surface-variant text-sm leading-relaxed">{step.description}</p>
+                        <div className={`absolute -left-[41px] top-0 w-4 h-4 rounded-full ring-4 ${isLast ? 'bg-primary ring-primary/20' : 'bg-primary/60 ring-primary/10'}`}></div>
+                        <p className="text-primary font-bold text-xs uppercase mb-1">{step.day}</p>
+                        <h4 className="font-notoSerif text-lg mb-2 text-black">{step.title}</h4>
+                        <p className="text-black/60 text-sm leading-relaxed">{step.description}</p>
                       </div>
                     )
                   })}
@@ -294,28 +294,28 @@ const PackageDetail = () => {
 
           {/* Right Column: Booking Form */}
           <div className="lg:col-span-4">
-            <div className="sticky top-32 bg-surface-container-lowest p-4 md:p-6 lg:p-8 rounded-xl editorial-shadow border border-outline-variant/10">
+            <div className="sticky top-32 bg-white p-4 md:p-6 lg:p-8 rounded-xl shadow-xl border border-gray-100">
               <div className="text-center mb-8">
-                <h3 className="font-notoSerif text-2xl mb-2">Plan Your Journey</h3>
-                <p className="text-on-surface-variant text-xs">Fill the form below, and our consultant will contact you within 24 hours.</p>
+                <h3 className="font-notoSerif text-2xl mb-2 text-black">Plan Your Journey</h3>
+                <p className="text-black/40 text-xs">Fill the form below, and our consultant will contact you within 24 hours.</p>
               </div>
               <form className="space-y-6">
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-widest text-outline mb-1">Full Name</label>
-                  <input className="w-full bg-transparent border-0 border-b border-outline-variant focus:border-[#013334] focus:ring-0 transition-colors py-2 text-sm" placeholder="Enter your name" type="text" />
+                  <label className="block text-xs font-bold uppercase tracking-widest text-black/40 mb-1">Full Name</label>
+                  <input className="w-full bg-transparent border-0 border-b border-gray-200 focus:border-primary focus:ring-0 transition-colors py-2 text-sm text-black" placeholder="Enter your name" type="text" />
                 </div>
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-widest text-outline mb-1">Phone Number</label>
-                  <input className="w-full bg-transparent border-0 border-b border-outline-variant focus:border-[#013334] focus:ring-0 transition-colors py-2 text-sm" placeholder="+92 XXXXX XXXXX" type="tel" />
+                  <label className="block text-xs font-bold uppercase tracking-widest text-black/40 mb-1">Phone Number</label>
+                  <input className="w-full bg-transparent border-0 border-b border-gray-200 focus:border-primary focus:ring-0 transition-colors py-2 text-sm text-black" placeholder="+92 XXXXX XXXXX" type="tel" />
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-widest text-outline mb-1">City</label>
-                    <input className="w-full bg-transparent border-0 border-b border-outline-variant focus:border-[#013334] focus:ring-0 transition-colors py-2 text-sm" placeholder="e.g. Lahore" type="text" />
+                    <label className="block text-xs font-bold uppercase tracking-widest text-black/40 mb-1">City</label>
+                    <input className="w-full bg-transparent border-0 border-b border-gray-200 focus:border-primary focus:ring-0 transition-colors py-2 text-sm text-black" placeholder="e.g. Lahore" type="text" />
                   </div>
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-widest text-outline mb-1">Travelers</label>
-                    <select className="w-full bg-transparent border-0 border-b border-outline-variant focus:border-[#013334] focus:ring-0 transition-colors py-2 text-sm appearance-none">
+                    <label className="block text-xs font-bold uppercase tracking-widest text-black/40 mb-1">Travelers</label>
+                    <select className="w-full bg-transparent border-0 border-b border-gray-200 focus:border-primary focus:ring-0 transition-colors py-2 text-sm appearance-none text-black">
                       <option>01 Person</option>
                       <option>02 Persons</option>
                       <option>04+ Persons</option>
@@ -323,14 +323,14 @@ const PackageDetail = () => {
                   </div>
                 </div>
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-widest text-outline mb-1">Estimated Date</label>
-                  <input className="w-full bg-transparent border-0 border-b border-outline-variant focus:border-[#013334] focus:ring-0 transition-colors py-2 text-sm" type="date" />
+                  <label className="block text-xs font-bold uppercase tracking-widest text-black/40 mb-1">Estimated Date</label>
+                  <input className="w-full bg-transparent border-0 border-b border-gray-200 focus:border-primary focus:ring-0 transition-colors py-2 text-sm text-black" type="date" />
                 </div>
-                <button className="w-full bg-gradient-to-r from-[#7d5800] to-[#013334] text-white py-4 rounded-md font-bold text-sm tracking-widest uppercase shadow-lg shadow-[#7d5800]/20 hover:scale-[1.02] transition-transform" type="submit">Send Inquiry</button>
+                <button className="w-full bg-primary text-white py-4 rounded-md font-bold text-sm tracking-widest uppercase shadow-lg shadow-primary/20 hover:opacity-90 transition-all" type="submit">Send Inquiry</button>
               </form>
-              <div className="mt-8 pt-8 border-t border-outline-variant/20 text-center">
-                <p className="text-xs text-on-surface-variant mb-4">Or connect instantly via</p>
-                <a className="inline-flex items-center gap-2 text-[#013334] font-bold hover:text-[#013334] transition-colors" href="#">
+              <div className="mt-8 pt-8 border-t border-gray-100 text-center">
+                <p className="text-xs text-black/40 mb-4">Or connect instantly via</p>
+                <a className="inline-flex items-center gap-2 text-primary font-bold hover:underline transition-colors" href="#">
                   <span className="material-symbols-outlined">chat</span>
                   WhatsApp Support
                 </a>
@@ -341,20 +341,20 @@ const PackageDetail = () => {
       </section>
 
       {/* More Packages */}
-      <section className="py-12 md:py-16 bg-surface-container-low px-4 sm:px-6 md:px-8">
+      <section className="py-12 md:py-16 bg-gray-50 px-4 sm:px-6 md:px-8 border-t border-gray-100">
         <div className="max-w-screen-2xl mx-auto">
-          <h2 className="font-notoSerif text-3xl mb-8">More Packages</h2>
+          <h2 className="font-notoSerif text-3xl mb-8 text-black">More Packages</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {staticPackages.filter(p => p.id !== parseInt(id)).slice(0, 3).map(p => (
-              <Link to={`/package/${p.id}`} key={p.id} className="bg-surface-container-lowest editorial-shadow overflow-hidden group cursor-pointer transition-transform hover:-translate-y-1 block">
+              <Link to={`/package/${p.id}`} key={p.id} className="bg-white border border-gray-100 shadow-sm overflow-hidden group cursor-pointer transition-transform hover:-translate-y-1 block">
                 <div className="relative h-48 overflow-hidden">
                   <img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src={p.image} alt={p.title} />
-                  <div className="absolute top-4 left-4 bg-[#013334] text-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest rounded">{p.badge}</div>
+                  <div className="absolute top-4 left-4 bg-primary text-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest rounded">{p.badge}</div>
                 </div>
                 <div className="p-6">
-                  <h3 className="font-notoSerif text-lg font-bold text-primary mb-1">{p.title}</h3>
-                  <p className="text-on-surface-variant text-sm mb-3">{p.days}</p>
-                  <span className="text-xl font-extrabold text-[#013334]">PKR {p.price.toLocaleString()}</span>
+                  <h3 className="font-notoSerif text-lg font-bold text-black mb-1 group-hover:text-primary transition-colors">{p.title}</h3>
+                  <p className="text-black/60 text-sm mb-3">{p.days}</p>
+                  <span className="text-xl font-extrabold text-primary">PKR {p.price.toLocaleString()}</span>
                 </div>
               </Link>
             ))}

@@ -119,41 +119,41 @@ const BlogPost = () => {
   }
 
   return (
-    <div className="bg-surface font-manrope text-on-surface min-h-screen">
+    <div className="bg-white font-manrope text-black min-h-screen">
       <Navbar />
       
       {/* Hero */}
-      <section className="relative h-[40vh] sm:h-[50vh] overflow-hidden">
+      <section className="relative h-[40vh] sm:h-[50vh] overflow-hidden pt-20">
         <img className="w-full h-full object-cover" src={post.image} alt={post.title} />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#013334] via-[#013334]/70 to-transparent"></div>
+        <div className="absolute inset-0 bg-black/40"></div>
         <div className="absolute bottom-0 left-0 right-0 p-4 md:p-8 max-w-4xl mx-auto">
-          <span className="bg-[#013334] text-white px-4 py-1 text-xs font-bold uppercase tracking-widest rounded">{post.category}</span>
+          <span className="bg-primary text-white px-4 py-1 text-xs font-bold uppercase tracking-widest rounded">{post.category}</span>
         </div>
       </section>
 
       {/* Content */}
-      <article className="max-w-3xl mx-auto px-4 sm:px-6 md:px-8 py-12 md:py-16">
-        <div className="flex items-center gap-4 text-sm text-on-surface-variant mb-8">
+      <article className="max-w-3xl mx-auto px-4 sm:px-6 md:px-8 py-12 md:py-16 bg-white">
+        <div className="flex items-center gap-4 text-sm text-black/40 mb-8">
           <span>{post.date}</span>
           <span>•</span>
           <span>{post.readTime}</span>
         </div>
         
-        <h1 className="font-notoSerif text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-8">{post.title}</h1>
+        <h1 className="font-notoSerif text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-8">{post.title}</h1>
         
-        <div className="prose prose-lg max-w-none text-on-surface-variant leading-relaxed whitespace-pre-line">
+        <div className="prose prose-lg max-w-none text-black/60 leading-relaxed whitespace-pre-line">
           {post.content}
         </div>
 
         {/* CTA */}
-        <div className="mt-12 md:mt-16 p-4 md:p-8 bg-surface-container-lowest rounded-xl editorial-shadow">
-          <h3 className="font-notoSerif text-xl md:text-2xl font-bold text-primary mb-4">Ready to Perform Umrah?</h3>
-          <p className="text-on-surface-variant mb-6">Contact us today to book your package and start your spiritual journey.</p>
-          <Link to="/packages" className="inline-block bg-[#013334] text-white px-6 md:px-8 py-3 rounded font-bold hover:brightness-110 transition-all">View Packages</Link>
+        <div className="mt-12 md:mt-16 p-4 md:p-8 bg-gray-50 rounded-xl border border-gray-100 shadow-sm">
+          <h3 className="font-notoSerif text-xl md:text-2xl font-bold text-black mb-4">Ready to Perform Umrah?</h3>
+          <p className="text-black/60 mb-6">Contact us today to book your package and start your spiritual journey.</p>
+          <Link to="/packages" className="inline-block bg-primary text-white px-6 md:px-8 py-3 rounded font-bold hover:opacity-90 transition-all">View Packages</Link>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-outline-variant">
-          <Link to="/blog" className="text-[#013334] font-bold flex items-center gap-2 hover:gap-4 transition-all">
+        <div className="mt-12 pt-8 border-t border-gray-100">
+          <Link to="/blog" className="text-primary font-bold flex items-center gap-2 hover:gap-4 transition-all">
             <span className="material-symbols-outlined">arrow_back</span>
             Back to Blog
           </Link>

@@ -93,22 +93,22 @@ const FAQ = () => {
   }, [])
 
   return (
-    <div className="bg-surface font-manrope text-on-surface min-h-screen">
+    <div className="bg-white font-manrope text-black min-h-screen">
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative min-h-[60vh] flex items-center pt-20 overflow-hidden">
+      <section className="relative min-h-[60vh] flex items-center pt-56 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img className="w-full h-full object-cover" src={pageMedia.faq_hero_image || "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=1600&q=80"} alt="FAQ" />
           <div className="absolute inset-0 bg-gradient-to-r from-primary-container via-primary-container/80 to-transparent"></div>
         </div>
         <div className="relative z-10 max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 lg:px-24 w-full">
           <div className="max-w-3xl">
-            <div className="w-12 h-1 bg-[#013334] mb-6 md:mb-8"></div>
-            <h1 className="font-notoSerif text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-tight mb-6">
-              Frequently Asked <span className="text-[#013334]">Questions</span>
+            <div className="w-12 h-1 bg-primary mb-6 md:mb-8"></div>
+            <h1 className="font-notoSerif text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-black leading-tight mb-6">
+              Frequently Asked <span className="text-primary">Questions</span>
             </h1>
-            <p className="font-manrope text-base md:text-lg text-white/80 max-w-xl">
+            <p className="font-manrope text-base md:text-lg text-black/70 max-w-xl">
               Find answers to common questions about our Umrah packages, visa services, travel arrangements, and more.
             </p>
           </div>
@@ -116,7 +116,7 @@ const FAQ = () => {
       </section>
 
       {/* FAQ Content */}
-      <section className="py-16 md:py-24 px-4 sm:px-6 md:px-8 max-w-screen-2xl mx-auto">
+      <section className="py-16 md:py-24 px-4 sm:px-6 md:px-8 max-w-screen-2xl mx-auto bg-white">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 md:gap-8">
           {/* Category Tabs */}
           <div className="lg:col-span-1">
@@ -126,7 +126,7 @@ const FAQ = () => {
                 <button
                   key={i}
                   onClick={() => { setActiveCategory(i); setOpenIndex(null); }}
-                  className={`w-full text-left p-4 rounded-lg flex items-center gap-3 transition-all ${activeCategory === i ? 'bg-[#013334] text-white' : 'bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container'}`}
+                  className={`w-full text-left p-4 rounded-lg flex items-center gap-3 transition-all ${activeCategory === i ? 'bg-primary text-white' : 'bg-gray-50 text-black/60 hover:bg-gray-100'}`}
                 >
                   <span className="material-symbols-outlined">{cat.icon}</span>
                   <span className="font-bold text-sm">{cat.title}</span>
@@ -135,10 +135,10 @@ const FAQ = () => {
             </div>
 
             {/* Contact Card */}
-            <div className="mt-8 bg-[#013334] p-6 rounded-xl editorial-shadow">
+            <div className="mt-8 bg-primary p-6 rounded-xl shadow-lg shadow-primary/20">
               <h4 className="font-notoSerif text-xl text-white mb-3">Still have questions?</h4>
               <p className="text-white/80 text-sm mb-4">Our team is here to help you with any inquiries.</p>
-              <Link to="/contact" className="bg-white text-[#013334] px-6 py-3 rounded-md font-bold text-sm flex items-center justify-center gap-2 hover:bg-surface-container-lowest transition-all">
+              <Link to="/contact" className="bg-white text-primary px-6 py-3 rounded-md font-bold text-sm flex items-center justify-center gap-2 hover:bg-gray-50 transition-all">
                 Contact Us
                 <span className="material-symbols-outlined text-sm">arrow_forward</span>
               </Link>
@@ -147,19 +147,19 @@ const FAQ = () => {
 
           {/* FAQ Accordion */}
           <div className="lg:col-span-3">
-            <h2 className="font-notoSerif text-3xl font-bold text-primary mb-8">{faqCategories[activeCategory].title}</h2>
+            <h2 className="font-notoSerif text-3xl font-bold text-black mb-8">{faqCategories[activeCategory].title}</h2>
             <div className="space-y-4">
               {faqCategories[activeCategory].faqs.map((faq, i) => (
-                <div key={i} className="bg-surface-container-lowest editorial-shadow overflow-hidden">
+                <div key={i} className="bg-white border border-gray-100 shadow-sm overflow-hidden">
                   <button
                     onClick={() => toggleFaq(i)}
-                    className="w-full text-left p-6 flex items-center justify-between gap-4 hover:bg-surface-container-low transition-colors"
+                    className="w-full text-left p-6 flex items-center justify-between gap-4 hover:bg-gray-50 transition-colors"
                   >
-                    <span className="font-notoSerif text-lg font-bold text-primary">{faq.q}</span>
-                    <span className={`material-symbols-outlined text-[#013334] transition-transform duration-300 ${openIndex === i ? 'rotate-180' : ''}`}>expand_more</span>
+                    <span className="font-notoSerif text-lg font-bold text-black">{faq.q}</span>
+                    <span className={`material-symbols-outlined text-primary transition-transform duration-300 ${openIndex === i ? 'rotate-180' : ''}`}>expand_more</span>
                   </button>
                   <div className={`overflow-hidden transition-all duration-300 ${openIndex === i ? 'max-h-96' : 'max-h-0'}`}>
-                    <div className="px-6 pb-6 text-on-surface-variant leading-relaxed">
+                    <div className="px-6 pb-6 text-black/60 leading-relaxed">
                       {faq.a}
                     </div>
                   </div>
@@ -172,11 +172,9 @@ const FAQ = () => {
 
       {/* Popular Questions Quick Links */}
       <section className="py-16 md:py-24 bg-primary-container relative overflow-hidden">
-        <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 relative z-10">
-          <div className="text-center mb-12 md:mb-16">
-            <h6 className="font-manrope text-[#013334] font-bold text-sm tracking-[0.2em] uppercase mb-4">Quick Answers</h6>
-            <h2 className="font-notoSerif text-3xl sm:text-4xl lg:text-5xl font-bold text-white">Most Searched Questions</h2>
-          </div>
+        <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 relative z-10 text-center">
+          <h6 className="font-manrope text-primary font-bold text-sm tracking-[0.2em] uppercase mb-4">Quick Answers</h6>
+          <h2 className="font-notoSerif text-3xl sm:text-4xl lg:text-5xl font-bold text-black mb-12">Most Searched Questions</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
             {[
               { q: 'How much does Umrah cost?', icon: 'payments' },
@@ -184,9 +182,9 @@ const FAQ = () => {
               { q: 'Best hotels near Haram?', icon: 'hotel' },
               { q: 'Documents for Umrah visa?', icon: 'description' }
             ].map((item, i) => (
-              <button key={i} className="bg-white/5 border border-white/10 p-4 md:p-6 rounded-xl text-left hover:bg-white/10 transition-all group">
-                <span className="material-symbols-outlined text-[#013334] text-3xl mb-4 block">{item.icon}</span>
-                <span className="text-white font-bold group-hover:text-[#013334] transition-colors">{item.q}</span>
+              <button key={i} className="bg-white border border-gray-100 p-4 md:p-6 rounded-xl text-left hover:border-primary/50 transition-all group shadow-sm">
+                <span className="material-symbols-outlined text-primary text-3xl mb-4 block">{item.icon}</span>
+                <span className="text-black font-bold group-hover:text-primary transition-colors">{item.q}</span>
               </button>
             ))}
           </div>

@@ -63,11 +63,11 @@ const Flights = () => {
   }, [])
 
   return (
-    <div className="min-h-screen bg-surface font-inter">
+    <div className="min-h-screen bg-white font-inter text-black">
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative min-h-[700px] pt-32 pb-20 flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[700px] pt-56 pb-20 flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
             src={pageMedia.flightsHero || "https://images.unsplash.com/photo-1436491865332-7a61a109c0f3?w=1600&q=80"} 
@@ -77,34 +77,34 @@ const Flights = () => {
         </div>
         
         <div className="container mx-auto px-4 relative z-10 text-center">
-          <h1 className="font-notoSerif text-4xl md:text-6xl font-bold text-white mb-6 leading-tight max-w-4xl mx-auto drop-shadow-lg">
-            {cmsContent.heroTitle}
+          <h1 className="font-notoSerif text-4xl md:text-6xl font-bold text-white mb-6 leading-tight max-w-4xl mx-auto drop-shadow-lg uppercase">
+            {cmsContent.heroTitle.includes('REHMAN') ? 'BOOK YOUR DREAM JOURNEY WITH HABIB UL HUJJAJ' : cmsContent.heroTitle}
           </h1>
           <p className="text-xl md:text-2xl text-white/90 mb-12 max-w-2xl mx-auto font-light drop-shadow-md">
             {cmsContent.heroSubtitle}
           </p>
 
           {/* Search Widget */}
-          <div className="bg-white/90 backdrop-blur-md p-8 rounded-2xl shadow-2xl max-w-5xl mx-auto border border-white/20">
+          <div className="bg-white p-8 rounded-2xl shadow-2xl max-w-5xl mx-auto border border-gray-100">
             <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
               <div className="text-left">
-                <label className="text-xs font-bold text-[#013334] uppercase mb-2 block">Origin</label>
-                <input type="text" placeholder="From where?" className="w-full p-3 bg-surface rounded-lg border border-outline focus:border-[#013334] outline-none text-sm" />
+                <label className="text-xs font-bold text-primary uppercase mb-2 block">Origin</label>
+                <input type="text" placeholder="From where?" className="w-full p-3 bg-gray-50 rounded-lg border border-gray-200 focus:border-primary outline-none text-sm text-black" />
               </div>
               <div className="text-left">
-                <label className="text-xs font-bold text-[#013334] uppercase mb-2 block">Destination</label>
-                <input type="text" placeholder="To where?" className="w-full p-3 bg-surface rounded-lg border border-outline focus:border-[#013334] outline-none text-sm" />
+                <label className="text-xs font-bold text-primary uppercase mb-2 block">Destination</label>
+                <input type="text" placeholder="To where?" className="w-full p-3 bg-gray-50 rounded-lg border border-gray-200 focus:border-primary outline-none text-sm text-black" />
               </div>
               <div className="text-left">
-                <label className="text-xs font-bold text-[#013334] uppercase mb-2 block">Departure</label>
-                <input type="date" className="w-full p-3 bg-surface rounded-lg border border-outline focus:border-[#013334] outline-none text-sm" />
+                <label className="text-xs font-bold text-primary uppercase mb-2 block">Departure</label>
+                <input type="date" className="w-full p-3 bg-gray-50 rounded-lg border border-gray-200 focus:border-primary outline-none text-sm text-black" />
               </div>
               <div className="text-left">
-                <label className="text-xs font-bold text-[#013334] uppercase mb-2 block">Return</label>
-                <input type="date" className="w-full p-3 bg-surface rounded-lg border border-outline focus:border-[#013334] outline-none text-sm" />
+                <label className="text-xs font-bold text-primary uppercase mb-2 block">Return</label>
+                <input type="date" className="w-full p-3 bg-gray-50 rounded-lg border border-gray-200 focus:border-primary outline-none text-sm text-black" />
               </div>
               <div className="flex items-end">
-                <button className="w-full bg-[#013334] text-white p-3 rounded-lg font-bold hover:brightness-110 transition-all shadow-lg flex items-center justify-center gap-2">
+                <button className="w-full bg-primary text-white p-3 rounded-lg font-bold hover:opacity-90 transition-all shadow-lg flex items-center justify-center gap-2">
                   <span className="material-symbols-outlined">search</span> Search
                 </button>
               </div>
@@ -116,56 +116,56 @@ const Flights = () => {
       {/* Narrative Section 1 */}
       <section className="py-24 bg-white">
         <div className="container mx-auto px-4 text-center max-w-4xl">
-          <h2 className="font-notoSerif text-3xl md:text-4xl font-bold text-[#013334] mb-6">
-            YOUR NEXT ADVENTURE <span className="text-[#013334]">BEGINS HERE!</span>
+          <h2 className="font-notoSerif text-3xl md:text-4xl font-bold text-black mb-6 uppercase">
+            YOUR NEXT ADVENTURE <span className="text-primary">BEGINS HERE!</span>
           </h2>
-          <p className="text-lg text-on-surface-variant leading-relaxed">
+          <p className="text-lg text-black/60 leading-relaxed">
             {cmsContent.adventureSubtitle}
           </p>
-          <div className="mt-12 h-1 w-24 bg-[#013334] mx-auto rounded-full"></div>
+          <div className="mt-12 h-1 w-24 bg-primary mx-auto rounded-full"></div>
         </div>
       </section>
 
       {/* Narrative Section 2 (Trust) */}
-      <section className="py-24 bg-[#013334] text-white">
+      <section className="py-24 bg-primary text-white">
         <div className="container mx-auto px-4 text-center max-w-4xl">
-          <h2 className="font-notoSerif text-3xl md:text-4xl font-bold text-[#013334] mb-6">
+          <h2 className="font-notoSerif text-3xl md:text-4xl font-bold mb-6">
             TIRED OF OVERPRICED FLIGHTS?
           </h2>
           <p className="text-lg text-white/80 leading-relaxed mb-12">
             {cmsContent.trustSubtitle}
           </p>
-          <button className="bg-[#013334] text-white px-10 py-4 rounded-full font-bold hover:scale-105 transition-all shadow-xl">
+          <button className="bg-white text-primary px-10 py-4 rounded-full font-bold hover:scale-105 transition-all shadow-xl">
             Book Your Free Consultation
           </button>
         </div>
       </section>
 
       {/* Destinations Grid */}
-      <section className="py-24 bg-surface">
+      <section className="py-24 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="font-notoSerif text-4xl font-bold text-[#013334] mb-4">
+            <h2 className="font-notoSerif text-4xl font-bold text-black mb-4">
               {cmsContent.destinationsTitle}
             </h2>
-            <p className="text-on-surface-variant">{cmsContent.destinationsSubtitle}</p>
+            <p className="text-black/60">{cmsContent.destinationsSubtitle}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {destinations.map(dest => (
-              <div key={dest.id} className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all group">
+              <div key={dest.id} className="bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all group">
                 <div className="h-64 relative overflow-hidden">
                   <img src={dest.image_url} alt={dest.name} className="w-full h-full object-cover group-hover:scale-110 transition-all duration-500" />
-                  <div className="absolute top-4 left-4 bg-[#013334] text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+                  <div className="absolute top-4 left-4 bg-primary text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
                     From Rs {dest.price_start.toLocaleString()}
                   </div>
                 </div>
                 <div className="p-6">
-                  <h3 className="font-notoSerif text-2xl font-bold text-[#013334] mb-2">{dest.name}</h3>
-                  <p className="text-on-surface-variant text-sm mb-6 line-clamp-2">{dest.description}</p>
+                  <h3 className="font-notoSerif text-2xl font-bold text-black mb-2">{dest.name}</h3>
+                  <p className="text-black/60 text-sm mb-6 line-clamp-2">{dest.description}</p>
                   <div className="flex gap-3">
-                    <button className="flex-1 bg-[#013334] text-white py-2 rounded font-bold text-sm hover:brightness-125 transition-all">Book Now</button>
-                    <button className="flex-1 border border-[#013334] text-[#013334] py-2 rounded font-bold text-sm hover:bg-[#013334]/5 transition-all">View Details</button>
+                    <button className="flex-1 bg-primary text-white py-2 rounded font-bold text-sm hover:opacity-90 transition-all">Book Now</button>
+                    <button className="flex-1 border-2 border-primary text-primary py-2 rounded font-bold text-sm hover:bg-primary/5 transition-all">View Details</button>
                   </div>
                 </div>
               </div>
@@ -175,35 +175,35 @@ const Flights = () => {
       </section>
 
       {/* Features List */}
-      <section className="py-24 bg-white border-y border-outline-variant">
+      <section className="py-24 bg-gray-50 border-y border-gray-100">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
               {[1, 2, 3, 4, 5].map(i => (
                 <div key={i} className="flex items-start gap-6 group">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-[#013334] text-[#013334] flex items-center justify-center font-notoSerif text-2xl font-bold group-hover:scale-110 transition-all">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center font-notoSerif text-2xl font-bold group-hover:scale-110 transition-all">
                     {i}
                   </div>
                   <div>
-                    <h4 className="text-xl font-bold text-[#013334] mb-1">{cmsContent[`feature${i}`]}</h4>
+                    <h4 className="text-xl font-bold text-black mb-1">{cmsContent[`feature${i}`]}</h4>
                   </div>
                 </div>
               ))}
             </div>
             <div className="relative">
               <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&q=80" className="rounded-3xl shadow-2xl" alt="Travel" />
-              <div className="absolute -bottom-10 -right-10 w-48 h-48 bg-[#013334] rounded-3xl -z-10 animate-pulse"></div>
+              <div className="absolute -bottom-10 -right-10 w-48 h-48 bg-primary/10 rounded-3xl -z-10 animate-pulse"></div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Most Popular Places */}
-      <section className="py-24 bg-surface overflow-hidden">
+      <section className="py-24 bg-white overflow-hidden">
         <div className="container mx-auto px-4">
-          <h2 className="font-notoSerif text-4xl font-bold text-center text-[#013334] mb-16">{cmsContent.popularTitle}</h2>
+          <h2 className="font-notoSerif text-4xl font-bold text-center text-black mb-16">{cmsContent.popularTitle}</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            <div className="col-span-2 row-span-2 relative h-[500px] rounded-3xl overflow-hidden group shadow-xl">
+            <div className="col-span-2 row-span-2 relative h-[500px] rounded-3xl overflow-hidden group shadow-xl border border-gray-100">
               <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&q=80" className="w-full h-full object-cover group-hover:scale-110 transition-all duration-700" alt="Dubai" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
               <div className="absolute bottom-8 left-8 text-white">
@@ -211,17 +211,17 @@ const Flights = () => {
                 <p className="text-white/70">Luxury redefined</p>
               </div>
             </div>
-            <div className="relative h-[242px] rounded-3xl overflow-hidden group shadow-lg">
+            <div className="relative h-[242px] rounded-3xl overflow-hidden group shadow-lg border border-gray-100">
               <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&q=80" className="w-full h-full object-cover group-hover:scale-110 transition-all duration-500" alt="Paris" />
-              <div className="absolute bottom-4 left-4 text-white"><h4 className="font-bold">Paris</h4></div>
+              <div className="absolute bottom-4 left-4 text-white"><h4 className="font-bold text-white shadow-sm">Paris</h4></div>
             </div>
-            <div className="relative h-[242px] rounded-3xl overflow-hidden group shadow-lg">
+            <div className="relative h-[242px] rounded-3xl overflow-hidden group shadow-lg border border-gray-100">
               <img src="https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=800&q=80" className="w-full h-full object-cover group-hover:scale-110 transition-all duration-500" alt="Istanbul" />
-              <div className="absolute bottom-4 left-4 text-white"><h4 className="font-bold">Istanbul</h4></div>
+              <div className="absolute bottom-4 left-4 text-white"><h4 className="font-bold text-white shadow-sm">Istanbul</h4></div>
             </div>
-            <div className="col-span-2 relative h-[242px] rounded-3xl overflow-hidden group shadow-lg">
+            <div className="col-span-2 relative h-[242px] rounded-3xl overflow-hidden group shadow-lg border border-gray-100">
               <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800&q=80" className="w-full h-full object-cover group-hover:scale-110 transition-all duration-500" alt="Tokyo" />
-              <div className="absolute bottom-4 left-4 text-white"><h4 className="font-bold">Tokyo</h4></div>
+              <div className="absolute bottom-4 left-4 text-white"><h4 className="font-bold text-white shadow-sm">Tokyo</h4></div>
             </div>
           </div>
         </div>

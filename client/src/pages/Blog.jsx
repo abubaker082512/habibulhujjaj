@@ -194,22 +194,22 @@ const Blog = () => {
   }, [])
 
   return (
-    <div className="bg-surface font-manrope text-on-surface min-h-screen">
+    <div className="bg-white font-manrope text-black min-h-screen">
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative min-h-[70vh] flex items-center pt-20 overflow-hidden">
+      <section className="relative min-h-[70vh] flex items-center pt-56 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img className="w-full h-full object-cover" src={pageMedia.blog_hero_image || "https://images.unsplash.com/photo-1469357001414-5c82ea24f067?w=1600"} alt="Blog" />
           <div className="absolute inset-0 bg-gradient-to-r from-primary-container via-primary-container/80 to-transparent"></div>
         </div>
         <div className="relative z-10 max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 lg:px-24 w-full">
           <div className="max-w-3xl">
-            <div className="w-12 h-1 bg-[#013334] mb-6 md:mb-8"></div>
-            <h1 className="font-notoSerif text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-tight mb-6">
-              Travel <span className="text-[#013334]">Blog</span>
+            <div className="w-12 h-1 bg-primary mb-6 md:mb-8"></div>
+            <h1 className="font-notoSerif text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-black leading-tight mb-6">
+              Travel <span className="text-primary">Blog</span>
             </h1>
-            <p className="font-manrope text-base md:text-lg text-white/80 max-w-xl">
+            <p className="font-manrope text-base md:text-lg text-black/70 max-w-xl">
               Insights, guides, and spiritual wisdom to help you prepare for your journey. Stay informed with our latest articles on Umrah, travel tips, and religious guidance.
             </p>
           </div>
@@ -220,21 +220,21 @@ const Blog = () => {
       {featuredPost && (
       <section className="py-12 md:py-24 px-4 sm:px-6 md:px-8 max-w-screen-2xl mx-auto -mt-8 sm:-mt-12 lg:-mt-16 relative z-20">
         <Link to={`/blog/${featuredPost.id}`} className="block">
-          <div className="bg-surface-container-lowest editorial-shadow overflow-hidden asymmetric-clip group">
+          <div className="bg-white border border-gray-100 shadow-xl overflow-hidden group">
             <div className="grid grid-cols-1 lg:grid-cols-2">
               <div className="relative h-48 sm:h-56 md:h-64 lg:h-auto overflow-hidden">
                 <img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src={featuredPost.image} alt={featuredPost.title} />
-                <div className="absolute top-4 left-4 bg-[#013334] text-white px-4 py-1 text-xs font-bold uppercase tracking-widest rounded">{featuredPost.category}</div>
+                <div className="absolute top-4 left-4 bg-primary text-white px-4 py-1 text-xs font-bold uppercase tracking-widest rounded">{featuredPost.category}</div>
               </div>
               <div className="p-4 md:p-6 lg:p-12 flex flex-col justify-center">
-                <div className="flex items-center gap-4 text-sm text-outline mb-4">
+                <div className="flex items-center gap-4 text-sm text-black/40 mb-4">
                   <span>{featuredPost.date}</span>
                   <span>•</span>
                   <span>{featuredPost.readTime}</span>
                 </div>
-                <h2 className="font-notoSerif text-2xl sm:text-3xl lg:text-4xl font-bold text-primary mb-4 group-hover:text-[#013334] transition-colors">{featuredPost.title}</h2>
-                <p className="text-on-surface-variant leading-relaxed mb-6">{featuredPost.excerpt}</p>
-                <span className="text-[#013334] font-bold flex items-center gap-2 hover:gap-4 transition-all">
+                <h2 className="font-notoSerif text-2xl sm:text-3xl lg:text-4xl font-bold text-black mb-4 group-hover:text-primary transition-colors">{featuredPost.title}</h2>
+                <p className="text-black/60 leading-relaxed mb-6">{featuredPost.excerpt}</p>
+                <span className="text-primary font-bold flex items-center gap-2 hover:gap-4 transition-all">
                   Read Article
                   <span className="material-symbols-outlined">arrow_forward</span>
                 </span>
@@ -249,7 +249,7 @@ const Blog = () => {
       <section className="max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 mb-8">
         <div className="flex flex-wrap items-center gap-3 md:gap-4">
           {categories.map(cat => (
-            <button key={cat} className={`px-4 md:px-6 py-2 rounded-full text-sm font-bold transition-all ${cat === 'All' ? 'bg-[#013334] text-white' : 'bg-surface-container text-on-surface-variant hover:bg-surface-container-high'}`}>
+            <button key={cat} className={`px-4 md:px-6 py-2 rounded-full text-sm font-bold transition-all ${cat === 'All' ? 'bg-primary text-white' : 'bg-gray-100 text-black/60 hover:bg-gray-200'}`}>
               {cat}
             </button>
           ))}
@@ -261,20 +261,20 @@ const Blog = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {regularPosts.map((post) => (
             <Link key={post.id} to={`/blog/${post.id}`} className="block">
-              <div className="bg-surface-container-lowest group overflow-hidden editorial-shadow transition-transform hover:-translate-y-1">
+              <div className="bg-white border border-gray-100 group overflow-hidden shadow-sm transition-transform hover:-translate-y-1">
                 <div className="relative h-44 sm:h-48 md:h-56 overflow-hidden">
-                  <img className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 asymmetric-clip" src={post.image} alt={post.title} />
-                  <div className="absolute top-4 left-4 bg-[#013334] text-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest rounded">{post.category}</div>
+                  <img className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src={post.image} alt={post.title} />
+                  <div className="absolute top-4 left-4 bg-primary text-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest rounded">{post.category}</div>
                 </div>
                 <div className="p-6">
-                  <div className="flex items-center gap-4 text-xs text-outline mb-3">
+                  <div className="flex items-center gap-4 text-xs text-black/40 mb-3">
                     <span>{post.date}</span>
                     <span>•</span>
                     <span>{post.readTime}</span>
                   </div>
-                  <h3 className="font-notoSerif text-xl font-bold text-primary mb-3 group-hover:text-[#013334] transition-colors line-clamp-2">{post.title}</h3>
-                  <p className="text-on-surface-variant text-sm leading-relaxed line-clamp-3 mb-4">{post.excerpt}</p>
-                  <span className="text-[#013334] font-bold text-sm flex items-center gap-2">
+                  <h3 className="font-notoSerif text-xl font-bold text-black mb-3 group-hover:text-primary transition-colors line-clamp-2">{post.title}</h3>
+                  <p className="text-black/60 text-sm leading-relaxed line-clamp-3 mb-4">{post.excerpt}</p>
+                  <span className="text-primary font-bold text-sm flex items-center gap-2">
                     Read More
                     <span className="material-symbols-outlined text-sm">arrow_forward</span>
                   </span>
@@ -287,16 +287,16 @@ const Blog = () => {
 
       {/* Newsletter */}
       <section className="py-16 md:py-24 bg-primary-container relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-1/3 h-full opacity-10">
+        <div className="absolute top-0 right-0 w-1/3 h-full opacity-5">
           <img className="w-full h-full object-cover" src="https://images.unsplash.com/photo-1469357001414-5c82ea24f067?w=800" alt="Pattern" />
         </div>
         <div className="max-w-2xl mx-auto px-4 sm:px-6 md:px-8 relative z-10 text-center">
-          <h6 className="font-manrope text-[#013334] font-bold text-sm tracking-[0.2em] uppercase mb-4">Stay Updated</h6>
-          <h2 className="font-notoSerif text-3xl sm:text-4xl font-bold text-white mb-6">Subscribe to Our Newsletter</h2>
-          <p className="text-white/60 mb-8">Get the latest travel tips, package deals, and spiritual guides delivered to your inbox.</p>
+          <h6 className="font-manrope text-primary font-bold text-sm tracking-[0.2em] uppercase mb-4">Stay Updated</h6>
+          <h2 className="font-notoSerif text-3xl sm:text-4xl font-bold text-black mb-6">Subscribe to Our Newsletter</h2>
+          <p className="text-black/60 mb-8">Get the latest travel tips, package deals, and spiritual guides delivered to your inbox.</p>
           <div className="flex flex-col sm:flex-row gap-2 max-w-md mx-auto">
-            <input className="flex-1 bg-white/10 border border-white/20 text-white placeholder:text-white/40 px-6 py-4 rounded-md focus:ring-2 focus:ring-[#013334] focus:outline-none" placeholder="Enter your email" type="email" />
-            <button className="bg-[#013334] text-white px-8 py-4 rounded-md font-bold hover:brightness-110 transition-all">Subscribe</button>
+            <input className="flex-1 bg-white border border-gray-200 text-black placeholder:text-black/40 px-6 py-4 rounded-md focus:ring-2 focus:ring-primary focus:outline-none" placeholder="Enter your email" type="email" />
+            <button className="bg-primary text-white px-8 py-4 rounded-md font-bold hover:opacity-90 transition-all">Subscribe</button>
           </div>
         </div>
       </section>
