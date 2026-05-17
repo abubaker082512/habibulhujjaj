@@ -23,18 +23,18 @@ const Navbar = ({ isVersion2 = false }) => {
   }
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 ${isVersion2 ? 'bg-white/80 backdrop-blur-md' : 'bg-white'} border-b border-gray-100 shadow-sm`}>
-      <div className="flex justify-between items-center w-full px-4 sm:px-6 md:px-8 py-3 md:py-4 max-w-screen-2xl mx-auto">
+    <nav className={`fixed top-0 left-0 right-0 z-50 ${isVersion2 ? 'bg-primary/95 backdrop-blur-md' : 'bg-primary'} border-b border-white/10 shadow-lg`}>
+      <div className="flex justify-between items-center w-full px-4 sm:px-6 md:px-8 py-4 max-w-screen-2xl mx-auto text-white">
         <Link to="/" className="flex items-center gap-2">
-          <img src={logo} alt="Habib Ul Hujjaj Logo" className="h-12 md:h-16 lg:h-20 w-auto object-contain" />
+          <img src={logo} alt="Habib Ul Hujjaj Logo" className="h-10 md:h-14 lg:h-16 w-auto object-contain brightness-110" />
         </Link>
-        <div className="hidden md:flex items-center gap-6">
+        <div className="hidden md:flex items-center gap-8">
           {links.map((l) => (
             <NavLink
               key={l.to}
               to={l.to}
               className={({ isActive }) =>
-                `font-manrope text-sm tracking-wide ${isActive ? 'text-primary border-b-2 border-primary pb-1' : 'text-black/80 hover:text-primary'}`
+                `font-manrope text-[13px] font-bold uppercase tracking-widest transition-all ${isActive ? 'text-secondary border-b-2 border-secondary pb-1' : 'text-white/70 hover:text-secondary'}`
               }
             >
               {l.label}
@@ -42,27 +42,27 @@ const Navbar = ({ isVersion2 = false }) => {
           ))}
         </div>
         <div className="flex items-center gap-4 md:gap-6">
-          <Link to="/packages" className="hidden sm:inline-block bg-primary text-white px-4 md:px-6 py-2 rounded-md font-manrope text-sm font-bold tracking-wide hover:opacity-90 transition-all">Book Now</Link>
+          <Link to="/packages" className="hidden sm:inline-block bg-secondary text-primary px-6 py-2.5 rounded-md font-manrope text-xs font-black tracking-widest uppercase hover:scale-105 transition-all shadow-xl">Book Now</Link>
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden text-black p-2"
+            className="md:hidden text-secondary p-2"
             aria-label="Toggle menu"
           >
-            <span className="material-symbols-outlined">{mobileMenuOpen ? 'close' : 'menu'}</span>
+            <span className="material-symbols-outlined text-3xl">{mobileMenuOpen ? 'close' : 'menu'}</span>
           </button>
         </div>
       </div>
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-white border-t border-gray-100 px-4 py-4 space-y-1 max-h-[80vh] overflow-y-auto shadow-xl">
+        <div className="md:hidden bg-primary border-t border-white/5 px-4 py-6 space-y-2 max-h-[80vh] overflow-y-auto shadow-2xl">
           {links.map((l) => (
             <NavLink
               key={l.to}
               to={l.to}
               onClick={handleLinkClick}
               className={({ isActive }) =>
-                `block font-manrope text-sm tracking-wide py-3 px-4 rounded-lg ${isActive ? 'text-primary bg-primary/5' : 'text-black/80 hover:text-primary hover:bg-gray-50'}`
+                `block font-manrope text-sm font-bold uppercase tracking-widest py-4 px-6 rounded-lg ${isActive ? 'text-primary bg-secondary' : 'text-white/70 hover:text-secondary hover:bg-white/5'}`
               }
             >
               {l.label}
@@ -71,7 +71,7 @@ const Navbar = ({ isVersion2 = false }) => {
           <Link
             to="/packages"
             onClick={handleLinkClick}
-            className="block bg-primary text-white text-center py-3 px-4 rounded-md font-manrope text-sm font-bold tracking-wide mt-4"
+            className="block bg-secondary text-primary text-center py-4 px-6 rounded-md font-manrope text-sm font-black tracking-widest uppercase mt-6"
           >
             Book Now
           </Link>

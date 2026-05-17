@@ -121,41 +121,39 @@ const Home = () => {
       {/* SideNavBar (WhatsApp FAB) */}
       <div className="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-[9999] group">
         <div className="flex flex-col items-center gap-2">
-          <span className="bg-white/80 backdrop-blur-md text-primary font-manrope font-bold text-[10px] uppercase px-2 py-1 rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity">WhatsApp Support</span>
-          <div className="bg-white/80 backdrop-blur-md text-primary rounded-full p-3 md:p-4 w-14 h-14 md:w-16 md:h-16 flex items-center justify-center shadow-2xl shadow-primary/20 border border-primary/15 animate-bounce duration-[2000ms] cursor-pointer hover:scale-110 transition-transform">
-            <span className="material-symbols-outlined text-2xl md:text-3xl">chat</span>
-          </div>
+          <span className="bg-primary/90 backdrop-blur-md text-secondary font-manrope font-bold text-[10px] uppercase tracking-widest px-3 py-1.5 rounded shadow-2xl opacity-0 group-hover:opacity-100 transition-opacity">WhatsApp Support</span>
+          <a href="https://wa.me/923004634548" target="_blank" rel="noreferrer" className="bg-secondary text-primary rounded-full p-3 md:p-4 w-14 h-14 md:w-16 md:h-16 flex items-center justify-center shadow-2xl shadow-secondary/40 animate-bounce duration-[2000ms] cursor-pointer hover:scale-110 transition-transform">
+            <span className="material-symbols-outlined text-2xl md:text-3xl font-bold">chat</span>
+          </a>
         </div>
       </div>
 
       {/* Hero Section */}
-      <section className="relative min-h-[60vh] sm:min-h-[70vh] lg:min-h-screen flex items-center pt-32 pb-24 lg:pb-32 overflow-hidden">
+      <section className="relative min-h-[70vh] sm:min-h-[80vh] lg:min-h-screen flex items-center pt-32 pb-24 lg:pb-32 overflow-hidden bg-primary">
         <div className="absolute inset-0 z-0">
-          <img className="w-full h-full object-cover" src={pageMedia.home_hero_image || "https://images.unsplash.com/photo-1572949645079-6416a599c6ae?w=1600&q=80"} alt="Makkah" />
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/40 to-transparent"></div>
+          <img className="w-full h-full object-cover opacity-40 scale-105" src={pageMedia.home_hero_image || "https://images.unsplash.com/photo-1572949645079-6416a599c6ae?w=1600&q=80"} alt="Makkah" />
+          <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/60 to-transparent"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,197,91,0.05)_0%,transparent_50%)]"></div>
         </div>
         <div className="relative z-10 max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 lg:px-24 w-full text-white">
           <div className="max-w-3xl">
-            <div className="w-12 h-1 bg-white mb-6 md:mb-8"></div>
-            <h1 className="font-notoSerif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6 md:mb-8 uppercase">
-              {cmsContent.heroTitle.includes('Umrah') ? (
-                <>
-                  {cmsContent.heroTitle.split('Umrah')[0]}
-                  <span className="text-white">Umrah</span>
-                  {cmsContent.heroTitle.split('Umrah')[1]}
-                </>
-              ) : cmsContent.heroTitle}
+            <div className="w-20 h-1.5 bg-secondary mb-8 md:mb-10 rounded-full"></div>
+            <h1 className="font-notoSerif text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white leading-[0.9] mb-8 md:mb-10 tracking-tighter uppercase">
+              Spiritual <br />
+              <span className="text-secondary italic">Excellence</span> <br />
+              Awaits You
             </h1>
-            <p className="font-manrope text-base md:text-lg text-white/80 mb-8 md:mb-12 max-w-xl">
-              {cmsContent.heroSubtitle}
+            <p className="font-manrope text-lg md:text-xl text-white/70 mb-10 md:mb-16 max-w-xl leading-relaxed">
+              Experience a journey of a lifetime with premium Umrah services, scholarly guidance, and unparalleled comfort. We handle the details so you can focus on your devotion.
             </p>
-            <div className="flex flex-wrap gap-3 md:gap-6">
-              <Link to="/packages" className="bg-white text-primary hover:bg-gray-100 px-6 py-3 md:px-8 md:py-4 rounded-md font-bold transition-all shadow-lg flex items-center gap-2">
-                {cmsContent.heroCta}
+            <div className="flex flex-wrap gap-4 md:gap-8">
+              <Link to="/packages" className="bg-secondary text-primary hover:bg-white hover:scale-105 px-8 py-4 md:px-10 md:py-5 rounded-md font-black text-sm uppercase tracking-widest transition-all shadow-2xl shadow-secondary/20 flex items-center gap-3">
+                Explore Packages
+                <span className="material-symbols-outlined">arrow_right_alt</span>
               </Link>
-              <button className="bg-transparent border border-white/40 hover:bg-white/5 text-white px-6 py-3 md:px-8 md:py-4 rounded-md font-bold transition-all flex items-center gap-2 backdrop-blur-sm">
-                <span className="material-symbols-outlined">chat</span>
-                {cmsContent.heroWhatsApp}
+              <button className="bg-white/5 border border-white/20 hover:bg-white/10 text-white px-8 py-4 md:px-10 md:py-5 rounded-md font-bold text-sm uppercase tracking-widest transition-all flex items-center gap-3 backdrop-blur-md">
+                <span className="material-symbols-outlined">play_circle</span>
+                Watch Film
               </button>
             </div>
           </div>
@@ -164,73 +162,84 @@ const Home = () => {
 
       {/* Quick Package Search */}
       <div className="relative z-20 max-w-6xl mx-auto -mt-12 sm:-mt-16 lg:-mt-24 px-4">
-        <div className="bg-white border border-gray-100 shadow-2xl p-4 sm:p-6 md:p-8 rounded-xl flex flex-col lg:flex-row gap-4 md:gap-6 items-stretch lg:items-end">
-          <div className="flex-1 min-w-0 text-black">
-            <label className="block font-manrope text-xs font-bold uppercase text-black/40 mb-2">Departure City</label>
-            <select className="w-full bg-transparent border-0 border-b border-gray-200 focus:ring-0 focus:border-primary font-manrope text-sm py-2 px-0 text-black">
-              <option>Karachi</option>
-              <option>Lahore</option>
-              <option>Islamabad</option>
+        <div className="bg-primary border border-white/10 shadow-[0_32px_64px_-12px_rgba(0,0,0,0.5)] p-6 sm:p-8 md:p-10 rounded-2xl flex flex-col lg:flex-row gap-6 md:gap-10 items-stretch lg:items-end backdrop-blur-xl">
+          <div className="flex-1 min-w-0">
+            <label className="block font-manrope text-[10px] font-black uppercase text-secondary mb-3 tracking-[0.2em]">Departure City</label>
+            <select className="w-full bg-transparent border-0 border-b border-white/20 focus:ring-0 focus:border-secondary font-manrope text-base py-3 px-0 text-white cursor-pointer">
+              <option className="bg-primary text-white">Karachi</option>
+              <option className="bg-primary text-white">Lahore</option>
+              <option className="bg-primary text-white">Islamabad</option>
             </select>
           </div>
-          <div className="flex-1 min-w-0 text-black">
-            <label className="block font-manrope text-xs font-bold uppercase text-black/40 mb-2">Month</label>
-            <select className="w-full bg-transparent border-0 border-b border-gray-200 focus:ring-0 focus:border-primary font-manrope text-sm py-2 px-0 text-black">
-              <option>September 2024</option>
-              <option>October 2024</option>
-              <option>Ramadan 2025</option>
+          <div className="flex-1 min-w-0">
+            <label className="block font-manrope text-[10px] font-black uppercase text-secondary mb-3 tracking-[0.2em]">Travel Month</label>
+            <select className="w-full bg-transparent border-0 border-b border-white/20 focus:ring-0 focus:border-secondary font-manrope text-base py-3 px-0 text-white cursor-pointer">
+              <option className="bg-primary text-white">September 2024</option>
+              <option className="bg-primary text-white">October 2024</option>
+              <option className="bg-primary text-white">Ramadan 2025</option>
             </select>
           </div>
-          <div className="flex-1 min-w-0 text-black">
-            <label className="block font-manrope text-xs font-bold uppercase text-black/40 mb-2">Package Type</label>
-            <select className="w-full bg-transparent border-0 border-b border-gray-200 focus:ring-0 focus:border-primary font-manrope text-sm py-2 px-0 text-black">
-              <option>Economy</option>
-              <option>3 Star Comfort</option>
-              <option>4 Star Premium</option>
-              <option>5 Star Luxury</option>
+          <div className="flex-1 min-w-0">
+            <label className="block font-manrope text-[10px] font-black uppercase text-secondary mb-3 tracking-[0.2em]">Package Tier</label>
+            <select className="w-full bg-transparent border-0 border-b border-white/20 focus:ring-0 focus:border-secondary font-manrope text-base py-3 px-0 text-white cursor-pointer">
+              <option className="bg-primary text-white">Economy Saver</option>
+              <option className="bg-primary text-white">3 Star Comfort</option>
+              <option className="bg-primary text-white">4 Star Premium</option>
+              <option className="bg-primary text-white">5 Star Luxury</option>
             </select>
           </div>
-          <button className="bg-primary text-white w-full lg:w-auto px-10 py-3 rounded-md font-bold flex items-center justify-center gap-2 hover:opacity-90 transition-all">
-            <span className="material-symbols-outlined">search</span>
-            Search
+          <button className="bg-secondary text-primary w-full lg:w-auto px-12 py-4 rounded-md font-black text-xs uppercase tracking-widest flex items-center justify-center gap-3 hover:scale-105 transition-all shadow-xl shadow-secondary/20">
+            <span className="material-symbols-outlined font-bold">search</span>
+            Find My Journey
           </button>
         </div>
       </div>
 
       {/* Featured Umrah Packages */}
-      <section className="py-16 md:py-24 px-4 sm:px-6 md:px-8 max-w-screen-2xl mx-auto bg-white">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-12 md:mb-16">
+      <section className="py-24 md:py-32 px-4 sm:px-6 md:px-8 max-w-screen-2xl mx-auto bg-white">
+        <div className="flex flex-col md:flex-row justify-between items-end mb-16 md:mb-20">
           <div className="max-w-2xl">
-            <h6 className="font-manrope text-primary font-bold text-sm tracking-[0.2em] uppercase mb-4">Spiritual Journeys</h6>
-            <h2 className="font-notoSerif text-3xl sm:text-4xl lg:text-5xl font-bold text-black leading-tight">Curated Umrah Packages</h2>
+            <h6 className="font-manrope text-primary font-black text-xs tracking-[0.3em] uppercase mb-6 flex items-center gap-4">
+              <span className="w-10 h-[1px] bg-primary"></span>
+              Sacred Journeys
+            </h6>
+            <h2 className="font-notoSerif text-4xl sm:text-5xl lg:text-6xl font-black text-primary leading-[1.1]">Curated Umrah <br />Collections</h2>
           </div>
-          <Link className="text-primary font-bold border-b-2 border-primary pb-1 mt-6 md:mt-0 transition-all hover:pr-4" to="/packages">View All Packages</Link>
+          <Link className="text-primary font-black text-sm uppercase tracking-widest border-b-4 border-secondary pb-2 mt-8 md:mt-0 transition-all hover:pr-6" to="/packages">View All</Link>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
           {packages.slice(0, 4).map((pkg, i) => {
             const staticPkg = staticPackages[i % staticPackages.length]
             const image = pkg.image_url || pkg.image || staticPkg.image
             const badge = pkg.category || pkg.badge || staticPkg.badge
-            const badgeColor = "bg-primary"
             const duration = pkg.duration || pkg.days || staticPkg.days
             const location = pkg.hotel_name || pkg.location || staticPkg.location
             const price = typeof pkg.price === 'number' ? pkg.price : (parseFloat(String(pkg.price).replace(/[^0-9.]/g, '')) || staticPkg.price)
             
             return (
-              <Link to={`/package/${pkg.id || pkg._id || staticPkg.id}`} key={pkg.id || i} className="bg-white border border-gray-100 group cursor-pointer overflow-hidden shadow-sm transition-transform hover:-translate-y-1 block">
-                <div className="relative h-48 sm:h-56 md:h-64 overflow-hidden">
-                  <img className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src={image} alt={pkg.title} />
-                  <div className={`absolute top-4 left-4 ${badgeColor} text-white text-[10px] font-bold px-3 py-1 tracking-widest uppercase rounded`}>{badge}</div>
+              <Link to={`/package/${pkg.id || pkg._id || staticPkg.id}`} key={pkg.id || i} className="bg-white group cursor-pointer overflow-hidden shadow-[0_10px_40px_-15px_rgba(0,28,29,0.1)] hover:shadow-[0_20px_50px_-15px_rgba(0,28,29,0.2)] transition-all hover:-translate-y-2 block rounded-xl border border-gray-50">
+                <div className="relative h-64 overflow-hidden">
+                  <img className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" src={image} alt={pkg.title} />
+                  <div className="absolute top-5 left-5 bg-secondary text-primary text-[10px] font-black px-4 py-2 tracking-widest uppercase rounded shadow-xl">{badge}</div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 </div>
-                <div className="p-4 md:p-6">
-                  <h3 className="font-notoSerif text-xl font-bold text-black mb-2 line-clamp-1 group-hover:text-primary transition-colors">{pkg.title}</h3>
-                  <p className="text-black/40 text-sm mb-4 line-clamp-1">{location} • {duration}</p>
-                  <div className="flex items-center justify-between mt-6">
+                <div className="p-6 md:p-8">
+                  <h3 className="font-notoSerif text-2xl font-bold text-primary mb-3 line-clamp-1 group-hover:text-secondary transition-colors">{pkg.title}</h3>
+                  <div className="flex items-center gap-2 text-primary/40 text-[11px] font-bold uppercase tracking-widest mb-6">
+                    <span className="material-symbols-outlined text-sm">location_on</span>
+                    <span className="line-clamp-1">{location}</span>
+                    <span className="mx-1">/</span>
+                    <span className="material-symbols-outlined text-sm">schedule</span>
+                    <span>{duration}</span>
+                  </div>
+                  <div className="flex items-center justify-between pt-6 border-t border-gray-100">
                     <div>
-                      <span className="block text-xs text-black/40">Starting from</span>
-                      <span className="text-xl font-extrabold text-primary">PKR {price.toLocaleString()}</span>
+                      <span className="block text-[10px] font-black text-primary/30 uppercase tracking-[0.2em] mb-1">Starting At</span>
+                      <span className="text-2xl font-black text-primary tracking-tighter">PKR {price.toLocaleString()}</span>
                     </div>
-                    <span className="material-symbols-outlined text-primary group-hover:translate-x-2 transition-transform">arrow_forward</span>
+                    <div className="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center text-primary group-hover:bg-secondary group-hover:text-primary transition-all">
+                      <span className="material-symbols-outlined font-bold">arrow_forward</span>
+                    </div>
                   </div>
                 </div>
               </Link>
@@ -240,50 +249,51 @@ const Home = () => {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-16 md:py-24 bg-primary text-white relative overflow-hidden">
-        <div className="absolute inset-0 z-0 opacity-10">
+      <section className="py-24 md:py-32 bg-primary text-white relative overflow-hidden">
+        <div className="absolute inset-0 z-0 opacity-10 mix-blend-overlay">
           <img className="w-full h-full object-cover" src="https://images.unsplash.com/photo-1564507004663-b6dfb3c8924d?w=1200&q=80" alt="Pattern" />
         </div>
         <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
             <div>
-              <h2 className="font-notoSerif text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-8 md:mb-12">Setting a Sacred Standard for Travel</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-                <div className="space-y-4">
-                  <div className="text-primary bg-white w-14 h-14 flex items-center justify-center rounded-lg shadow-xl">
-                    <span className="material-symbols-outlined text-3xl">verified_user</span>
+              <h2 className="font-notoSerif text-4xl sm:text-5xl lg:text-7xl font-black text-white mb-10 md:mb-16 tracking-tight leading-[1.1]">The Gold Standard <br /><span className="text-secondary">of Sacred Travel</span></h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 md:gap-14">
+                <div className="space-y-5 group">
+                  <div className="text-primary bg-secondary w-16 h-16 flex items-center justify-center rounded-2xl shadow-2xl group-hover:scale-110 transition-transform">
+                    <span className="material-symbols-outlined text-3xl font-bold">verified_user</span>
                   </div>
-                  <h4 className="font-bold text-white font-manrope">Approved Agency</h4>
-                  <p className="text-white/60 text-sm leading-relaxed">Fully certified by Ministry of Hajj & Umrah for your peace of mind.</p>
+                  <h4 className="font-black text-white font-manrope text-sm uppercase tracking-widest">Certified Excellence</h4>
+                  <p className="text-white/50 text-sm leading-relaxed">Fully certified by Ministry of Hajj & Umrah for complete security.</p>
                 </div>
-                <div className="space-y-4">
-                  <div className="text-primary bg-white w-14 h-14 flex items-center justify-center rounded-lg shadow-xl">
-                    <span className="material-symbols-outlined text-3xl">location_on</span>
+                <div className="space-y-5 group">
+                  <div className="text-primary bg-secondary w-16 h-16 flex items-center justify-center rounded-2xl shadow-2xl group-hover:scale-110 transition-transform">
+                    <span className="material-symbols-outlined text-3xl font-bold">distance</span>
                   </div>
-                  <h4 className="font-bold text-white font-manrope">Haram Proximity</h4>
-                  <p className="text-white/60 text-sm leading-relaxed">Specially selected hotels within walking distance of the holy sites.</p>
+                  <h4 className="font-black text-white font-manrope text-sm uppercase tracking-widest">Premium Proximity</h4>
+                  <p className="text-white/50 text-sm leading-relaxed">Select hotels within steps of the Haram for maximum devotion time.</p>
                 </div>
-                <div className="space-y-4">
-                  <div className="text-primary bg-white w-14 h-14 flex items-center justify-center rounded-lg shadow-xl">
-                    <span className="material-symbols-outlined text-3xl">support_agent</span>
+                <div className="space-y-5 group">
+                  <div className="text-primary bg-secondary w-16 h-16 flex items-center justify-center rounded-2xl shadow-2xl group-hover:scale-110 transition-transform">
+                    <span className="material-symbols-outlined text-3xl font-bold">support_agent</span>
                   </div>
-                  <h4 className="font-bold text-white font-manrope">24/7 Support</h4>
-                  <p className="text-white/60 text-sm leading-relaxed">Our dedicated ground staff in Makkah and Medina are always available.</p>
+                  <h4 className="font-black text-white font-manrope text-sm uppercase tracking-widest">Elite Support</h4>
+                  <p className="text-white/50 text-sm leading-relaxed">Dedicated concierge staff in Makkah and Medina available 24/7.</p>
                 </div>
-                <div className="space-y-4">
-                  <div className="text-primary bg-white w-14 h-14 flex items-center justify-center rounded-lg shadow-xl">
-                    <span className="material-symbols-outlined text-3xl">groups</span>
+                <div className="space-y-5 group">
+                  <div className="text-primary bg-secondary w-16 h-16 flex items-center justify-center rounded-2xl shadow-2xl group-hover:scale-110 transition-transform">
+                    <span className="material-symbols-outlined text-3xl font-bold">mosque</span>
                   </div>
-                  <h4 className="font-bold text-white font-manrope">Experienced Guides</h4>
-                  <p className="text-white/60 text-sm leading-relaxed">Scholarly guides to assist you with religious rituals and Ziarat.</p>
+                  <h4 className="font-black text-white font-manrope text-sm uppercase tracking-widest">Guided Devotion</h4>
+                  <p className="text-white/50 text-sm leading-relaxed">Renowned scholarly guides to assist you with every ritual.</p>
                 </div>
               </div>
             </div>
-            <div className="relative">
-              <img className="rounded-xl shadow-2xl w-full h-64 sm:h-80 md:h-96 lg:h-[500px] xl:h-[600px] object-cover border-4 border-white/10" src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800&q=80" alt="Architecture" />
-              <div className="absolute -bottom-6 -left-6 md:-bottom-10 md:-left-10 bg-white p-6 md:p-10 rounded-xl hidden lg:block shadow-2xl">
-                <span className="block text-3xl md:text-5xl font-bold text-primary mb-2">25+</span>
-                <span className="text-primary/60 font-bold tracking-widest uppercase text-xs">Years of Excellence</span>
+            <div className="relative group">
+              <div className="absolute -inset-4 bg-secondary/20 rounded-2xl blur-2xl group-hover:bg-secondary/30 transition-all"></div>
+              <img className="relative rounded-2xl shadow-2xl w-full h-[400px] md:h-[600px] object-cover border border-white/10" src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800&q=80" alt="Architecture" />
+              <div className="absolute -bottom-8 -left-8 md:-bottom-12 md:-left-12 bg-secondary p-8 md:p-14 rounded-2xl hidden lg:block shadow-[0_20px_50px_rgba(255,197,91,0.3)]">
+                <span className="block text-4xl md:text-7xl font-black text-primary tracking-tighter mb-2">25+</span>
+                <span className="text-primary font-black tracking-[0.2em] uppercase text-[10px]">Years of Legacy</span>
               </div>
             </div>
           </div>
@@ -291,105 +301,126 @@ const Home = () => {
       </section>
 
       {/* International Tours */}
-      <section className="py-16 md:py-24 px-4 sm:px-6 md:px-8 max-w-screen-2xl mx-auto overflow-hidden bg-white">
-        <div className="mb-12 md:mb-16 text-center max-w-2xl mx-auto">
-          <h6 className="font-manrope text-primary font-bold text-sm tracking-[0.2em] uppercase mb-4">Beyond Borders</h6>
-          <h2 className="font-notoSerif text-3xl sm:text-4xl lg:text-5xl font-bold text-black">Discover the World</h2>
+      <section className="py-24 md:py-32 px-4 sm:px-6 md:px-8 max-w-screen-2xl mx-auto overflow-hidden bg-white">
+        <div className="mb-16 md:mb-24 text-center max-w-3xl mx-auto">
+          <h6 className="font-manrope text-primary font-black text-xs tracking-[0.4em] uppercase mb-6">World Horizons</h6>
+          <h2 className="font-notoSerif text-4xl sm:text-5xl lg:text-7xl font-black text-primary leading-tight">Beyond the <span className="text-primary/30 italic font-medium">Sacred</span></h2>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {/* Turkey */}
-          <div className="relative h-64 sm:h-80 md:h-96 lg:h-[400px] xl:h-[500px] group cursor-pointer overflow-hidden rounded-lg">
+          <div className="relative h-[400px] md:h-[600px] group cursor-pointer overflow-hidden rounded-2xl">
             <img className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" src="https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=800&q=80" alt="Turkey" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-            <Link to="/international-tours" className="absolute bottom-8 left-8 right-8 text-white group cursor-pointer overflow-hidden rounded-lg block">
-              <h3 className="font-notoSerif text-2xl font-bold mb-2">Turkey</h3>
-              <p className="text-sm text-white/70 mb-4">Istanbul, Cappadocia, Antalya</p>
-              <span className="inline-block border border-white/30 px-4 py-2 text-xs font-bold uppercase tracking-widest hover:bg-primary hover:border-primary transition-all">Explore Tour</span>
+            <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent"></div>
+            <Link to="/international-tours" className="absolute inset-0 p-8 flex flex-col justify-end text-white">
+              <h3 className="font-notoSerif text-3xl font-bold mb-2">Turkey</h3>
+              <p className="text-sm text-white/60 mb-6 font-manrope uppercase tracking-widest">Heritage & Splendor</p>
+              <div className="flex items-center gap-3 text-secondary font-black text-[10px] uppercase tracking-[0.2em] opacity-0 group-hover:opacity-100 transition-all translate-y-4 group-hover:translate-y-0">
+                Explore Collection
+                <span className="material-symbols-outlined text-sm">arrow_forward</span>
+              </div>
             </Link>
           </div>
           {/* Dubai */}
-          <div className="relative h-64 sm:h-80 md:h-96 lg:h-[400px] xl:h-[500px] group cursor-pointer overflow-hidden rounded-lg">
+          <div className="relative h-[400px] md:h-[600px] group cursor-pointer overflow-hidden rounded-2xl">
             <img className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&q=80" alt="Dubai" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-            <Link to="/international-tours" className="absolute bottom-8 left-8 right-8 text-white">
-              <h3 className="font-notoSerif text-2xl font-bold mb-2">Dubai</h3>
-              <p className="text-sm text-white/70 mb-4">City Sights & Desert Safari</p>
-              <span className="inline-block border border-white/30 px-4 py-2 text-xs font-bold uppercase tracking-widest hover:bg-primary hover:border-primary transition-all">Explore Tour</span>
+            <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent"></div>
+            <Link to="/international-tours" className="absolute inset-0 p-8 flex flex-col justify-end text-white">
+              <h3 className="font-notoSerif text-3xl font-bold mb-2">Dubai</h3>
+              <p className="text-sm text-white/60 mb-6 font-manrope uppercase tracking-widest">Modern Marvels</p>
+              <div className="flex items-center gap-3 text-secondary font-black text-[10px] uppercase tracking-[0.2em] opacity-0 group-hover:opacity-100 transition-all translate-y-4 group-hover:translate-y-0">
+                Explore Collection
+                <span className="material-symbols-outlined text-sm">arrow_forward</span>
+              </div>
             </Link>
           </div>
           {/* Malaysia */}
-          <div className="relative h-64 sm:h-80 md:h-96 lg:h-[400px] xl:h-[500px] group cursor-pointer overflow-hidden rounded-lg">
+          <div className="relative h-[400px] md:h-[600px] group cursor-pointer overflow-hidden rounded-2xl">
             <img className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" src="https://images.unsplash.com/photo-1596422748573-cbb5bf090104?w=800&q=80" alt="Malaysia" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-            <Link to="/international-tours" className="absolute bottom-8 left-8 right-8 text-white">
-              <h3 className="font-notoSerif text-2xl font-bold mb-2">Malaysia</h3>
-              <p className="text-sm text-white/70 mb-4">Kuala Lumpur & Genting</p>
-              <span className="inline-block border border-white/30 px-4 py-2 text-xs font-bold uppercase tracking-widest hover:bg-primary hover:border-primary transition-all">Explore Tour</span>
+            <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent"></div>
+            <Link to="/international-tours" className="absolute inset-0 p-8 flex flex-col justify-end text-white">
+              <h3 className="font-notoSerif text-3xl font-bold mb-2">Malaysia</h3>
+              <p className="text-sm text-white/60 mb-6 font-manrope uppercase tracking-widest">Nature & Grace</p>
+              <div className="flex items-center gap-3 text-secondary font-black text-[10px] uppercase tracking-[0.2em] opacity-0 group-hover:opacity-100 transition-all translate-y-4 group-hover:translate-y-0">
+                Explore Collection
+                <span className="material-symbols-outlined text-sm">arrow_forward</span>
+              </div>
             </Link>
           </div>
           {/* Europe */}
-          <div className="relative h-64 sm:h-80 md:h-96 lg:h-[400px] xl:h-[500px] group cursor-pointer overflow-hidden rounded-lg">
+          <div className="relative h-[400px] md:h-[600px] group cursor-pointer overflow-hidden rounded-2xl">
             <img className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" src="https://images.unsplash.com/photo-1502602892935-72c3ac7c352?w=800&q=80" alt="Europe" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-            <Link to="/international-tours" className="absolute bottom-8 left-8 right-8 text-white">
-              <h3 className="font-notoSerif text-2xl font-bold mb-2">Europe</h3>
-              <p className="text-sm text-white/70 mb-4">Paris, Swiss, Rome</p>
-              <span className="inline-block border border-white/30 px-4 py-2 text-xs font-bold uppercase tracking-widest hover:bg-primary hover:border-primary transition-all">Explore Tour</span>
+            <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent"></div>
+            <Link to="/international-tours" className="absolute inset-0 p-8 flex flex-col justify-end text-white">
+              <h3 className="font-notoSerif text-3xl font-bold mb-2">Europe</h3>
+              <p className="text-sm text-white/60 mb-6 font-manrope uppercase tracking-widest">Timeless Classics</p>
+              <div className="flex items-center gap-3 text-secondary font-black text-[10px] uppercase tracking-[0.2em] opacity-0 group-hover:opacity-100 transition-all translate-y-4 group-hover:translate-y-0">
+                Explore Collection
+                <span className="material-symbols-outlined text-sm">arrow_forward</span>
+              </div>
             </Link>
           </div>
         </div>
       </section>
 
       {/* Testimonials */}
-      <section className="py-16 md:py-24 bg-gray-50 px-4 sm:px-6 md:px-8 border-y border-gray-100">
+      <section className="py-24 md:py-32 bg-gray-50 px-4 sm:px-6 md:px-8 overflow-hidden">
         <div className="max-w-screen-2xl mx-auto">
-          <div className="text-center mb-12 md:mb-16">
-            <h6 className="font-manrope text-primary font-bold text-sm tracking-[0.2em] uppercase mb-4">Client Feedback</h6>
-            <h2 className="font-notoSerif text-3xl sm:text-4xl font-bold text-black">Voices of Gratitude</h2>
+          <div className="text-center mb-16 md:mb-24">
+            <h6 className="font-manrope text-primary font-black text-xs tracking-[0.4em] uppercase mb-6">Testimonials</h6>
+            <h2 className="font-notoSerif text-4xl sm:text-5xl font-black text-primary">Voices of Gratitude</h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            <div className="bg-white p-4 md:p-8 rounded-xl shadow-sm border border-gray-100">
-              <div className="flex gap-1 text-primary mb-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+            <div className="bg-white p-10 md:p-12 rounded-2xl shadow-[0_10px_50px_rgba(0,0,0,0.03)] border border-gray-100 relative group hover:-translate-y-2 transition-all">
+              <div className="absolute -top-6 left-10 w-12 h-12 bg-secondary text-primary rounded-full flex items-center justify-center shadow-xl">
+                <span className="material-symbols-outlined font-black">format_quote</span>
+              </div>
+              <div className="flex gap-1 text-secondary mb-8">
                 {[...Array(5)].map((_, i) => (
-                  <span key={i} className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
+                  <span key={i} className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
                 ))}
               </div>
-              <p className="italic text-black/60 mb-8 leading-relaxed font-manrope">"Our Umrah journey with Habib Ul Hujjaj was flawless. From the visa process to the hotels being so close to the Haram, everything was perfectly managed. May Allah reward them."</p>
-              <div className="flex items-center gap-4">
-                <img className="w-12 h-12 rounded-full object-cover" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="Customer" />
+              <p className="italic text-primary/60 mb-10 leading-relaxed font-manrope text-lg">"Our Umrah journey with Habib Ul Hujjaj was flawless. From the visa process to the hotels being so close to the Haram, everything was perfectly managed."</p>
+              <div className="flex items-center gap-5">
+                <img className="w-14 h-14 rounded-full object-cover border-2 border-secondary" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="Customer" />
                 <div>
-                  <span className="block font-bold text-black">Ahmed Raza</span>
-                  <span className="text-xs text-black/40 uppercase">Karachi</span>
+                  <span className="block font-black text-primary uppercase text-xs tracking-widest">Ahmed Raza</span>
+                  <span className="text-[10px] text-primary/30 font-bold uppercase">Karachi, PK</span>
                 </div>
               </div>
             </div>
-            <div className="bg-white p-4 md:p-8 rounded-xl shadow-sm border border-gray-100">
-              <div className="flex gap-1 text-primary mb-6">
+            <div className="bg-white p-10 md:p-12 rounded-2xl shadow-[0_10px_50px_rgba(0,0,0,0.03)] border border-gray-100 relative group hover:-translate-y-2 transition-all">
+              <div className="absolute -top-6 left-10 w-12 h-12 bg-secondary text-primary rounded-full flex items-center justify-center shadow-xl">
+                <span className="material-symbols-outlined font-black">format_quote</span>
+              </div>
+              <div className="flex gap-1 text-secondary mb-8">
                 {[...Array(5)].map((_, i) => (
-                  <span key={i} className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
+                  <span key={i} className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
                 ))}
               </div>
-              <p className="italic text-black/60 mb-8 leading-relaxed font-manrope">"I booked the Turkey tour for my family. The guide was incredibly knowledgeable and the itinerary wasn't rushed. A truly premium experience from start to finish."</p>
-              <div className="flex items-center gap-4">
-                <img className="w-12 h-12 rounded-full object-cover" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" alt="Customer" />
+              <p className="italic text-primary/60 mb-10 leading-relaxed font-manrope text-lg">"I booked the Turkey tour for my family. The guide was incredibly knowledgeable and the itinerary wasn't rushed. A truly premium experience."</p>
+              <div className="flex items-center gap-5">
+                <img className="w-14 h-14 rounded-full object-cover border-2 border-secondary" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" alt="Customer" />
                 <div>
-                  <span className="block font-bold text-black">Saba Khan</span>
-                  <span className="text-xs text-black/40 uppercase">Lahore</span>
+                  <span className="block font-black text-primary uppercase text-xs tracking-widest">Saba Khan</span>
+                  <span className="text-[10px] text-primary/30 font-bold uppercase">Lahore, PK</span>
                 </div>
               </div>
             </div>
-            <div className="bg-white p-4 md:p-8 rounded-xl shadow-sm border border-gray-100">
-              <div className="flex gap-1 text-primary mb-6">
+            <div className="bg-white p-10 md:p-12 rounded-2xl shadow-[0_10px_50px_rgba(0,0,0,0.03)] border border-gray-100 relative group hover:-translate-y-2 transition-all">
+              <div className="absolute -top-6 left-10 w-12 h-12 bg-secondary text-primary rounded-full flex items-center justify-center shadow-xl">
+                <span className="material-symbols-outlined font-black">format_quote</span>
+              </div>
+              <div className="flex gap-1 text-secondary mb-8">
                 {[...Array(5)].map((_, i) => (
-                  <span key={i} className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
+                  <span key={i} className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
                 ))}
               </div>
-              <p className="italic text-black/60 mb-8 leading-relaxed font-manrope">"The ground staff in Makkah were like family. They helped us with our elderly parents during Tawaaf. I highly recommend Habib Ul Hujjaj for their compassion."</p>
-              <div className="flex items-center gap-4">
-                <img className="w-12 h-12 rounded-full object-cover" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80" alt="Customer" />
+              <p className="italic text-primary/60 mb-10 leading-relaxed font-manrope text-lg">"The ground staff in Makkah were like family. They helped us with our elderly parents during Tawaaf. Compassion at its best."</p>
+              <div className="flex items-center gap-5">
+                <img className="w-14 h-14 rounded-full object-cover border-2 border-secondary" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80" alt="Customer" />
                 <div>
-                  <span className="block font-bold text-black">Dr. Mohammad Ali</span>
-                  <span className="text-xs text-black/40 uppercase">Islamabad</span>
+                  <span className="block font-black text-primary uppercase text-xs tracking-widest">Dr. Mohammad Ali</span>
+                  <span className="text-[10px] text-primary/30 font-bold uppercase">Islamabad, PK</span>
                 </div>
               </div>
             </div>
@@ -398,17 +429,17 @@ const Home = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 md:py-24 px-4 bg-white">
-        <div className="max-w-5xl mx-auto bg-white border-2 border-primary rounded-3xl p-8 md:p-12 lg:p-24 relative overflow-hidden text-center shadow-2xl">
-          <div className="absolute inset-0 opacity-5 pointer-events-none">
+      <section className="py-24 md:py-32 px-4 bg-white">
+        <div className="max-w-6xl mx-auto bg-primary rounded-[3rem] p-12 md:p-24 relative overflow-hidden text-center shadow-[0_40px_100px_rgba(0,28,29,0.4)] border border-white/5">
+          <div className="absolute inset-0 opacity-10 pointer-events-none mix-blend-overlay">
             <img className="w-full h-full object-cover" src="https://images.unsplash.com/photo-1555992457-b8fefdd09069?w=1200&q=80" alt="Silk Pattern" />
           </div>
           <div className="relative z-10">
-            <h2 className="font-notoSerif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-primary mb-6 md:mb-8 uppercase">Book Your Umrah Journey Today</h2>
-            <p className="text-black/70 text-base md:text-lg mb-8 md:mb-12 max-w-2xl mx-auto">Contact our travel consultants today to get a personalized quote for your spiritual or leisure travel needs.</p>
-            <div className="flex flex-wrap justify-center gap-6">
-              <Link to="/contact" className="bg-primary text-white px-10 py-4 rounded-md font-bold text-lg hover:opacity-90 transition-all shadow-xl">Get a Quote</Link>
-              <Link to="/contact" className="bg-transparent text-primary border-2 border-primary px-10 py-4 rounded-md font-bold text-lg hover:bg-primary/5 transition-all">Contact Us</Link>
+            <h2 className="font-notoSerif text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-black text-white mb-10 tracking-tighter uppercase leading-[0.9]">Start Your <br /><span className="text-secondary italic">Legacy</span> Today</h2>
+            <p className="text-white/60 text-lg md:text-xl mb-12 md:mb-16 max-w-2xl mx-auto leading-relaxed">Consult with our travel specialists for a bespoke journey that honors your spiritual and leisure aspirations.</p>
+            <div className="flex flex-wrap justify-center gap-8">
+              <Link to="/contact" className="bg-secondary text-primary px-12 py-5 rounded-md font-black text-xs uppercase tracking-widest hover:scale-105 transition-all shadow-2xl shadow-secondary/20">Get Bespoke Quote</Link>
+              <Link to="/contact" className="bg-white/5 text-white border border-white/20 px-12 py-5 rounded-md font-black text-xs uppercase tracking-widest hover:bg-white/10 transition-all backdrop-blur-md">Direct Contact</Link>
             </div>
           </div>
         </div>

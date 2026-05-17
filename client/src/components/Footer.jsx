@@ -13,8 +13,9 @@ const Footer = () => {
   })
   const [settings, setSettings] = useState({
     siteName: 'Habib Ul Hujjaj',
-    address: 'Main Boulevard, Gulberg III, Lahore, Pakistan',
-    address2: 'DHA Phase II, Karachi, Pakistan' // using this as a placeholder since cms_contact had 2 addresses
+    address: 'Office #201-202, 2nd Floor, Ibrahim Trade Center, Garden Town Lahore',
+    phone: '0300 4634548',
+    timings: 'Mon - Sat 10.00 Am - 11.00 pm'
   })
 
   useEffect(() => {
@@ -23,8 +24,6 @@ const Footer = () => {
       if (savedFooter) setFooterContent(prev => ({...prev, ...JSON.parse(savedFooter)}))
       const savedSettings = localStorage.getItem('site_settings')
       if (savedSettings) setSettings(prev => ({...prev, ...JSON.parse(savedSettings)}))
-      const savedContact = localStorage.getItem('cms_contact')
-      if (savedContact) setSettings(prev => ({...prev, address2: JSON.parse(savedContact).addressKarachi}))
     } catch(e) {}
 
     axios.get(`${API_BASE}/api/cms`)
@@ -37,9 +36,6 @@ const Footer = () => {
         if (data.site_settings && Object.keys(data.site_settings).length > 0) {
           setSettings(prev => ({...prev, ...data.site_settings}))
           localStorage.setItem('site_settings', JSON.stringify(data.site_settings))
-        }
-        if (data.cms_contact && Object.keys(data.cms_contact).length > 0) {
-          setSettings(prev => ({...prev, address2: data.cms_contact.addressKarachi}))
         }
       })
       .catch(err => console.error('Footer fetch error:', err))
@@ -56,46 +52,55 @@ const Footer = () => {
   }
 
   return (
-    <footer className="bg-white border-t border-gray-100">
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12 px-4 sm:px-8 md:px-12 py-10 md:py-16 w-full max-w-screen-2xl mx-auto">
+    <footer className="bg-primary text-white border-t border-white/5">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12 px-4 sm:px-8 md:px-12 py-12 md:py-20 w-full max-w-screen-2xl mx-auto">
         <div className="space-y-6">
-          <div className="font-notoSerif text-xl text-primary font-bold uppercase">{settings.siteName}</div>
-          <p className="text-black/60 text-sm leading-relaxed font-manrope">{footerContent.description}</p>
+          <div className="font-notoSerif text-2xl text-secondary font-bold uppercase tracking-tighter">{settings.siteName}</div>
+          <p className="text-white/60 text-sm leading-relaxed font-manrope">{footerContent.description}</p>
+          <div className="flex gap-4">
+            <span className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center hover:bg-secondary hover:text-primary transition-all cursor-pointer"><i className="fab fa-facebook-f text-xs"></i></span>
+            <span className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center hover:bg-secondary hover:text-primary transition-all cursor-pointer"><i className="fab fa-instagram text-xs"></i></span>
+            <span className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center hover:bg-secondary hover:text-primary transition-all cursor-pointer"><i className="fab fa-whatsapp text-xs"></i></span>
+          </div>
         </div>
         <div>
-          <h5 className="font-notoSerif text-lg text-primary font-bold mb-6">Quick Links</h5>
+          <h5 className="font-notoSerif text-lg text-secondary font-bold mb-8">Quick Links</h5>
           <ul className="space-y-4">
             {footerContent.quickLinks.map((link, idx) => (
-              <li key={idx}><Link to={linkMap[link] || '/'} className="text-black/60 hover:text-primary transition-all text-sm font-manrope">{link}</Link></li>
+              <li key={idx}><Link to={linkMap[link] || '/'} className="text-white/60 hover:text-secondary transition-all text-sm font-manrope">{link}</Link></li>
             ))}
           </ul>
         </div>
         <div>
-          <h5 className="font-notoSerif text-lg text-primary font-bold mb-6">Offices</h5>
-          <ul className="space-y-4 text-black/60 text-sm font-manrope">
-            <li className="flex items-start gap-3">
-              <span className="material-symbols-outlined text-primary text-sm mt-1">location_on</span>
-              <span>{settings.address}</span>
+          <h5 className="font-notoSerif text-lg text-secondary font-bold mb-8">Contact Us</h5>
+          <ul className="space-y-6 text-white/60 text-sm font-manrope">
+            <li className="flex items-start gap-4">
+              <span className="material-symbols-outlined text-secondary text-xl mt-1">location_on</span>
+              <span className="leading-relaxed">{settings.address}</span>
             </li>
-            {settings.address2 && (
-              <li className="flex items-start gap-3">
-                <span className="material-symbols-outlined text-primary text-sm mt-1">location_on</span>
-                <span>{settings.address2}</span>
-              </li>
-            )}
+            <li className="flex items-center gap-4">
+              <span className="material-symbols-outlined text-secondary text-xl">phone_iphone</span>
+              <span className="font-bold text-white">{settings.phone}</span>
+            </li>
+            <li className="flex items-center gap-4">
+              <span className="material-symbols-outlined text-secondary text-xl">schedule</span>
+              <span>{settings.timings}</span>
+            </li>
           </ul>
         </div>
         <div>
-          <h5 className="font-notoSerif text-lg text-primary font-bold mb-6">Newsletter</h5>
-          <p className="text-black/60 text-xs mb-4">Stay updated with the latest deals.</p>
+          <h5 className="font-notoSerif text-lg text-secondary font-bold mb-8">Newsletter</h5>
+          <p className="text-white/60 text-xs mb-6 leading-relaxed">Join our mailing list for exclusive spiritual travel deals and updates.</p>
           <div className="flex gap-2">
-            <input className="bg-gray-50 border-0 border-b border-gray-200 text-black text-sm w-full focus:ring-0 focus:border-primary" placeholder="Email Address" type="email" />
-            <button className="text-primary"><span className="material-symbols-outlined">send</span></button>
+            <input className="bg-white/5 border border-white/10 text-white text-sm w-full py-3 px-4 rounded-md focus:ring-1 focus:ring-secondary focus:border-secondary outline-none" placeholder="Email Address" type="email" />
+            <button className="bg-secondary text-primary px-4 rounded-md hover:opacity-90 transition-all">
+              <span className="material-symbols-outlined font-bold">send</span>
+            </button>
           </div>
         </div>
       </div>
-      <div className="border-t border-gray-100 px-4 md:px-12 py-6 md:py-8 text-center">
-        <p className="text-black/40 text-xs font-manrope">{footerContent.copyright}</p>
+      <div className="border-t border-white/5 px-4 md:px-12 py-8 text-center bg-black/10">
+        <p className="text-white/40 text-xs font-manrope uppercase tracking-widest">{footerContent.copyright}</p>
       </div>
     </footer>
   )
