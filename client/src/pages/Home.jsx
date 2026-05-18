@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import axios from 'axios'
 import heroBackground from '../assets/background1.webp'
+import heroBackground2 from '../assets/background2.jpg'
 
 const API_BASE = import.meta.env.VITE_API_URL || ''
 
@@ -67,7 +68,7 @@ const Home = () => {
       title: "Sacred Hajj Pilgrimage",
       highlight: "Hajj",
       subtitle: "Fulfill your sacred obligation with complete peace of mind. Exceptional VIP accommodations, dedicated ground support, and scholar-led guidance every step of the way.",
-      image: "https://images.unsplash.com/photo-1591604129909-2b4ce4e6e6d2?w=1600&q=80",
+      image: heroBackground2,
       ctaText: "Explore Hajj",
       ctaLink: "/contact"
     },
