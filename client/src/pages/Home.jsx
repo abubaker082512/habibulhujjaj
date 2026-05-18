@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import axios from 'axios'
+import heroBackground from '../assets/background1.webp'
 
 const API_BASE = import.meta.env.VITE_API_URL || ''
 
@@ -131,7 +132,7 @@ const Home = () => {
       {/* Hero Section */}
       <section className="relative min-h-[70vh] sm:min-h-[80vh] lg:min-h-screen flex items-center pt-32 pb-24 lg:pb-32 overflow-hidden bg-primary">
         <div className="absolute inset-0 z-0">
-          <img className="w-full h-full object-cover opacity-40 scale-105" src={pageMedia.home_hero_image || "https://images.unsplash.com/photo-1572949645079-6416a599c6ae?w=1600&q=80"} alt="Makkah" />
+          <img className="w-full h-full object-cover opacity-40 scale-105" src={heroBackground} alt="Makkah" />
           <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/60 to-transparent"></div>
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,197,91,0.05)_0%,transparent_50%)]"></div>
         </div>
