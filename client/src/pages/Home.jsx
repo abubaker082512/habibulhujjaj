@@ -130,11 +130,9 @@ const Home = () => {
       </div>
 
       {/* Hero Section */}
-      <section className="relative min-h-[70vh] sm:min-h-[80vh] lg:min-h-screen flex items-center pt-32 pb-24 lg:pb-32 overflow-hidden bg-black">
+      <section className="relative min-h-[70vh] sm:min-h-[80vh] lg:min-h-screen flex items-center pt-32 pb-24 lg:pb-32 overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img className="w-full h-full object-cover opacity-80 scale-105" src={heroBackground} alt="Makkah" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/20 to-transparent"></div>
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,197,91,0.05)_0%,transparent_50%)]"></div>
+          <img className="w-full h-full object-cover scale-105" src={heroBackground} alt="Makkah" />
         </div>
         <div className="relative z-10 max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 lg:px-24 w-full text-white">
           <div className="max-w-3xl">
