@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import axios from 'axios'
-import heroBackground from '../assets/background1.webp'
+import heroBackground from '../assets/hajj-umrah-hero.jpg'
 import heroBackground2 from '../assets/background2.jpg'
 
 const API_BASE = import.meta.env.VITE_API_URL || ''
