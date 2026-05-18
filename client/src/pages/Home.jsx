@@ -52,6 +52,42 @@ const staticPackages = [
 
 const Home = () => {
   const [packages, setPackages] = useState([])
+  const [activeSlide, setActiveSlide] = useState(0)
+
+  const slides = [
+    {
+      title: "Spiritual Umrah Journeys",
+      highlight: "Umrah",
+      subtitle: "Experience a journey of a lifetime with premium 5-star packages, dedicated scholarly guidance, and unparalleled comfort. We handle the details so you can focus on your devotion.",
+      image: heroBackground,
+      ctaText: "Explore Umrah",
+      ctaLink: "/packages"
+    },
+    {
+      title: "Sacred Hajj Pilgrimage",
+      highlight: "Hajj",
+      subtitle: "Fulfill your sacred obligation with complete peace of mind. Exceptional VIP accommodations, dedicated ground support, and scholar-led guidance every step of the way.",
+      image: "https://images.unsplash.com/photo-1591604129909-2b4ce4e6e6d2?w=1600&q=80",
+      ctaText: "Explore Hajj",
+      ctaLink: "/contact"
+    },
+    {
+      title: "Premium International Tours",
+      highlight: "Tours",
+      subtitle: "Explore the world with curated, premium itineraries. Discover historic sites in Istanbul, experience luxury in Dubai, or relax in exotic destinations with absolute comfort.",
+      image: "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1600&q=80",
+      ctaText: "Explore Tours",
+      ctaLink: "/international-tours"
+    }
+  ]
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveSlide(prev => (prev + 1) % slides.length)
+    }, 6000)
+    return () => clearInterval(timer)
+  }, [slides.length])
+
   const [cmsContent, setCmsContent] = useState({
     heroTitle: 'Proudly serving the guest of Allah',
     heroSubtitle: 'We provide reliable, comfortable, and affordable Umrah services with complete guidance—so you can focus on your عبادت while we take care of the rest.',
@@ -131,31 +167,80 @@ const Home = () => {
 
       {/* Hero Section */}
       <section className="relative min-h-[70vh] sm:min-h-[80vh] lg:min-h-screen flex items-center pt-32 pb-24 lg:pb-32 overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <img className="w-full h-full object-cover scale-105" src={heroBackground} alt="Makkah" />
-        </div>
+        {/* Background Images Cross-Fade */}
+        {slides.map((slide, index) => (
+          <div
+            key={index}
+            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+              index === activeSlide ? 'opacity-100 z-0' : 'opacity-0 z-0 pointer-events-none'
+            }`}
+          >
+            <img className="w-full h-full object-cover scale-105" src={slide.image} alt={slide.title} />
+            {/* Soft premium dark gradient overlay for text readability without washing out the image */}
+            <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/35 to-transparent"></div>
+          </div>
+        ))}
+
         <div className="relative z-10 max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 lg:px-24 w-full text-white">
           <div className="max-w-3xl">
             <div className="w-20 h-1.5 bg-secondary mb-8 md:mb-10 rounded-full"></div>
-            <h1 className="font-notoSerif text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white leading-[0.9] mb-8 md:mb-10 tracking-tighter uppercase">
-              Spiritual <br />
-              <span className="text-secondary italic">Excellence</span> <br />
-              Awaits You
-            </h1>
-            <p className="font-manrope text-lg md:text-xl text-white/70 mb-10 md:mb-16 max-w-xl leading-relaxed">
-              Experience a journey of a lifetime with premium Umrah services, scholarly guidance, and unparalleled comfort. We handle the details so you can focus on your devotion.
-            </p>
-            <div className="flex flex-wrap gap-4 md:gap-8">
-              <Link to="/packages" className="bg-secondary text-primary hover:bg-white hover:scale-105 px-8 py-4 md:px-10 md:py-5 rounded-md font-black text-sm uppercase tracking-widest transition-all shadow-2xl shadow-secondary/20 flex items-center gap-3">
-                Explore Packages
-                <span className="material-symbols-outlined">arrow_right_alt</span>
-              </Link>
-              <button className="bg-white/5 border border-white/20 hover:bg-white/10 text-white px-8 py-4 md:px-10 md:py-5 rounded-md font-bold text-sm uppercase tracking-widest transition-all flex items-center gap-3 backdrop-blur-md">
-                <span className="material-symbols-outlined">play_circle</span>
-                Watch Film
-              </button>
+            
+            {/* Slide content with smooth transition state */}
+            <div className="transition-all duration-700 ease-out">
+              <span className="text-secondary font-bold text-xs tracking-[0.2em] uppercase mb-4 block">
+                Habib Ul Hujjaj present
+              </span>
+              <h1 className="font-notoSerif text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white leading-[0.95] mb-8 md:mb-10 tracking-tighter uppercase">
+                {slides[activeSlide].title.includes(slides[activeSlide].highlight) ? (
+                  <>
+                    {slides[activeSlide].title.split(slides[activeSlide].highlight)[0]}
+                    <span className="text-secondary italic">{slides[activeSlide].highlight}</span>
+                    {slides[activeSlide].title.split(slides[activeSlide].highlight)[1]}
+                  </>
+                ) : slides[activeSlide].title}
+              </h1>
+              <p className="font-manrope text-base md:text-xl text-white/80 mb-10 md:mb-16 max-w-xl leading-relaxed">
+                {slides[activeSlide].subtitle}
+              </p>
+              <div className="flex flex-wrap gap-4 md:gap-8">
+                <Link to={slides[activeSlide].ctaLink} className="bg-secondary text-primary hover:bg-white hover:scale-105 px-8 py-4 md:px-10 md:py-5 rounded-md font-black text-sm uppercase tracking-widest transition-all shadow-2xl shadow-secondary/20 flex items-center gap-3">
+                  {slides[activeSlide].ctaText}
+                  <span className="material-symbols-outlined font-bold">arrow_right_alt</span>
+                </Link>
+                <Link to="/contact" className="bg-white/5 border border-white/20 hover:bg-white/10 text-white px-8 py-4 md:px-10 md:py-5 rounded-md font-bold text-sm uppercase tracking-widest transition-all flex items-center gap-3 backdrop-blur-md">
+                  <span className="material-symbols-outlined">call</span>
+                  Contact Us
+                </Link>
+              </div>
             </div>
           </div>
+        </div>
+
+        {/* Slide Navigation Arrows */}
+        <button
+          onClick={() => setActiveSlide(prev => (prev - 1 + slides.length) % slides.length)}
+          className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full border border-white/20 bg-white/5 hover:bg-white/10 text-white flex items-center justify-center transition-all backdrop-blur-sm active:scale-95"
+        >
+          <span className="material-symbols-outlined">chevron_left</span>
+        </button>
+        <button
+          onClick={() => setActiveSlide(prev => (prev + 1) % slides.length)}
+          className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full border border-white/20 bg-white/5 hover:bg-white/10 text-white flex items-center justify-center transition-all backdrop-blur-sm active:scale-95"
+        >
+          <span className="material-symbols-outlined">chevron_right</span>
+        </button>
+
+        {/* Bullet/Dot Indicators */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-3">
+          {slides.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setActiveSlide(index)}
+              className={`h-2.5 rounded-full transition-all duration-300 ${
+                index === activeSlide ? 'w-8 bg-secondary' : 'w-2.5 bg-white/40 hover:bg-white/60'
+              }`}
+            ></button>
+          ))}
         </div>
       </section>
 
