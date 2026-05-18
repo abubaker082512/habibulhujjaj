@@ -22,8 +22,16 @@ const Footer = () => {
     try {
       const savedFooter = localStorage.getItem('cms_footer')
       if (savedFooter) setFooterContent(prev => ({...prev, ...JSON.parse(savedFooter)}))
+      
       const savedSettings = localStorage.getItem('site_settings')
-      if (savedSettings) setSettings(prev => ({...prev, ...JSON.parse(savedSettings)}))
+      if (savedSettings) {
+        const parsed = JSON.parse(savedSettings)
+        if (parsed.phone && parsed.phone.includes('123 4567')) {
+          localStorage.removeItem('site_settings')
+        } else {
+          setSettings(prev => ({...prev, ...parsed}))
+        }
+      }
     } catch(e) {}
 
     axios.get(`${API_BASE}/api/cms`)
@@ -34,8 +42,20 @@ const Footer = () => {
           localStorage.setItem('cms_footer', JSON.stringify(data.cms_footer))
         }
         if (data.site_settings && Object.keys(data.site_settings).length > 0) {
-          setSettings(prev => ({...prev, ...data.site_settings}))
-          localStorage.setItem('site_settings', JSON.stringify(data.site_settings))
+          const settingsVal = data.site_settings
+          if (settingsVal.phone && settingsVal.phone.includes('123 4567')) {
+            const corrected = {
+              ...settingsVal,
+              phone: '0300 4634548',
+              whatsapp: '0300 4634548',
+              address: 'Office #201-202, 2nd Floor, Ibrahim Trade Center, Garden Town Lahore'
+            }
+            setSettings(prev => ({...prev, ...corrected}))
+            localStorage.setItem('site_settings', JSON.stringify(corrected))
+          } else {
+            setSettings(prev => ({...prev, ...settingsVal}))
+            localStorage.setItem('site_settings', JSON.stringify(settingsVal))
+          }
         }
       })
       .catch(err => console.error('Footer fetch error:', err))

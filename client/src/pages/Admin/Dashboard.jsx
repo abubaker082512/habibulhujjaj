@@ -936,8 +936,8 @@ const ContentCMS = () => {
 
   const [contactContent, setContactContent] = useState({
     heroTitle: 'Get in Touch', heroSubtitle: 'Have questions about our Umrah packages or international tours? Our travel consultants are ready to assist you.',
-    phone1: '+92 300 123 4567', phone2: '+92 42 123 4567', email: 'info@habibulhujaj.com', whatsapp: '+92 300 123 4567',
-    addressLahore: 'Main Boulevard, Gulberg III, Lahore, Pakistan', addressKarachi: 'DHA Phase II, Karachi, Pakistan',
+    phone1: '0300 4634548', phone2: '', email: 'info@habibulhujaj.com', whatsapp: '0300 4634548',
+    addressLahore: 'Office #201-202, 2nd Floor, Ibrahim Trade Center, Garden Town Lahore', addressKarachi: 'DHA Phase II, Karachi, Pakistan',
   })
 
   const [flightsContent, setFlightsContent] = useState({
@@ -976,9 +976,18 @@ const ContentCMS = () => {
       if (localStorage.getItem('cms_home')) setHomeContent(JSON.parse(localStorage.getItem('cms_home')))
       if (localStorage.getItem('cms_about')) setAboutContent(JSON.parse(localStorage.getItem('cms_about')))
       if (localStorage.getItem('cms_flights')) setFlightsContent(JSON.parse(localStorage.getItem('cms_flights')))
-      if (localStorage.getItem('cms_contact')) setContactContent(JSON.parse(localStorage.getItem('cms_contact')))
       if (localStorage.getItem('cms_faq')) setFaqContent(JSON.parse(localStorage.getItem('cms_faq')))
       if (localStorage.getItem('cms_footer')) setFooterContent(JSON.parse(localStorage.getItem('cms_footer')))
+      
+      const savedContact = localStorage.getItem('cms_contact')
+      if (savedContact) {
+        const parsed = JSON.parse(savedContact)
+        if (parsed.phone1 && parsed.phone1.includes('123 4567')) {
+          localStorage.removeItem('cms_contact')
+        } else {
+          setContactContent(parsed)
+        }
+      }
     } catch (e) {}
 
     // Fetch from API
@@ -987,9 +996,25 @@ const ContentCMS = () => {
       if (data.cms_home && Object.keys(data.cms_home).length > 0) setHomeContent(prev => ({...prev, ...data.cms_home}));
       if (data.cms_about && Object.keys(data.cms_about).length > 0) setAboutContent(prev => ({...prev, ...data.cms_about}));
       if (data.cms_flights && Object.keys(data.cms_flights).length > 0) setFlightsContent(prev => ({...prev, ...data.cms_flights}));
-      if (data.cms_contact && Object.keys(data.cms_contact).length > 0) setContactContent(prev => ({...prev, ...data.cms_contact}));
       if (data.cms_faq && Array.isArray(data.cms_faq)) setFaqContent(data.cms_faq);
       if (data.cms_footer && Object.keys(data.cms_footer).length > 0) setFooterContent(prev => ({...prev, ...data.cms_footer}));
+      
+      if (data.cms_contact && Object.keys(data.cms_contact).length > 0) {
+        const contact = data.cms_contact
+        if (contact.phone1 && contact.phone1.includes('123 4567')) {
+          const corrected = {
+            ...contact,
+            phone1: '0300 4634548',
+            phone2: '',
+            whatsapp: '0300 4634548',
+            addressLahore: 'Office #201-202, 2nd Floor, Ibrahim Trade Center, Garden Town Lahore'
+          }
+          setContactContent(prev => ({...prev, ...corrected}))
+          localStorage.setItem('cms_contact', JSON.stringify(corrected))
+        } else {
+          setContactContent(prev => ({...prev, ...contact}))
+        }
+      }
     }).catch(err => console.error("CMS load error:", err));
   }, [])
 

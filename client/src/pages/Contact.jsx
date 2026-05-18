@@ -11,8 +11,8 @@ const Contact = () => {
   const [pageMedia, setPageMedia] = useState({})
   const [cmsContent, setCmsContent] = useState({
     heroTitle: 'Get in Touch', heroSubtitle: 'Have questions about our Umrah packages or international tours? Our travel consultants are ready to assist you.',
-    phone1: '+92 300 4634548', phone2: '+92 42 35870000', email: 'info@habibulhujaj.com', whatsapp: '+92 300 4634548',
-    addressLahore: 'Main Boulevard, Gulberg III, Lahore, Pakistan', addressKarachi: 'DHA Phase II, Karachi, Pakistan',
+    phone1: '0300 4634548', phone2: '', email: 'info@habibulhujaj.com', whatsapp: '0300 4634548',
+    addressLahore: 'Office #201-202, 2nd Floor, Ibrahim Trade Center, Garden Town Lahore', addressKarachi: 'DHA Phase II, Karachi, Pakistan',
   })
 
   useEffect(() => {
@@ -20,7 +20,14 @@ const Contact = () => {
       const savedMedia = localStorage.getItem('pageMedia')
       if (savedMedia) setPageMedia(JSON.parse(savedMedia))
       const savedContact = localStorage.getItem('cms_contact')
-      if (savedContact) setCmsContent(prev => ({...prev, ...JSON.parse(savedContact)}))
+      if (savedContact) {
+        const parsed = JSON.parse(savedContact)
+        if (parsed.phone1 && parsed.phone1.includes('123 4567')) {
+          localStorage.removeItem('cms_contact')
+        } else {
+          setCmsContent(prev => ({...prev, ...parsed}))
+        }
+      }
     } catch (e) {}
 
     axios.get(`${API_BASE}/api/cms`)
@@ -31,8 +38,21 @@ const Contact = () => {
           localStorage.setItem('pageMedia', JSON.stringify(data.page_media))
         }
         if (data.cms_contact && Object.keys(data.cms_contact).length > 0) {
-          setCmsContent(prev => ({...prev, ...data.cms_contact}))
-          localStorage.setItem('cms_contact', JSON.stringify(data.cms_contact))
+          const contact = data.cms_contact
+          if (contact.phone1 && contact.phone1.includes('123 4567')) {
+            const corrected = {
+              ...contact,
+              phone1: '0300 4634548',
+              phone2: '',
+              whatsapp: '0300 4634548',
+              addressLahore: 'Office #201-202, 2nd Floor, Ibrahim Trade Center, Garden Town Lahore'
+            }
+            setCmsContent(prev => ({...prev, ...corrected}))
+            localStorage.setItem('cms_contact', JSON.stringify(corrected))
+          } else {
+            setCmsContent(prev => ({...prev, ...contact}))
+            localStorage.setItem('cms_contact', JSON.stringify(contact))
+          }
         }
       })
       .catch(err => console.error('Failed to fetch CMS content:', err))
@@ -97,8 +117,12 @@ const Contact = () => {
               <h3 className="font-notoSerif text-xl font-bold text-primary mb-2">Call Us</h3>
               <p className="text-black/60 text-sm mb-3">Available 24/7 for your inquiries</p>
               <a href={`tel:${cmsContent.phone1}`} className="text-primary font-bold hover:underline">{cmsContent.phone1}</a>
-              <br />
-              <a href={`tel:${cmsContent.phone2}`} className="text-primary font-bold hover:underline">{cmsContent.phone2}</a>
+              {cmsContent.phone2 && (
+                <>
+                  <br />
+                  <a href={`tel:${cmsContent.phone2}`} className="text-primary font-bold hover:underline">{cmsContent.phone2}</a>
+                </>
+              )}
             </div>
 
             {/* WhatsApp */}
