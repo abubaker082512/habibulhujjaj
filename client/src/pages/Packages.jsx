@@ -220,10 +220,10 @@ const Packages = () => {
       {/* WhatsApp FAB */}
       <div className="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-[9999] group">
         <div className="flex flex-col items-center gap-2">
-          <span className="bg-white/80 backdrop-blur-md text-[#013334] font-manrope font-bold text-[10px] uppercase px-2 py-1 rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity">WhatsApp Support</span>
-          <div className="bg-white/80 backdrop-blur-md text-[#013334] rounded-full p-3 md:p-4 w-14 h-14 md:w-16 md:h-16 flex items-center justify-center shadow-2xl shadow-[#013334]/20 border border-[#013334]/15 animate-bounce cursor-pointer hover:scale-110 transition-transform">
-            <span className="material-symbols-outlined text-2xl md:text-3xl">chat</span>
-          </div>
+          <span className="bg-primary/90 backdrop-blur-md text-secondary font-manrope font-bold text-[10px] uppercase tracking-widest px-3 py-1.5 rounded shadow-2xl opacity-0 group-hover:opacity-100 transition-opacity">WhatsApp Support</span>
+          <a href="https://wa.me/923004634548" target="_blank" rel="noreferrer" className="bg-secondary text-primary rounded-full p-3 md:p-4 w-14 h-14 md:w-16 md:h-16 flex items-center justify-center shadow-2xl shadow-secondary/40 animate-bounce duration-[2000ms] cursor-pointer hover:scale-110 transition-transform">
+            <span className="material-symbols-outlined text-2xl md:text-3xl font-bold">chat</span>
+          </a>
         </div>
       </div>
 

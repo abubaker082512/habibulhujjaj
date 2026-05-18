@@ -173,7 +173,7 @@ const InternationalTours = () => {
             <Link to="/packages" className="bg-primary text-white px-10 py-4 font-manrope font-bold tracking-widest text-sm hover:opacity-90 transition-all">
               View Umrah Packages
             </Link>
-            <a href="tel:+923001234567" className="border-2 border-primary text-primary px-10 py-4 font-manrope font-bold tracking-widest text-sm hover:bg-primary/5 transition-all flex items-center gap-2">
+            <a href="tel:+923004634548" className="border-2 border-primary text-primary px-10 py-4 font-manrope font-bold tracking-widest text-sm hover:bg-primary/5 transition-all flex items-center gap-2">
               <span className="material-symbols-outlined">call</span>
               Call Now
             </a>

@@ -10,6 +10,7 @@ DROP TABLE IF EXISTS visa_services CASCADE;
 DROP TABLE IF EXISTS gallery CASCADE;
 DROP TABLE IF EXISTS blog_posts CASCADE;
 DROP TABLE IF EXISTS cms_content CASCADE;
+DROP TABLE IF EXISTS submissions CASCADE;
 
 -- 1. PACKAGES TABLE
 CREATE TABLE IF NOT EXISTS packages (
@@ -92,6 +93,17 @@ CREATE TABLE IF NOT EXISTS cms_content (
   updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
+-- 7. SUBMISSIONS TABLE
+CREATE TABLE IF NOT EXISTS submissions (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  name TEXT NOT NULL,
+  email TEXT,
+  phone TEXT,
+  subject TEXT,
+  message TEXT,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
 -- =============================================
 -- ENABLE ROW LEVEL SECURITY (RLS)
 -- =============================================
@@ -102,6 +114,7 @@ ALTER TABLE visa_services ENABLE ROW LEVEL SECURITY;
 ALTER TABLE gallery ENABLE ROW LEVEL SECURITY;
 ALTER TABLE blog_posts ENABLE ROW LEVEL SECURITY;
 ALTER TABLE cms_content ENABLE ROW LEVEL SECURITY;
+ALTER TABLE submissions ENABLE ROW LEVEL SECURITY;
 
 -- =============================================
 -- RLS POLICIES - PUBLIC READ, ADMIN WRITE
@@ -142,6 +155,11 @@ CREATE POLICY "Public can view cms content" ON cms_content FOR SELECT USING (tru
 CREATE POLICY "Authenticated users can insert cms content" ON cms_content FOR INSERT WITH CHECK (auth.role() = 'authenticated');
 CREATE POLICY "Authenticated users can update cms content" ON cms_content FOR UPDATE USING (auth.role() = 'authenticated');
 CREATE POLICY "Authenticated users can delete cms content" ON cms_content FOR DELETE USING (auth.role() = 'authenticated');
+
+-- Submissions: Public can write/insert, only authenticated admins can select/delete
+CREATE POLICY "Public can insert submissions" ON submissions FOR INSERT WITH CHECK (true);
+CREATE POLICY "Authenticated users can view submissions" ON submissions FOR SELECT USING (auth.role() = 'authenticated');
+CREATE POLICY "Authenticated users can delete submissions" ON submissions FOR DELETE USING (auth.role() = 'authenticated');
 
 -- =============================================
 -- SEED DATA - PACKAGES

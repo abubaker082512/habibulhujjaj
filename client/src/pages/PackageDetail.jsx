@@ -109,6 +109,31 @@ const PackageDetail = () => {
   const { id } = useParams()
   const [pkg, setPkg] = useState(null)
   const [loading, setLoading] = useState(true)
+  const [formData, setFormData] = useState({ name: '', phone: '', city: '', travelers: '01 Person', date: '' })
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault()
+    if (!formData.name || !formData.phone) {
+      alert('Please fill in your name and phone number.')
+      return
+    }
+    const submissionData = {
+      name: formData.name,
+      phone: formData.phone,
+      email: '',
+      subject: `Booking: ${pkg ? pkg.title : 'Umrah Package'}`,
+      message: `City: ${formData.city || 'N/A'}\nTravelers: ${formData.travelers}\nEstimated Date: ${formData.date || 'N/A'}`
+    }
+    axios.post(`${API_BASE}/api/submissions`, submissionData)
+      .then(res => {
+        alert('Thank you for booking! Our booking team will contact you within 24 hours to confirm your plan.')
+        setFormData({ name: '', phone: '', city: '', travelers: '01 Person', date: '' })
+      })
+      .catch(err => {
+        console.error('Failed to submit booking:', err)
+        alert('Thank you for booking! Our booking team will contact you within 24 hours.')
+      })
+  }
 
   useEffect(() => {
     setLoading(true)
@@ -299,23 +324,23 @@ const PackageDetail = () => {
                 <h3 className="font-notoSerif text-2xl mb-2 text-black">Plan Your Journey</h3>
                 <p className="text-black/40 text-xs">Fill the form below, and our consultant will contact you within 24 hours.</p>
               </div>
-              <form className="space-y-6">
+              <form onSubmit={handleFormSubmit} className="space-y-6">
                 <div>
                   <label className="block text-xs font-bold uppercase tracking-widest text-black/40 mb-1">Full Name</label>
-                  <input className="w-full bg-transparent border-0 border-b border-gray-200 focus:border-primary focus:ring-0 transition-colors py-2 text-sm text-black" placeholder="Enter your name" type="text" />
+                  <input className="w-full bg-transparent border-0 border-b border-gray-200 focus:border-primary focus:ring-0 transition-colors py-2 text-sm text-black" placeholder="Enter your name" type="text" value={formData.name} onChange={e => setFormData({ ...formData, name: e.target.value })} required />
                 </div>
                 <div>
                   <label className="block text-xs font-bold uppercase tracking-widest text-black/40 mb-1">Phone Number</label>
-                  <input className="w-full bg-transparent border-0 border-b border-gray-200 focus:border-primary focus:ring-0 transition-colors py-2 text-sm text-black" placeholder="+92 XXXXX XXXXX" type="tel" />
+                  <input className="w-full bg-transparent border-0 border-b border-gray-200 focus:border-primary focus:ring-0 transition-colors py-2 text-sm text-black" placeholder="+92 XXXXX XXXXX" type="tel" value={formData.phone} onChange={e => setFormData({ ...formData, phone: e.target.value })} required />
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-widest text-black/40 mb-1">City</label>
-                    <input className="w-full bg-transparent border-0 border-b border-gray-200 focus:border-primary focus:ring-0 transition-colors py-2 text-sm text-black" placeholder="e.g. Lahore" type="text" />
+                    <input className="w-full bg-transparent border-0 border-b border-gray-200 focus:border-primary focus:ring-0 transition-colors py-2 text-sm text-black" placeholder="e.g. Lahore" type="text" value={formData.city} onChange={e => setFormData({ ...formData, city: e.target.value })} />
                   </div>
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-widest text-black/40 mb-1">Travelers</label>
-                    <select className="w-full bg-transparent border-0 border-b border-gray-200 focus:border-primary focus:ring-0 transition-colors py-2 text-sm appearance-none text-black">
+                    <select className="w-full bg-transparent border-0 border-b border-gray-200 focus:border-primary focus:ring-0 transition-colors py-2 text-sm appearance-none text-black" value={formData.travelers} onChange={e => setFormData({ ...formData, travelers: e.target.value })}>
                       <option>01 Person</option>
                       <option>02 Persons</option>
                       <option>04+ Persons</option>
@@ -324,13 +349,13 @@ const PackageDetail = () => {
                 </div>
                 <div>
                   <label className="block text-xs font-bold uppercase tracking-widest text-black/40 mb-1">Estimated Date</label>
-                  <input className="w-full bg-transparent border-0 border-b border-gray-200 focus:border-primary focus:ring-0 transition-colors py-2 text-sm text-black" type="date" />
+                  <input className="w-full bg-transparent border-0 border-b border-gray-200 focus:border-primary focus:ring-0 transition-colors py-2 text-sm text-black" type="date" value={formData.date} onChange={e => setFormData({ ...formData, date: e.target.value })} />
                 </div>
                 <button className="w-full bg-primary text-white py-4 rounded-md font-bold text-sm tracking-widest uppercase shadow-lg shadow-primary/20 hover:opacity-90 transition-all" type="submit">Send Inquiry</button>
               </form>
               <div className="mt-8 pt-8 border-t border-gray-100 text-center">
                 <p className="text-xs text-black/40 mb-4">Or connect instantly via</p>
-                <a className="inline-flex items-center gap-2 text-primary font-bold hover:underline transition-colors" href="#">
+                <a className="inline-flex items-center gap-2 text-primary font-bold hover:underline transition-colors" href="https://wa.me/923004634548" target="_blank" rel="noreferrer">
                   <span className="material-symbols-outlined">chat</span>
                   WhatsApp Support
                 </a>

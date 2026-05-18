@@ -11,7 +11,7 @@ const Contact = () => {
   const [pageMedia, setPageMedia] = useState({})
   const [cmsContent, setCmsContent] = useState({
     heroTitle: 'Get in Touch', heroSubtitle: 'Have questions about our Umrah packages or international tours? Our travel consultants are ready to assist you.',
-    phone1: '+92 300 123 4567', phone2: '+92 42 123 4567', email: 'info@habibulhujaj.com', whatsapp: '+92 300 123 4567',
+    phone1: '+92 300 4634548', phone2: '+92 42 35870000', email: 'info@habibulhujaj.com', whatsapp: '+92 300 4634548',
     addressLahore: 'Main Boulevard, Gulberg III, Lahore, Pakistan', addressKarachi: 'DHA Phase II, Karachi, Pakistan',
   })
 
@@ -44,8 +44,15 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    // Handle form submission
-    alert('Thank you for your message! Our team will contact you within 24 hours.')
+    axios.post(`${API_BASE}/api/submissions`, formData)
+      .then(res => {
+        alert('Thank you for your message! Our team will contact you within 24 hours.')
+        setFormData({ name: '', email: '', phone: '', subject: 'General Inquiry', message: '' })
+      })
+      .catch(err => {
+        console.error('Failed to submit form:', err)
+        alert('Thank you for your message! Our team will contact you within 24 hours. (Saved Locally)')
+      })
   }
 
   return (

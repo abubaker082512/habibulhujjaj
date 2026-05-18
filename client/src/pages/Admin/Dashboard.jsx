@@ -18,6 +18,7 @@ const tabs = [
   { id: 'blog', label: 'Blog', icon: 'article' },
   { id: 'page-media', label: 'Page Media', icon: 'image' },
   { id: 'cms', label: 'Content CMS', icon: 'edit_note' },
+  { id: 'submissions', label: 'Form Submissions', icon: 'contact_mail' },
   { id: 'settings', label: 'Site Settings', icon: 'settings' },
 ]
 
@@ -276,6 +277,7 @@ const AdminDashboard = () => {
   const [flights, setFlights] = useState([])
   const [galleryItems, setGalleryItems] = useState([])
   const [blogPosts, setBlogPosts] = useState([])
+  const [submissions, setSubmissions] = useState([])
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
 
@@ -335,13 +337,14 @@ const AdminDashboard = () => {
   const fetchAll = async () => {
     setLoading(true)
     try {
-      const [pkgR, tourR, visaR, galR, blogR, flightR] = await Promise.allSettled([
+      const [pkgR, tourR, visaR, galR, blogR, flightR, subR] = await Promise.allSettled([
         axios.get(`${API_BASE}/api/packages`),
         axios.get(`${API_BASE}/api/tours`),
         axios.get(`${API_BASE}/api/visa`),
         axios.get(`${API_BASE}/api/gallery`),
         axios.get(`${API_BASE}/api/blog`),
         axios.get(`${API_BASE}/api/flights`),
+        axios.get(`${API_BASE}/api/submissions`, { headers: authHdr() }),
       ])
       if (pkgR.status === 'fulfilled') setPackages(Array.isArray(pkgR.value.data) ? pkgR.value.data : [])
       if (tourR.status === 'fulfilled') setTours(Array.isArray(tourR.value.data) ? tourR.value.data : [])
@@ -349,11 +352,23 @@ const AdminDashboard = () => {
       if (galR.status === 'fulfilled') setGalleryItems(Array.isArray(galR.value.data) ? galR.value.data : [])
       if (blogR.status === 'fulfilled') setBlogPosts(Array.isArray(blogR.value.data) ? blogR.value.data : [])
       if (flightR.status === 'fulfilled') setFlights(Array.isArray(flightR.value.data) ? flightR.value.data : [])
+      if (subR.status === 'fulfilled') setSubmissions(Array.isArray(subR.value.data) ? subR.value.data : [])
     } catch (err) { console.error('Fetch error:', err) }
     setLoading(false)
   }
 
   const fetchData = fetchAll
+
+  const handleDeleteSubmission = async (id) => {
+    if (!confirm('Delete this submission?')) return
+    try {
+      await axios.delete(`${API_BASE}/api/submissions?id=${id}`, { headers: authHdr() })
+      fetchAll()
+      alert('Submission deleted successfully!')
+    } catch (err) {
+      alert('Error deleting submission: ' + (err.response?.data?.message || err.message))
+    }
+  }
 
   const handleAddPackage = async (e) => {
     e.preventDefault()
@@ -834,6 +849,59 @@ const AdminDashboard = () => {
 
           {/* Settings Tab */}
           {activeTab === 'settings' && <SiteSettings />}
+
+          {/* Submissions Tab */}
+          {activeTab === 'submissions' && (
+            <div>
+              <h2 className="font-notoSerif text-3xl font-bold text-primary mb-8">Form Submissions</h2>
+              
+              <div className="space-y-4">
+                <h3 className="font-notoSerif text-xl font-bold">Leads & Inquiries ({submissions.length})</h3>
+                {loading ? (
+                  <p className="text-on-surface-variant">Loading...</p>
+                ) : submissions.length === 0 ? (
+                  <div className="bg-surface-container-lowest p-8 rounded-xl text-center">
+                    <span className="material-symbols-outlined text-6xl text-outline-variant mb-4 block">contact_mail</span>
+                    <p className="text-on-surface-variant">No inquiries received yet. Submit forms on Contact or Package Details page to test.</p>
+                  </div>
+                ) : (
+                  <div className="space-y-4">
+                    {submissions.map(sub => (
+                      <div key={sub.id} className="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant relative group shadow-sm hover:shadow transition-shadow">
+                        <div className="flex justify-between items-start gap-4 mb-4">
+                          <div>
+                            <span className="inline-block bg-[#001c1d] text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider mb-2">
+                              {sub.subject || 'General inquiry'}
+                            </span>
+                            <h4 className="font-bold text-[#001c1d] text-lg">{sub.name}</h4>
+                            <p className="text-xs text-on-surface-variant font-medium mt-1">
+                              {sub.email ? `Email: ${sub.email} | ` : ''}Phone: <span className="font-bold text-[#001c1d]">{sub.phone}</span>
+                            </p>
+                          </div>
+                          <div className="text-right">
+                            <span className="text-xs text-outline block font-mono">{new Date(sub.created_at).toLocaleString()}</span>
+                            <button 
+                              onClick={() => handleDeleteSubmission(sub.id)}
+                              className="mt-2 text-red-500 hover:text-red-700 hover:scale-105 transition-all p-1 flex items-center justify-center gap-1"
+                              title="Delete Submission"
+                            >
+                              <span className="material-symbols-outlined text-sm">delete</span>
+                              <span className="text-[10px] font-bold uppercase tracking-wider">Delete</span>
+                            </button>
+                          </div>
+                        </div>
+                        {sub.message && (
+                          <div className="bg-surface p-4 rounded-lg border border-outline-variant/60 text-sm whitespace-pre-line text-on-surface-variant">
+                            {sub.message}
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
         </main>
       </div>
     </div>

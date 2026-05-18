@@ -196,7 +196,7 @@ const VisaServices = () => {
             <p className="text-black/60 font-manrope mb-10 max-w-xl mx-auto">Our visa specialists are ready to help you with any visa requirements. Contact us today for a free consultation.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/contact" className="bg-primary text-white px-10 py-4 font-manrope font-bold tracking-widest uppercase text-sm hover:opacity-90 transition-all">Apply for Visa</Link>
-              <a href="tel:+923001234567" className="border-2 border-primary text-primary px-10 py-4 font-manrope font-bold tracking-widest uppercase text-sm hover:bg-primary/5 transition-all flex items-center justify-center gap-2">
+              <a href="tel:+923004634548" className="border-2 border-primary text-primary px-10 py-4 font-manrope font-bold tracking-widest uppercase text-sm hover:bg-primary/5 transition-all flex items-center justify-center gap-2">
                 <span className="material-symbols-outlined">call</span>
                 Call Us
               </a>
