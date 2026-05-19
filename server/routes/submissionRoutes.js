@@ -4,7 +4,7 @@ const authMiddleware = require('../middleware/auth');
 
 // GET all submissions (protected - admin only)
 router.get('/', authMiddleware, async (req, res) => {
-  const { data, error } = await req.supabase
+  const { data, error } = await req.supabaseAdmin
     .from('submissions')
     .select('*')
     .order('created_at', { ascending: false });
@@ -23,7 +23,7 @@ router.post('/', async (req, res) => {
   const { name, email, phone, subject, message } = req.body;
   if (!name) return res.status(400).json({ message: 'Name is required' });
   
-  const { data, error } = await req.supabase
+  const { data, error } = await req.supabaseAdmin
     .from('submissions')
     .insert([{
       name,
@@ -41,7 +41,7 @@ router.post('/', async (req, res) => {
 
 // DELETE submission (protected - admin only)
 router.delete('/:id', authMiddleware, async (req, res) => {
-  const { error } = await req.supabase
+  const { error } = await req.supabaseAdmin
     .from('submissions')
     .delete()
     .eq('id', req.params.id);

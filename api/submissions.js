@@ -27,7 +27,7 @@ module.exports = async function handler(req, res) {
   if (req.method === 'GET') {
     if (!isAuthenticated(req)) return res.status(401).json({ message: 'Authentication required' });
     try {
-      let query = supabase.from('submissions').select('*').order('created_at', { ascending: false });
+      let query = supabaseAdmin.from('submissions').select('*').order('created_at', { ascending: false });
       if (id) query = query.eq('id', id).single();
       const { data, error } = await query;
       if (error) {

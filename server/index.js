@@ -15,6 +15,8 @@ if (!supabaseUrl || !supabaseKey) {
 }
 
 const supabase = createClient(supabaseUrl || 'https://placeholder.supabase.co', supabaseKey || 'placeholder');
+const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || supabaseKey;
+const supabaseAdmin = createClient(supabaseUrl || 'https://placeholder.supabase.co', supabaseServiceKey || 'placeholder', { auth: { autoRefreshToken: false, persistSession: false } });
 
 // Middleware
 app.use(cors());
@@ -23,6 +25,7 @@ app.use(express.json());
 // Attach supabase to req
 app.use((req, res, next) => {
   req.supabase = supabase;
+  req.supabaseAdmin = supabaseAdmin;
   next();
 });
 
