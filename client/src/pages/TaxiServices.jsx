@@ -299,20 +299,29 @@ const TaxiServices = () => {
         if (Array.isArray(res.data) && res.data.length > 0) {
           const dbServices = res.data
           
-          // 1. Dynamic fleet merger
+          // 1. Dynamic fleet merger (Processes only s.name === '__VEHICLE_META__')
           const newFleetMap = new Map()
           fleetData.forEach(f => {
             newFleetMap.set(f.name.toLowerCase(), { ...f })
           })
           
-          dbServices.forEach(s => {
+          dbServices.filter(s => s.name === '__VEHICLE_META__').forEach(s => {
             const vKey = s.vehicle_type ? s.vehicle_type.toLowerCase() : ''
             if (vKey) {
               if (newFleetMap.has(vKey)) {
                 const existing = newFleetMap.get(vKey)
                 if (s.capacity) existing.seats = s.capacity
                 if (s.image_url) existing.image_url = s.image_url
-                if (s.description) existing.ac = s.description
+                if (s.description) {
+                  // Separate features into luggage and ac if possible, or override ac
+                  if (s.description.includes(',')) {
+                    const parts = s.description.split(',')
+                    existing.luggage = parts[0].trim()
+                    existing.ac = parts[1].trim()
+                  } else {
+                    existing.ac = s.description
+                  }
+                }
               } else {
                 newFleetMap.set(vKey, {
                   id: s.vehicle_type.toLowerCase().replace(/[^a-z0-9]/g, '-'),
@@ -328,13 +337,33 @@ const TaxiServices = () => {
           })
           setFleet(Array.from(newFleetMap.values()))
           
-          // 2. Dynamic routes merger
+          // 2. Dynamic routes & pricing merger
           const newRoutesMap = new Map()
           routesData.forEach(r => {
             newRoutesMap.set(r.name.toLowerCase(), { ...r })
           })
           
-          dbServices.forEach(s => {
+          // Apply Route Banner overrides (s.vehicle_type === '__ROUTE_BANNER__')
+          dbServices.filter(s => s.vehicle_type === '__ROUTE_BANNER__').forEach(s => {
+            const rKey = s.name ? s.name.toLowerCase() : ''
+            if (rKey) {
+              if (newRoutesMap.has(rKey)) {
+                const existing = newRoutesMap.get(rKey)
+                if (s.image_url) existing.image = s.image_url
+                if (s.category) existing.category = s.category
+              } else {
+                newRoutesMap.set(rKey, {
+                  id: s.name.toLowerCase().replace(/[^a-z0-9]/g, '-'),
+                  name: s.name,
+                  image: s.image_url || 'https://images.unsplash.com/photo-1564507592333-c60657eea523?w=600&q=80',
+                  prices: {}
+                })
+              }
+            }
+          })
+
+          // Apply specific route-vehicle prices (normal pricing rows)
+          dbServices.filter(s => s.name !== '__VEHICLE_META__' && s.vehicle_type !== '__ROUTE_BANNER__').forEach(s => {
             const rKey = s.name ? s.name.toLowerCase() : ''
             if (rKey) {
               const vId = s.vehicle_type ? s.vehicle_type.toLowerCase().replace(/[^a-z0-9]/g, '-') : 'camry'
@@ -350,7 +379,7 @@ const TaxiServices = () => {
                 newRoutesMap.set(rKey, {
                   id: s.name.toLowerCase().replace(/[^a-z0-9]/g, '-'),
                   name: s.name,
-                  image: s.image_url || 'https://images.unsplash.com/photo-1564507592333-c60657eea523?w=600&q=80',
+                  image: 'https://images.unsplash.com/photo-1564507592333-c60657eea523?w=600&q=80',
                   prices: {
                     [vId]: {
                       sar: priceVal,

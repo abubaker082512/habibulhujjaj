@@ -274,6 +274,9 @@ const AdminDashboard = () => {
   const [visaServices, setVisaServices] = useState([])
   const [flights, setFlights] = useState([])
   const [taxiServices, setTaxiServices] = useState([])
+  const [taxiSubTab, setTaxiSubTab] = useState('pricing')
+  const [vehicleMetaForm, setVehicleMetaForm] = useState({ vehicle_type: 'CAMRY', capacity: '4 Person Seat Vehicle', description: 'AC Chilled Vehicle', image_url: '' })
+  const [routeMetaForm, setRouteMetaForm] = useState({ route_name: 'Jeddah Airport To Makkah Hotel', image_url: '', category: 'One Way' })
   const [galleryItems, setGalleryItems] = useState([])
   const [blogPosts, setBlogPosts] = useState([])
   const [submissions, setSubmissions] = useState([])
@@ -540,15 +543,79 @@ const AdminDashboard = () => {
   const handleAddTaxi = async (e) => {
     e.preventDefault()
     try {
+      const existing = !editingId.taxi ? taxiServices.find(t => 
+        t.name?.toLowerCase() === taxiForm.name?.toLowerCase() && 
+        t.vehicle_type?.toLowerCase() === taxiForm.vehicle_type?.toLowerCase() &&
+        t.name !== '__VEHICLE_META__' &&
+        t.vehicle_type !== '__ROUTE_BANNER__'
+      ) : null
+
+      const payload = { ...taxiForm, price: parseFloat(taxiForm.price) || 0 }
+
       if (editingId.taxi) {
-        await axios.put(`${API_BASE}/api/taxi?id=${editingId.taxi}`, { ...taxiForm, price: parseFloat(taxiForm.price) || 0 }, { headers: authHdr() })
-        alert('Taxi service updated!')
+        await axios.put(`${API_BASE}/api/taxi?id=${editingId.taxi}`, payload, { headers: authHdr() })
+        alert('Taxi pricing updated!')
+      } else if (existing) {
+        await axios.put(`${API_BASE}/api/taxi?id=${existing.id}`, payload, { headers: authHdr() })
+        alert('Taxi pricing updated!')
       } else {
-        await axios.post(`${API_BASE}/api/taxi`, { ...taxiForm, price: parseFloat(taxiForm.price) || 0 }, { headers: authHdr() })
-        alert('Taxi service added!')
+        await axios.post(`${API_BASE}/api/taxi`, payload, { headers: authHdr() })
+        alert('Taxi service pricing added!')
       }
-      setTaxiForm({ name: '', vehicle_type: '', capacity: '', price: '', image_url: '', description: '', category: 'One Way' })
+      setTaxiForm({ name: 'Jeddah Airport To Makkah Hotel', vehicle_type: 'CAMRY', capacity: '4 Person Seat Vehicle', price: '', image_url: '', description: 'AC Chilled Vehicle', category: 'One Way' })
       setEditingId(prev => ({ ...prev, taxi: null }))
+      fetchAll()
+    } catch (err) { alert('Error: ' + (err.response?.data?.message || err.message)) }
+  }
+
+  const handleSaveVehicleMeta = async (e) => {
+    e.preventDefault()
+    try {
+      const existing = taxiServices.find(t => t.name === '__VEHICLE_META__' && t.vehicle_type?.toLowerCase() === vehicleMetaForm.vehicle_type?.toLowerCase())
+      const payload = {
+        name: '__VEHICLE_META__',
+        vehicle_type: vehicleMetaForm.vehicle_type.toUpperCase(),
+        capacity: vehicleMetaForm.capacity,
+        description: vehicleMetaForm.description,
+        image_url: vehicleMetaForm.image_url,
+        price: 0,
+        category: 'Meta'
+      }
+      
+      if (existing) {
+        await axios.put(`${API_BASE}/api/taxi?id=${existing.id}`, payload, { headers: authHdr() })
+        alert('Vehicle specifications and image updated successfully!')
+      } else {
+        await axios.post(`${API_BASE}/api/taxi`, payload, { headers: authHdr() })
+        alert('Vehicle specifications and image saved successfully!')
+      }
+      setVehicleMetaForm({ vehicle_type: 'CAMRY', capacity: '4 Person Seat Vehicle', description: 'AC Chilled Vehicle', image_url: '' })
+      fetchAll()
+    } catch (err) { alert('Error: ' + (err.response?.data?.message || err.message)) }
+  }
+
+  const handleSaveRouteMeta = async (e) => {
+    e.preventDefault()
+    try {
+      const existing = taxiServices.find(t => t.vehicle_type === '__ROUTE_BANNER__' && t.name?.toLowerCase() === routeMetaForm.route_name?.toLowerCase())
+      const payload = {
+        name: routeMetaForm.route_name,
+        vehicle_type: '__ROUTE_BANNER__',
+        capacity: 'Route',
+        description: 'Banner Override',
+        image_url: routeMetaForm.image_url,
+        price: 0,
+        category: routeMetaForm.category
+      }
+      
+      if (existing) {
+        await axios.put(`${API_BASE}/api/taxi?id=${existing.id}`, payload, { headers: authHdr() })
+        alert('Route banner image and category updated successfully!')
+      } else {
+        await axios.post(`${API_BASE}/api/taxi`, payload, { headers: authHdr() })
+        alert('Route banner image and category saved successfully!')
+      }
+      setRouteMetaForm({ route_name: 'Jeddah Airport To Makkah Hotel', image_url: '', category: 'One Way' })
       fetchAll()
     } catch (err) { alert('Error: ' + (err.response?.data?.message || err.message)) }
   }
@@ -852,60 +919,335 @@ const AdminDashboard = () => {
           {/* Taxi Services Tab */}
           {activeTab === 'taxi' && (
             <div>
-              <h2 className="font-notoSerif text-3xl font-bold text-primary mb-8">Manage Taxi Services</h2>
-              <div className="bg-surface-container-lowest p-8 rounded-xl editorial-shadow mb-8">
-                <h3 className="font-notoSerif text-xl font-bold mb-6">{editingId.taxi ? 'Edit Taxi Service' : 'Add New Taxi Service'}</h3>
-                <form onSubmit={handleAddTaxi} className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <input required className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm" placeholder="Service/Route Name (e.g., Jeddah Airport to Makkah)" value={taxiForm.name} onChange={e => setTaxiForm({...taxiForm, name: e.target.value})} />
-                  <input required className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm" placeholder="Vehicle Type (e.g., Toyota Camry / Hyundai Sonata)" value={taxiForm.vehicle_type} onChange={e => setTaxiForm({...taxiForm, vehicle_type: e.target.value})} />
-                  <input className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm" placeholder="Capacity (e.g., 4 Passengers, 4 Bags)" value={taxiForm.capacity} onChange={e => setTaxiForm({...taxiForm, capacity: e.target.value})} />
-                  <input className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm" placeholder="Price (SAR)" type="number" value={taxiForm.price} onChange={e => setTaxiForm({...taxiForm, price: e.target.value})} />
-                  <select className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm" value={taxiForm.category} onChange={e => setTaxiForm({...taxiForm, category: e.target.value})}>
-                    <option value="One Way">One Way</option>
-                    <option value="Round Trip">Round Trip</option>
-                    <option value="Ziyarat">Ziyarat</option>
-                  </select>
-                  <div className="md:col-span-2">
-                    <ImageUpload value={taxiForm.image_url} onChange={(val) => setTaxiForm({...taxiForm, image_url: val})} label="Vehicle Image" />
-                  </div>
-                  <textarea className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm md:col-span-2" placeholder="Description" rows={3} value={taxiForm.description} onChange={e => setTaxiForm({...taxiForm, description: e.target.value})} />
-                  <div className="md:col-span-2 flex gap-4">
-                    <button type="submit" className="flex-1 bg-[#001c1d] text-white py-3 rounded font-bold text-sm hover:brightness-110 transition-all">
-                      {editingId.taxi ? 'Save Updates' : 'Add Taxi Service'}
-                    </button>
-                    {editingId.taxi && (
-                      <button type="button" onClick={() => { setTaxiForm({ name: '', vehicle_type: '', capacity: '', price: '', image_url: '', description: '', category: 'One Way' }); setEditingId(prev => ({ ...prev, taxi: null })); }} className="px-6 bg-gray-500 text-white rounded font-bold text-sm hover:bg-gray-600 transition-all">
-                        Cancel
-                      </button>
-                    )}
-                  </div>
-                </form>
-              </div>
-              <div className="space-y-3">
-                <h3 className="font-notoSerif text-xl font-bold">Existing Taxi Services ({taxiServices.length})</h3>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  {taxiServices.map(t => (
-                    <div key={t.id} className="bg-surface-container-lowest p-4 rounded-lg editorial-shadow">
-                      <img src={t.image_url || 'https://via.placeholder.com/150'} alt={t.name} className="w-full h-32 object-cover rounded-lg mb-3" />
-                      <div className="flex justify-between items-start">
-                        <div>
-                          <p className="font-bold text-primary">{t.name}</p>
-                          <p className="text-xs text-outline font-medium">{t.vehicle_type}</p>
-                          <p className="text-xs text-[#001c1d] font-bold mt-1">SAR {(t.price || 0).toLocaleString()}</p>
-                          <p className="text-[11px] text-outline-variant font-medium mt-1">{t.capacity}</p>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <button onClick={() => { setTaxiForm({ name: t.name, vehicle_type: t.vehicle_type, capacity: t.capacity || '', price: String(t.price || ''), image_url: t.image_url || '', description: t.description || '', category: t.category || 'One Way' }); setEditingId(prev => ({ ...prev, taxi: t.id })); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="text-[#001c1d] hover:text-secondary p-1" title="Edit Taxi Service">
-                            <span className="material-symbols-outlined text-sm">edit</span>
-                          </button>
-                          <button onClick={()=>handleDeleteTaxi(t.id)} className="text-red-500 hover:text-red-700 p-1" title="Delete Taxi Service"><span className="material-symbols-outlined text-sm">delete</span></button>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
+              <div className="flex flex-col md:flex-row md:items-center justify-between mb-8">
+                <div>
+                  <h2 className="font-notoSerif text-3xl font-bold text-primary">Manage Taxi Services</h2>
+                  <p className="text-xs text-outline mt-1">Configure pricing matrices, fleet specifications, and route banners.</p>
                 </div>
-                {!taxiServices.length && <p className="text-center text-on-surface-variant py-4 bg-surface-container-lowest rounded-xl">No taxi services yet.</p>}
+                {/* Premium Sub-Tab Switcher */}
+                <div className="flex items-center bg-surface-container-low p-1.5 rounded-xl border border-outline-variant mt-4 md:mt-0">
+                  <button 
+                    onClick={() => { setTaxiSubTab('pricing'); setEditingId(prev => ({ ...prev, taxi: null })); }}
+                    className={`px-5 py-2 rounded-lg font-bold text-xs uppercase tracking-wider transition-all ${taxiSubTab === 'pricing' ? 'bg-[#001c1d] text-[#ffc65c] shadow' : 'text-primary hover:bg-surface-container-high'}`}
+                  >
+                    💰 Pricing Matrix
+                  </button>
+                  <button 
+                    onClick={() => setTaxiSubTab('fleet')}
+                    className={`px-5 py-2 rounded-lg font-bold text-xs uppercase tracking-wider transition-all ${taxiSubTab === 'fleet' ? 'bg-[#001c1d] text-[#ffc65c] shadow' : 'text-primary hover:bg-surface-container-high'}`}
+                  >
+                    🚗 Customize Fleet
+                  </button>
+                  <button 
+                    onClick={() => setTaxiSubTab('routes')}
+                    className={`px-5 py-2 rounded-lg font-bold text-xs uppercase tracking-wider transition-all ${taxiSubTab === 'routes' ? 'bg-[#001c1d] text-[#ffc65c] shadow' : 'text-primary hover:bg-surface-container-high'}`}
+                  >
+                    🗺️ Custom Routes
+                  </button>
+                </div>
               </div>
+
+              {/* SUB-TAB 1: PRICING MATRIX */}
+              {taxiSubTab === 'pricing' && (
+                <div>
+                  <div className="bg-surface-container-lowest p-8 rounded-xl editorial-shadow mb-8">
+                    <h3 className="font-notoSerif text-xl font-bold mb-6">{editingId.taxi ? 'Edit Price Rule' : 'Set Vehicle Route Pricing'}</h3>
+                    <form onSubmit={handleAddTaxi} className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="flex flex-col">
+                        <label className="text-[10px] font-bold uppercase tracking-widest text-outline mb-1.5">Select Route / Destination</label>
+                        <select 
+                          className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2.5 text-sm"
+                          value={taxiForm.name || 'Jeddah Airport To Makkah Hotel'} 
+                          onChange={e => setTaxiForm({...taxiForm, name: e.target.value})}
+                        >
+                          <option value="Jeddah Airport To Makkah Hotel">Jeddah Airport To Makkah Hotel</option>
+                          <option value="Madinah Airport to Madina hotel">Madinah Airport to Madina hotel</option>
+                          <option value="Madinah hotel to Madinah Airport">Madinah hotel to Madinah Airport</option>
+                          <option value="Madinah hotel to Makkah hotel">Madinah hotel to Makkah hotel</option>
+                          <option value="Makkah to Taif Ziyarat & Return">Makkah to Taif Ziyarat & Return</option>
+                          <option value="Madinah hotel to train station">Madinah hotel to train station</option>
+                          <option value="Makkah hotel to Jeddah Airport">Makkah hotel to Jeddah Airport</option>
+                          <option value="Makkah hotel to Madinah hotel">Makkah hotel to Madinah hotel</option>
+                          <option value="Makkah to Madinah + Badar ziyaraat">Makkah to Madinah + Badar ziyaraat</option>
+                          <option value="Makkah hotel to train station">Makkah hotel to train station</option>
+                          <option value="Makkah Ziyarat">Makkah Ziyarat</option>
+                          <option value="Madinah Ziyarat">Madinah Ziyarat</option>
+                          <option value="CUSTOM">-- Type Custom Route --</option>
+                        </select>
+                        {taxiForm.name === 'CUSTOM' && (
+                          <input 
+                            required 
+                            placeholder="Enter Custom Route Name..." 
+                            className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm mt-2" 
+                            onChange={e => setTaxiForm({...taxiForm, name: e.target.value})}
+                          />
+                        )}
+                      </div>
+
+                      <div className="flex flex-col">
+                        <label className="text-[10px] font-bold uppercase tracking-widest text-outline mb-1.5">Select Fleet Vehicle</label>
+                        <select 
+                          className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2.5 text-sm"
+                          value={taxiForm.vehicle_type || 'CAMRY'} 
+                          onChange={e => setTaxiForm({...taxiForm, vehicle_type: e.target.value})}
+                        >
+                          <option value="CAMRY">CAMRY</option>
+                          <option value="GMC">GMC</option>
+                          <option value="STARIA">STARIA</option>
+                          <option value="HIACE (10 seat)">HIACE (10 seat)</option>
+                          <option value="HIACE (12 seat)">HIACE (12 seat)</option>
+                          <option value="HYUNDAI H1">HYUNDAI H1</option>
+                          <option value="COASTER (22 seat)">COASTER (22 seat)</option>
+                          <option value="COASTER (30 seat)">COASTER (30 seat)</option>
+                          <option value="BUS">BUS</option>
+                          <option value="CUSTOM">-- Type Custom Vehicle --</option>
+                        </select>
+                        {taxiForm.vehicle_type === 'CUSTOM' && (
+                          <input 
+                            required 
+                            placeholder="Enter Custom Vehicle Name..." 
+                            className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm mt-2" 
+                            onChange={e => setTaxiForm({...taxiForm, vehicle_type: e.target.value})}
+                          />
+                        )}
+                      </div>
+
+                      <div>
+                        <label className="text-[10px] font-bold uppercase tracking-widest text-outline mb-1.5">Price in SAR</label>
+                        <input required className="w-full bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm" placeholder="Price (SAR)" type="number" value={taxiForm.price} onChange={e => setTaxiForm({...taxiForm, price: e.target.value})} />
+                      </div>
+
+                      <div>
+                        <label className="text-[10px] font-bold uppercase tracking-widest text-outline mb-1.5">Route Category</label>
+                        <select className="w-full bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2.5 text-sm" value={taxiForm.category} onChange={e => setTaxiForm({...taxiForm, category: e.target.value})}>
+                          <option value="One Way">One Way</option>
+                          <option value="Round Trip">Round Trip</option>
+                          <option value="Ziyarat">Ziyarat</option>
+                        </select>
+                      </div>
+
+                      <div className="md:col-span-2 flex gap-4 mt-4">
+                        <button type="submit" className="flex-1 bg-[#001c1d] text-[#ffc65c] py-3.5 rounded font-black text-xs uppercase tracking-widest hover:brightness-110 transition-all shadow-md">
+                          {editingId.taxi ? 'Save Price updates' : 'Apply Price To Route'}
+                        </button>
+                        {editingId.taxi && (
+                          <button type="button" onClick={() => { setTaxiForm({ name: 'Jeddah Airport To Makkah Hotel', vehicle_type: 'CAMRY', capacity: '4 Person Seat Vehicle', price: '', image_url: '', description: 'AC Chilled Vehicle', category: 'One Way' }); setEditingId(prev => ({ ...prev, taxi: null })); }} className="px-8 bg-gray-500 text-white rounded font-bold text-xs uppercase tracking-widest hover:bg-gray-600 transition-all">
+                            Cancel
+                          </button>
+                        )}
+                      </div>
+                    </form>
+                  </div>
+
+                  {/* Active list */}
+                  <div className="space-y-4">
+                    <h3 className="font-notoSerif text-xl font-bold">Configured Active Prices ({taxiServices.filter(t => t.name !== '__VEHICLE_META__' && t.vehicle_type !== '__ROUTE_BANNER__').length})</h3>
+                    <div className="bg-surface-container-lowest rounded-xl overflow-hidden editorial-shadow">
+                      <table className="w-full text-left border-collapse">
+                        <thead>
+                          <tr className="bg-[#001c1d]/5 text-[10px] font-bold uppercase tracking-widest text-outline border-b border-outline-variant">
+                            <th className="p-4">Route / Destination</th>
+                            <th className="p-4">Vehicle Type</th>
+                            <th className="p-4">Category</th>
+                            <th className="p-4">SAR Price</th>
+                            <th className="p-4 text-right">Actions</th>
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y divide-outline-variant text-sm font-medium text-primary">
+                          {taxiServices.filter(t => t.name !== '__VEHICLE_META__' && t.vehicle_type !== '__ROUTE_BANNER__').map(t => (
+                            <tr key={t.id} className="hover:bg-surface-container-low transition-colors">
+                              <td className="p-4 font-semibold">{t.name}</td>
+                              <td className="p-4 uppercase">{t.vehicle_type}</td>
+                              <td className="p-4"><span className="px-3 py-1 bg-surface-container-high rounded-full text-xs font-bold text-primary">{t.category}</span></td>
+                              <td className="p-4 font-black text-secondary">{t.price} SAR</td>
+                              <td className="p-4 text-right flex items-center justify-end gap-2">
+                                <button onClick={() => { setTaxiForm({ name: t.name, vehicle_type: t.vehicle_type, capacity: t.capacity || '', price: String(t.price || ''), image_url: t.image_url || '', description: t.description || '', category: t.category || 'One Way' }); setEditingId(prev => ({ ...prev, taxi: t.id })); }} className="text-[#001c1d] hover:text-secondary p-1.5 bg-gray-100 rounded" title="Edit Pricing">
+                                  <span className="material-symbols-outlined text-sm">edit</span>
+                                </button>
+                                <button onClick={()=>handleDeleteTaxi(t.id)} className="text-red-500 hover:text-red-700 p-1.5 bg-red-50 rounded" title="Delete Pricing"><span className="material-symbols-outlined text-sm">delete</span></button>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                      {!taxiServices.filter(t => t.name !== '__VEHICLE_META__' && t.vehicle_type !== '__ROUTE_BANNER__').length && (
+                        <p className="text-center text-on-surface-variant py-8 bg-surface-container-lowest">No custom price rules configured yet. Page is running on premium defaults.</p>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* SUB-TAB 2: CUSTOMIZE FLEET */}
+              {taxiSubTab === 'fleet' && (
+                <div>
+                  <div className="bg-surface-container-lowest p-8 rounded-xl editorial-shadow mb-8">
+                    <h3 className="font-notoSerif text-xl font-bold mb-6">Customize Fleet Vehicle specs & Image</h3>
+                    <form onSubmit={handleSaveVehicleMeta} className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="flex flex-col">
+                        <label className="text-[10px] font-bold uppercase tracking-widest text-outline mb-1.5">Select Vehicle to Customize</label>
+                        <select 
+                          className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2.5 text-sm"
+                          value={vehicleMetaForm.vehicle_type} 
+                          onChange={e => {
+                            const vName = e.target.value;
+                            // Pre-fill form if DB metadata entry already exists
+                            const existing = taxiServices.find(t => t.name === '__VEHICLE_META__' && t.vehicle_type?.toLowerCase() === vName.toLowerCase());
+                            setVehicleMetaForm({
+                              vehicle_type: vName,
+                              capacity: existing ? existing.capacity : '4 Person Seat Vehicle',
+                              description: existing ? existing.description : 'AC Chilled Vehicle',
+                              image_url: existing ? existing.image_url : ''
+                            });
+                          }}
+                        >
+                          <option value="CAMRY">CAMRY</option>
+                          <option value="GMC">GMC</option>
+                          <option value="STARIA">STARIA</option>
+                          <option value="HIACE (10 seat)">HIACE (10 seat)</option>
+                          <option value="HIACE (12 seat)">HIACE (12 seat)</option>
+                          <option value="HYUNDAI H1">HYUNDAI H1</option>
+                          <option value="COASTER (22 seat)">COASTER (22 seat)</option>
+                          <option value="COASTER (30 seat)">COASTER (30 seat)</option>
+                          <option value="BUS">BUS</option>
+                        </select>
+                      </div>
+
+                      <div>
+                        <label className="text-[10px] font-bold uppercase tracking-widest text-outline mb-1.5">Seats & Capacity Description</label>
+                        <input required className="w-full bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm" placeholder="e.g. 4 Person Seat Vehicle" value={vehicleMetaForm.capacity} onChange={e => setVehicleMetaForm({...vehicleMetaForm, capacity: e.target.value})} />
+                      </div>
+
+                      <div className="md:col-span-2">
+                        <label className="text-[10px] font-bold uppercase tracking-widest text-outline mb-1.5">Luggage & Comfort Features</label>
+                        <input required className="w-full bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm" placeholder="e.g. 3 Luggage, AC Chilled Vehicle" value={vehicleMetaForm.description} onChange={e => setVehicleMetaForm({...vehicleMetaForm, description: e.target.value})} />
+                      </div>
+
+                      <div className="md:col-span-2">
+                        <ImageUpload value={vehicleMetaForm.image_url} onChange={(val) => setVehicleMetaForm({...vehicleMetaForm, image_url: val})} label="Custom Vehicle Image" />
+                      </div>
+
+                      <div className="md:col-span-2 flex gap-4 mt-4">
+                        <button type="submit" className="flex-1 bg-[#001c1d] text-[#ffc65c] py-3.5 rounded font-black text-xs uppercase tracking-widest hover:brightness-110 transition-all shadow-md">
+                          Save Vehicle Specifications & Image
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+
+                  {/* List of current Overridden Vehicles */}
+                  <div className="space-y-4">
+                    <h3 className="font-notoSerif text-xl font-bold">Custom Vehicle Overrides ({taxiServices.filter(t => t.name === '__VEHICLE_META__').length})</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                      {taxiServices.filter(t => t.name === '__VEHICLE_META__').map(t => (
+                        <div key={t.id} className="bg-surface-container-lowest p-5 rounded-2xl border border-outline-variant flex flex-col justify-between editorial-shadow">
+                          <div>
+                            {t.image_url && <img src={t.image_url} alt={t.vehicle_type} className="w-full h-32 object-contain bg-gray-50 rounded-xl mb-4 p-2" />}
+                            <h4 className="font-bold text-lg text-primary uppercase mb-1">{t.vehicle_type}</h4>
+                            <p className="text-xs text-[#001c1d] font-bold mb-2">{t.capacity}</p>
+                            <p className="text-xs text-outline font-medium">{t.description}</p>
+                          </div>
+                          <div className="flex justify-end gap-2 mt-6 border-t border-outline-variant pt-4">
+                            <button 
+                              onClick={() => setVehicleMetaForm({ vehicle_type: t.vehicle_type, capacity: t.capacity || '', description: t.description || '', image_url: t.image_url || '' })} 
+                              className="text-primary hover:text-secondary p-1.5 bg-gray-100 rounded"
+                            >
+                              <span className="material-symbols-outlined text-sm">edit</span>
+                            </button>
+                            <button onClick={()=>handleDeleteTaxi(t.id)} className="text-red-500 hover:text-red-700 p-1.5 bg-red-50 rounded"><span className="material-symbols-outlined text-sm">delete</span></button>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* SUB-TAB 3: CUSTOMIZE ROUTES */}
+              {taxiSubTab === 'routes' && (
+                <div>
+                  <div className="bg-surface-container-lowest p-8 rounded-xl editorial-shadow mb-8">
+                    <h3 className="font-notoSerif text-xl font-bold mb-6">Customize Route Banner & Category</h3>
+                    <form onSubmit={handleSaveRouteMeta} className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="flex flex-col">
+                        <label className="text-[10px] font-bold uppercase tracking-widest text-outline mb-1.5">Select Route to Customize</label>
+                        <select 
+                          className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2.5 text-sm"
+                          value={routeMetaForm.route_name} 
+                          onChange={e => {
+                            const rName = e.target.value;
+                            const existing = taxiServices.find(t => t.vehicle_type === '__ROUTE_BANNER__' && t.name?.toLowerCase() === rName.toLowerCase());
+                            setRouteMetaForm({
+                              route_name: rName,
+                              image_url: existing ? existing.image_url : '',
+                              category: existing ? existing.category : 'One Way'
+                            });
+                          }}
+                        >
+                          <option value="Jeddah Airport To Makkah Hotel">Jeddah Airport To Makkah Hotel</option>
+                          <option value="Madinah Airport to Madina hotel">Madinah Airport to Madina hotel</option>
+                          <option value="Madinah hotel to Madinah Airport">Madinah hotel to Madinah Airport</option>
+                          <option value="Madinah hotel to Makkah hotel">Madinah hotel to Makkah hotel</option>
+                          <option value="Makkah to Taif Ziyarat & Return">Makkah to Taif Ziyarat & Return</option>
+                          <option value="Madinah hotel to train station">Madinah hotel to train station</option>
+                          <option value="Makkah hotel to Jeddah Airport">Makkah hotel to Jeddah Airport</option>
+                          <option value="Makkah hotel to Madinah hotel">Makkah hotel to Madinah hotel</option>
+                          <option value="Makkah to Madinah + Badar ziyaraat">Makkah to Madinah + Badar ziyaraat</option>
+                          <option value="Makkah hotel to train station">Makkah hotel to train station</option>
+                          <option value="Makkah Ziyarat">Makkah Ziyarat</option>
+                          <option value="Madinah Ziyarat">Madinah Ziyarat</option>
+                        </select>
+                      </div>
+
+                      <div>
+                        <label className="text-[10px] font-bold uppercase tracking-widest text-outline mb-1.5">Route Category</label>
+                        <select className="w-full bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2.5 text-sm" value={routeMetaForm.category} onChange={e => setRouteMetaForm({...routeMetaForm, category: e.target.value})}>
+                          <option value="One Way">One Way</option>
+                          <option value="Round Trip">Round Trip</option>
+                          <option value="Ziyarat">Ziyarat</option>
+                        </select>
+                      </div>
+
+                      <div className="md:col-span-2">
+                        <ImageUpload value={routeMetaForm.image_url} onChange={(val) => setRouteMetaForm({...routeMetaForm, image_url: val})} label="Custom Route Banner Image" />
+                      </div>
+
+                      <div className="md:col-span-2 flex gap-4 mt-4">
+                        <button type="submit" className="flex-1 bg-[#001c1d] text-[#ffc65c] py-3.5 rounded font-black text-xs uppercase tracking-widest hover:brightness-110 transition-all shadow-md">
+                          Save Route Banner Image & Category
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+
+                  {/* List of custom Overridden Routes */}
+                  <div className="space-y-4">
+                    <h3 className="font-notoSerif text-xl font-bold">Custom Route Overrides ({taxiServices.filter(t => t.vehicle_type === '__ROUTE_BANNER__').length})</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                      {taxiServices.filter(t => t.vehicle_type === '__ROUTE_BANNER__').map(t => (
+                        <div key={t.id} className="bg-surface-container-lowest rounded-2xl overflow-hidden border border-outline-variant flex flex-col justify-between editorial-shadow">
+                          <div>
+                            {t.image_url && <img src={t.image_url} alt={t.name} className="w-full h-36 object-cover" />}
+                            <div className="p-5">
+                              <h4 className="font-bold text-base text-primary mb-1">{t.name}</h4>
+                              <span className="px-3 py-1 bg-surface-container-high rounded-full text-xs font-bold text-primary">{t.category}</span>
+                            </div>
+                          </div>
+                          <div className="flex justify-end gap-2 p-5 border-t border-outline-variant">
+                            <button 
+                              onClick={() => setRouteMetaForm({ route_name: t.name, image_url: t.image_url || '', category: t.category || 'One Way' })} 
+                              className="text-primary hover:text-secondary p-1.5 bg-gray-100 rounded"
+                            >
+                              <span className="material-symbols-outlined text-sm">edit</span>
+                            </button>
+                            <button onClick={()=>handleDeleteTaxi(t.id)} className="text-red-500 hover:text-red-700 p-1.5 bg-red-50 rounded"><span className="material-symbols-outlined text-sm">delete</span></button>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
           )}
 
