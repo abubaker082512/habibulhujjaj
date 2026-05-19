@@ -81,9 +81,25 @@ router.post('/seed', authMiddleware, async (req, res) => {
   res.status(201).json({ message: `Seeded ${data.length} packages`, packages: data });
 });
 
+// PUT update package (protected)
+router.put('/:id', authMiddleware, async (req, res) => {
+  const body = { ...req.body };
+  delete body.updated_at;
+  if (body.price) body.price = parseFloat(body.price);
+  
+  const { data, error } = await req.supabaseAdmin
+    .from('packages')
+    .update(body)
+    .eq('id', req.params.id)
+    .select();
+    
+  if (error) return res.status(400).json({ message: error.message });
+  res.json(data[0]);
+});
+
 // DELETE package (protected)
 router.delete('/:id', authMiddleware, async (req, res) => {
-  const { error } = await req.supabase
+  const { error } = await req.supabaseAdmin
     .from('packages')
     .delete()
     .eq('id', req.params.id);

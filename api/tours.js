@@ -65,7 +65,7 @@ module.exports = async function handler(req, res) {
       if (typeof body.highlights === 'string') {
         body.highlights = body.highlights.split(',').map(h => h.trim()).filter(Boolean);
       }
-      body.updated_at = new Date().toISOString();
+      delete body.updated_at;
       const { data, error } = await supabaseAdmin.from('tours').update(body).eq('id', id).select();
       if (error) throw error;
       return res.json(data[0]);

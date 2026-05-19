@@ -60,7 +60,8 @@ module.exports = async function handler(req, res) {
   if (req.method === 'PUT') {
     if (!id) return res.status(400).json({ message: 'ID is required' });
     try {
-      const body = { ...req.body, updated_at: new Date().toISOString() };
+      const body = { ...req.body };
+      delete body.updated_at;
       const { data, error } = await supabaseAdmin.from('blog_posts').update(body).eq('id', id).select();
       if (error) throw error;
       return res.json(data[0]);

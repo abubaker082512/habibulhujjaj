@@ -59,7 +59,8 @@ module.exports = async function handler(req, res) {
   if (req.method === 'PUT') {
     if (!id) return res.status(400).json({ message: 'ID is required' });
     try {
-      const body = { ...req.body, updated_at: new Date().toISOString() };
+      const body = { ...req.body };
+      delete body.updated_at;
       if (typeof body.documents === 'string') {
         body.documents = body.documents.split(',').map(d => d.trim()).filter(Boolean);
       }
