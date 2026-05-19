@@ -69,6 +69,7 @@ CREATE TABLE IF NOT EXISTS gallery (
   label TEXT,
   category TEXT DEFAULT 'Kaaba',
   type TEXT DEFAULT 'standard',
+  order_index INTEGER DEFAULT 0,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 

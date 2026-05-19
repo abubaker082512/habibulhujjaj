@@ -26,7 +26,7 @@ module.exports = async function handler(req, res) {
   // ─── GET ───────────────────────────────────────────────────
   if (req.method === 'GET') {
     try {
-      let query = supabase.from('gallery').select('*').order('created_at', { ascending: false });
+      let query = supabase.from('gallery').select('*').order('order_index', { ascending: true }).order('created_at', { ascending: false });
       if (id) query = query.eq('id', id).single();
       const { data, error } = await query;
       if (error) throw error;
@@ -47,6 +47,19 @@ module.exports = async function handler(req, res) {
       const { data, error } = await supabaseAdmin.from('gallery').insert([body]).select();
       if (error) throw error;
       return res.status(201).json(data[0]);
+    } catch (err) {
+      return res.status(400).json({ message: err.message });
+    }
+  }
+
+  // ─── PUT ───────────────────────────────────────────────────
+  if (req.method === 'PUT') {
+    if (!id) return res.status(400).json({ message: 'ID is required' });
+    try {
+      const body = req.body || {};
+      const { data, error } = await supabaseAdmin.from('gallery').update(body).eq('id', id).select();
+      if (error) throw error;
+      return res.json(data[0]);
     } catch (err) {
       return res.status(400).json({ message: err.message });
     }

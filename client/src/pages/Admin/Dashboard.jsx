@@ -16,10 +16,7 @@ const tabs = [
   { id: 'flights', label: 'Flights', icon: 'flight_takeoff' },
   { id: 'gallery', label: 'Gallery', icon: 'photo_library' },
   { id: 'blog', label: 'Blog', icon: 'article' },
-  { id: 'page-media', label: 'Page Media', icon: 'image' },
-  { id: 'cms', label: 'Content CMS', icon: 'edit_note' },
   { id: 'submissions', label: 'Form Submissions', icon: 'contact_mail' },
-  { id: 'settings', label: 'Site Settings', icon: 'settings' },
 ]
 
 // Media Upload Component (Photo or Video)
@@ -294,6 +291,7 @@ const AdminDashboard = () => {
   const [flightForm, setFlightForm] = useState({ name: '', description: '', image_url: '', price_start: '', category: 'Most Popular', booking_url: '' })
   const [blogForm, setBlogForm] = useState({ title: '', excerpt: '', content: '', category: 'Guides', image_url: '', read_time: '' })
   const [galleryForm, setGalleryForm] = useState({ src: '', label: '', category: 'Kaaba' })
+  const [editingId, setEditingId] = useState({ package: null, tour: null, visa: null, flight: null, gallery: null, blog: null })
 
   const authHdr = () => ({ Authorization: `Bearer ${localStorage.getItem('token')}` })
 
@@ -373,10 +371,16 @@ const AdminDashboard = () => {
   const handleAddPackage = async (e) => {
     e.preventDefault()
     try {
-      await axios.post(`${API_BASE}/api/packages`, { ...packageForm, price: parseFloat(packageForm.price) || 0 }, { headers: authHdr() })
+      if (editingId.package) {
+        await axios.put(`${API_BASE}/api/packages?id=${editingId.package}`, { ...packageForm, price: parseFloat(packageForm.price) || 0 }, { headers: authHdr() })
+        alert('Package updated successfully!')
+      } else {
+        await axios.post(`${API_BASE}/api/packages`, { ...packageForm, price: parseFloat(packageForm.price) || 0 }, { headers: authHdr() })
+        alert('Package added successfully!')
+      }
       setPackageForm({ title: '', description: '', price: '', category: 'Economy', duration: '', location: '', hotel_name: '', distance_from_haram: '', image_url: '', airline: '', stars: 4, badge: '' })
+      setEditingId(prev => ({ ...prev, package: null }))
       fetchAll()
-      alert('Package added successfully!')
     } catch (err) { alert('Error: ' + (err.response?.data?.message || err.message)) }
   }
 
@@ -391,10 +395,16 @@ const AdminDashboard = () => {
   const handleAddTour = async (e) => {
     e.preventDefault()
     try {
-      await axios.post(`${API_BASE}/api/tours`, { ...tourForm, price: parseFloat(tourForm.price) || 0 }, { headers: authHdr() })
+      if (editingId.tour) {
+        await axios.put(`${API_BASE}/api/tours?id=${editingId.tour}`, { ...tourForm, price: parseFloat(tourForm.price) || 0 }, { headers: authHdr() })
+        alert('Tour updated!')
+      } else {
+        await axios.post(`${API_BASE}/api/tours`, { ...tourForm, price: parseFloat(tourForm.price) || 0 }, { headers: authHdr() })
+        alert('Tour added!')
+      }
       setTourForm({ title: '', subtitle: '', description: '', price: '', duration: '', image_url: '', highlights: '' })
+      setEditingId(prev => ({ ...prev, tour: null }))
       fetchAll()
-      alert('Tour added!')
     } catch (err) { alert('Error: ' + (err.response?.data?.message || err.message)) }
   }
 
@@ -407,10 +417,16 @@ const AdminDashboard = () => {
   const handleAddVisa = async (e) => {
     e.preventDefault()
     try {
-      await axios.post(`${API_BASE}/api/visa`, visaForm, { headers: authHdr() })
+      if (editingId.visa) {
+        await axios.put(`${API_BASE}/api/visa?id=${editingId.visa}`, visaForm, { headers: authHdr() })
+        alert('Visa service updated!')
+      } else {
+        await axios.post(`${API_BASE}/api/visa`, visaForm, { headers: authHdr() })
+        alert('Visa service added!')
+      }
       setVisaForm({ title: '', description: '', processing_time: '', fee: '', documents: '' })
+      setEditingId(prev => ({ ...prev, visa: null }))
       fetchAll()
-      alert('Visa service added!')
     } catch (err) { alert('Error: ' + (err.response?.data?.message || err.message)) }
   }
 
@@ -423,10 +439,16 @@ const AdminDashboard = () => {
   const handleAddFlight = async (e) => {
     e.preventDefault()
     try {
-      await axios.post(`${API_BASE}/api/flights`, { ...flightForm, price_start: parseFloat(flightForm.price_start) || 0 }, { headers: authHdr() })
+      if (editingId.flight) {
+        await axios.put(`${API_BASE}/api/flights?id=${editingId.flight}`, { ...flightForm, price_start: parseFloat(flightForm.price_start) || 0 }, { headers: authHdr() })
+        alert('Destination updated!')
+      } else {
+        await axios.post(`${API_BASE}/api/flights`, { ...flightForm, price_start: parseFloat(flightForm.price_start) || 0 }, { headers: authHdr() })
+        alert('Destination added!')
+      }
       setFlightForm({ name: '', description: '', image_url: '', price_start: '', category: 'Most Popular', booking_url: '' })
+      setEditingId(prev => ({ ...prev, flight: null }))
       fetchAll()
-      alert('Destination added!')
     } catch (err) { alert('Error: ' + (err.response?.data?.message || err.message)) }
   }
 
@@ -439,10 +461,16 @@ const AdminDashboard = () => {
   const handleAddGallery = async (e) => {
     e.preventDefault()
     try {
-      await axios.post(`${API_BASE}/api/gallery`, galleryForm, { headers: authHdr() })
+      if (editingId.gallery) {
+        await axios.put(`${API_BASE}/api/gallery?id=${editingId.gallery}`, galleryForm, { headers: authHdr() })
+        alert('Gallery image updated!')
+      } else {
+        await axios.post(`${API_BASE}/api/gallery`, galleryForm, { headers: authHdr() })
+        alert('Gallery image added!')
+      }
       setGalleryForm({ src: '', label: '', category: 'Kaaba' })
+      setEditingId(prev => ({ ...prev, gallery: null }))
       fetchAll()
-      alert('Gallery image added!')
     } catch (err) { alert('Error: ' + (err.response?.data?.message || err.message)) }
   }
 
@@ -452,13 +480,49 @@ const AdminDashboard = () => {
     catch { alert('Error deleting') }
   }
 
+  const handleMoveGallery = async (index, direction) => {
+    const items = [...galleryItems];
+    const targetIndex = direction === 'left' ? index - 1 : index + 1;
+    if (targetIndex < 0 || targetIndex >= items.length) return;
+
+    const currentItem = items[index];
+    const targetItem = items[targetIndex];
+
+    // If order_index doesn't exist, use positions
+    const currentOrder = currentItem.order_index !== undefined && currentItem.order_index !== null ? currentItem.order_index : index;
+    const targetOrder = targetItem.order_index !== undefined && targetItem.order_index !== null ? targetItem.order_index : targetIndex;
+
+    let newCurrentOrder = targetOrder;
+    let newTargetOrder = currentOrder;
+
+    if (currentOrder === targetOrder) {
+      newCurrentOrder = direction === 'left' ? targetOrder - 1 : targetOrder + 1;
+    }
+
+    try {
+      await Promise.all([
+        axios.put(`${API_BASE}/api/gallery?id=${currentItem.id}`, { src: currentItem.src, label: currentItem.label, category: currentItem.category, order_index: newCurrentOrder }, { headers: authHdr() }),
+        axios.put(`${API_BASE}/api/gallery?id=${targetItem.id}`, { src: targetItem.src, label: targetItem.label, category: targetItem.category, order_index: newTargetOrder }, { headers: authHdr() })
+      ]);
+      fetchAll();
+    } catch (err) {
+      alert('Error updating order: ' + err.message);
+    }
+  }
+
   const handleAddBlog = async (e) => {
     e.preventDefault()
     try {
-      await axios.post(`${API_BASE}/api/blog`, blogForm, { headers: authHdr() })
+      if (editingId.blog) {
+        await axios.put(`${API_BASE}/api/blog?id=${editingId.blog}`, blogForm, { headers: authHdr() })
+        alert('Blog post updated!')
+      } else {
+        await axios.post(`${API_BASE}/api/blog`, blogForm, { headers: authHdr() })
+        alert('Blog post published!')
+      }
       setBlogForm({ title: '', excerpt: '', content: '', category: 'Guides', image_url: '', read_time: '' })
+      setEditingId(prev => ({ ...prev, blog: null }))
       fetchAll()
-      alert('Blog post published!')
     } catch (err) { alert('Error: ' + (err.response?.data?.message || err.message)) }
   }
 
@@ -529,7 +593,7 @@ const AdminDashboard = () => {
               
               {/* Add Package Form */}
               <div className="bg-surface-container-lowest p-8 rounded-xl editorial-shadow mb-8">
-                <h3 className="font-notoSerif text-xl font-bold mb-6">Add New Package</h3>
+                <h3 className="font-notoSerif text-xl font-bold mb-6">{editingId.package ? 'Edit Umrah Package' : 'Add New Package'}</h3>
                 <form onSubmit={handleAddPackage} className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <input className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm" placeholder="Package Title" value={packageForm.title} onChange={e => setPackageForm({...packageForm, title: e.target.value})} required />
                   <input className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm" placeholder="Price (PKR)" type="number" value={packageForm.price} onChange={e => setPackageForm({...packageForm, price: e.target.value})} required />
@@ -558,7 +622,16 @@ const AdminDashboard = () => {
 
                   <input className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm" placeholder="Badge (e.g., Best Seller)" value={packageForm.badge} onChange={e => setPackageForm({...packageForm, badge: e.target.value})} />
                   <textarea className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm md:col-span-2" placeholder="Description" rows={3} value={packageForm.description} onChange={e => setPackageForm({...packageForm, description: e.target.value})} required />
-                  <button type="submit" className="bg-[#001c1d] text-white py-3 rounded font-bold text-sm md:col-span-2 hover:brightness-110 transition-all">Add Package</button>
+                  <div className="md:col-span-2 flex gap-4">
+                    <button type="submit" className="flex-1 bg-[#001c1d] text-white py-3 rounded font-bold text-sm hover:brightness-110 transition-all">
+                      {editingId.package ? 'Save Updates' : 'Add Package'}
+                    </button>
+                    {editingId.package && (
+                      <button type="button" onClick={() => { setPackageForm({ title: '', description: '', price: '', category: 'Economy', duration: '', location: '', hotel_name: '', distance_from_haram: '', image_url: '', airline: '', stars: 4, badge: '' }); setEditingId(prev => ({ ...prev, package: null })); }} className="px-6 bg-gray-500 text-white rounded font-bold text-sm hover:bg-gray-600 transition-all">
+                        Cancel
+                      </button>
+                    )}
+                  </div>
                 </form>
               </div>
 
@@ -583,9 +656,14 @@ const AdminDashboard = () => {
                           <p className="text-[#001c1d] font-bold">PKR {(pkg.price || 0).toLocaleString()}</p>
                           <p className="text-[10px] text-outline mt-1 font-mono uppercase truncate max-w-[150px]">{pkg.id}</p>
                         </div>
-                        <button onClick={() => handleDeletePackage(pkg.id)} className="self-start text-red-500 hover:text-red-700 transition-colors">
-                          <span className="material-symbols-outlined">delete</span>
-                        </button>
+                        <div className="flex flex-col gap-2 self-start">
+                          <button onClick={() => { setPackageForm({ title: pkg.title, description: pkg.description, price: String(pkg.price), category: pkg.category, duration: pkg.duration, location: pkg.location || '', hotel_name: pkg.hotel_name || '', distance_from_haram: pkg.distance_from_haram || '', image_url: pkg.image_url || '', airline: pkg.airline || '', stars: pkg.stars || 4, badge: pkg.badge || '' }); setEditingId(prev => ({ ...prev, package: pkg.id })); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="text-[#001c1d] hover:text-secondary transition-colors" title="Edit Package">
+                            <span className="material-symbols-outlined">edit</span>
+                          </button>
+                          <button onClick={() => handleDeletePackage(pkg.id)} className="text-red-500 hover:text-red-700 transition-colors" title="Delete Package">
+                            <span className="material-symbols-outlined">delete</span>
+                          </button>
+                        </div>
                       </div>
                     ))}
                   </div>
@@ -599,7 +677,7 @@ const AdminDashboard = () => {
             <div>
               <h2 className="font-notoSerif text-3xl font-bold text-primary mb-8">Manage International Tours</h2>
               <div className="bg-surface-container-lowest p-8 rounded-xl editorial-shadow mb-8">
-                <h3 className="font-notoSerif text-xl font-bold mb-6">Add New Tour</h3>
+                <h3 className="font-notoSerif text-xl font-bold mb-6">{editingId.tour ? 'Edit International Tour' : 'Add New Tour'}</h3>
                 <form onSubmit={handleAddTour} className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <input required className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm" placeholder="Tour Title (e.g., Turkey Tour)" value={tourForm.title} onChange={e => setTourForm({...tourForm, title: e.target.value})} />
                   <input className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm" placeholder="Subtitle (e.g., Istanbul, Cappadocia)" value={tourForm.subtitle} onChange={e => setTourForm({...tourForm, subtitle: e.target.value})} />
@@ -610,7 +688,16 @@ const AdminDashboard = () => {
                   </div>
                   <input className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm md:col-span-2" placeholder="Highlights (comma separated)" value={tourForm.highlights} onChange={e => setTourForm({...tourForm, highlights: e.target.value})} />
                   <textarea className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm md:col-span-2" placeholder="Description" rows={3} value={tourForm.description} onChange={e => setTourForm({...tourForm, description: e.target.value})} />
-                  <button type="submit" className="bg-[#001c1d] text-white py-3 rounded font-bold text-sm md:col-span-2 hover:brightness-110 transition-all">Add Tour</button>
+                  <div className="md:col-span-2 flex gap-4">
+                    <button type="submit" className="flex-1 bg-[#001c1d] text-white py-3 rounded font-bold text-sm hover:brightness-110 transition-all">
+                      {editingId.tour ? 'Save Updates' : 'Add Tour'}
+                    </button>
+                    {editingId.tour && (
+                      <button type="button" onClick={() => { setTourForm({ title: '', subtitle: '', description: '', price: '', duration: '', image_url: '', highlights: '' }); setEditingId(prev => ({ ...prev, tour: null })); }} className="px-6 bg-gray-500 text-white rounded font-bold text-sm hover:bg-gray-600 transition-all">
+                        Cancel
+                      </button>
+                    )}
+                  </div>
                 </form>
               </div>
               <div className="space-y-3">
@@ -623,7 +710,12 @@ const AdminDashboard = () => {
                       <p className="text-sm text-outline">{t.subtitle} • {t.duration}</p>
                       <p className="text-[#001c1d] font-bold text-sm">PKR {(t.price||0).toLocaleString()}</p>
                     </div>
-                    <button onClick={()=>handleDeleteTour(t.id)} className="text-red-500 hover:text-red-700 flex-shrink-0"><span className="material-symbols-outlined">delete</span></button>
+                    <div className="flex items-center gap-2 flex-shrink-0">
+                      <button onClick={() => { setTourForm({ title: t.title, subtitle: t.subtitle || '', description: t.description || '', price: String(t.price), duration: t.duration || '', image_url: t.image_url || '', highlights: Array.isArray(t.highlights) ? t.highlights.join(', ') : (t.highlights || '') }); setEditingId(prev => ({ ...prev, tour: t.id })); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="text-[#001c1d] hover:text-secondary p-1" title="Edit Tour">
+                        <span className="material-symbols-outlined">edit</span>
+                      </button>
+                      <button onClick={()=>handleDeleteTour(t.id)} className="text-red-500 hover:text-red-700 p-1" title="Delete Tour"><span className="material-symbols-outlined">delete</span></button>
+                    </div>
                   </div>
                 ))}
                 {!tours.length && <p className="text-center text-on-surface-variant py-4 bg-surface-container-lowest rounded-xl">No tours yet. Add one above.</p>}
@@ -636,14 +728,23 @@ const AdminDashboard = () => {
             <div>
               <h2 className="font-notoSerif text-3xl font-bold text-primary mb-8">Manage Visa Services</h2>
               <div className="bg-surface-container-lowest p-8 rounded-xl editorial-shadow mb-8">
-                <h3 className="font-notoSerif text-xl font-bold mb-6">Add New Visa Service</h3>
+                <h3 className="font-notoSerif text-xl font-bold mb-6">{editingId.visa ? 'Edit Visa Service' : 'Add New Visa Service'}</h3>
                 <form onSubmit={handleAddVisa} className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <input required className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm" placeholder="Visa Title (e.g., Umrah Visa)" value={visaForm.title} onChange={e => setVisaForm({...visaForm, title: e.target.value})} />
                   <input className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm" placeholder="Processing Time" value={visaForm.processing_time} onChange={e => setVisaForm({...visaForm, processing_time: e.target.value})} />
                   <input className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm" placeholder="Fee (PKR)" value={visaForm.fee} onChange={e => setVisaForm({...visaForm, fee: e.target.value})} />
                   <input className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm" placeholder="Required Documents (comma separated)" value={visaForm.documents} onChange={e => setVisaForm({...visaForm, documents: e.target.value})} />
                   <textarea className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm md:col-span-2" placeholder="Description" rows={3} value={visaForm.description} onChange={e => setVisaForm({...visaForm, description: e.target.value})} />
-                  <button type="submit" className="bg-[#001c1d] text-white py-3 rounded font-bold text-sm md:col-span-2 hover:brightness-110 transition-all">Add Visa Service</button>
+                  <div className="md:col-span-2 flex gap-4">
+                    <button type="submit" className="flex-1 bg-[#001c1d] text-white py-3 rounded font-bold text-sm hover:brightness-110 transition-all">
+                      {editingId.visa ? 'Save Updates' : 'Add Visa Service'}
+                    </button>
+                    {editingId.visa && (
+                      <button type="button" onClick={() => { setVisaForm({ title: '', description: '', processing_time: '', fee: '', documents: '' }); setEditingId(prev => ({ ...prev, visa: null })); }} className="px-6 bg-gray-500 text-white rounded font-bold text-sm hover:bg-gray-600 transition-all">
+                        Cancel
+                      </button>
+                    )}
+                  </div>
                 </form>
               </div>
               <div className="space-y-3">
@@ -655,7 +756,12 @@ const AdminDashboard = () => {
                       <p className="font-bold text-primary">{v.title}</p>
                       <p className="text-sm text-outline">{v.processing_time} • {v.fee}</p>
                     </div>
-                    <button onClick={()=>handleDeleteVisa(v.id)} className="text-red-500 hover:text-red-700 flex-shrink-0"><span className="material-symbols-outlined">delete</span></button>
+                    <div className="flex items-center gap-2 flex-shrink-0">
+                      <button onClick={() => { setVisaForm({ title: v.title, description: v.description || '', processing_time: v.processing_time || '', fee: v.fee || '', documents: Array.isArray(v.documents) ? v.documents.join(', ') : (v.documents || '') }); setEditingId(prev => ({ ...prev, visa: v.id })); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="text-[#001c1d] hover:text-secondary p-1" title="Edit Visa Service">
+                        <span className="material-symbols-outlined">edit</span>
+                      </button>
+                      <button onClick={()=>handleDeleteVisa(v.id)} className="text-red-500 hover:text-red-700 p-1" title="Delete Visa Service"><span className="material-symbols-outlined">delete</span></button>
+                    </div>
                   </div>
                 ))}
                 {!visaServices.length && <p className="text-center text-on-surface-variant py-4 bg-surface-container-lowest rounded-xl">No visa services yet.</p>}
@@ -668,7 +774,7 @@ const AdminDashboard = () => {
             <div>
               <h2 className="font-notoSerif text-3xl font-bold text-primary mb-8">Manage Flights</h2>
               <div className="bg-surface-container-lowest p-8 rounded-xl editorial-shadow mb-8">
-                <h3 className="font-notoSerif text-xl font-bold mb-6">Add New Destination</h3>
+                <h3 className="font-notoSerif text-xl font-bold mb-6">{editingId.flight ? 'Edit Destination' : 'Add New Destination'}</h3>
                 <form onSubmit={handleAddFlight} className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <input required className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm" placeholder="Destination Name (e.g., London)" value={flightForm.name} onChange={e => setFlightForm({...flightForm, name: e.target.value})} />
                   <input className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm" placeholder="Price Starts From (PKR)" type="number" value={flightForm.price_start} onChange={e => setFlightForm({...flightForm, price_start: e.target.value})} />
@@ -678,7 +784,16 @@ const AdminDashboard = () => {
                   <input className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm" placeholder="Category (e.g., Most Popular)" value={flightForm.category} onChange={e => setFlightForm({...flightForm, category: e.target.value})} />
                   <input className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm" placeholder="Booking URL (Optional)" value={flightForm.booking_url} onChange={e => setFlightForm({...flightForm, booking_url: e.target.value})} />
                   <textarea className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm md:col-span-2" placeholder="Short Description" rows={2} value={flightForm.description} onChange={e => setFlightForm({...flightForm, description: e.target.value})} />
-                  <button type="submit" className="bg-[#001c1d] text-white py-3 rounded font-bold text-sm md:col-span-2 hover:brightness-110 transition-all">Add Destination</button>
+                  <div className="md:col-span-2 flex gap-4">
+                    <button type="submit" className="flex-1 bg-[#001c1d] text-white py-3 rounded font-bold text-sm hover:brightness-110 transition-all">
+                      {editingId.flight ? 'Save Updates' : 'Add Destination'}
+                    </button>
+                    {editingId.flight && (
+                      <button type="button" onClick={() => { setFlightForm({ name: '', description: '', image_url: '', price_start: '', category: 'Most Popular', booking_url: '' }); setEditingId(prev => ({ ...prev, flight: null })); }} className="px-6 bg-gray-500 text-white rounded font-bold text-sm hover:bg-gray-600 transition-all">
+                        Cancel
+                      </button>
+                    )}
+                  </div>
                 </form>
               </div>
               <div className="space-y-3">
@@ -692,7 +807,12 @@ const AdminDashboard = () => {
                           <p className="font-bold text-primary">{f.name}</p>
                           <p className="text-xs text-[#001c1d] font-bold">From PKR {(f.price_start || 0).toLocaleString()}</p>
                         </div>
-                        <button onClick={()=>handleDeleteFlight(f.id)} className="text-red-500 hover:text-red-700"><span className="material-symbols-outlined">delete</span></button>
+                        <div className="flex items-center gap-2">
+                          <button onClick={() => { setFlightForm({ name: f.name, description: f.description || '', image_url: f.image_url || '', price_start: String(f.price_start), category: f.category || 'Most Popular', booking_url: f.booking_url || '' }); setEditingId(prev => ({ ...prev, flight: f.id })); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="text-[#001c1d] hover:text-secondary p-1" title="Edit Destination">
+                            <span className="material-symbols-outlined text-sm">edit</span>
+                          </button>
+                          <button onClick={()=>handleDeleteFlight(f.id)} className="text-red-500 hover:text-red-700 p-1" title="Delete Destination"><span className="material-symbols-outlined text-sm">delete</span></button>
+                        </div>
                       </div>
                     </div>
                   ))}
@@ -707,7 +827,7 @@ const AdminDashboard = () => {
             <div>
               <h2 className="font-notoSerif text-3xl font-bold text-primary mb-8">Manage Gallery</h2>
               <div className="bg-surface-container-lowest p-8 rounded-xl editorial-shadow mb-8">
-                <h3 className="font-notoSerif text-xl font-bold mb-6">Add New Gallery Image</h3>
+                <h3 className="font-notoSerif text-xl font-bold mb-6">{editingId.gallery ? 'Edit Gallery Image' : 'Add New Gallery Image'}</h3>
                 <form onSubmit={handleAddGallery} className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {/* Image Upload */}
                   <div className="md:col-span-2">
@@ -721,17 +841,43 @@ const AdminDashboard = () => {
                     <option>Umrah Groups</option>
                     <option>International Tours</option>
                   </select>
-                  <button type="submit" className="bg-[#001c1d] text-white py-3 rounded font-bold text-sm hover:brightness-110 transition-all">Add Image</button>
+                  <div className="md:col-span-2 flex gap-4">
+                    <button type="submit" className="flex-1 bg-[#001c1d] text-white py-3 rounded font-bold text-sm hover:brightness-110 transition-all">
+                      {editingId.gallery ? 'Save Updates' : 'Add Image'}
+                    </button>
+                    {editingId.gallery && (
+                      <button type="button" onClick={() => { setGalleryForm({ src: '', label: '', category: 'Kaaba' }); setEditingId(prev => ({ ...prev, gallery: null })); }} className="px-6 bg-gray-500 text-white rounded font-bold text-sm hover:bg-gray-600 transition-all">
+                        Cancel
+                      </button>
+                    )}
+                  </div>
                 </form>
               </div>
               <div className="space-y-3">
                 <h3 className="font-notoSerif text-xl font-bold">Gallery Images ({galleryItems.length})</h3>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  {galleryItems.map(g => (
+                  {galleryItems.map((g, index) => (
                     <div key={g.id} className="relative group">
                       <img src={g.src} alt={g.label} className="w-full h-32 object-cover rounded-lg"/>
-                      <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg flex items-center justify-center">
-                        <button onClick={()=>handleDeleteGallery(g.id)} className="text-white bg-red-500 rounded-full p-1"><span className="material-symbols-outlined text-sm">delete</span></button>
+                      <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg flex flex-col items-center justify-center gap-2">
+                        <div className="flex gap-2">
+                          {index > 0 && (
+                            <button onClick={() => handleMoveGallery(index, 'left')} className="text-white bg-[#001c1d] rounded-full p-1" title="Move Left">
+                              <span className="material-symbols-outlined text-sm">arrow_back</span>
+                            </button>
+                          )}
+                          <button onClick={() => { setGalleryForm({ src: g.src, label: g.label || '', category: g.category }); setEditingId(prev => ({ ...prev, gallery: g.id })); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="text-white bg-blue-500 rounded-full p-1" title="Edit Image">
+                            <span className="material-symbols-outlined text-sm">edit</span>
+                          </button>
+                          <button onClick={()=>handleDeleteGallery(g.id)} className="text-white bg-red-500 rounded-full p-1" title="Delete Image">
+                            <span className="material-symbols-outlined text-sm">delete</span>
+                          </button>
+                          {index < galleryItems.length - 1 && (
+                            <button onClick={() => handleMoveGallery(index, 'right')} className="text-white bg-[#001c1d] rounded-full p-1" title="Move Right">
+                              <span className="material-symbols-outlined text-sm">arrow_forward</span>
+                            </button>
+                          )}
+                        </div>
                       </div>
                       <p className="text-xs text-center mt-1 text-outline truncate">{g.label||g.category}</p>
                     </div>
@@ -747,7 +893,7 @@ const AdminDashboard = () => {
             <div>
               <h2 className="font-notoSerif text-3xl font-bold text-primary mb-8">Manage Blog Posts</h2>
               <div className="bg-surface-container-lowest p-8 rounded-xl editorial-shadow mb-8">
-                <h3 className="font-notoSerif text-xl font-bold mb-6">Add New Blog Post</h3>
+                <h3 className="font-notoSerif text-xl font-bold mb-6">{editingId.blog ? 'Edit Blog Post' : 'Add New Blog Post'}</h3>
                 <form onSubmit={handleAddBlog} className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <input required className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm" placeholder="Post Title" value={blogForm.title} onChange={e => setBlogForm({...blogForm, title: e.target.value})} />
                   <select className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm" value={blogForm.category} onChange={e => setBlogForm({...blogForm, category: e.target.value})}>
@@ -763,7 +909,16 @@ const AdminDashboard = () => {
                   </div>
                   <textarea className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm md:col-span-2" placeholder="Excerpt" rows={2} value={blogForm.excerpt} onChange={e => setBlogForm({...blogForm, excerpt: e.target.value})} />
                   <textarea className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm md:col-span-2" placeholder="Full Content" rows={4} value={blogForm.content} onChange={e => setBlogForm({...blogForm, content: e.target.value})} />
-                  <button type="submit" className="bg-[#001c1d] text-white py-3 rounded font-bold text-sm md:col-span-2 hover:brightness-110 transition-all">Publish Post</button>
+                  <div className="md:col-span-2 flex gap-4">
+                    <button type="submit" className="flex-1 bg-[#001c1d] text-white py-3 rounded font-bold text-sm hover:brightness-110 transition-all">
+                      {editingId.blog ? 'Save Updates' : 'Publish Post'}
+                    </button>
+                    {editingId.blog && (
+                      <button type="button" onClick={() => { setBlogForm({ title: '', excerpt: '', content: '', category: 'Guides', image_url: '', read_time: '' }); setEditingId(prev => ({ ...prev, blog: null })); }} className="px-6 bg-gray-500 text-white rounded font-bold text-sm hover:bg-gray-600 transition-all">
+                        Cancel
+                      </button>
+                    )}
+                  </div>
                 </form>
               </div>
               <div className="space-y-3">
@@ -775,7 +930,12 @@ const AdminDashboard = () => {
                       <p className="font-bold text-primary truncate">{b.title}</p>
                       <p className="text-sm text-outline">{b.category} • {b.read_time}</p>
                     </div>
-                    <button onClick={()=>handleDeleteBlog(b.id)} className="text-red-500 hover:text-red-700 flex-shrink-0"><span className="material-symbols-outlined">delete</span></button>
+                    <div className="flex items-center gap-2 flex-shrink-0">
+                      <button onClick={() => { setBlogForm({ title: b.title, excerpt: b.excerpt || '', content: b.content || '', category: b.category || 'Guides', image_url: b.image_url || '', read_time: b.read_time || '' }); setEditingId(prev => ({ ...prev, blog: b.id })); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="text-[#001c1d] hover:text-secondary p-1" title="Edit Blog Post">
+                        <span className="material-symbols-outlined">edit</span>
+                      </button>
+                      <button onClick={()=>handleDeleteBlog(b.id)} className="text-red-500 hover:text-red-700 p-1" title="Delete Blog Post"><span className="material-symbols-outlined">delete</span></button>
+                    </div>
                   </div>
                 ))}
                 {!blogPosts.length && <p className="text-center text-on-surface-variant py-4 bg-surface-container-lowest rounded-xl">No posts yet.</p>}
