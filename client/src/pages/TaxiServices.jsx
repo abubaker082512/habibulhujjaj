@@ -289,6 +289,87 @@ const routesData = [
 const TaxiServices = () => {
   const [selectedVehicle, setSelectedVehicle] = useState(null)
   const [selectedRoute, setSelectedRoute] = useState(null)
+  const [fleet, setFleet] = useState(fleetData)
+  const [routes, setRoutes] = useState(routesData)
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    axios.get(`${API_BASE}/api/taxi`)
+      .then(res => {
+        if (Array.isArray(res.data) && res.data.length > 0) {
+          const dbServices = res.data
+          
+          // 1. Dynamic fleet merger
+          const newFleetMap = new Map()
+          fleetData.forEach(f => {
+            newFleetMap.set(f.name.toLowerCase(), { ...f })
+          })
+          
+          dbServices.forEach(s => {
+            const vKey = s.vehicle_type ? s.vehicle_type.toLowerCase() : ''
+            if (vKey) {
+              if (newFleetMap.has(vKey)) {
+                const existing = newFleetMap.get(vKey)
+                if (s.capacity) existing.seats = s.capacity
+                if (s.image_url) existing.image_url = s.image_url
+                if (s.description) existing.ac = s.description
+              } else {
+                newFleetMap.set(vKey, {
+                  id: s.vehicle_type.toLowerCase().replace(/[^a-z0-9]/g, '-'),
+                  name: s.vehicle_type.toUpperCase(),
+                  seats: s.capacity || '4 Person Seat Vehicle',
+                  luggage: 'Standard Luggage',
+                  ac: s.description || 'AC Chilled Vehicle',
+                  image_url: s.image_url || 'https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?w=600&q=80',
+                  whatsapp: '+996596812961'
+                })
+              }
+            }
+          })
+          setFleet(Array.from(newFleetMap.values()))
+          
+          // 2. Dynamic routes merger
+          const newRoutesMap = new Map()
+          routesData.forEach(r => {
+            newRoutesMap.set(r.name.toLowerCase(), { ...r })
+          })
+          
+          dbServices.forEach(s => {
+            const rKey = s.name ? s.name.toLowerCase() : ''
+            if (rKey) {
+              const vId = s.vehicle_type ? s.vehicle_type.toLowerCase().replace(/[^a-z0-9]/g, '-') : 'camry'
+              const priceVal = parseFloat(s.price) || 0
+              
+              if (newRoutesMap.has(rKey)) {
+                const existing = newRoutesMap.get(rKey)
+                existing.prices[vId] = {
+                  sar: priceVal,
+                  usd: Math.round(priceVal / 3.75)
+                }
+              } else {
+                newRoutesMap.set(rKey, {
+                  id: s.name.toLowerCase().replace(/[^a-z0-9]/g, '-'),
+                  name: s.name,
+                  image: s.image_url || 'https://images.unsplash.com/photo-1564507592333-c60657eea523?w=600&q=80',
+                  prices: {
+                    [vId]: {
+                      sar: priceVal,
+                      usd: Math.round(priceVal / 3.75)
+                    }
+                  }
+                })
+              }
+            }
+          })
+          setRoutes(Array.from(newRoutesMap.values()))
+        }
+        setLoading(false)
+      })
+      .catch(err => {
+        console.error('Failed to fetch dynamic taxi services:', err)
+        setLoading(false)
+      })
+  }, [])
   
   // Modal booking states
   const [bookingModalOpen, setBookingModalOpen] = useState(false)
@@ -415,7 +496,7 @@ const TaxiServices = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {fleetData.map((vehicle) => (
+            {fleet.map((vehicle) => (
               <div key={vehicle.id} className="bg-white rounded-2xl overflow-hidden border border-gray-150 shadow-md hover:shadow-2xl transition-all duration-500 flex flex-col group">
                 {/* Vehicle Image Container */}
                 <div className="h-56 bg-gray-50 flex items-center justify-center p-4 relative overflow-hidden">
@@ -486,7 +567,7 @@ const TaxiServices = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {routesData.map((route) => (
+            {routes.map((route) => (
               <div 
                 key={route.id} 
                 className={`bg-[#002f30] rounded-xl overflow-hidden border transition-all duration-500 flex flex-col justify-between group ${
@@ -539,7 +620,7 @@ const TaxiServices = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {fleetData.map((vehicle) => {
+              {fleet.map((vehicle) => {
                 const price = selectedRoute.prices[vehicle.id] || { sar: 250, usd: 67 }
                 return (
                   <div key={vehicle.id} className="bg-[#003334] rounded-2xl overflow-hidden border border-white/10 p-5 flex flex-col justify-between text-center group hover:border-[#ffc65c]/40 transition-all duration-300">

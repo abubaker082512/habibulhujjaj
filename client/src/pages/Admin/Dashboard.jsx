@@ -859,7 +859,7 @@ const AdminDashboard = () => {
                   <input required className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm" placeholder="Service/Route Name (e.g., Jeddah Airport to Makkah)" value={taxiForm.name} onChange={e => setTaxiForm({...taxiForm, name: e.target.value})} />
                   <input required className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm" placeholder="Vehicle Type (e.g., Toyota Camry / Hyundai Sonata)" value={taxiForm.vehicle_type} onChange={e => setTaxiForm({...taxiForm, vehicle_type: e.target.value})} />
                   <input className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm" placeholder="Capacity (e.g., 4 Passengers, 4 Bags)" value={taxiForm.capacity} onChange={e => setTaxiForm({...taxiForm, capacity: e.target.value})} />
-                  <input className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm" placeholder="Price (PKR)" type="number" value={taxiForm.price} onChange={e => setTaxiForm({...taxiForm, price: e.target.value})} />
+                  <input className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm" placeholder="Price (SAR)" type="number" value={taxiForm.price} onChange={e => setTaxiForm({...taxiForm, price: e.target.value})} />
                   <select className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm" value={taxiForm.category} onChange={e => setTaxiForm({...taxiForm, category: e.target.value})}>
                     <option value="One Way">One Way</option>
                     <option value="Round Trip">Round Trip</option>
@@ -891,7 +891,7 @@ const AdminDashboard = () => {
                         <div>
                           <p className="font-bold text-primary">{t.name}</p>
                           <p className="text-xs text-outline font-medium">{t.vehicle_type}</p>
-                          <p className="text-xs text-[#001c1d] font-bold mt-1">PKR {(t.price || 0).toLocaleString()}</p>
+                          <p className="text-xs text-[#001c1d] font-bold mt-1">SAR {(t.price || 0).toLocaleString()}</p>
                           <p className="text-[11px] text-outline-variant font-medium mt-1">{t.capacity}</p>
                         </div>
                         <div className="flex items-center gap-2">
