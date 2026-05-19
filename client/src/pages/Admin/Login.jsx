@@ -6,8 +6,8 @@ import { useNavigate } from 'react-router-dom'
 const API_BASE = import.meta.env.VITE_API_URL || ''
 
 const AdminLogin = () => {
-  const [email, setEmail] = useState('admin@rehmanumrah.com')
-  const [password, setPassword] = useState('admin123')
+  const [email, setEmail] = useState('admin@habibulhujjaj.com')
+  const [password, setPassword] = useState('Habib@786')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const navigate = useNavigate()
