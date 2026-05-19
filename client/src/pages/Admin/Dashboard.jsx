@@ -14,6 +14,7 @@ const tabs = [
   { id: 'tours', label: 'International Tours', icon: 'flight' },
   { id: 'visa', label: 'Visa Services', icon: 'description' },
   { id: 'flights', label: 'Flights', icon: 'flight_takeoff' },
+  { id: 'taxi', label: 'Taxi Services', icon: 'local_taxi' },
   { id: 'gallery', label: 'Gallery', icon: 'photo_library' },
   { id: 'blog', label: 'Blog', icon: 'article' },
   { id: 'submissions', label: 'Form Submissions', icon: 'contact_mail' },
@@ -272,6 +273,7 @@ const AdminDashboard = () => {
   const [tours, setTours] = useState([])
   const [visaServices, setVisaServices] = useState([])
   const [flights, setFlights] = useState([])
+  const [taxiServices, setTaxiServices] = useState([])
   const [galleryItems, setGalleryItems] = useState([])
   const [blogPosts, setBlogPosts] = useState([])
   const [submissions, setSubmissions] = useState([])
@@ -289,9 +291,10 @@ const AdminDashboard = () => {
   const [tourForm, setTourForm] = useState({ title: '', subtitle: '', description: '', price: '', duration: '', image_url: '', highlights: '' })
   const [visaForm, setVisaForm] = useState({ title: '', description: '', processing_time: '', fee: '', documents: '' })
   const [flightForm, setFlightForm] = useState({ name: '', description: '', image_url: '', price_start: '', category: 'Most Popular', booking_url: '' })
+  const [taxiForm, setTaxiForm] = useState({ name: '', vehicle_type: '', capacity: '', price: '', image_url: '', description: '', category: 'One Way' })
   const [blogForm, setBlogForm] = useState({ title: '', excerpt: '', content: '', category: 'Guides', image_url: '', read_time: '' })
   const [galleryForm, setGalleryForm] = useState({ src: '', label: '', category: 'Kaaba' })
-  const [editingId, setEditingId] = useState({ package: null, tour: null, visa: null, flight: null, gallery: null, blog: null })
+  const [editingId, setEditingId] = useState({ package: null, tour: null, visa: null, flight: null, taxi: null, gallery: null, blog: null })
 
   const authHdr = () => ({ Authorization: `Bearer ${localStorage.getItem('token')}` })
 
@@ -335,7 +338,7 @@ const AdminDashboard = () => {
   const fetchAll = async () => {
     setLoading(true)
     try {
-      const [pkgR, tourR, visaR, galR, blogR, flightR, subR] = await Promise.allSettled([
+      const [pkgR, tourR, visaR, galR, blogR, flightR, subR, taxiR] = await Promise.allSettled([
         axios.get(`${API_BASE}/api/packages`),
         axios.get(`${API_BASE}/api/tours`),
         axios.get(`${API_BASE}/api/visa`),
@@ -343,6 +346,7 @@ const AdminDashboard = () => {
         axios.get(`${API_BASE}/api/blog`),
         axios.get(`${API_BASE}/api/flights`),
         axios.get(`${API_BASE}/api/submissions`, { headers: authHdr() }),
+        axios.get(`${API_BASE}/api/taxi`),
       ])
       if (pkgR.status === 'fulfilled') setPackages(Array.isArray(pkgR.value.data) ? pkgR.value.data : [])
       if (tourR.status === 'fulfilled') setTours(Array.isArray(tourR.value.data) ? tourR.value.data : [])
@@ -351,6 +355,7 @@ const AdminDashboard = () => {
       if (blogR.status === 'fulfilled') setBlogPosts(Array.isArray(blogR.value.data) ? blogR.value.data : [])
       if (flightR.status === 'fulfilled') setFlights(Array.isArray(flightR.value.data) ? flightR.value.data : [])
       if (subR.status === 'fulfilled') setSubmissions(Array.isArray(subR.value.data) ? subR.value.data : [])
+      if (taxiR.status === 'fulfilled') setTaxiServices(Array.isArray(taxiR.value.data) ? taxiR.value.data : [])
     } catch (err) { console.error('Fetch error:', err) }
     setLoading(false)
   }
@@ -529,6 +534,28 @@ const AdminDashboard = () => {
   const handleDeleteBlog = async (id) => {
     if (!confirm('Delete this post?')) return
     try { await axios.delete(`${API_BASE}/api/blog?id=${id}`, { headers: authHdr() }); fetchAll() }
+    catch { alert('Error deleting') }
+  }
+
+  const handleAddTaxi = async (e) => {
+    e.preventDefault()
+    try {
+      if (editingId.taxi) {
+        await axios.put(`${API_BASE}/api/taxi?id=${editingId.taxi}`, { ...taxiForm, price: parseFloat(taxiForm.price) || 0 }, { headers: authHdr() })
+        alert('Taxi service updated!')
+      } else {
+        await axios.post(`${API_BASE}/api/taxi`, { ...taxiForm, price: parseFloat(taxiForm.price) || 0 }, { headers: authHdr() })
+        alert('Taxi service added!')
+      }
+      setTaxiForm({ name: '', vehicle_type: '', capacity: '', price: '', image_url: '', description: '', category: 'One Way' })
+      setEditingId(prev => ({ ...prev, taxi: null }))
+      fetchAll()
+    } catch (err) { alert('Error: ' + (err.response?.data?.message || err.message)) }
+  }
+
+  const handleDeleteTaxi = async (id) => {
+    if (!confirm('Delete this taxi service?')) return
+    try { await axios.delete(`${API_BASE}/api/taxi?id=${id}`, { headers: authHdr() }); fetchAll() }
     catch { alert('Error deleting') }
   }
 
@@ -818,6 +845,66 @@ const AdminDashboard = () => {
                   ))}
                 </div>
                 {!flights.length && <p className="text-center text-on-surface-variant py-4 bg-surface-container-lowest rounded-xl">No destinations yet.</p>}
+              </div>
+            </div>
+          )}
+
+          {/* Taxi Services Tab */}
+          {activeTab === 'taxi' && (
+            <div>
+              <h2 className="font-notoSerif text-3xl font-bold text-primary mb-8">Manage Taxi Services</h2>
+              <div className="bg-surface-container-lowest p-8 rounded-xl editorial-shadow mb-8">
+                <h3 className="font-notoSerif text-xl font-bold mb-6">{editingId.taxi ? 'Edit Taxi Service' : 'Add New Taxi Service'}</h3>
+                <form onSubmit={handleAddTaxi} className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <input required className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm" placeholder="Service/Route Name (e.g., Jeddah Airport to Makkah)" value={taxiForm.name} onChange={e => setTaxiForm({...taxiForm, name: e.target.value})} />
+                  <input required className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm" placeholder="Vehicle Type (e.g., Toyota Camry / Hyundai Sonata)" value={taxiForm.vehicle_type} onChange={e => setTaxiForm({...taxiForm, vehicle_type: e.target.value})} />
+                  <input className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm" placeholder="Capacity (e.g., 4 Passengers, 4 Bags)" value={taxiForm.capacity} onChange={e => setTaxiForm({...taxiForm, capacity: e.target.value})} />
+                  <input className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm" placeholder="Price (PKR)" type="number" value={taxiForm.price} onChange={e => setTaxiForm({...taxiForm, price: e.target.value})} />
+                  <select className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm" value={taxiForm.category} onChange={e => setTaxiForm({...taxiForm, category: e.target.value})}>
+                    <option value="One Way">One Way</option>
+                    <option value="Round Trip">Round Trip</option>
+                    <option value="Ziyarat">Ziyarat</option>
+                  </select>
+                  <div className="md:col-span-2">
+                    <ImageUpload value={taxiForm.image_url} onChange={(val) => setTaxiForm({...taxiForm, image_url: val})} label="Vehicle Image" />
+                  </div>
+                  <textarea className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm md:col-span-2" placeholder="Description" rows={3} value={taxiForm.description} onChange={e => setTaxiForm({...taxiForm, description: e.target.value})} />
+                  <div className="md:col-span-2 flex gap-4">
+                    <button type="submit" className="flex-1 bg-[#001c1d] text-white py-3 rounded font-bold text-sm hover:brightness-110 transition-all">
+                      {editingId.taxi ? 'Save Updates' : 'Add Taxi Service'}
+                    </button>
+                    {editingId.taxi && (
+                      <button type="button" onClick={() => { setTaxiForm({ name: '', vehicle_type: '', capacity: '', price: '', image_url: '', description: '', category: 'One Way' }); setEditingId(prev => ({ ...prev, taxi: null })); }} className="px-6 bg-gray-500 text-white rounded font-bold text-sm hover:bg-gray-600 transition-all">
+                        Cancel
+                      </button>
+                    )}
+                  </div>
+                </form>
+              </div>
+              <div className="space-y-3">
+                <h3 className="font-notoSerif text-xl font-bold">Existing Taxi Services ({taxiServices.length})</h3>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  {taxiServices.map(t => (
+                    <div key={t.id} className="bg-surface-container-lowest p-4 rounded-lg editorial-shadow">
+                      <img src={t.image_url || 'https://via.placeholder.com/150'} alt={t.name} className="w-full h-32 object-cover rounded-lg mb-3" />
+                      <div className="flex justify-between items-start">
+                        <div>
+                          <p className="font-bold text-primary">{t.name}</p>
+                          <p className="text-xs text-outline font-medium">{t.vehicle_type}</p>
+                          <p className="text-xs text-[#001c1d] font-bold mt-1">PKR {(t.price || 0).toLocaleString()}</p>
+                          <p className="text-[11px] text-outline-variant font-medium mt-1">{t.capacity}</p>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <button onClick={() => { setTaxiForm({ name: t.name, vehicle_type: t.vehicle_type, capacity: t.capacity || '', price: String(t.price || ''), image_url: t.image_url || '', description: t.description || '', category: t.category || 'One Way' }); setEditingId(prev => ({ ...prev, taxi: t.id })); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="text-[#001c1d] hover:text-secondary p-1" title="Edit Taxi Service">
+                            <span className="material-symbols-outlined text-sm">edit</span>
+                          </button>
+                          <button onClick={()=>handleDeleteTaxi(t.id)} className="text-red-500 hover:text-red-700 p-1" title="Delete Taxi Service"><span className="material-symbols-outlined text-sm">delete</span></button>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                {!taxiServices.length && <p className="text-center text-on-surface-variant py-4 bg-surface-container-lowest rounded-xl">No taxi services yet.</p>}
               </div>
             </div>
           )}

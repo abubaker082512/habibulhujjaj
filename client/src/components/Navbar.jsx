@@ -11,6 +11,7 @@ const Navbar = ({ isVersion2 = false }) => {
     { to: '/packages', label: 'Umrah Packages' },
     { to: '/international-tours', label: 'International Tours' },
     { to: '/visa-services', label: 'Visa Services' },
+    { to: '/taxi-services', label: 'Taxi Services' },
     { to: '/gallery', label: 'Gallery' },
     { to: '/blog', label: 'Blog' },
     { to: '/about', label: 'About Us' },

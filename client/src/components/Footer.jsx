@@ -7,7 +7,7 @@ const API_BASE = import.meta.env.VITE_API_URL || ''
 const Footer = () => {
   const [footerContent, setFooterContent] = useState({
     description: 'Habib Ul Hujjaj specializes in crafting meaningful spiritual journeys and world-class international tours for the discerning traveler.',
-    quickLinks: ['About Us', 'Visa Services', 'Packages', 'Contact', 'FAQ'],
+    quickLinks: ['About Us', 'Visa Services', 'Taxi Services', 'Packages', 'Contact', 'FAQ'],
     copyright: '© 2024 Habib Ul Hujjaj. All Rights Reserved.',
     socialLinks: { facebook: '', instagram: '', twitter: '', youtube: '' }
   })
@@ -64,6 +64,7 @@ const Footer = () => {
   const linkMap = {
     'About Us': '/about',
     'Visa Services': '/visa-services',
+    'Taxi Services': '/taxi-services',
     'Packages': '/packages',
     'Terms & Conditions': '/',
     'Privacy Policy': '/',

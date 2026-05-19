@@ -11,6 +11,7 @@ DROP TABLE IF EXISTS gallery CASCADE;
 DROP TABLE IF EXISTS blog_posts CASCADE;
 DROP TABLE IF EXISTS cms_content CASCADE;
 DROP TABLE IF EXISTS submissions CASCADE;
+DROP TABLE IF EXISTS taxi_services CASCADE;
 
 -- 1. PACKAGES TABLE
 CREATE TABLE IF NOT EXISTS packages (
@@ -71,6 +72,20 @@ CREATE TABLE IF NOT EXISTS gallery (
   type TEXT DEFAULT 'standard',
   order_index INTEGER DEFAULT 0,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+-- 4.5. TAXI SERVICES TABLE
+CREATE TABLE IF NOT EXISTS taxi_services (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  name TEXT NOT NULL,
+  vehicle_type TEXT NOT NULL,
+  capacity TEXT,
+  price NUMERIC,
+  image_url TEXT,
+  description TEXT,
+  category TEXT DEFAULT 'One Way',
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
 -- 5. BLOG POSTS TABLE
@@ -144,6 +159,12 @@ CREATE POLICY "Public can view gallery" ON gallery FOR SELECT USING (true);
 CREATE POLICY "Authenticated users can insert gallery" ON gallery FOR INSERT WITH CHECK (auth.role() = 'authenticated');
 CREATE POLICY "Authenticated users can update gallery" ON gallery FOR UPDATE USING (auth.role() = 'authenticated');
 CREATE POLICY "Authenticated users can delete gallery" ON gallery FOR DELETE USING (auth.role() = 'authenticated');
+
+-- Taxi Services: Anyone can read, authenticated users can write
+CREATE POLICY "Public can view taxi services" ON taxi_services FOR SELECT USING (true);
+CREATE POLICY "Authenticated users can insert taxi services" ON taxi_services FOR INSERT WITH CHECK (auth.role() = 'authenticated');
+CREATE POLICY "Authenticated users can update taxi services" ON taxi_services FOR UPDATE USING (auth.role() = 'authenticated');
+CREATE POLICY "Authenticated users can delete taxi services" ON taxi_services FOR DELETE USING (auth.role() = 'authenticated');
 
 -- Blog: Anyone can read, authenticated users can write
 CREATE POLICY "Public can view blog posts" ON blog_posts FOR SELECT USING (true);
@@ -243,6 +264,15 @@ INSERT INTO blog_posts (title, excerpt, content, category, image_url, read_time,
 ('Best Time for Umrah: A Complete Seasonal Guide', 'Discover the best months to visit Makkah and Madinah based on weather, crowd levels, and spiritual significance.', 'Full content here...', 'Planning', 'https://lh3.googleusercontent.com/aida-public/AB6AXuCoKHIP0C3QMaqa0Klr2dM78ntz2OMNGskdqZpgaSJ-t6CzhN9wtM0mVM_VfSXuA51y498oLIAKD-uoj3lEBnBE8WmcWNOLOSOq9dH9S0lGZIfFBT1ZhI-DDgNOWBLRTwE3G7J0rMP7EcoWJ320MQ5b4uQ8mPqH3otJS4kmYLSdyP7CkobPzxStF_dClqG1HjjpMwEyFmBv7FGdx4exw17NjJDYM-FTizn97bzsUtNLtNiN42PQQll7lzJbJk6og1ghe9D9P9QPzoGt', '6 min read', false),
 
 ('Top Ziyarat Places in Madinah You Must Visit', 'Explore the most significant historical and religious sites in Madinah, from Masjid Quba to Mount Uhud.', 'Full content here...', 'Destinations', 'https://lh3.googleusercontent.com/aida-public/AB6AXuAGAIsAHsj1aeHsF48svRjVUbf98DzT-X9LQhfvfa-q2PJlyI09AuEIY6srDte53YCFFWCd2EaqKD-uoj3lEBnBE8WmcWNOLOSOq9dH9S0lGZIfFBT1ZhI-DDgNOWBLRTwE3G7J0rMP7EcoWJ320MQ5b4uQ8mPqH3otJS4kmYLSdyP7CkobPzxStF_dClqG1HjjpMwEyFmBv7FGdx4exw17NjJDYM-FTizn97bzsUtNLtNiN42PQQll7lzJbJk6og1ghe9D9P9QPzoGt', '7 min read', false);
+
+-- =============================================
+-- SEED DATA - TAXI SERVICES
+-- =============================================
+
+INSERT INTO taxi_services (name, vehicle_type, capacity, price, image_url, description, category) VALUES
+('Jeddah Airport to Makkah Hotel', 'Toyota Camry / Hyundai Elantra', '4 Passengers, 3 Bags', 15000, 'https://lh3.googleusercontent.com/aida-public/AB6AXuCO_IRY7jvBnnEtX8feErOYDc3DDZMVDuLQ1G_-Q1DoQQayK1NTWJyzzRXm2KsAFGn339aj0b-tuGncnjQ0V3K-XmiIiHg3AijaZnqIo4UsydMi9JV0-IjYu_s4tx3NoWWTd1W9KhPH9HtlEPzGHl8nYSQlk5f7NN0qw8_LI1MzvHh3zcU_lIcPDRNAuXmmI-rnDOOdgCbLLkSCPGQ0JgN5KrWAOqKuAd3rOXOU6R652ysKci4tHEynrqMAWTIfuMyWNbpXbl-5Ymxe', 'Comfortable family sedan with professional driver. Meet & Greet service at Airport terminal.', 'One Way'),
+('Makkah to Madinah transfer', 'Hyundai H1 / Toyota Hiace', '7 Passengers, 7 Bags', 35000, 'https://lh3.googleusercontent.com/aida-public/AB6AXuDK2_oTGnpwIr8lGrvHvbVteJFQ_LmysVmiqZ5CPGEjvBQGYjLYOxIKAbuLI3tMM2DniH-IFinQIS_Zl3CuQI6-v0_qPMi-ADy6G-HrKVrQFGb39jox7uMyXFr5IS0jd-xe7YOjNLxfISzbJJdypjwKvZ2h-FnT5TsPIKi-1Oqd4ncbi7bu0gmX_UqH-u-KdFmnn3KHOG_45iJ5tXaRIJA9XCO-_E6R9LERBfCgUqIAEgqNZOJvwAhHVbW4i2ve3nrfIKmny2BzaQaR', 'Spacious minivan transfer, ideal for medium families with substantial luggage.', 'One Way'),
+('Madinah Ziyarat Tour', 'GMC Yukon / Ford Expedition', '7 Passengers, 6 Bags', 25000, 'https://lh3.googleusercontent.com/aida-public/AB6AXuAzn1-JLxXAdX_feF-ubKekQz_wAt4HqUvvdPeuTKh3tfBk99cfsH9pHef7zWZCICJHNS70tFKGeQ-d2LsqZUyHehxW0ISwfuQU6gPsaP3m3pWaRkRyE970BTN7g8b8nZTMNxe5KaXgncRVyFMZPAfegI2yk1EvcZBAntULYnm2eqJHZUhrmp-vABbcygSSWynHygdTOcq6kqOpSS9UUEK-mZBp18OFxE9AORCbA595M3yMWzAcQuG8SeGuvBQpAFlHsw7ERHUc0A3T', 'Full-day private tour of holy sites in Madinah (Quba, Uhud, Qiblatain) in a premium SUV.', 'Ziyarat');
 
 -- =============================================
 -- SEED DATA - CMS CONTENT

@@ -13,6 +13,8 @@
     { "source": "/api/gallery",     "destination": "/api/gallery" },
     { "source": "/api/blog/:id",    "destination": "/api/blog?id=:id" },
     { "source": "/api/blog",        "destination": "/api/blog" },
+    { "source": "/api/taxi/:id",    "destination": "/api/taxi?id=:id" },
+    { "source": "/api/taxi",        "destination": "/api/taxi" },
     { "source": "/api/cms",         "destination": "/api/cms" },
     { "source": "/api/health",      "destination": "/api/health" },
     { "source": "/(.*)",            "destination": "/index.html" }
