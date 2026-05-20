@@ -43,11 +43,30 @@ const tours = [
     subtitle: 'Paris, Swiss, Rome',
     duration: '12 Days / 11 Nights',
     price: 'PKR 550,000',
-    image: 'https://images.unslash.com/photo-1502602892935-72c3ac7c352?w=800',
+    image: 'https://images.unsplash.com/photo-1502602892935-72c3ac7c352?w=800',
     highlights: ['Eiffel Tower', 'Swiss Alps', 'Colosseum', 'Lucerne'],
     icon: 'place'
   }
 ]
+
+const whatsappNumber = '923004634548'
+
+const buildTourWhatsAppUrl = (tour) => {
+  const lines = [
+    'Hello Habib Ul Hujjaj,',
+    '',
+    'I am interested in your international tour package:',
+    `*${tour.title}*`,
+    tour.subtitle || '',
+    tour.duration ? `Duration: ${tour.duration}` : '',
+    tour.price ? `Price: ${tour.price}` : '',
+    tour.description || '',
+    '',
+    'Please send me the details and availability.'
+  ].filter(Boolean)
+
+  return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(lines.join('\n'))}`
+}
 
 const InternationalTours = () => {
   const [pageMedia, setPageMedia] = useState({})
@@ -124,7 +143,7 @@ const InternationalTours = () => {
           {tours.map((tour) => (
             <div key={tour.id} className="bg-white border border-gray-100 shadow-sm overflow-hidden group cursor-pointer transition-transform hover:-translate-y-1">
               <div className="relative h-56 sm:h-64 md:h-72 overflow-hidden">
-                <img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src={tour.image} alt={tour.title} />
+                <img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src={tour.image_url || tour.image} alt={tour.title} />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                 <div className="absolute bottom-6 left-6 right-6 text-white">
                   <h3 className="font-notoSerif text-2xl font-bold mb-2">{tour.title}</h3>
@@ -149,9 +168,9 @@ const InternationalTours = () => {
                     <span key={i} className="bg-gray-50 text-black/70 px-3 py-1 rounded text-xs border border-gray-100">{typeof hl === 'string' ? hl.trim() : hl}</span>
                   ))}
                 </div>
-                <Link to="/contact" className="block w-full py-3 bg-primary text-white font-bold rounded-md hover:opacity-90 transition-all text-sm text-center">
-                  Book Now
-                </Link>
+                <a href={buildTourWhatsAppUrl(tour)} target="_blank" rel="noreferrer" className="block w-full py-3 bg-primary text-white font-bold rounded-md hover:opacity-90 transition-all text-sm text-center">
+                  Book Now on WhatsApp
+                </a>
               </div>
             </div>
           ))}
