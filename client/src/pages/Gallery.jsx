@@ -6,13 +6,16 @@ import axios from 'axios'
 const API_BASE = import.meta.env.VITE_API_URL || ''
 
 const galleryItems = [
-  { id: 1, type: 'wide', src: 'https://images.unsplash.com/photo-1591604129909-2b4ce4e6e6d2?w=800&q=80', label: 'The Circle of Faith', category: 'Kaaba' },
-  { id: 2, type: 'tall', src: 'https://images.unsplash.com/photo-1564507004663-b6dfb3c8924d?w=800&q=80', label: 'Celestial Spires', category: 'Masjid Nabawi' },
-  { id: 3, type: 'standard', src: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800&q=80', label: 'Sacred Architecture', category: 'Ziyarat' },
-  { id: 4, type: 'standard', src: 'https://images.unsplash.com/photo-1572949645079-6416a599c6ae?w=800&q=80', label: 'Pilgrims Path', category: 'Umrah Groups' },
-  { id: 5, type: 'tall', src: 'https://images.unsplash.com/photo-1564769662533-3f5aae93cec2?w=800&q=80', label: 'Light & Geometry', category: 'Kaaba' },
-  { id: 6, type: 'wide', src: 'https://images.unsplash.com/photo-1519817914152-22d216bb9170?w=800&q=80', label: 'The Path of History', category: 'Ziyarat' },
-  { id: 7, type: 'standard', src: 'https://images.unsplash.com/photo-1580338834642-8a3acf79b1b8?w=800&q=80', label: 'Lanterns of Devotion', category: 'Umrah Groups' },
+  { id: 1, type: 'wide', src: '/assets/gallery images/1.png', label: 'Sanctity of the Holy Kaaba', category: 'Kaaba' },
+  { id: 2, type: 'tall', src: '/assets/gallery images/2.jpg', label: 'Elegance of Masjid Al-Haram', category: 'Kaaba' },
+  { id: 3, type: 'standard', src: '/assets/gallery images/3.jpg', label: 'Medina Al-Munawwarah Peace', category: 'Masjid Nabawi' },
+  { id: 4, type: 'standard', src: '/assets/gallery images/4.webp', label: 'Spires of Devotion', category: 'Masjid Nabawi' },
+  { id: 5, type: 'tall', src: '/assets/gallery images/5.avif', label: 'Holy Ziyarat Pilgrimage', category: 'Ziyarat' },
+  { id: 6, type: 'wide', src: '/assets/gallery images/6.jpg', label: 'Blessed Moments of Hujjaj', category: 'Umrah Groups' },
+  { id: 7, type: 'standard', src: '/assets/gallery images/7.webp', label: 'Sacred Sites Ziyarat', category: 'Ziyarat' },
+  { id: 8, type: 'standard', src: '/assets/gallery images/8.webp', label: 'Pilgrim Groups', category: 'Umrah Groups' },
+  { id: 9, type: 'wide', src: '/assets/gallery images/9.webp', label: 'Masjid Nabawi Umrah Group', category: 'Umrah Groups' },
+  { id: 10, type: 'standard', src: '/assets/gallery images/10.jpg', label: 'Spiritual Ziyarat Sights', category: 'Ziyarat' }
 ]
 
 const filters = ['All', 'Kaaba', 'Masjid Nabawi', 'Ziyarat', 'Umrah Groups', 'International Tours']
@@ -59,7 +62,7 @@ const Gallery = () => {
       {/* Hero Section */}
       <section className="relative min-h-[60vh] flex items-center pt-32 overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img className="w-full h-full object-cover" src={pageMedia.gallery_hero_image || "https://images.unsplash.com/photo-1572949645079-6416a599c6ae?w=1600&q=80"} alt="Gallery Hero" />
+          <img className="w-full h-full object-cover" src={pageMedia.gallery_hero_image || "/assets/gallery hero.webp"} alt="Gallery Hero" />
           <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/40 to-transparent"></div>
         </div>
         <div className="relative z-10 max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 lg:px-24 w-full">

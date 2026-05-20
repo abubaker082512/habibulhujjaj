@@ -50,7 +50,7 @@ const About = () => {
         {/* Hero Section */}
         <section className="relative min-h-[60vh] flex items-center pt-32 overflow-hidden">
           <div className="absolute inset-0 z-0">
-            <img className="w-full h-full object-cover" src={pageMedia.about_hero_image || "https://images.unsplash.com/photo-1572949645079-6416a599c6ae?w=1600&q=80"} alt="Grand Mosque" />
+            <img className="w-full h-full object-cover" src={pageMedia.about_hero_image || "/assets/about us hero.webp"} alt="Grand Mosque" />
             <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/40 to-transparent"></div>
           </div>
         <div className="relative z-10 max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 lg:px-24 w-full text-white">
@@ -77,7 +77,7 @@ const About = () => {
           <div className="max-w-screen-2xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 lg:gap-20 items-center">
             <div className="relative">
               <div className="absolute -top-6 -left-6 md:-top-10 md:-left-10 w-24 h-24 md:w-32 md:h-32 lg:w-40 lg:h-40 border-l-2 border-t-2 border-primary/30"></div>
-              <img className="shadow-2xl relative z-10 w-full object-cover asymmetric-clip" src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800&q=80" alt="Architecture" />
+              <img className="shadow-2xl relative z-10 w-full object-cover asymmetric-clip" src={pageMedia.about_section_image || "/assets/about us 1.jpg"} alt="Architecture" />
               <div className="absolute -bottom-6 -right-6 bg-primary p-8 hidden md:block z-20">
                 <span className="font-notoSerif text-white text-3xl italic">Est. 1998</span>
               </div>

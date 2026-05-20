@@ -93,7 +93,7 @@ const VisaServices = () => {
       {/* Hero Section */}
       <section className="relative min-h-[60vh] flex items-center pt-32 overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img className="w-full h-full object-cover" src={pageMedia.visa_hero_image || "https://images.unsplash.com/photo-1555992457-b8fefdd09069?w=1600&q=80"} alt="Visa Services" />
+          <img className="w-full h-full object-cover" src={pageMedia.visa_hero_image || "/assets/visa services hero.jpg"} alt="Visa Services" />
           <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/40 to-transparent"></div>
         </div>
         <div className="relative z-10 max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 lg:px-24 w-full">
