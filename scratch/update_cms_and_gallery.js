@@ -70,16 +70,16 @@ async function run() {
   }
 
   const newGalleryItems = [
-    { src: '/assets/gallery images/1.png', label: 'Sanctity of the Holy Kaaba', category: 'Kaaba', type: 'wide', order_index: 1 },
-    { src: '/assets/gallery images/2.jpg', label: 'Elegance of Masjid Al-Haram', category: 'Kaaba', type: 'tall', order_index: 2 },
-    { src: '/assets/gallery images/3.jpg', label: 'Medina Al-Munawwarah Peace', category: 'Masjid Nabawi', type: 'standard', order_index: 3 },
-    { src: '/assets/gallery images/4.webp', label: 'Spires of Devotion', category: 'Masjid Nabawi', type: 'standard', order_index: 4 },
-    { src: '/assets/gallery images/5.avif', label: 'Holy Ziyarat Pilgrimage', category: 'Ziyarat', type: 'tall', order_index: 5 },
-    { src: '/assets/gallery images/6.jpg', label: 'Blessed Moments of Hujjaj', category: 'Umrah Groups', type: 'wide', order_index: 6 },
-    { src: '/assets/gallery images/7.webp', label: 'Sacred Sites Ziyarat', category: 'Ziyarat', type: 'standard', order_index: 7 },
-    { src: '/assets/gallery images/8.webp', label: 'Pilgrim Groups', category: 'Umrah Groups', type: 'standard', order_index: 8 },
-    { src: '/assets/gallery images/9.webp', label: 'Masjid Nabawi Umrah Group', category: 'Umrah Groups', type: 'wide', order_index: 9 },
-    { src: '/assets/gallery images/10.jpg', label: 'Spiritual Ziyarat Sights', category: 'Ziyarat', type: 'standard', order_index: 10 }
+    { src: '/assets/gallery images/1.png', label: 'Sanctity of the Holy Kaaba', category: 'Kaaba', type: 'wide' },
+    { src: '/assets/gallery images/2.jpg', label: 'Elegance of Masjid Al-Haram', category: 'Kaaba', type: 'tall' },
+    { src: '/assets/gallery images/3.jpg', label: 'Medina Al-Munawwarah Peace', category: 'Masjid Nabawi', type: 'standard' },
+    { src: '/assets/gallery images/4.webp', label: 'Spires of Devotion', category: 'Masjid Nabawi', type: 'standard' },
+    { src: '/assets/gallery images/5.avif', label: 'Holy Ziyarat Pilgrimage', category: 'Ziyarat', type: 'tall' },
+    { src: '/assets/gallery images/6.jpg', label: 'Blessed Moments of Hujjaj', category: 'Umrah Groups', type: 'wide' },
+    { src: '/assets/gallery images/7.webp', label: 'Sacred Sites Ziyarat', category: 'Ziyarat', type: 'standard' },
+    { src: '/assets/gallery images/8.webp', label: 'Pilgrim Groups', category: 'Umrah Groups', type: 'standard' },
+    { src: '/assets/gallery images/9.webp', label: 'Masjid Nabawi Umrah Group', category: 'Umrah Groups', type: 'wide' },
+    { src: '/assets/gallery images/10.jpg', label: 'Spiritual Ziyarat Sights', category: 'Ziyarat', type: 'standard' }
   ];
 
   console.log("Inserting 10 new gallery items...");
