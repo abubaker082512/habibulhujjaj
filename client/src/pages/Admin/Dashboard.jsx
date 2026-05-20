@@ -341,24 +341,49 @@ const AdminDashboard = () => {
   const fetchAll = async () => {
     setLoading(true)
     try {
-      const [pkgR, tourR, visaR, galR, blogR, flightR, subR, taxiR] = await Promise.allSettled([
-        axios.get(`${API_BASE}/api/packages`),
-        axios.get(`${API_BASE}/api/tours`),
-        axios.get(`${API_BASE}/api/visa`),
-        axios.get(`${API_BASE}/api/gallery`),
-        axios.get(`${API_BASE}/api/blog`),
-        axios.get(`${API_BASE}/api/flights`),
-        axios.get(`${API_BASE}/api/submissions`, { headers: authHdr() }),
-        axios.get(`${API_BASE}/api/taxi`),
-      ])
-      if (pkgR.status === 'fulfilled') setPackages(Array.isArray(pkgR.value.data) ? pkgR.value.data : [])
-      if (tourR.status === 'fulfilled') setTours(Array.isArray(tourR.value.data) ? tourR.value.data : [])
-      if (visaR.status === 'fulfilled') setVisaServices(Array.isArray(visaR.value.data) ? visaR.value.data : [])
-      if (galR.status === 'fulfilled') setGalleryItems(Array.isArray(galR.value.data) ? galR.value.data : [])
-      if (blogR.status === 'fulfilled') setBlogPosts(Array.isArray(blogR.value.data) ? blogR.value.data : [])
-      if (flightR.status === 'fulfilled') setFlights(Array.isArray(flightR.value.data) ? flightR.value.data : [])
-      if (subR.status === 'fulfilled') setSubmissions(Array.isArray(subR.value.data) ? subR.value.data : [])
-      if (taxiR.status === 'fulfilled') setTaxiServices(Array.isArray(taxiR.value.data) ? taxiR.value.data : [])
+      if (supabase) {
+        // Direct, ultra-fast parallel Supabase queries bypassing Serverless function cold starts
+        const [pkgRes, tourRes, visaRes, galRes, blogRes, flightRes, subRes, taxiRes] = await Promise.allSettled([
+          supabase.from('packages').select('*').order('created_at', { ascending: false }),
+          supabase.from('tours').select('*').order('created_at', { ascending: false }),
+          supabase.from('visa_services').select('*').order('created_at', { ascending: false }),
+          supabase.from('gallery').select('*').order('order_index', { ascending: true }),
+          supabase.from('blog_posts').select('*').order('created_at', { ascending: false }),
+          supabase.from('flights_destinations').select('*').order('created_at', { ascending: false }),
+          axios.get(`${API_BASE}/api/submissions`, { headers: authHdr() }),
+          supabase.from('taxi_services').select('*').order('created_at', { ascending: false })
+        ])
+
+        if (pkgRes.status === 'fulfilled' && !pkgRes.value.error) setPackages(pkgRes.value.data || [])
+        if (tourRes.status === 'fulfilled' && !tourRes.value.error) setTours(tourRes.value.data || [])
+        if (visaRes.status === 'fulfilled' && !visaRes.value.error) setVisaServices(visaRes.value.data || [])
+        if (galRes.status === 'fulfilled' && !galRes.value.error) setGalleryItems(galRes.value.data || [])
+        if (blogRes.status === 'fulfilled' && !blogRes.value.error) setBlogPosts(blogRes.value.data || [])
+        if (flightRes.status === 'fulfilled' && !flightRes.value.error) setFlights(flightRes.value.data || [])
+        if (subRes.status === 'fulfilled') setSubmissions(Array.isArray(subRes.value.data) ? subRes.value.data : [])
+        if (taxiRes.status === 'fulfilled' && !taxiRes.value.error) setTaxiServices(taxiRes.value.data || [])
+
+      } else {
+        // Fallback to legacy axios API calls if Supabase is not available
+        const [pkgR, tourR, visaR, galR, blogR, flightR, subR, taxiR] = await Promise.allSettled([
+          axios.get(`${API_BASE}/api/packages`),
+          axios.get(`${API_BASE}/api/tours`),
+          axios.get(`${API_BASE}/api/visa`),
+          axios.get(`${API_BASE}/api/gallery`),
+          axios.get(`${API_BASE}/api/blog`),
+          axios.get(`${API_BASE}/api/flights`),
+          axios.get(`${API_BASE}/api/submissions`, { headers: authHdr() }),
+          axios.get(`${API_BASE}/api/taxi`),
+        ])
+        if (pkgR.status === 'fulfilled') setPackages(Array.isArray(pkgR.value.data) ? pkgR.value.data : [])
+        if (tourR.status === 'fulfilled') setTours(Array.isArray(tourR.value.data) ? tourR.value.data : [])
+        if (visaR.status === 'fulfilled') setVisaServices(Array.isArray(visaR.value.data) ? visaR.value.data : [])
+        if (galR.status === 'fulfilled') setGalleryItems(Array.isArray(galR.value.data) ? galR.value.data : [])
+        if (blogR.status === 'fulfilled') setBlogPosts(Array.isArray(blogR.value.data) ? blogR.value.data : [])
+        if (flightR.status === 'fulfilled') setFlights(Array.isArray(flightR.value.data) ? flightR.value.data : [])
+        if (subR.status === 'fulfilled') setSubmissions(Array.isArray(subR.value.data) ? subR.value.data : [])
+        if (taxiR.status === 'fulfilled') setTaxiServices(Array.isArray(taxiR.value.data) ? taxiR.value.data : [])
+      }
     } catch (err) { console.error('Fetch error:', err) }
     setLoading(false)
   }

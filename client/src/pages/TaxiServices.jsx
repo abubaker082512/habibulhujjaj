@@ -2,8 +2,13 @@ import React, { useEffect, useState } from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import axios from 'axios'
+import { createClient } from '@supabase/supabase-js'
 
 const API_BASE = import.meta.env.VITE_API_URL || ''
+
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || ''
+const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY || ''
+const supabase = (supabaseUrl && supabaseKey) ? createClient(supabaseUrl, supabaseKey) : null
 
 // 1. Sleek fleet definitions matching Screenshot 1
 const fleetData = [
@@ -294,11 +299,25 @@ const TaxiServices = () => {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    axios.get(`${API_BASE}/api/taxi`)
-      .then(res => {
-        if (Array.isArray(res.data) && res.data.length > 0) {
-          const dbServices = res.data
-          
+    const fetchTaxiData = async () => {
+      try {
+        let dbServices = []
+        if (supabase) {
+          // Direct client-to-database connection: sub-100ms load time without Vercel serverless overhead
+          const { data, error } = await supabase.from('taxi_services').select('*').order('created_at', { ascending: false })
+          if (!error && data) {
+            dbServices = data
+          } else {
+            console.warn('Supabase direct query failed, calling API fallback...', error)
+            const res = await axios.get(`${API_BASE}/api/taxi`)
+            dbServices = res.data
+          }
+        } else {
+          const res = await axios.get(`${API_BASE}/api/taxi`)
+          dbServices = res.data
+        }
+
+        if (Array.isArray(dbServices) && dbServices.length > 0) {
           // 1. Dynamic fleet builder
           const fleetMap = new Map()
           
@@ -416,13 +435,15 @@ const TaxiServices = () => {
           setRoutes(routesData)
         }
         setLoading(false)
-      })
-      .catch(err => {
+      } catch (err) {
         console.error('Failed to fetch dynamic taxi services:', err)
         setFleet(fleetData)
         setRoutes(routesData)
         setLoading(false)
-      })
+      }
+    }
+
+    fetchTaxiData()
   }, [])
   
   // Modal booking states
