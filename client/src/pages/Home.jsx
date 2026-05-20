@@ -245,40 +245,142 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Quick Package Search */}
+      {/* Quick Inquiry Form */}
       <div className="relative z-20 max-w-6xl mx-auto -mt-12 sm:-mt-16 lg:-mt-24 px-4">
-        <div className="bg-primary border border-white/10 shadow-[0_32px_64px_-12px_rgba(0,0,0,0.5)] p-6 sm:p-8 md:p-10 rounded-2xl flex flex-col lg:flex-row gap-6 md:gap-10 items-stretch lg:items-end backdrop-blur-xl">
-          <div className="flex-1 min-w-0">
-            <label className="block font-manrope text-[10px] font-black uppercase text-secondary mb-3 tracking-[0.2em]">Departure City</label>
-            <select className="w-full bg-transparent border-0 border-b border-white/20 focus:ring-0 focus:border-secondary font-manrope text-base py-3 px-0 text-white cursor-pointer">
-              <option className="bg-primary text-white">Karachi</option>
-              <option className="bg-primary text-white">Lahore</option>
-              <option className="bg-primary text-white">Islamabad</option>
-            </select>
+        <div className="bg-primary border border-white/10 shadow-[0_32px_64px_-12px_rgba(0,0,0,0.5)] p-6 sm:p-8 md:p-10 rounded-2xl backdrop-blur-xl">
+          {/* Header */}
+          <div className="flex items-center gap-3 mb-6 md:mb-8">
+            <span className="w-8 h-[2px] bg-secondary"></span>
+            <p className="font-manrope text-[10px] font-black uppercase text-secondary tracking-[0.25em]">Quick Inquiry</p>
           </div>
-          <div className="flex-1 min-w-0">
-            <label className="block font-manrope text-[10px] font-black uppercase text-secondary mb-3 tracking-[0.2em]">Travel Month</label>
-            <select className="w-full bg-transparent border-0 border-b border-white/20 focus:ring-0 focus:border-secondary font-manrope text-base py-3 px-0 text-white cursor-pointer">
-              <option className="bg-primary text-white">September 2024</option>
-              <option className="bg-primary text-white">October 2024</option>
-              <option className="bg-primary text-white">Ramadan 2025</option>
-            </select>
-          </div>
-          <div className="flex-1 min-w-0">
-            <label className="block font-manrope text-[10px] font-black uppercase text-secondary mb-3 tracking-[0.2em]">Package Tier</label>
-            <select className="w-full bg-transparent border-0 border-b border-white/20 focus:ring-0 focus:border-secondary font-manrope text-base py-3 px-0 text-white cursor-pointer">
-              <option className="bg-primary text-white">Economy Saver</option>
-              <option className="bg-primary text-white">3 Star Comfort</option>
-              <option className="bg-primary text-white">4 Star Premium</option>
-              <option className="bg-primary text-white">5 Star Luxury</option>
-            </select>
-          </div>
-          <button className="bg-secondary text-primary w-full lg:w-auto px-12 py-4 rounded-md font-black text-xs uppercase tracking-widest flex items-center justify-center gap-3 hover:scale-105 transition-all shadow-xl shadow-secondary/20">
-            <span className="material-symbols-outlined font-bold">search</span>
-            Find My Journey
-          </button>
+          <h3 className="font-notoSerif text-white text-xl sm:text-2xl font-bold mb-6 md:mb-8">Tell us what you're looking for — we'll get back instantly on WhatsApp&nbsp;
+            <span className="inline-flex items-center gap-1 text-secondary text-base font-manrope font-black">
+              <svg className="w-5 h-5 fill-secondary" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.553 4.122 1.523 5.857L0 24l6.334-1.51A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.791 9.791 0 01-5.003-1.371l-.359-.214-3.759.896.944-3.668-.235-.378A9.78 9.78 0 012.182 12C2.182 6.579 6.579 2.182 12 2.182c5.421 0 9.818 4.397 9.818 9.818 0 5.421-4.397 9.818-9.818 9.818z"/></svg>
+              WhatsApp
+            </span>
+          </h3>
+
+          {/* Form Grid */}
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              const f = e.target;
+              const name = f.name.value;
+              const phone = f.phone.value;
+              const city = f.city.value;
+              const month = f.month.value;
+              const service = f.service.value;
+              const travelers = f.travelers.value;
+              const message = encodeURIComponent(
+                `Assalamu Alaikum HabibUlHujjaj! 🌙\n\n` +
+                `I would like to inquire about your services.\n\n` +
+                `👤 Name: ${name}\n` +
+                `📞 Contact: ${phone}\n` +
+                `🏙️ Departure City: ${city}\n` +
+                `📅 Travel Month: ${month}\n` +
+                `🕌 Service Interested In: ${service}\n` +
+                `👥 No. of Travelers: ${travelers}\n\n` +
+                `Please share more details. JazakAllah Khair! 🤲`
+              );
+              window.open(`https://wa.me/923004634548?text=${message}`, '_blank');
+            }}
+          >
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6 mb-8">
+              {/* Full Name */}
+              <div>
+                <label className="block font-manrope text-[10px] font-black uppercase text-secondary mb-3 tracking-[0.2em]">Full Name</label>
+                <input
+                  name="name"
+                  required
+                  placeholder="e.g. Muhammad Ali"
+                  className="w-full bg-transparent border-0 border-b border-white/20 focus:border-secondary focus:ring-0 focus:outline-none font-manrope text-sm py-3 px-0 text-white placeholder-white/30 transition-colors"
+                />
+              </div>
+
+              {/* Phone */}
+              <div>
+                <label className="block font-manrope text-[10px] font-black uppercase text-secondary mb-3 tracking-[0.2em]">Phone / WhatsApp</label>
+                <input
+                  name="phone"
+                  type="tel"
+                  required
+                  placeholder="e.g. +92 300 0000000"
+                  className="w-full bg-transparent border-0 border-b border-white/20 focus:border-secondary focus:ring-0 focus:outline-none font-manrope text-sm py-3 px-0 text-white placeholder-white/30 transition-colors"
+                />
+              </div>
+
+              {/* Departure City */}
+              <div>
+                <label className="block font-manrope text-[10px] font-black uppercase text-secondary mb-3 tracking-[0.2em]">Departure City</label>
+                <select name="city" className="w-full bg-transparent border-0 border-b border-white/20 focus:border-secondary focus:ring-0 focus:outline-none font-manrope text-sm py-3 px-0 text-white cursor-pointer">
+                  <option className="bg-primary text-white">Karachi</option>
+                  <option className="bg-primary text-white">Lahore</option>
+                  <option className="bg-primary text-white">Islamabad</option>
+                  <option className="bg-primary text-white">Peshawar</option>
+                  <option className="bg-primary text-white">Quetta</option>
+                  <option className="bg-primary text-white">Other</option>
+                </select>
+              </div>
+
+              {/* Travel Month */}
+              <div>
+                <label className="block font-manrope text-[10px] font-black uppercase text-secondary mb-3 tracking-[0.2em]">Travel Month</label>
+                <select name="month" className="w-full bg-transparent border-0 border-b border-white/20 focus:border-secondary focus:ring-0 focus:outline-none font-manrope text-sm py-3 px-0 text-white cursor-pointer">
+                  <option className="bg-primary text-white">June 2025</option>
+                  <option className="bg-primary text-white">July 2025</option>
+                  <option className="bg-primary text-white">August 2025</option>
+                  <option className="bg-primary text-white">September 2025</option>
+                  <option className="bg-primary text-white">October 2025</option>
+                  <option className="bg-primary text-white">November 2025</option>
+                  <option className="bg-primary text-white">December 2025</option>
+                  <option className="bg-primary text-white">Ramadan 2026</option>
+                  <option className="bg-primary text-white">Flexible / Open</option>
+                </select>
+              </div>
+
+              {/* Service */}
+              <div>
+                <label className="block font-manrope text-[10px] font-black uppercase text-secondary mb-3 tracking-[0.2em]">Service Interested In</label>
+                <select name="service" className="w-full bg-transparent border-0 border-b border-white/20 focus:border-secondary focus:ring-0 focus:outline-none font-manrope text-sm py-3 px-0 text-white cursor-pointer">
+                  <option className="bg-primary text-white">Umrah Package</option>
+                  <option className="bg-primary text-white">Hajj Package</option>
+                  <option className="bg-primary text-white">International Tour</option>
+                  <option className="bg-primary text-white">Visa Services</option>
+                  <option className="bg-primary text-white">Taxi / Transfer</option>
+                  <option className="bg-primary text-white">Flight Booking</option>
+                  <option className="bg-primary text-white">Other</option>
+                </select>
+              </div>
+
+              {/* Number of Travelers */}
+              <div>
+                <label className="block font-manrope text-[10px] font-black uppercase text-secondary mb-3 tracking-[0.2em]">No. of Travelers</label>
+                <select name="travelers" className="w-full bg-transparent border-0 border-b border-white/20 focus:border-secondary focus:ring-0 focus:outline-none font-manrope text-sm py-3 px-0 text-white cursor-pointer">
+                  <option className="bg-primary text-white">1 Person</option>
+                  <option className="bg-primary text-white">2 Persons</option>
+                  <option className="bg-primary text-white">3-5 Persons</option>
+                  <option className="bg-primary text-white">6-10 Persons</option>
+                  <option className="bg-primary text-white">11-20 Persons</option>
+                  <option className="bg-primary text-white">Group (20+)</option>
+                </select>
+              </div>
+            </div>
+
+            {/* Submit */}
+            <div className="flex flex-col sm:flex-row gap-4 items-center">
+              <button
+                type="submit"
+                className="w-full sm:w-auto bg-secondary text-primary px-10 py-4 rounded-md font-black text-xs uppercase tracking-widest flex items-center justify-center gap-3 hover:scale-105 transition-all shadow-xl shadow-secondary/20"
+              >
+                <svg className="w-5 h-5 fill-primary flex-shrink-0" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.553 4.122 1.523 5.857L0 24l6.334-1.51A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.791 9.791 0 01-5.003-1.371l-.359-.214-3.759.896.944-3.668-.235-.378A9.78 9.78 0 012.182 12C2.182 6.579 6.579 2.182 12 2.182c5.421 0 9.818 4.397 9.818 9.818 0 5.421-4.397 9.818-9.818 9.818z"/></svg>
+                Send Inquiry on WhatsApp
+              </button>
+              <p className="text-white/30 text-xs font-manrope text-center sm:text-left">We typically respond within a few minutes during business hours.</p>
+            </div>
+          </form>
         </div>
       </div>
+
 
       {/* Featured Umrah Packages */}
       <section className="py-24 md:py-32 px-4 sm:px-6 md:px-8 max-w-screen-2xl mx-auto bg-white">
