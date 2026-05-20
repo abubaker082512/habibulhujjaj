@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import axios from 'axios'
+import { buildContactMessage, buildWhatsAppUrl } from '../utils/whatsapp'
 
 const API_BASE = import.meta.env.VITE_API_URL || ''
 
@@ -64,14 +65,16 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    const text = buildContactMessage(formData)
+    const whatsappUrl = buildWhatsAppUrl(text, cmsContent.whatsapp)
+    window.open(whatsappUrl, '_blank')
+
     axios.post(`${API_BASE}/api/submissions`, formData)
       .then(res => {
-        alert('Thank you for your message! Our team will contact you within 24 hours.')
         setFormData({ name: '', email: '', phone: '', subject: 'General Inquiry', message: '' })
       })
       .catch(err => {
         console.error('Failed to submit form:', err)
-        alert('Thank you for your message! Our team will contact you within 24 hours. (Saved Locally)')
       })
   }
 
@@ -132,7 +135,7 @@ const Contact = () => {
               </div>
               <h3 className="font-notoSerif text-xl font-bold text-primary mb-2">WhatsApp</h3>
               <p className="text-black/60 text-sm mb-3">Quick responses on WhatsApp</p>
-              <a href={`https://wa.me/${cmsContent.whatsapp.replace(/\D/g,'')}`} className="text-primary font-bold hover:underline">{cmsContent.whatsapp}</a>
+              <a href={buildWhatsAppUrl('Assalamu Alaikum Habib Ul Hujjaj, I would like to contact you via WhatsApp.', cmsContent.whatsapp)} className="text-primary font-bold hover:underline">{cmsContent.whatsapp}</a>
             </div>
 
             {/* Email */}
@@ -233,14 +236,14 @@ const Contact = () => {
                 </div>
                 
                 <button type="submit" className="w-full bg-primary text-white py-4 rounded-md font-bold text-sm tracking-widest uppercase shadow-lg shadow-primary/20 hover:opacity-90 transition-all flex items-center justify-center gap-2">
-                  Send Message
+                  Send via WhatsApp
                   <span className="material-symbols-outlined text-sm">send</span>
                 </button>
               </form>
 
               <div className="mt-8 pt-8 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-center gap-4">
                 <span className="text-sm text-black/40">Or reach us directly via</span>
-                <a href={`https://wa.me/${cmsContent.whatsapp.replace(/\D/g,'')}`} className="flex items-center gap-2 text-primary font-bold hover:underline">
+                <a href={buildWhatsAppUrl('Assalamu Alaikum Habib Ul Hujjaj, I would like to contact you via WhatsApp.', cmsContent.whatsapp)} className="flex items-center gap-2 text-primary font-bold hover:underline">
                   <span className="material-symbols-outlined">chat</span>
                   WhatsApp
                 </a>

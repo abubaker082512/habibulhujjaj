@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import axios from 'axios'
+import { buildServiceInquiryMessage, buildWhatsAppUrl } from '../utils/whatsapp'
 
 const API_BASE = import.meta.env.VITE_API_URL || ''
 
@@ -149,10 +150,10 @@ const VisaServices = () => {
                 </ul>
               </div>
 
-              <button className="w-full mt-6 bg-primary text-white py-3 rounded-md font-bold text-sm hover:opacity-90 transition-all flex items-center justify-center gap-2">
+              <a href={buildWhatsAppUrl(buildServiceInquiryMessage({ serviceTitle: visa.title, serviceType: visa.description, serviceFee: visa.fee }))} target="_blank" rel="noreferrer" className="w-full mt-6 inline-flex bg-primary text-white py-3 rounded-md font-bold text-sm hover:opacity-90 transition-all items-center justify-center gap-2 text-center">
                 Apply Now
                 <span className="material-symbols-outlined text-sm">arrow_forward</span>
-              </button>
+              </a>
             </div>
           ))}
         </div>
@@ -195,7 +196,7 @@ const VisaServices = () => {
             <h2 className="font-notoSerif text-3xl md:text-4xl text-black mb-6">Need Visa Assistance?</h2>
             <p className="text-black/60 font-manrope mb-10 max-w-xl mx-auto">Our visa specialists are ready to help you with any visa requirements. Contact us today for a free consultation.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/contact" className="bg-primary text-white px-10 py-4 font-manrope font-bold tracking-widest uppercase text-sm hover:opacity-90 transition-all">Apply for Visa</Link>
+              <a href={buildWhatsAppUrl('Assalamu Alaikum Habib Ul Hujjaj, I would like to apply for a visa service.')} target="_blank" rel="noreferrer" className="bg-primary text-white px-10 py-4 font-manrope font-bold tracking-widest uppercase text-sm hover:opacity-90 transition-all">Apply for Visa</a>
               <a href="tel:+923004634548" className="border-2 border-primary text-primary px-10 py-4 font-manrope font-bold tracking-widest uppercase text-sm hover:bg-primary/5 transition-all flex items-center justify-center gap-2">
                 <span className="material-symbols-outlined">call</span>
                 Call Us

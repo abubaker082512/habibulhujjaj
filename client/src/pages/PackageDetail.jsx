@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import axios from 'axios'
+import { buildPackageInquiryMessage, buildWhatsAppUrl } from '../utils/whatsapp'
 
 const API_BASE = import.meta.env.VITE_API_URL || ''
 
@@ -117,6 +118,17 @@ const PackageDetail = () => {
       alert('Please fill in your name and phone number.')
       return
     }
+    const message = buildPackageInquiryMessage({
+      packageTitle: pkg?.title || 'Umrah Package',
+      packagePrice: pkg?.price ? (typeof pkg.price === 'number' ? `PKR ${pkg.price.toLocaleString()}` : pkg.price) : '',
+      city: formData.city,
+      travelers: formData.travelers,
+      date: formData.date,
+      name: formData.name,
+      phone: formData.phone
+    })
+    window.open(buildWhatsAppUrl(message), '_blank')
+
     const submissionData = {
       name: formData.name,
       phone: formData.phone,
@@ -126,12 +138,10 @@ const PackageDetail = () => {
     }
     axios.post(`${API_BASE}/api/submissions`, submissionData)
       .then(res => {
-        alert('Thank you for booking! Our booking team will contact you within 24 hours to confirm your plan.')
         setFormData({ name: '', phone: '', city: '', travelers: '01 Person', date: '' })
       })
       .catch(err => {
         console.error('Failed to submit booking:', err)
-        alert('Thank you for booking! Our booking team will contact you within 24 hours.')
       })
   }
 
@@ -351,11 +361,11 @@ const PackageDetail = () => {
                   <label className="block text-xs font-bold uppercase tracking-widest text-black/40 mb-1">Estimated Date</label>
                   <input className="w-full bg-transparent border-0 border-b border-gray-200 focus:border-primary focus:ring-0 transition-colors py-2 text-sm text-black" type="date" value={formData.date} onChange={e => setFormData({ ...formData, date: e.target.value })} />
                 </div>
-                <button className="w-full bg-primary text-white py-4 rounded-md font-bold text-sm tracking-widest uppercase shadow-lg shadow-primary/20 hover:opacity-90 transition-all" type="submit">Send Inquiry</button>
+                <button className="w-full bg-primary text-white py-4 rounded-md font-bold text-sm tracking-widest uppercase shadow-lg shadow-primary/20 hover:opacity-90 transition-all" type="submit">Send Inquiry on WhatsApp</button>
               </form>
               <div className="mt-8 pt-8 border-t border-gray-100 text-center">
                 <p className="text-xs text-black/40 mb-4">Or connect instantly via</p>
-                <a className="inline-flex items-center gap-2 text-primary font-bold hover:underline transition-colors" href="https://wa.me/923004634548" target="_blank" rel="noreferrer">
+                <a className="inline-flex items-center gap-2 text-primary font-bold hover:underline transition-colors" href={buildWhatsAppUrl('Assalamu Alaikum Habib Ul Hujjaj, I need WhatsApp support for package booking.')} target="_blank" rel="noreferrer">
                   <span className="material-symbols-outlined">chat</span>
                   WhatsApp Support
                 </a>

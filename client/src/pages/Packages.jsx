@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import axios from 'axios'
+import { buildPackageShortMessage, buildWhatsAppUrl } from '../utils/whatsapp'
 
 const API_BASE = import.meta.env.VITE_API_URL || ''
 
@@ -187,7 +188,7 @@ const Packages = () => {
                       </div>
                       <div className="mt-auto grid grid-cols-2 gap-4">
                         <Link to={`/package/${pkg.id || pkg._id || i + 1}`} className="py-3 bg-primary/5 text-primary font-bold rounded-md hover:bg-primary/10 transition-colors border border-primary/20 text-sm text-center">View Details</Link>
-                        <Link to="/contact" className="py-3 bg-primary text-white font-bold rounded-md hover:opacity-90 transition-colors text-sm text-center">Book Now</Link>
+                        <a href={buildWhatsAppUrl(buildPackageShortMessage(pkg))} target="_blank" rel="noreferrer" className="py-3 bg-primary text-white font-bold rounded-md hover:opacity-90 transition-colors text-sm text-center">Book Now on WhatsApp</a>
                       </div>
                     </div>
                   </div>
@@ -208,7 +209,7 @@ const Packages = () => {
           <h2 className="font-notoSerif text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">Book Your Umrah Journey Today</h2>
           <p className="text-white/60 mb-10 max-w-xl mx-auto">Contact our travel experts to get a personalized quote and start your spiritual journey.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/contact" className="bg-white text-primary px-10 py-4 font-manrope font-bold tracking-widest uppercase text-sm hover:bg-gray-100 transition-all">Get a Quote</Link>
+            <a href={buildWhatsAppUrl('Assalamu Alaikum Habib Ul Hujjaj, I would like a quote for Umrah packages.')} target="_blank" rel="noreferrer" className="bg-white text-primary px-10 py-4 font-manrope font-bold tracking-widest uppercase text-sm hover:bg-gray-100 transition-all">Get a Quote</a>
             <Link to="/international-tours" className="border-2 border-white text-white px-10 py-4 font-manrope font-bold tracking-widest uppercase text-sm hover:bg-white/10 transition-all flex items-center gap-2">
               <span className="material-symbols-outlined">flight</span>
               Explore Tours
