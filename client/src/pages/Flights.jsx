@@ -1,22 +1,27 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import axios from 'axios'
+import { createClient } from '@supabase/supabase-js'
 
 const API_BASE = import.meta.env.VITE_API_URL || ''
 
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || ''
+const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY || ''
+const supabase = (supabaseUrl && supabaseKey) ? createClient(supabaseUrl, supabaseKey) : null
+
 const staticDestinations = [
-  { id: 1, name: 'London', description: 'Experience the magic of the UK capital.', image_url: 'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800&q=80', price_start: 125000 },
-  { id: 2, name: 'Paris', description: 'The city of lights and romance.', image_url: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&q=80', price_start: 145000 },
-  { id: 3, name: 'Dubai', description: 'Luxury and modern architecture in the desert.', image_url: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&q=80', price_start: 85000 },
-  { id: 4, name: 'Istanbul', description: 'Where East meets West in style.', image_url: 'https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=800&q=80', price_start: 95000 }
+  { id: 1, name: 'London', description: 'Experience the grandeur of the British Capital with executive service.', image_url: 'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800&q=80', price_start: 125000 },
+  { id: 2, name: 'Paris', description: 'Journey to the ultimate city of art, culture, and premium lifestyle.', image_url: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&q=80', price_start: 145000 },
+  { id: 3, name: 'Dubai', description: 'Witness architectural marvels and luxury shopping in the golden oasis.', image_url: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&q=80', price_start: 85000 },
+  { id: 4, name: 'Istanbul', description: 'Walk through dynamic history where two continents merge elegantly.', image_url: 'https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=800&q=80', price_start: 95000 }
 ]
 
 const Flights = () => {
   const [destinations, setDestinations] = useState([])
+  const [loading, setLoading] = useState(true)
   const [cmsContent, setCmsContent] = useState({
-    heroTitle: 'BOOK YOUR DREAM JOURNEY WITH REHMAN UMRAH & TRAVELS',
+    heroTitle: 'BOOK YOUR DREAM JOURNEY WITH HABIB UL HUJJAJ',
     heroSubtitle: 'DISCOVER THE BEST DEALS ON FLIGHTS AND TRAVEL PACKAGES WORLDWIDE',
     adventureTitle: 'YOUR NEXT ADVENTURE BEGINS HERE!',
     adventureSubtitle: 'Discover the best flight deals and travel packages tailored to your needs.',
@@ -33,17 +38,52 @@ const Flights = () => {
   })
   const [pageMedia, setPageMedia] = useState({})
 
+  // Form Booking States
+  const [formType, setFormType] = useState('roundTrip')
+  const [formData, setFormData] = useState({
+    fullName: '',
+    phone: '',
+    origin: '',
+    destination: '',
+    departureDate: '',
+    returnDate: '',
+    travelClass: 'Economy',
+    passengers: '1 Passenger'
+  })
+  const [formSubmitted, setFormSubmitted] = useState(false)
+
   useEffect(() => {
-    // Fetch destinations
-    axios.get(`${API_BASE}/api/flights`)
-      .then(res => {
-        if (Array.isArray(res.data) && res.data.length > 0) {
-          setDestinations(res.data)
+    // Dynamic ultra-fast parallel fetch
+    const fetchAllData = async () => {
+      try {
+        let dbDestinations = []
+        if (supabase) {
+          const { data, error } = await supabase.from('flights_destinations').select('*').order('created_at', { ascending: false })
+          if (!error && data) {
+            dbDestinations = data
+          } else {
+            const res = await axios.get(`${API_BASE}/api/flights`)
+            dbDestinations = res.data
+          }
+        } else {
+          const res = await axios.get(`${API_BASE}/api/flights`)
+          dbDestinations = res.data
+        }
+
+        if (Array.isArray(dbDestinations) && dbDestinations.length > 0) {
+          setDestinations(dbDestinations)
         } else {
           setDestinations(staticDestinations)
         }
-      })
-      .catch(() => setDestinations(staticDestinations))
+      } catch (err) {
+        console.error('Error fetching destinations:', err)
+        setDestinations(staticDestinations)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchAllData()
 
     // Fetch CMS content
     const savedCms = localStorage.getItem('cms_flights')
@@ -62,167 +102,484 @@ const Flights = () => {
       .then(res => setPageMedia(res.data || {}))
   }, [])
 
+  const handleInputChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    })
+  }
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault()
+    
+    // Construct rich text message for WhatsApp
+    const typeLabel = formType === 'roundTrip' ? '🔄 Round Trip' : '🛫 One Way'
+    const returnInfo = formType === 'roundTrip' ? `\n📅 *Return Date:* ${formData.returnDate}` : ''
+    
+    const message = `✈️ *NEW FLIGHT BOOKING ENQUIRY* ✈️\n\n` +
+      `👤 *Name:* ${formData.fullName}\n` +
+      `📱 *WhatsApp:* ${formData.phone}\n` +
+      `🔄 *Trip Type:* ${typeLabel}\n` +
+      `🛫 *From:* ${formData.origin}\n` +
+      `🛬 *To:* ${formData.destination}\n` +
+      `📅 *Departure Date:* ${formData.departureDate}` +
+      `${returnInfo}\n` +
+      `💺 *Class:* ${formData.travelClass}\n` +
+      `👥 *Passengers:* ${formData.passengers}\n\n` +
+      `_Submitted via Habib Ul Hujjaj Flights Portal._`
+
+    const encodedMessage = encodeURIComponent(message)
+    const whatsappUrl = `https://wa.me/923004634548?text=${encodedMessage}`
+    
+    setFormSubmitted(true)
+    setTimeout(() => {
+      window.open(whatsappUrl, '_blank')
+      setFormSubmitted(false)
+    }, 1200)
+  }
+
+  const handleDirectWhatsAppBook = (destinationName, priceStart) => {
+    const message = `✈️ *FLIGHT BOOKING ENQUIRY* ✈️\n\n` +
+      `Hello Habib Ul Hujjaj,\n` +
+      `I want to inquire about flight bookings for:\n` +
+      `📍 *Destination:* ${destinationName}\n` +
+      `💵 *Starting From:* Rs ${priceStart.toLocaleString()}\n\n` +
+      `Please guide me with the available flight options and packages.`
+
+    const encodedMessage = encodeURIComponent(message)
+    const whatsappUrl = `https://wa.me/923004634548?text=${encodedMessage}`
+    window.open(whatsappUrl, '_blank')
+  }
+
   return (
-    <div className="min-h-screen bg-white font-inter text-black">
+    <div className="min-h-screen bg-[#001c1d] font-manrope text-white overflow-x-hidden">
       <Navbar />
 
-      {/* Hero Section */}
-      <section className="relative min-h-[600px] pt-32 pb-20 flex items-center justify-center overflow-hidden">
+      {/* Redesigned Premium Hero Section */}
+      <section className="relative min-h-[90vh] pt-32 pb-16 flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
             src={pageMedia.flightsHero || "https://images.unsplash.com/photo-1436491865332-7a61a109c0f3?w=1600&q=80"} 
-            className="w-full h-full object-cover" 
+            className="w-full h-full object-cover object-center filter brightness-[0.35]" 
             alt="Hero Background"
           />
-          <div className="absolute inset-0 bg-primary/60"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-[#001c1d]/85 via-[#002f30]/60 to-[#001c1d]"></div>
+          
+          {/* Subtle animated light dots representing flight routes */}
+          <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-[#ffc65c] rounded-full animate-ping opacity-60"></div>
+          <div className="absolute top-1/3 right-1/4 w-3 h-3 bg-[#ffc65c] rounded-full animate-ping delay-1000 opacity-40"></div>
         </div>
         
-        <div className="container mx-auto px-4 relative z-10 text-center">
-          <h1 className="font-notoSerif text-4xl md:text-6xl font-bold text-white mb-6 leading-tight max-w-4xl mx-auto drop-shadow-lg uppercase">
-            {cmsContent.heroTitle.includes('REHMAN') ? 'BOOK YOUR DREAM JOURNEY WITH HABIB UL HUJJAJ' : cmsContent.heroTitle}
-          </h1>
-          <p className="text-xl md:text-2xl text-white/90 mb-12 max-w-2xl mx-auto font-light drop-shadow-md">
-            {cmsContent.heroSubtitle}
-          </p>
-
-          {/* Search Widget */}
-          <div className="bg-white p-8 rounded-2xl shadow-2xl max-w-5xl mx-auto border border-gray-100">
-            <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
-              <div className="text-left">
-                <label className="text-xs font-bold text-primary uppercase mb-2 block">Origin</label>
-                <input type="text" placeholder="From where?" className="w-full p-3 bg-gray-50 rounded-lg border border-gray-200 focus:border-primary outline-none text-sm text-black" />
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 max-w-7xl">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+            
+            {/* Left Column: Premium Text Content */}
+            <div className="lg:col-span-6 space-y-6 text-left animate-fadeIn">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm">
+                <span className="material-symbols-outlined text-[#ffc65c] text-sm animate-pulse">flight_takeoff</span>
+                <span className="text-[10px] font-black tracking-widest text-[#ffc65c] uppercase">Habib Ul Hujjaj VIP Ticketing</span>
               </div>
-              <div className="text-left">
-                <label className="text-xs font-bold text-primary uppercase mb-2 block">Destination</label>
-                <input type="text" placeholder="To where?" className="w-full p-3 bg-gray-50 rounded-lg border border-gray-200 focus:border-primary outline-none text-sm text-black" />
-              </div>
-              <div className="text-left">
-                <label className="text-xs font-bold text-primary uppercase mb-2 block">Departure</label>
-                <input type="date" className="w-full p-3 bg-gray-50 rounded-lg border border-gray-200 focus:border-primary outline-none text-sm text-black" />
-              </div>
-              <div className="text-left">
-                <label className="text-xs font-bold text-primary uppercase mb-2 block">Return</label>
-                <input type="date" className="w-full p-3 bg-gray-50 rounded-lg border border-gray-200 focus:border-primary outline-none text-sm text-black" />
-              </div>
-              <div className="flex items-end">
-                <button className="w-full bg-primary text-white p-3 rounded-lg font-bold hover:opacity-90 transition-all shadow-lg flex items-center justify-center gap-2">
-                  <span className="material-symbols-outlined">search</span> Search
-                </button>
+              <h1 className="font-notoSerif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.1] uppercase tracking-tight">
+                {cmsContent.heroTitle.includes('REHMAN') ? 'BOOK YOUR DREAM JOURNEY WITH HABIB UL HUJJAJ' : cmsContent.heroTitle}
+              </h1>
+              <p className="text-base sm:text-lg text-white/70 font-light leading-relaxed max-w-xl">
+                {cmsContent.heroSubtitle}
+              </p>
+              
+              <div className="flex flex-wrap gap-4 pt-4">
+                <div className="flex items-center gap-2 bg-[#002f30]/40 border border-white/5 py-2 px-3.5 rounded-xl">
+                  <span className="material-symbols-outlined text-[#ffc65c] text-lg">verified_user</span>
+                  <span className="text-xs text-white/80 font-bold">100% Secure Bookings</span>
+                </div>
+                <div className="flex items-center gap-2 bg-[#002f30]/40 border border-white/5 py-2 px-3.5 rounded-xl">
+                  <span className="material-symbols-outlined text-[#ffc65c] text-lg">support_agent</span>
+                  <span className="text-xs text-white/80 font-bold">24/7 Dedicated Support</span>
+                </div>
               </div>
             </div>
+
+            {/* Right Column: Instant WhatsApp Flight Booking Form */}
+            <div className="lg:col-span-6 animate-slideUp">
+              <div className="relative">
+                <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-[#ffc65c] to-emerald-500 opacity-20 blur-xl"></div>
+                
+                <div className="relative bg-[#002f30]/85 border border-white/10 p-6 sm:p-8 rounded-3xl shadow-2xl backdrop-blur-xl">
+                  <h3 className="font-notoSerif text-xl sm:text-2xl font-bold text-white text-left mb-1">Instant Flight Enquiry</h3>
+                  <p className="text-xs text-white/60 text-left mb-6">Submit details and negotiate prices directly on WhatsApp!</p>
+
+                  <form onSubmit={handleFormSubmit} className="space-y-4">
+                    {/* Toggle Trip Type */}
+                    <div className="grid grid-cols-2 gap-2 p-1 bg-[#001c1d] rounded-lg border border-white/5">
+                      <button 
+                        type="button" 
+                        onClick={() => setFormType('roundTrip')}
+                        className={`py-2 px-3 rounded text-xs font-bold transition-all ${formType === 'roundTrip' ? 'bg-[#ffc65c] text-[#001c1d] shadow' : 'text-white/60 hover:text-white'}`}
+                      >
+                        🔄 Round Trip
+                      </button>
+                      <button 
+                        type="button" 
+                        onClick={() => setFormType('oneWay')}
+                        className={`py-2 px-3 rounded text-xs font-bold transition-all ${formType === 'oneWay' ? 'bg-[#ffc65c] text-[#001c1d] shadow' : 'text-white/60 hover:text-white'}`}
+                      >
+                        🛫 One Way
+                      </button>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      {/* Name */}
+                      <div className="text-left">
+                        <label className="text-[10px] font-black text-[#ffc65c] uppercase tracking-wider block mb-1.5">Full Name</label>
+                        <div className="relative">
+                          <span className="material-symbols-outlined absolute left-3 top-3 text-white/40 text-sm">person</span>
+                          <input 
+                            type="text" 
+                            name="fullName"
+                            required
+                            value={formData.fullName}
+                            onChange={handleInputChange}
+                            placeholder="Enter your name" 
+                            className="w-full p-2.5 pl-9 bg-[#001c1d] rounded-lg border border-white/5 text-white placeholder-white/30 text-xs focus:border-[#ffc65c] outline-none transition-all"
+                          />
+                        </div>
+                      </div>
+
+                      {/* Phone */}
+                      <div className="text-left">
+                        <label className="text-[10px] font-black text-[#ffc65c] uppercase tracking-wider block mb-1.5">WhatsApp Number</label>
+                        <div className="relative">
+                          <span className="material-symbols-outlined absolute left-3 top-3 text-white/40 text-sm">phone_iphone</span>
+                          <input 
+                            type="tel" 
+                            name="phone"
+                            required
+                            value={formData.phone}
+                            onChange={handleInputChange}
+                            placeholder="e.g. 03001234567" 
+                            className="w-full p-2.5 pl-9 bg-[#001c1d] rounded-lg border border-white/5 text-white placeholder-white/30 text-xs focus:border-[#ffc65c] outline-none transition-all"
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      {/* Origin */}
+                      <div className="text-left">
+                        <label className="text-[10px] font-black text-[#ffc65c] uppercase tracking-wider block mb-1.5">Origin City</label>
+                        <div className="relative">
+                          <span className="material-symbols-outlined absolute left-3 top-3 text-white/40 text-sm">flight_takeoff</span>
+                          <input 
+                            type="text" 
+                            name="origin"
+                            required
+                            value={formData.origin}
+                            onChange={handleInputChange}
+                            placeholder="e.g. Lahore (LHE)" 
+                            className="w-full p-2.5 pl-9 bg-[#001c1d] rounded-lg border border-white/5 text-white placeholder-white/30 text-xs focus:border-[#ffc65c] outline-none transition-all"
+                          />
+                        </div>
+                      </div>
+
+                      {/* Destination */}
+                      <div className="text-left">
+                        <label className="text-[10px] font-black text-[#ffc65c] uppercase tracking-wider block mb-1.5">Destination City</label>
+                        <div className="relative">
+                          <span className="material-symbols-outlined absolute left-3 top-3 text-white/40 text-sm">flight_land</span>
+                          <input 
+                            type="text" 
+                            name="destination"
+                            required
+                            value={formData.destination}
+                            onChange={handleInputChange}
+                            placeholder="e.g. Jeddah (JED)" 
+                            className="w-full p-2.5 pl-9 bg-[#001c1d] rounded-lg border border-white/5 text-white placeholder-white/30 text-xs focus:border-[#ffc65c] outline-none transition-all"
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      {/* Departure Date */}
+                      <div className="text-left">
+                        <label className="text-[10px] font-black text-[#ffc65c] uppercase tracking-wider block mb-1.5">Departure Date</label>
+                        <div className="relative">
+                          <input 
+                            type="date" 
+                            name="departureDate"
+                            required
+                            value={formData.departureDate}
+                            onChange={handleInputChange}
+                            className="w-full p-2.5 bg-[#001c1d] rounded-lg border border-white/5 text-white text-xs focus:border-[#ffc65c] outline-none transition-all"
+                          />
+                        </div>
+                      </div>
+
+                      {/* Return Date */}
+                      <div className="text-left">
+                        <label className={`text-[10px] font-black text-[#ffc65c] uppercase tracking-wider block mb-1.5 ${formType === 'oneWay' ? 'opacity-30' : ''}`}>Return Date</label>
+                        <div className="relative">
+                          <input 
+                            type="date" 
+                            name="returnDate"
+                            disabled={formType === 'oneWay'}
+                            required={formType === 'roundTrip'}
+                            value={formType === 'oneWay' ? '' : formData.returnDate}
+                            onChange={handleInputChange}
+                            className={`w-full p-2.5 bg-[#001c1d] rounded-lg border border-white/5 text-white text-xs focus:border-[#ffc65c] outline-none transition-all ${formType === 'oneWay' ? 'opacity-30 cursor-not-allowed' : ''}`}
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-4">
+                      {/* Class */}
+                      <div className="text-left">
+                        <label className="text-[10px] font-black text-[#ffc65c] uppercase tracking-wider block mb-1.5">Class</label>
+                        <select 
+                          name="travelClass"
+                          value={formData.travelClass}
+                          onChange={handleInputChange}
+                          className="w-full p-2.5 bg-[#001c1d] rounded-lg border border-white/5 text-white text-xs focus:border-[#ffc65c] outline-none transition-all"
+                        >
+                          <option value="Economy">Economy Class</option>
+                          <option value="Premium Economy">Premium Econ</option>
+                          <option value="Business">Business Class</option>
+                          <option value="First Class">First Class</option>
+                        </select>
+                      </div>
+
+                      {/* Passengers */}
+                      <div className="text-left">
+                        <label className="text-[10px] font-black text-[#ffc65c] uppercase tracking-wider block mb-1.5">Passengers</label>
+                        <select 
+                          name="passengers"
+                          value={formData.passengers}
+                          onChange={handleInputChange}
+                          className="w-full p-2.5 bg-[#001c1d] rounded-lg border border-white/5 text-white text-xs focus:border-[#ffc65c] outline-none transition-all"
+                        >
+                          <option value="1 Passenger">1 Passenger</option>
+                          <option value="2 Passengers">2 Passengers</option>
+                          <option value="3 Passengers">3 Passengers</option>
+                          <option value="4 Passengers">4 Passengers</option>
+                          <option value="5+ Passengers">5+ Passengers</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <button 
+                      type="submit" 
+                      className="w-full bg-[#ffc65c] text-[#001c1d] py-3.5 rounded-lg font-black text-xs uppercase tracking-widest hover:brightness-110 active:scale-95 transition-all flex items-center justify-center gap-2 shadow-lg mt-4"
+                    >
+                      {formSubmitted ? (
+                        <>
+                          <div className="w-4 h-4 border-2 border-[#001c1d] border-t-transparent rounded-full animate-spin"></div>
+                          Connecting to WhatsApp...
+                        </>
+                      ) : (
+                        <>
+                          <span className="material-symbols-outlined text-[16px] font-bold">send</span>
+                          Check Ticket Price on WhatsApp
+                        </>
+                      )}
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
 
       {/* Narrative Section 1 */}
-      <section className="py-24 bg-white">
-        <div className="container mx-auto px-4 text-center max-w-4xl">
-          <h2 className="font-notoSerif text-3xl md:text-4xl font-bold text-black mb-6 uppercase">
-            YOUR NEXT ADVENTURE <span className="text-primary">BEGINS HERE!</span>
+      <section className="py-24 bg-[#002f30]/40 relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+        <div className="container mx-auto px-4 text-center max-w-4xl relative z-10">
+          <div className="inline-flex w-12 h-[2px] bg-[#ffc65c] mb-6"></div>
+          <h2 className="font-notoSerif text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6 uppercase tracking-tight">
+            YOUR NEXT ADVENTURE <span className="text-[#ffc65c]">BEGINS HERE!</span>
           </h2>
-          <p className="text-lg text-black/60 leading-relaxed">
+          <p className="text-sm sm:text-base text-white/70 font-light leading-relaxed max-w-2xl mx-auto">
             {cmsContent.adventureSubtitle}
           </p>
-          <div className="mt-12 h-1 w-24 bg-primary mx-auto rounded-full"></div>
         </div>
       </section>
 
       {/* Narrative Section 2 (Trust) */}
-      <section className="py-24 bg-primary text-white">
-        <div className="container mx-auto px-4 text-center max-w-4xl">
-          <h2 className="font-notoSerif text-3xl md:text-4xl font-bold mb-6">
-            TIRED OF OVERPRICED FLIGHTS?
+      <section className="py-24 bg-[#001c1d] relative overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-emerald-500/5 rounded-full blur-3xl"></div>
+        </div>
+        
+        <div className="container mx-auto px-4 text-center max-w-4xl relative z-10">
+          <h2 className="font-notoSerif text-2xl sm:text-3xl md:text-4xl font-bold mb-6 tracking-tight">
+            {cmsContent.trustTitle.includes('REHMAN') ? 'TIRED OF OVERPRICED FLIGHTS AND HASSLES?' : cmsContent.trustTitle}
           </h2>
-          <p className="text-lg text-white/80 leading-relaxed mb-12">
+          <p className="text-sm sm:text-base text-white/70 font-light leading-relaxed mb-12 max-w-2xl mx-auto">
             {cmsContent.trustSubtitle}
           </p>
-          <button className="bg-white text-primary px-10 py-4 rounded-full font-bold hover:scale-105 transition-all shadow-xl">
+          <a 
+            href="https://wa.me/923004634548?text=Hello%20Habib%20Ul%20Hujjaj,%20I%20want%20to%20consult%20about%20booking%20flights."
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 bg-[#ffc65c] text-[#001c1d] px-8 py-3.5 rounded-full font-black text-xs uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-xl"
+          >
+            <span className="material-symbols-outlined text-[16px] font-bold">chat</span>
             Book Your Free Consultation
-          </button>
+          </a>
         </div>
       </section>
 
-      {/* Destinations Grid */}
-      <section className="py-24 bg-white">
-        <div className="container mx-auto px-4">
+      {/* Redesigned Destinations Grid */}
+      <section className="py-24 bg-[#002f30]/20 relative">
+        <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/5 to-transparent"></div>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+          
           <div className="text-center mb-16">
-            <h2 className="font-notoSerif text-4xl font-bold text-black mb-4">
+            <h2 className="font-notoSerif text-3xl sm:text-4xl font-bold text-white mb-4 tracking-tight">
               {cmsContent.destinationsTitle}
             </h2>
-            <p className="text-black/60">{cmsContent.destinationsSubtitle}</p>
+            <p className="text-white/60 text-sm font-light max-w-xl mx-auto">{cmsContent.destinationsSubtitle}</p>
+            <div className="w-12 h-1 bg-[#ffc65c] mx-auto mt-4 rounded-full"></div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {destinations.map(dest => (
-              <div key={dest.id} className="bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all group">
-                <div className="h-64 relative overflow-hidden">
-                  <img src={dest.image_url} alt={dest.name} className="w-full h-full object-cover group-hover:scale-110 transition-all duration-500" />
-                  <div className="absolute top-4 left-4 bg-primary text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
-                    From Rs {dest.price_start.toLocaleString()}
+          {loading ? (
+            <div className="flex flex-col items-center justify-center py-20 gap-4">
+              <div className="w-10 h-10 border-4 border-[#ffc65c] border-t-transparent rounded-full animate-spin"></div>
+              <p className="text-xs uppercase tracking-widest text-[#ffc65c]">Loading Premium Destinations...</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+              {destinations.map(dest => (
+                <div 
+                  key={dest.id} 
+                  className="bg-[#002f30]/40 rounded-2xl overflow-hidden border border-white/5 shadow-lg hover:shadow-2xl hover:border-white/10 transition-all duration-300 group flex flex-col h-full"
+                >
+                  <div className="h-48 sm:h-56 relative overflow-hidden bg-[#001c1d]">
+                    <img 
+                      src={dest.image_url} 
+                      alt={dest.name} 
+                      className="w-full h-full object-cover group-hover:scale-105 transition-all duration-500" 
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#001c1d] via-transparent to-transparent opacity-65"></div>
+                    <div className="absolute top-4 left-4 bg-[#ffc65c] text-[#001c1d] px-3.5 py-1.5 rounded-lg text-[10px] font-black uppercase tracking-wider shadow">
+                      From Rs {dest.price_start.toLocaleString()}
+                    </div>
                   </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="font-notoSerif text-2xl font-bold text-black mb-2">{dest.name}</h3>
-                  <p className="text-black/60 text-sm mb-6 line-clamp-2">{dest.description}</p>
-                  <div className="flex gap-3">
-                    <button className="flex-1 bg-primary text-white py-2 rounded font-bold text-sm hover:opacity-90 transition-all">Book Now</button>
-                    <button className="flex-1 border-2 border-primary text-primary py-2 rounded font-bold text-sm hover:bg-primary/5 transition-all">View Details</button>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Features List */}
-      <section className="py-24 bg-gray-50 border-y border-gray-100">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
-              {[1, 2, 3, 4, 5].map(i => (
-                <div key={i} className="flex items-start gap-6 group">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center font-notoSerif text-2xl font-bold group-hover:scale-110 transition-all">
-                    {i}
-                  </div>
-                  <div>
-                    <h4 className="text-xl font-bold text-black mb-1">{cmsContent[`feature${i}`]}</h4>
+                  <div className="p-5 flex flex-col flex-grow text-left">
+                    <h3 className="font-notoSerif text-xl sm:text-2xl font-bold text-white mb-2">{dest.name}</h3>
+                    <p className="text-white/60 text-xs font-light mb-6 leading-relaxed flex-grow line-clamp-3">{dest.description}</p>
+                    
+                    <div className="flex gap-2 mt-auto">
+                      <button 
+                        onClick={() => handleDirectWhatsAppBook(dest.name, dest.price_start)}
+                        className="flex-1 bg-[#ffc65c] text-[#001c1d] py-2.5 rounded font-black text-[10px] uppercase tracking-wider hover:brightness-110 active:scale-95 transition-all flex items-center justify-center gap-1.5 shadow"
+                      >
+                        <span className="material-symbols-outlined text-xs font-bold">send</span> Book Now
+                      </button>
+                      <a 
+                        href={`https://wa.me/923004634548?text=Hello%20Habib%20Ul%20Hujjaj,%20I'd%20like%20to%20view%20details%20and%20itinerary%20for%20flights%20to%20${encodeURIComponent(dest.name)}`}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="flex-1 border border-white/10 text-white py-2.5 rounded font-bold text-[10px] uppercase tracking-wider hover:bg-white/5 active:scale-95 transition-all flex items-center justify-center"
+                      >
+                        View Details
+                      </a>
+                    </div>
                   </div>
                 </div>
               ))}
             </div>
-            <div className="relative">
-              <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&q=80" className="rounded-3xl shadow-2xl" alt="Travel" />
-              <div className="absolute -bottom-10 -right-10 w-48 h-48 bg-primary/10 rounded-3xl -z-10 animate-pulse"></div>
+          )}
+        </div>
+      </section>
+
+      {/* Features List Section */}
+      <section className="py-24 bg-[#001c1d] relative">
+        <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/5 to-transparent"></div>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            
+            {/* Features Columns */}
+            <div className="lg:col-span-7 space-y-8 text-left">
+              <div className="inline-flex w-8 h-[2px] bg-[#ffc65c] mb-2"></div>
+              <h3 className="font-notoSerif text-3xl font-bold text-white tracking-tight uppercase mb-4">
+                THE PREFERRED CHOICE FOR <span className="text-[#ffc65c]">HOLY TRAVEL</span>
+              </h3>
+              
+              <div className="space-y-6">
+                {[1, 2, 3, 4, 5].map(i => (
+                  <div key={i} className="flex items-start gap-4 sm:gap-6 group">
+                    <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-[#ffc65c]/10 border border-[#ffc65c]/20 text-[#ffc65c] flex items-center justify-center font-notoSerif text-lg font-bold group-hover:bg-[#ffc65c] group-hover:text-[#001c1d] transition-all duration-300">
+                      {i}
+                    </div>
+                    <div>
+                      <h4 className="text-base sm:text-lg font-bold text-white group-hover:text-[#ffc65c] transition-colors">{cmsContent[`feature${i}`]}</h4>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
+
+            {/* Visual Right Column */}
+            <div className="lg:col-span-5 relative">
+              <div className="absolute -inset-2 rounded-3xl bg-[#ffc65c]/10 blur-xl"></div>
+              <img 
+                src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&q=80" 
+                className="rounded-3xl shadow-2xl border border-white/5 w-full object-cover" 
+                alt="Travel experiences" 
+              />
+              <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-[#ffc65c]/10 rounded-full blur-xl"></div>
+            </div>
+
           </div>
         </div>
       </section>
 
       {/* Most Popular Places */}
-      <section className="py-24 bg-white overflow-hidden">
-        <div className="container mx-auto px-4">
-          <h2 className="font-notoSerif text-4xl font-bold text-center text-black mb-16">{cmsContent.popularTitle}</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            <div className="col-span-2 row-span-2 relative h-[500px] rounded-3xl overflow-hidden group shadow-xl border border-gray-100">
-              <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&q=80" className="w-full h-full object-cover group-hover:scale-110 transition-all duration-700" alt="Dubai" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-              <div className="absolute bottom-8 left-8 text-white">
-                <h3 className="font-notoSerif text-4xl font-bold mb-2">Dubai</h3>
-                <p className="text-white/70">Luxury redefined</p>
+      <section className="py-24 bg-[#002f30]/20 relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/5 to-transparent"></div>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+          <h2 className="font-notoSerif text-3xl sm:text-4xl font-bold text-center text-white mb-16 tracking-tight uppercase">
+            {cmsContent.popularTitle}
+            <div className="w-12 h-1 bg-[#ffc65c] mx-auto mt-4 rounded-full"></div>
+          </h2>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="relative h-96 rounded-2xl overflow-hidden group shadow-lg border border-white/5">
+              <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&q=80" className="w-full h-full object-cover group-hover:scale-105 transition-all duration-500" alt="Dubai" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+              <div className="absolute bottom-6 left-6 text-left">
+                <h3 className="font-notoSerif text-2xl font-bold text-white mb-1">Dubai</h3>
+                <p className="text-white/60 text-xs font-light">Luxury Redefined</p>
               </div>
             </div>
-            <div className="relative h-[242px] rounded-3xl overflow-hidden group shadow-lg border border-gray-100">
-              <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&q=80" className="w-full h-full object-cover group-hover:scale-110 transition-all duration-500" alt="Paris" />
-              <div className="absolute bottom-4 left-4 text-white"><h4 className="font-bold text-white shadow-sm">Paris</h4></div>
+            
+            <div className="relative h-96 rounded-2xl overflow-hidden group shadow-lg border border-white/5">
+              <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&q=80" className="w-full h-full object-cover group-hover:scale-105 transition-all duration-500" alt="Paris" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+              <div className="absolute bottom-6 left-6 text-left">
+                <h3 className="font-notoSerif text-2xl font-bold text-white mb-1">Paris</h3>
+                <p className="text-white/60 text-xs font-light">Cultural Elegance</p>
+              </div>
             </div>
-            <div className="relative h-[242px] rounded-3xl overflow-hidden group shadow-lg border border-gray-100">
-              <img src="https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=800&q=80" className="w-full h-full object-cover group-hover:scale-110 transition-all duration-500" alt="Istanbul" />
-              <div className="absolute bottom-4 left-4 text-white"><h4 className="font-bold text-white shadow-sm">Istanbul</h4></div>
+
+            <div className="relative h-96 rounded-2xl overflow-hidden group shadow-lg border border-white/5">
+              <img src="https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=800&q=80" className="w-full h-full object-cover group-hover:scale-105 transition-all duration-500" alt="Istanbul" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+              <div className="absolute bottom-6 left-6 text-left">
+                <h3 className="font-notoSerif text-2xl font-bold text-white mb-1">Istanbul</h3>
+                <p className="text-white/60 text-xs font-light">Historical Harmony</p>
+              </div>
             </div>
-            <div className="col-span-2 relative h-[242px] rounded-3xl overflow-hidden group shadow-lg border border-gray-100">
-              <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800&q=80" className="w-full h-full object-cover group-hover:scale-110 transition-all duration-500" alt="Tokyo" />
-              <div className="absolute bottom-4 left-4 text-white"><h4 className="font-bold text-white shadow-sm">Tokyo</h4></div>
+
+            <div className="relative h-96 rounded-2xl overflow-hidden group shadow-lg border border-white/5">
+              <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800&q=80" className="w-full h-full object-cover group-hover:scale-105 transition-all duration-500" alt="Tokyo" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+              <div className="absolute bottom-6 left-6 text-left">
+                <h3 className="font-notoSerif text-2xl font-bold text-white mb-1">Tokyo</h3>
+                <p className="text-white/60 text-xs font-light">Modern Contrast</p>
+              </div>
             </div>
           </div>
         </div>
