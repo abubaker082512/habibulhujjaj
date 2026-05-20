@@ -289,8 +289,8 @@ const routesData = [
 const TaxiServices = () => {
   const [selectedVehicle, setSelectedVehicle] = useState(null)
   const [selectedRoute, setSelectedRoute] = useState(null)
-  const [fleet, setFleet] = useState(fleetData)
-  const [routes, setRoutes] = useState(routesData)
+  const [fleet, setFleet] = useState([])
+  const [routes, setRoutes] = useState([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -299,32 +299,44 @@ const TaxiServices = () => {
         if (Array.isArray(res.data) && res.data.length > 0) {
           const dbServices = res.data
           
-          // 1. Dynamic fleet merger (Processes only s.name === '__VEHICLE_META__')
-          const newFleetMap = new Map()
-          fleetData.forEach(f => {
-            newFleetMap.set(f.name.toLowerCase(), { ...f })
-          })
+          // 1. Dynamic fleet builder
+          const fleetMap = new Map()
           
+          // Add custom vehicle specifications & images from database first (name === '__VEHICLE_META__')
           dbServices.filter(s => s.name === '__VEHICLE_META__').forEach(s => {
             const vKey = s.vehicle_type ? s.vehicle_type.toLowerCase() : ''
             if (vKey) {
-              if (newFleetMap.has(vKey)) {
-                const existing = newFleetMap.get(vKey)
-                if (s.capacity) existing.seats = s.capacity
-                if (s.image_url) existing.image_url = s.image_url
-                if (s.description) {
-                  // Separate features into luggage and ac if possible, or override ac
-                  if (s.description.includes(',')) {
-                    const parts = s.description.split(',')
-                    existing.luggage = parts[0].trim()
-                    existing.ac = parts[1].trim()
-                  } else {
-                    existing.ac = s.description
-                  }
-                }
+              let lug = 'Standard Luggage'
+              let ac = s.description || 'AC Chilled Vehicle'
+              if (s.description && s.description.includes(',')) {
+                const parts = s.description.split(',')
+                lug = parts[0].trim()
+                ac = parts[1].trim()
+              }
+              fleetMap.set(vKey, {
+                id: vKey.replace(/[^a-z0-9]/g, '-'),
+                name: s.vehicle_type.toUpperCase(),
+                seats: s.capacity || '4 Person Seat Vehicle',
+                luggage: lug,
+                ac: ac,
+                image_url: s.image_url || 'https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?w=600&q=80',
+                whatsapp: '+996596812961'
+              })
+            }
+          })
+          
+          // Also check for any vehicle type mentioned in pricing rows that has no meta row yet,
+          // and auto-fill it with standard defaults if known, or placeholders if custom.
+          dbServices.filter(s => s.name !== '__VEHICLE_META__' && s.vehicle_type !== '__ROUTE_BANNER__').forEach(s => {
+            const vKey = s.vehicle_type ? s.vehicle_type.toLowerCase() : ''
+            if (vKey && !fleetMap.has(vKey)) {
+              // Try to find a standard default vehicle with this name
+              const standardDef = fleetData.find(f => f.name.toLowerCase() === vKey)
+              if (standardDef) {
+                fleetMap.set(vKey, { ...standardDef })
               } else {
-                newFleetMap.set(vKey, {
-                  id: s.vehicle_type.toLowerCase().replace(/[^a-z0-9]/g, '-'),
+                fleetMap.set(vKey, {
+                  id: vKey.replace(/[^a-z0-9]/g, '-'),
                   name: s.vehicle_type.toUpperCase(),
                   seats: s.capacity || '4 Person Seat Vehicle',
                   luggage: 'Standard Luggage',
@@ -335,67 +347,80 @@ const TaxiServices = () => {
               }
             }
           })
-          setFleet(Array.from(newFleetMap.values()))
           
-          // 2. Dynamic routes & pricing merger
-          const newRoutesMap = new Map()
-          routesData.forEach(r => {
-            newRoutesMap.set(r.name.toLowerCase(), { ...r })
-          })
+          const computedFleet = Array.from(fleetMap.values())
+          setFleet(computedFleet)
           
-          // Apply Route Banner overrides (s.vehicle_type === '__ROUTE_BANNER__')
+          // 2. Dynamic routes builder
+          const routesMap = new Map()
+          
+          // Add custom route banner definitions from database first (s.vehicle_type === '__ROUTE_BANNER__')
           dbServices.filter(s => s.vehicle_type === '__ROUTE_BANNER__').forEach(s => {
             const rKey = s.name ? s.name.toLowerCase() : ''
             if (rKey) {
-              if (newRoutesMap.has(rKey)) {
-                const existing = newRoutesMap.get(rKey)
-                if (s.image_url) existing.image = s.image_url
-                if (s.category) existing.category = s.category
+              routesMap.set(rKey, {
+                id: rKey.replace(/[^a-z0-9]/g, '-'),
+                name: s.name,
+                image: s.image_url || 'https://images.unsplash.com/photo-1564507592333-c60657eea523?w=600&q=80',
+                category: s.category || 'One Way',
+                prices: {}
+              })
+            }
+          })
+          
+          // Also check for any routes mentioned in pricing rows that have no meta row yet,
+          // and auto-fill with defaults if known or placeholders.
+          dbServices.filter(s => s.name !== '__VEHICLE_META__' && s.vehicle_type !== '__ROUTE_BANNER__').forEach(s => {
+            const rKey = s.name ? s.name.toLowerCase() : ''
+            if (rKey && !routesMap.has(rKey)) {
+              const standardRoute = routesData.find(r => r.name.toLowerCase() === rKey)
+              if (standardRoute) {
+                // Create a clone of standard route with an empty pricing map so we only fill it from DB!
+                routesMap.set(rKey, {
+                  ...standardRoute,
+                  prices: {}
+                })
               } else {
-                newRoutesMap.set(rKey, {
-                  id: s.name.toLowerCase().replace(/[^a-z0-9]/g, '-'),
+                routesMap.set(rKey, {
+                  id: rKey.replace(/[^a-z0-9]/g, '-'),
                   name: s.name,
-                  image: s.image_url || 'https://images.unsplash.com/photo-1564507592333-c60657eea523?w=600&q=80',
+                  image: 'https://images.unsplash.com/photo-1564507592333-c60657eea523?w=600&q=80',
+                  category: s.category || 'One Way',
                   prices: {}
                 })
               }
             }
           })
-
-          // Apply specific route-vehicle prices (normal pricing rows)
+          
+          // 3. Map all specific prices
           dbServices.filter(s => s.name !== '__VEHICLE_META__' && s.vehicle_type !== '__ROUTE_BANNER__').forEach(s => {
             const rKey = s.name ? s.name.toLowerCase() : ''
-            if (rKey) {
-              const vId = s.vehicle_type ? s.vehicle_type.toLowerCase().replace(/[^a-z0-9]/g, '-') : 'camry'
+            if (rKey && routesMap.has(rKey)) {
+              const vKey = s.vehicle_type ? s.vehicle_type.toLowerCase() : ''
+              const vId = vKey.replace(/[^a-z0-9]/g, '-')
               const priceVal = parseFloat(s.price) || 0
               
-              if (newRoutesMap.has(rKey)) {
-                const existing = newRoutesMap.get(rKey)
-                existing.prices[vId] = {
-                  sar: priceVal,
-                  usd: Math.round(priceVal / 3.75)
-                }
-              } else {
-                newRoutesMap.set(rKey, {
-                  id: s.name.toLowerCase().replace(/[^a-z0-9]/g, '-'),
-                  name: s.name,
-                  image: 'https://images.unsplash.com/photo-1564507592333-c60657eea523?w=600&q=80',
-                  prices: {
-                    [vId]: {
-                      sar: priceVal,
-                      usd: Math.round(priceVal / 3.75)
-                    }
-                  }
-                })
+              const routeObj = routesMap.get(rKey)
+              routeObj.prices[vId] = {
+                sar: priceVal,
+                usd: Math.round(priceVal / 3.75)
               }
             }
           })
-          setRoutes(Array.from(newRoutesMap.values()))
+          
+          const computedRoutes = Array.from(routesMap.values())
+          setRoutes(computedRoutes)
+        } else {
+          // If the database has absolutely zero taxi records (e.g. fresh environment), load premium defaults
+          setFleet(fleetData)
+          setRoutes(routesData)
         }
         setLoading(false)
       })
       .catch(err => {
         console.error('Failed to fetch dynamic taxi services:', err)
+        setFleet(fleetData)
+        setRoutes(routesData)
         setLoading(false)
       })
   }, [])
@@ -515,9 +540,19 @@ const TaxiServices = () => {
         </div>
       </section>
 
-      {/* STEP 1: OUR VEHICLES FLEET SECTION */}
-      <section id="our-vehicles" className="py-24 bg-white text-[#001b1c]">
-        <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 lg:px-24">
+      {loading ? (
+        <div className="py-32 bg-[#001b1c] flex flex-col items-center justify-center text-center min-h-[50vh]">
+          <div className="relative w-20 h-20 mb-8">
+            <div className="absolute inset-0 rounded-full border-4 border-white/5"></div>
+            <div className="absolute inset-0 rounded-full border-4 border-t-[#ffc65c] border-r-[#ffc65c]/30 animate-spin"></div>
+          </div>
+          <p className="text-white/60 font-notoSerif text-lg tracking-wider animate-pulse">Loading Sacred Ground Transfers...</p>
+        </div>
+      ) : (
+        <>
+          {/* STEP 1: OUR VEHICLES FLEET SECTION */}
+          <section id="our-vehicles" className="py-24 bg-white text-[#001b1c]">
+            <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 lg:px-24">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <span className="text-[#013334] text-xs font-black tracking-[0.3em] uppercase block mb-3">VIP Fleet Catalog</span>
             <h2 className="font-notoSerif text-3xl sm:text-4xl lg:text-5xl font-black text-[#013334]">Our Vehicles</h2>
@@ -855,6 +890,9 @@ const TaxiServices = () => {
             </div>
           </div>
         </div>
+      )}
+
+        </>
       )}
 
       <Footer />
