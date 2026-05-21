@@ -5,7 +5,7 @@ import Footer from '../components/Footer'
 import axios from 'axios'
 import heroBackground from '../assets/hajj-umrah-hero.jpg'
 import heroBackground2 from '../assets/background2.jpg'
-import heroBackground3 from '../../assets/taxi-services.jpg'
+import heroBackground3 from '../assets/taxi-services.jpg'
 
 const API_BASE = import.meta.env.VITE_API_URL || ''
 
