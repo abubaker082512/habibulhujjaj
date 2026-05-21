@@ -1550,7 +1550,7 @@ const ContentCMS = () => {
 
   const [contactContent, setContactContent] = useState({
     heroTitle: 'Get in Touch', heroSubtitle: 'Have questions about our Umrah packages or international tours? Our travel consultants are ready to assist you.',
-    phone1: '0300 4634548', phone2: '', email: 'info@habibulhujaj.com', whatsapp: '0300 4634548',
+    phone1: '0300 4634548', phone2: '', email: 'info@habibulhujjaj.com', whatsapp: '0300 4634548',
     addressLahore: 'Office #201-202, 2nd Floor, Ibrahim Trade Center, Garden Town Lahore', addressKarachi: 'DHA Phase II, Karachi, Pakistan',
   })
 
@@ -2545,7 +2545,7 @@ const SiteSettings = () => {
   const [settings, setSettings] = useState({
     siteName: 'Habib Ul Hujjaj',
     tagline: 'Your Trusted Partner for Umrah & International Tours',
-    email: 'info@habibulhujaj.com',
+    email: 'info@habibulhujjaj.com',
     phone: '+92 300 123 4567',
     whatsapp: '+92 300 123 4567',
     address: 'Main Boulevard, Gulberg III, Lahore, Pakistan',

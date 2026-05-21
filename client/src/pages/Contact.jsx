@@ -12,7 +12,7 @@ const Contact = () => {
   const [pageMedia, setPageMedia] = useState({})
   const [cmsContent, setCmsContent] = useState({
     heroTitle: 'Get in Touch', heroSubtitle: 'Have questions about our Umrah packages or international tours? Our travel consultants are ready to assist you.',
-    phone1: '0300 4634548', phone2: '', email: 'info@habibulhujaj.com', whatsapp: '0300 4634548',
+    phone1: '0300 4634548', phone2: '', email: 'info@habibulhujjaj.com', whatsapp: '0300 4634548',
     addressLahore: 'Office #201-202, 2nd Floor, Ibrahim Trade Center, Garden Town Lahore', addressKarachi: 'DHA Phase II, Karachi, Pakistan',
   })
 
