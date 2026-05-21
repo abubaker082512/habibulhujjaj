@@ -5,7 +5,7 @@ import Footer from '../components/Footer'
 import axios from 'axios'
 import heroBackground from '../assets/hajj-umrah-hero.jpg'
 import heroBackground2 from '../assets/background2.jpg'
-import heroBackground3 from '../assets/taxi-services.jp'
+import heroBackground3 from '../assets/taxi-services.jpg'
 
 const API_BASE = import.meta.env.VITE_API_URL || ''
 
@@ -79,7 +79,7 @@ const Home = () => {
       subtitle: "Explore Saudia Arabia with our Taxi and Transfer services. Whether you need a ride from the airport, a day tour around the city, or transportation between Makkah and Medina, we’ve got you covered with comfort and reliability.",
       image: heroBackground3,
       ctaText: "Explore Taxis & Transfers",
-      ctaLink: "/TaxiServices"
+      ctaLink: "/taxi-services"
     },
     {
       title: "Premium International Tours",
