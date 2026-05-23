@@ -454,11 +454,13 @@ const TaxiServices = () => {
     name: '',
     email: '',
     phone: '',
+    countryCode: '+92',
     date: '',
     time: '',
     travelers: '1',
     message: ''
   })
+  const [formErrors, setFormErrors] = useState({})
   const [submitting, setSubmitting] = useState(false)
   const [success, setSuccess] = useState(false)
 
@@ -471,13 +473,36 @@ const TaxiServices = () => {
   // Prepares the WhatsApp prefilled message and submits to submissions API
   const handleBookingSubmit = async (e) => {
     e.preventDefault()
-    if (!bookingForm.name || !bookingForm.phone) {
-      alert('Please fill out your Name and Contact Number')
-      return
+
+    // Validations
+    const errors = {};
+    if (!bookingForm.name || bookingForm.name.trim().length < 3) {
+      errors.name = "Name must be at least 3 characters.";
+    } else if (!/^[a-zA-Z\s]+$/.test(bookingForm.name)) {
+      errors.name = "Name can only contain letters.";
     }
+
+    const cleanPhone = bookingForm.phone.replace(/[\s-()]/g, "");
+    if (!cleanPhone || !/^\d{7,15}$/.test(cleanPhone)) {
+      errors.phone = "Enter a valid phone number (7-15 digits).";
+    }
+
+    const pickDate = new Date(bookingForm.date);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    if (pickDate < today) {
+      errors.date = "Pickup date cannot be in the past.";
+    }
+
+    if (Object.keys(errors).length > 0) {
+      setFormErrors(errors);
+      return;
+    }
+    setFormErrors({});
     
     setSubmitting(true)
     
+    const fullPhone = `${bookingForm.countryCode} ${cleanPhone}`;
     const subject = `Booking: Taxi Service (${bookingCar.name})`
     const desc = `Route: ${bookingRoute.name}\nVehicle: ${bookingCar.name} (${bookingCar.seats})\nTravelers: ${bookingForm.travelers} Persons\nDate: ${bookingForm.date} at ${bookingForm.time}\nNotes: ${bookingForm.message}`
     
@@ -486,7 +511,7 @@ const TaxiServices = () => {
       await axios.post(`${API_BASE}/api/submissions`, {
         name: bookingForm.name,
         email: bookingForm.email || 'N/A',
-        phone: bookingForm.phone,
+        phone: fullPhone,
         subject: subject,
         message: desc
       })
@@ -496,7 +521,7 @@ const TaxiServices = () => {
       // 2. Open Whatsapp directly
       const waMsg = `*NEW TAXI BOOKING REQUEST*\n\n` +
                     `*Customer:* ${bookingForm.name}\n` +
-                    `*Phone:* ${bookingForm.phone}\n` +
+                    `*Phone:* ${fullPhone}\n` +
                     `*Route:* ${bookingRoute.name}\n` +
                     `*Vehicle:* ${bookingCar.name}\n` +
                     `*Travelers:* ${bookingForm.travelers} Persons\n` +
@@ -512,7 +537,7 @@ const TaxiServices = () => {
         // Reset state
         setBookingModalOpen(false)
         setSuccess(false)
-        setBookingForm({ name: '', email: '', phone: '', date: '', time: '', travelers: '1', message: '' })
+        setBookingForm({ name: '', email: '', phone: '', countryCode: '+92', date: '', time: '', travelers: '1', message: '' })
       }, 1500)
 
     } catch (err) {
@@ -810,9 +835,10 @@ const TaxiServices = () => {
                     value={bookingForm.name} 
                     onChange={e => setBookingForm({...bookingForm, name: e.target.value})}
                   />
+                  {formErrors.name && <p className="text-[#FFC55B] text-[10px] mt-1 font-bold">{formErrors.name}</p>}
                 </div>
 
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-[10px] text-white/40 font-bold uppercase tracking-widest mb-1.5">Email (Optional)</label>
                     <input 
@@ -825,14 +851,36 @@ const TaxiServices = () => {
                   </div>
                   <div>
                     <label className="block text-[10px] text-white/40 font-bold uppercase tracking-widest mb-1.5">Phone / WhatsApp *</label>
-                    <input 
-                      type="tel" 
-                      required 
-                      className="w-full bg-[#0B1B3D] border border-white/15 rounded-lg py-2 px-3 text-sm focus:border-[#FFC55B] focus:ring-0 text-white"
-                      placeholder="e.g. +92 300 1234567" 
-                      value={bookingForm.phone} 
-                      onChange={e => setBookingForm({...bookingForm, phone: e.target.value})}
-                    />
+                    <div className="flex gap-2">
+                      <select
+                        name="countryCode"
+                        value={bookingForm.countryCode}
+                        onChange={e => setBookingForm({...bookingForm, countryCode: e.target.value})}
+                        className="bg-[#0B1B3D] border border-white/15 rounded-lg py-2 px-2 text-xs text-white cursor-pointer w-20 shrink-0 focus:border-[#FFC55B] outline-none"
+                      >
+                        <option value="+92" className="bg-[#0B1B3D]">PK (+92)</option>
+                        <option value="+966" className="bg-[#0B1B3D]">SA (+966)</option>
+                        <option value="+971" className="bg-[#0B1B3D]">AE (+971)</option>
+                        <option value="+44" className="bg-[#0B1B3D]">UK (+44)</option>
+                        <option value="+1" className="bg-[#0B1B3D]">US (+1)</option>
+                        <option value="+90" className="bg-[#0B1B3D]">TR (+90)</option>
+                        <option value="+965" className="bg-[#0B1B3D]">KW (+965)</option>
+                        <option value="+974" className="bg-[#0B1B3D]">QA (+974)</option>
+                        <option value="+973" className="bg-[#0B1B3D]">BH (+973)</option>
+                        <option value="+968" className="bg-[#0B1B3D]">OM (+968)</option>
+                        <option value="+91" className="bg-[#0B1B3D]">IN (+91)</option>
+                        <option value="+880" className="bg-[#0B1B3D]">BD (+880)</option>
+                      </select>
+                      <input 
+                        type="tel" 
+                        required 
+                        className="w-full bg-[#0B1B3D] border border-white/15 rounded-lg py-2 px-3 text-sm focus:border-[#FFC55B] focus:ring-0 text-white flex-grow"
+                        placeholder="e.g. 300 1234567" 
+                        value={bookingForm.phone} 
+                        onChange={e => setBookingForm({...bookingForm, phone: e.target.value})}
+                      />
+                    </div>
+                    {formErrors.phone && <p className="text-[#FFC55B] text-[10px] mt-1 font-bold">{formErrors.phone}</p>}
                   </div>
                 </div>
 
@@ -846,6 +894,7 @@ const TaxiServices = () => {
                       value={bookingForm.date} 
                       onChange={e => setBookingForm({...bookingForm, date: e.target.value})}
                     />
+                    {formErrors.date && <p className="text-[#FFC55B] text-[10px] mt-1 font-bold">{formErrors.date}</p>}
                   </div>
                   <div>
                     <label className="block text-[10px] text-white/40 font-bold uppercase tracking-widest mb-1.5">Pickup Time *</label>

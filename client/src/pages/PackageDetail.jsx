@@ -110,14 +110,42 @@ const PackageDetail = () => {
   const { id } = useParams()
   const [pkg, setPkg] = useState(null)
   const [loading, setLoading] = useState(true)
-  const [formData, setFormData] = useState({ name: '', phone: '', city: '', travelers: '01 Person', date: '' })
+  const [formData, setFormData] = useState({ name: '', phone: '', countryCode: '+92', city: '', travelers: '01 Person', date: '' })
+  const [formErrors, setFormErrors] = useState({})
 
   const handleFormSubmit = (e) => {
     e.preventDefault()
-    if (!formData.name || !formData.phone) {
-      alert('Please fill in your name and phone number.')
-      return
+
+    // Validations
+    const errors = {};
+    if (!formData.name || formData.name.trim().length < 3) {
+      errors.name = "Name must be at least 3 characters.";
+    } else if (!/^[a-zA-Z\s]+$/.test(formData.name)) {
+      errors.name = "Name can only contain letters.";
     }
+
+    const cleanPhone = formData.phone.replace(/[\s-()]/g, "");
+    if (!cleanPhone || !/^\d{7,15}$/.test(cleanPhone)) {
+      errors.phone = "Enter a valid phone number (7-15 digits).";
+    }
+
+    if (formData.date) {
+      const estDate = new Date(formData.date);
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      if (estDate < today) {
+        errors.date = "Estimated date cannot be in the past.";
+      }
+    }
+
+    if (Object.keys(errors).length > 0) {
+      setFormErrors(errors);
+      return;
+    }
+    setFormErrors({});
+
+    const fullPhone = `${formData.countryCode} ${cleanPhone}`;
+
     const message = buildPackageInquiryMessage({
       packageTitle: pkg?.title || 'Umrah Package',
       packagePrice: pkg?.price ? (typeof pkg.price === 'number' ? `PKR ${pkg.price.toLocaleString()}` : pkg.price) : '',
@@ -125,20 +153,20 @@ const PackageDetail = () => {
       travelers: formData.travelers,
       date: formData.date,
       name: formData.name,
-      phone: formData.phone
+      phone: fullPhone
     })
     window.open(buildWhatsAppUrl(message), '_blank')
 
     const submissionData = {
       name: formData.name,
-      phone: formData.phone,
+      phone: fullPhone,
       email: '',
       subject: `Booking: ${pkg ? pkg.title : 'Umrah Package'}`,
       message: `City: ${formData.city || 'N/A'}\nTravelers: ${formData.travelers}\nEstimated Date: ${formData.date || 'N/A'}`
     }
     axios.post(`${API_BASE}/api/submissions`, submissionData)
       .then(res => {
-        setFormData({ name: '', phone: '', city: '', travelers: '01 Person', date: '' })
+        setFormData({ name: '', phone: '', countryCode: '+92', city: '', travelers: '01 Person', date: '' })
       })
       .catch(err => {
         console.error('Failed to submit booking:', err)
@@ -338,10 +366,33 @@ const PackageDetail = () => {
                 <div>
                   <label className="block text-xs font-bold uppercase tracking-widest text-black/40 mb-1">Full Name</label>
                   <input className="w-full bg-transparent border-0 border-b border-gray-200 focus:border-primary focus:ring-0 transition-colors py-2 text-sm text-black" placeholder="Enter your name" type="text" value={formData.name} onChange={e => setFormData({ ...formData, name: e.target.value })} required />
+                  {formErrors.name && <p className="text-red-500 text-[10px] mt-1 font-bold">{formErrors.name}</p>}
                 </div>
                 <div>
                   <label className="block text-xs font-bold uppercase tracking-widest text-black/40 mb-1">Phone Number</label>
-                  <input className="w-full bg-transparent border-0 border-b border-gray-200 focus:border-primary focus:ring-0 transition-colors py-2 text-sm text-black" placeholder="+92 XXXXX XXXXX" type="tel" value={formData.phone} onChange={e => setFormData({ ...formData, phone: e.target.value })} required />
+                  <div className="flex gap-2">
+                    <select
+                      name="countryCode"
+                      value={formData.countryCode}
+                      onChange={e => setFormData({ ...formData, countryCode: e.target.value })}
+                      className="bg-transparent border-0 border-b border-gray-200 focus:border-primary focus:ring-0 transition-colors py-2 text-sm text-black w-24 shrink-0 cursor-pointer outline-none"
+                    >
+                      <option value="+92">PK (+92)</option>
+                      <option value="+966">SA (+966)</option>
+                      <option value="+971">AE (+971)</option>
+                      <option value="+44">UK (+44)</option>
+                      <option value="+1">US (+1)</option>
+                      <option value="+90">TR (+90)</option>
+                      <option value="+965">KW (+965)</option>
+                      <option value="+974">QA (+974)</option>
+                      <option value="+973">BH (+973)</option>
+                      <option value="+968">OM (+968)</option>
+                      <option value="+91">IN (+91)</option>
+                      <option value="+880">BD (+880)</option>
+                    </select>
+                    <input className="w-full bg-transparent border-0 border-b border-gray-200 focus:border-primary focus:ring-0 transition-colors py-2 text-sm text-black flex-grow" placeholder="e.g. 300 1234567" type="tel" value={formData.phone} onChange={e => setFormData({ ...formData, phone: e.target.value })} required />
+                  </div>
+                  {formErrors.phone && <p className="text-red-500 text-[10px] mt-1 font-bold">{formErrors.phone}</p>}
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
@@ -360,6 +411,7 @@ const PackageDetail = () => {
                 <div>
                   <label className="block text-xs font-bold uppercase tracking-widest text-black/40 mb-1">Estimated Date</label>
                   <input className="w-full bg-transparent border-0 border-b border-gray-200 focus:border-primary focus:ring-0 transition-colors py-2 text-sm text-black" type="date" value={formData.date} onChange={e => setFormData({ ...formData, date: e.target.value })} />
+                  {formErrors.date && <p className="text-red-500 text-[10px] mt-1 font-bold">{formErrors.date}</p>}
                 </div>
                 <button className="w-full bg-primary text-white py-4 rounded-md font-bold text-sm tracking-widest uppercase shadow-lg shadow-primary/20 hover:opacity-90 transition-all" type="submit">Send Inquiry on WhatsApp</button>
               </form>

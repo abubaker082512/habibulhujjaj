@@ -43,6 +43,7 @@ const Flights = () => {
   const [formData, setFormData] = useState({
     fullName: '',
     phone: '',
+    countryCode: '+92',
     origin: '',
     destination: '',
     departureDate: '',
@@ -50,6 +51,7 @@ const Flights = () => {
     travelClass: 'Economy',
     passengers: '1 Passenger'
   })
+  const [formErrors, setFormErrors] = useState({})
   const [formSubmitted, setFormSubmitted] = useState(false)
 
   useEffect(() => {
@@ -111,6 +113,41 @@ const Flights = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault()
+
+    // Validations
+    const errors = {};
+    if (!formData.fullName || formData.fullName.trim().length < 3) {
+      errors.fullName = "Name must be at least 3 characters.";
+    } else if (!/^[a-zA-Z\s]+$/.test(formData.fullName)) {
+      errors.fullName = "Name can only contain letters.";
+    }
+
+    const cleanPhone = formData.phone.replace(/[\s-()]/g, "");
+    if (!cleanPhone || !/^\d{7,15}$/.test(cleanPhone)) {
+      errors.phone = "Enter a valid phone number (7-15 digits).";
+    }
+
+    const dep = new Date(formData.departureDate);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    if (dep < today) {
+      errors.departureDate = "Departure date cannot be in the past.";
+    }
+
+    if (formType === 'roundTrip' && formData.returnDate) {
+      const ret = new Date(formData.returnDate);
+      if (ret < dep) {
+        errors.returnDate = "Return date cannot be before departure date.";
+      }
+    }
+
+    if (Object.keys(errors).length > 0) {
+      setFormErrors(errors);
+      return;
+    }
+    setFormErrors({});
+
+    const fullPhone = `${formData.countryCode} ${cleanPhone}`;
     
     // Construct rich text message for WhatsApp
     const typeLabel = formType === 'roundTrip' ? '🔄 Round Trip' : '🛫 One Way'
@@ -118,7 +155,7 @@ const Flights = () => {
     
     const message = `✈️ *NEW FLIGHT BOOKING ENQUIRY* ✈️\n\n` +
       `👤 *Name:* ${formData.fullName}\n` +
-      `📱 *WhatsApp:* ${formData.phone}\n` +
+      `📱 *WhatsApp:* ${fullPhone}\n` +
       `🔄 *Trip Type:* ${typeLabel}\n` +
       `🛫 *From:* ${formData.origin}\n` +
       `🛬 *To:* ${formData.destination}\n` +
@@ -242,23 +279,46 @@ const Flights = () => {
                             className="w-full p-2.5 pl-9 bg-[#0B1B3D] rounded-lg border border-white/5 text-white placeholder-white/30 text-xs focus:border-[#FFC55B] outline-none transition-all"
                           />
                         </div>
+                        {formErrors.fullName && <p className="text-[#FFC55B] text-[10px] mt-1 font-bold">{formErrors.fullName}</p>}
                       </div>
 
                       {/* Phone */}
                       <div className="text-left">
                         <label className="text-[10px] font-black text-[#FFC55B] uppercase tracking-wider block mb-1.5">WhatsApp Number</label>
-                        <div className="relative">
-                          <span className="material-symbols-outlined absolute left-3 top-3 text-white/40 text-sm">phone_iphone</span>
-                          <input 
-                            type="tel" 
-                            name="phone"
-                            required
-                            value={formData.phone}
+                        <div className="flex gap-2">
+                          <select
+                            name="countryCode"
+                            value={formData.countryCode}
                             onChange={handleInputChange}
-                            placeholder="e.g. 03001234567" 
-                            className="w-full p-2.5 pl-9 bg-[#0B1B3D] rounded-lg border border-white/5 text-white placeholder-white/30 text-xs focus:border-[#FFC55B] outline-none transition-all"
-                          />
+                            className="bg-[#0B1B3D] border border-white/5 rounded-lg py-2.5 px-3 text-xs text-white cursor-pointer w-24 shrink-0 focus:border-[#FFC55B] outline-none"
+                          >
+                            <option value="+92" className="bg-[#0B1B3D]">PK (+92)</option>
+                            <option value="+966" className="bg-[#0B1B3D]">SA (+966)</option>
+                            <option value="+971" className="bg-[#0B1B3D]">AE (+971)</option>
+                            <option value="+44" className="bg-[#0B1B3D]">UK (+44)</option>
+                            <option value="+1" className="bg-[#0B1B3D]">US (+1)</option>
+                            <option value="+90" className="bg-[#0B1B3D]">TR (+90)</option>
+                            <option value="+965" className="bg-[#0B1B3D]">KW (+965)</option>
+                            <option value="+974" className="bg-[#0B1B3D]">QA (+974)</option>
+                            <option value="+973" className="bg-[#0B1B3D]">BH (+973)</option>
+                            <option value="+968" className="bg-[#0B1B3D]">OM (+968)</option>
+                            <option value="+91" className="bg-[#0B1B3D]">IN (+91)</option>
+                            <option value="+880" className="bg-[#0B1B3D]">BD (+880)</option>
+                          </select>
+                          <div className="relative flex-grow">
+                            <span className="material-symbols-outlined absolute left-3 top-3 text-white/40 text-sm">phone_iphone</span>
+                            <input 
+                              type="tel" 
+                              name="phone"
+                              required
+                              value={formData.phone}
+                              onChange={handleInputChange}
+                              placeholder="e.g. 3001234567" 
+                              className="w-full p-2.5 pl-9 bg-[#0B1B3D] rounded-lg border border-white/5 text-white placeholder-white/30 text-xs focus:border-[#FFC55B] outline-none transition-all"
+                            />
+                          </div>
                         </div>
+                        {formErrors.phone && <p className="text-[#FFC55B] text-[10px] mt-1 font-bold">{formErrors.phone}</p>}
                       </div>
                     </div>
 
@@ -312,6 +372,7 @@ const Flights = () => {
                             className="w-full p-2.5 bg-[#0B1B3D] rounded-lg border border-white/5 text-white text-xs focus:border-[#FFC55B] outline-none transition-all"
                           />
                         </div>
+                        {formErrors.departureDate && <p className="text-[#FFC55B] text-[10px] mt-1 font-bold">{formErrors.departureDate}</p>}
                       </div>
 
                       {/* Return Date */}
@@ -328,6 +389,7 @@ const Flights = () => {
                             className={`w-full p-2.5 bg-[#0B1B3D] rounded-lg border border-white/5 text-white text-xs focus:border-[#FFC55B] outline-none transition-all ${formType === 'oneWay' ? 'opacity-30 cursor-not-allowed' : ''}`}
                           />
                         </div>
+                        {formErrors.returnDate && <p className="text-[#FFC55B] text-[10px] mt-1 font-bold">{formErrors.returnDate}</p>}
                       </div>
                     </div>
 

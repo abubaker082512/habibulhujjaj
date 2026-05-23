@@ -55,6 +55,7 @@ const staticPackages = [
 const Home = () => {
   const [packages, setPackages] = useState([])
   const [activeSlide, setActiveSlide] = useState(0)
+  const [formErrors, setFormErrors] = useState({})
 
   const slides = [
     {
@@ -276,15 +277,38 @@ const Home = () => {
               const f = e.target;
               const name = f.name.value;
               const phone = f.phone.value;
+              const countryCode = f.countryCode.value;
               const city = f.city.value;
               const month = f.month.value;
               const service = f.service.value;
               const travelers = f.travelers.value;
+
+              // Validations
+              const errors = {};
+              if (!name || name.trim().length < 3) {
+                errors.name = "Name must be at least 3 characters.";
+              } else if (!/^[a-zA-Z\s]+$/.test(name)) {
+                errors.name = "Name can only contain letters.";
+              }
+
+              const cleanPhone = phone.replace(/[\s-()]/g, "");
+              if (!cleanPhone || !/^\d{7,15}$/.test(cleanPhone)) {
+                errors.phone = "Enter a valid phone number (7-15 digits).";
+              }
+
+              if (Object.keys(errors).length > 0) {
+                setFormErrors(errors);
+                return;
+              }
+              setFormErrors({});
+
+              const fullPhone = `${countryCode} ${cleanPhone}`;
+
               const message = encodeURIComponent(
                 `Assalamu Alaikum HabibUlHujjaj! 🌙\n\n` +
                 `I would like to inquire about your services.\n\n` +
                 `👤 Name: ${name}\n` +
-                `📞 Contact: ${phone}\n` +
+                `📞 Contact: ${fullPhone}\n` +
                 `🏙️ Departure City: ${city}\n` +
                 `📅 Travel Month: ${month}\n` +
                 `🕌 Service Interested In: ${service}\n` +
@@ -304,18 +328,40 @@ const Home = () => {
                   placeholder="e.g. Muhammad Ali"
                   className="w-full bg-transparent border-0 border-b border-white/20 focus:border-secondary focus:ring-0 focus:outline-none font-manrope text-sm py-3 px-0 text-white placeholder-white/30 transition-colors"
                 />
+                {formErrors.name && <p className="text-secondary text-[10px] mt-1 font-bold">{formErrors.name}</p>}
               </div>
 
               {/* Phone */}
               <div>
                 <label className="block font-manrope text-[10px] font-black uppercase text-secondary mb-3 tracking-[0.2em]">Phone / WhatsApp</label>
-                <input
-                  name="phone"
-                  type="tel"
-                  required
-                  placeholder="e.g. +92 300 0000000"
-                  className="w-full bg-transparent border-0 border-b border-white/20 focus:border-secondary focus:ring-0 focus:outline-none font-manrope text-sm py-3 px-0 text-white placeholder-white/30 transition-colors"
-                />
+                <div className="flex gap-2 items-end">
+                  <select
+                    name="countryCode"
+                    className="bg-transparent border-0 border-b border-white/20 focus:border-secondary focus:ring-0 focus:outline-none font-manrope text-sm py-3 px-0 text-white cursor-pointer w-24 shrink-0"
+                    defaultValue="+92"
+                  >
+                    <option value="+92" className="bg-[#0B1B3D] text-white">PK (+92)</option>
+                    <option value="+966" className="bg-[#0B1B3D] text-white">SA (+966)</option>
+                    <option value="+971" className="bg-[#0B1B3D] text-white">AE (+971)</option>
+                    <option value="+44" className="bg-[#0B1B3D] text-white">UK (+44)</option>
+                    <option value="+1" className="bg-[#0B1B3D] text-white">US (+1)</option>
+                    <option value="+90" className="bg-[#0B1B3D] text-white">TR (+90)</option>
+                    <option value="+965" className="bg-[#0B1B3D] text-white">KW (+965)</option>
+                    <option value="+974" className="bg-[#0B1B3D] text-white">QA (+974)</option>
+                    <option value="+973" className="bg-[#0B1B3D] text-white">BH (+973)</option>
+                    <option value="+968" className="bg-[#0B1B3D] text-white">OM (+968)</option>
+                    <option value="+91" className="bg-[#0B1B3D] text-white">IN (+91)</option>
+                    <option value="+880" className="bg-[#0B1B3D] text-white">BD (+880)</option>
+                  </select>
+                  <input
+                    name="phone"
+                    type="tel"
+                    required
+                    placeholder="e.g. 300 0000000"
+                    className="w-full bg-transparent border-0 border-b border-white/20 focus:border-secondary focus:ring-0 focus:outline-none font-manrope text-sm py-3 px-0 text-white placeholder-white/30 transition-colors"
+                  />
+                </div>
+                {formErrors.phone && <p className="text-secondary text-[10px] mt-1 font-bold">{formErrors.phone}</p>}
               </div>
 
               {/* Departure City */}
@@ -486,7 +532,7 @@ const Home = () => {
             </div>
             <div className="relative group">
               <div className="absolute -inset-4 bg-secondary/20 rounded-2xl blur-2xl group-hover:bg-secondary/30 transition-all"></div>
-              <img className="relative rounded-2xl shadow-2xl w-full h-[400px] md:h-[600px] object-cover border border-white/10" src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800&q=80" alt="Architecture" />
+              <img className="relative rounded-2xl shadow-2xl w-full h-[400px] md:h-[600px] object-cover border border-white/10" src="/assets/gallery images/1.png" alt="Architecture" />
               <div className="absolute -bottom-8 -left-8 md:-bottom-12 md:-left-12 bg-secondary p-8 md:p-14 rounded-2xl hidden lg:block shadow-[0_20px_50px_rgba(255,197,91,0.3)]">
                 <span className="block text-4xl md:text-7xl font-black text-primary tracking-tighter mb-2">25+</span>
                 <span className="text-primary font-black tracking-[0.2em] uppercase text-[10px]">Years of Legacy</span>

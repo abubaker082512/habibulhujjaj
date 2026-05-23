@@ -8,7 +8,8 @@ import { buildContactMessage, buildWhatsAppUrl } from '../utils/whatsapp'
 const API_BASE = import.meta.env.VITE_API_URL || ''
 
 const Contact = () => {
-  const [formData, setFormData] = useState({ name: '', email: '', phone: '', subject: 'Umrah Packages', message: '' })
+  const [formData, setFormData] = useState({ name: '', email: '', phone: '', countryCode: '+92', subject: 'Umrah Packages', message: '' })
+  const [formErrors, setFormErrors] = useState({})
   const [pageMedia, setPageMedia] = useState({})
   const [cmsContent, setCmsContent] = useState({
     heroTitle: 'Get in Touch', heroSubtitle: 'Have questions about our Umrah packages or international tours? Our travel consultants are ready to assist you.',
@@ -65,13 +66,40 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    const text = buildContactMessage(formData)
+
+    // Validations
+    const errors = {};
+    if (!formData.name || formData.name.trim().length < 3) {
+      errors.name = "Name must be at least 3 characters.";
+    } else if (!/^[a-zA-Z\s]+$/.test(formData.name)) {
+      errors.name = "Name can only contain letters.";
+    }
+
+    const cleanPhone = formData.phone.replace(/[\s-()]/g, "");
+    if (!cleanPhone || !/^\d{7,15}$/.test(cleanPhone)) {
+      errors.phone = "Enter a valid phone number (7-15 digits).";
+    }
+
+    if (!formData.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      errors.email = "Enter a valid email address.";
+    }
+
+    if (Object.keys(errors).length > 0) {
+      setFormErrors(errors);
+      return;
+    }
+    setFormErrors({});
+
+    const fullPhone = `${formData.countryCode} ${cleanPhone}`;
+    const submissionData = { ...formData, phone: fullPhone };
+
+    const text = buildContactMessage(submissionData)
     const whatsappUrl = buildWhatsAppUrl(text, cmsContent.whatsapp)
     window.open(whatsappUrl, '_blank')
 
-    axios.post(`${API_BASE}/api/submissions`, formData)
+    axios.post(`${API_BASE}/api/submissions`, submissionData)
       .then(res => {
-        setFormData({ name: '', email: '', phone: '', subject: 'General Inquiry', message: '' })
+        setFormData({ name: '', email: '', phone: '', countryCode: '+92', subject: 'General Inquiry', message: '' })
       })
       .catch(err => {
         console.error('Failed to submit form:', err)
@@ -174,11 +202,12 @@ const Contact = () => {
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      className="w-full bg-white border-0 border-b border-gray-200 focus:border-primary focus:ring-0 transition-colors py-3 text-sm" 
+                      className="w-full bg-white border-0 border-b border-gray-200 focus:border-primary focus:ring-0 transition-colors py-3 text-sm text-black" 
                       placeholder="Enter your name" 
                       type="text" 
                       required
                     />
+                    {formErrors.name && <p className="text-red-500 text-[10px] mt-1 font-bold">{formErrors.name}</p>}
                   </div>
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-widest text-black/40 mb-2">Email Address</label>
@@ -186,25 +215,49 @@ const Contact = () => {
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full bg-white border-0 border-b border-gray-200 focus:border-primary focus:ring-0 transition-colors py-3 text-sm" 
+                      className="w-full bg-white border-0 border-b border-gray-200 focus:border-primary focus:ring-0 transition-colors py-3 text-sm text-black" 
                       placeholder="Enter your email" 
                       type="email" 
                       required
                     />
+                    {formErrors.email && <p className="text-red-500 text-[10px] mt-1 font-bold">{formErrors.email}</p>}
                   </div>
                 </div>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-widest text-black/40 mb-2">Phone Number</label>
-                    <input 
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      className="w-full bg-white border-0 border-b border-gray-200 focus:border-primary focus:ring-0 transition-colors py-3 text-sm" 
-                      placeholder="+92 XXXXX XXXXX" 
-                      type="tel" 
-                    />
+                    <div className="flex gap-2">
+                      <select
+                        name="countryCode"
+                        value={formData.countryCode}
+                        onChange={handleChange}
+                        className="bg-white border-0 border-b border-gray-200 focus:border-primary focus:ring-0 transition-colors py-3 text-sm text-black w-24 shrink-0 cursor-pointer outline-none"
+                      >
+                        <option value="+92">PK (+92)</option>
+                        <option value="+966">SA (+966)</option>
+                        <option value="+971">AE (+971)</option>
+                        <option value="+44">UK (+44)</option>
+                        <option value="+1">US (+1)</option>
+                        <option value="+90">TR (+90)</option>
+                        <option value="+965">KW (+965)</option>
+                        <option value="+974">QA (+974)</option>
+                        <option value="+973">BH (+973)</option>
+                        <option value="+968">OM (+968)</option>
+                        <option value="+91">IN (+91)</option>
+                        <option value="+880">BD (+880)</option>
+                      </select>
+                      <input 
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        className="w-full bg-white border-0 border-b border-gray-200 focus:border-primary focus:ring-0 transition-colors py-3 text-sm text-black flex-grow" 
+                        placeholder="e.g. 300 1234567" 
+                        type="tel" 
+                        required
+                      />
+                    </div>
+                    {formErrors.phone && <p className="text-red-500 text-[10px] mt-1 font-bold">{formErrors.phone}</p>}
                   </div>
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-widest text-black/40 mb-2">Subject</label>
