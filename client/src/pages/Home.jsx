@@ -577,7 +577,7 @@ const Home = () => {
           </div>
           {/* Malaysia */}
           <div className="relative h-[400px] md:h-[600px] group cursor-pointer overflow-hidden rounded-2xl">
-            <img className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" src="https://images.unsplash.com/photo-1596422748573-cbb5bf090104?w=800&q=80" alt="Malaysia" />
+            <img className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" src="/assets/Malaysia.jpg" alt="Malaysia" />
             <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent"></div>
             <Link to="/international-tours" className="absolute inset-0 p-8 flex flex-col justify-end text-white">
               <h3 className="font-notoSerif text-3xl font-bold mb-2">Malaysia</h3>
@@ -590,7 +590,7 @@ const Home = () => {
           </div>
           {/* Europe */}
           <div className="relative h-[400px] md:h-[600px] group cursor-pointer overflow-hidden rounded-2xl">
-            <img className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" src="https://images.unsplash.com/photo-1502602892935-72c3ac7c352?w=800&q=80" alt="Europe" />
+            <img className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" src="/assets/Europe.jpg" alt="Europe" />
             <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent"></div>
             <Link to="/international-tours" className="absolute inset-0 p-8 flex flex-col justify-end text-white">
               <h3 className="font-notoSerif text-3xl font-bold mb-2">Europe</h3>
