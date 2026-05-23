@@ -6,7 +6,7 @@ import axios from 'axios'
 
 const API_BASE = import.meta.env.VITE_API_URL || ''
 
-const faqCategories = [
+const defaultFaqCategories = [
   {
     title: 'Umrah Packages',
     icon: 'mosque',
@@ -28,7 +28,7 @@ const faqCategories = [
   },
   {
     title: 'Travel & Hotels',
-    icon: 'flight',
+    icon: 'hotel',
     faqs: [
       { q: 'Which hotels are near Haram in Makkah?', a: 'We offer hotels at various distances from Haram, ranging from 50m (within Abraj Al Bait) to 1km. Our premium packages include hotels like Pullman Zamzam, Fairmont Clock Tower, and Swissotel Makkah.' },
       { q: 'What airlines do you work with?', a: 'We work with major airlines including PIA, Saudi Airlines, Emirates, Turkish Airlines, and Flydubai. Flight options depend on your departure city and travel dates.' },
@@ -50,9 +50,7 @@ const FAQ = () => {
   const [activeCategory, setActiveCategory] = useState(0)
   const [openIndex, setOpenIndex] = useState(null)
   const [pageMedia, setPageMedia] = useState({})
-  const [faqCategories, setFaqCategories] = useState([
-    { title: 'Umrah Packages', icon: 'mosque', faqs: [{ q: 'Loading...', a: 'FAQs loading...' }] }
-  ])
+  const [faqCategories, setFaqCategories] = useState(defaultFaqCategories)
 
   const toggleFaq = (index) => {
     setOpenIndex(openIndex === index ? null : index)
@@ -83,7 +81,17 @@ const FAQ = () => {
           const categories = {}
           res.data.forEach(faq => {
             const cat = faq.category || 'General'
-            if (!categories[cat]) categories[cat] = { title: cat, icon: 'help', faqs: [] }
+            if (!categories[cat]) {
+              // Custom category icon mapper
+              let icon = 'help'
+              const lcat = cat.toLowerCase()
+              if (lcat.includes('umrah') || lcat.includes('hajj') || lcat.includes('package')) icon = 'mosque'
+              else if (lcat.includes('visa')) icon = 'description'
+              else if (lcat.includes('travel') || lcat.includes('hotel') || lcat.includes('booking') || lcat.includes('service')) icon = 'hotel'
+              else if (lcat.includes('tour') || lcat.includes('international')) icon = 'travel_explore'
+
+              categories[cat] = { title: cat, icon: icon, faqs: [] }
+            }
             categories[cat].faqs.push({ q: faq.question, a: faq.answer })
           })
           setFaqCategories(Object.values(categories))
