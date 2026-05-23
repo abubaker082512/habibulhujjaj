@@ -1580,7 +1580,7 @@ const ContentCMS = () => {
   const [footerContent, setFooterContent] = useState({
     description: 'Habib Ul Hujjaj specializes in crafting meaningful spiritual journeys and world-class international tours.',
     quickLinks: ['About Us', 'Visa Services', 'Packages', 'Terms & Conditions', 'Privacy Policy'],
-    copyright: '© 2024 Habib Ul Hujjaj. All Rights Reserved.',
+    copyright: '© 2026 Habib Ul Hujjaj. All Rights Reserved.',
     socialLinks: { facebook: '', instagram: '', twitter: '', youtube: '' }
   })
 

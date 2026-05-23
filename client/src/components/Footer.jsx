@@ -8,7 +8,7 @@ const Footer = () => {
   const [footerContent, setFooterContent] = useState({
     description: 'Habib Ul Hujjaj specializes in crafting meaningful spiritual journeys and world-class international tours for the discerning traveler.',
     quickLinks: ['About Us', 'Visa Services', 'Taxi Services', 'Packages', 'Contact', 'FAQ'],
-    copyright: '© 2024 Habib Ul Hujjaj. All Rights Reserved.',
+    copyright: '© 2026 Habib Ul Hujjaj. All Rights Reserved.',
     socialLinks: { facebook: '', instagram: '', twitter: '', youtube: '' }
   })
   const [settings, setSettings] = useState({

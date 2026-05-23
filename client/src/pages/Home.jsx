@@ -57,6 +57,7 @@ const Home = () => {
   const [loadingPackages, setLoadingPackages] = useState(true)
   const [activeSlide, setActiveSlide] = useState(0)
   const [formErrors, setFormErrors] = useState({})
+  const [ritualTab, setRitualTab] = useState('umrah')
 
   const slides = [
     {
@@ -726,6 +727,193 @@ const Home = () => {
                 Enquire Tour <span className="material-symbols-outlined text-xs">arrow_forward</span>
               </a>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Sacred Hajj & Umrah Interactive Rituals Guide Section */}
+      <section className="py-24 md:py-32 bg-background border-t border-primary/5 relative overflow-hidden">
+        {/* Decorative background glows */}
+        <div className="absolute -left-40 -top-40 w-96 h-96 rounded-full bg-primary/5 blur-3xl"></div>
+        <div className="absolute -right-40 -bottom-40 w-96 h-96 rounded-full bg-secondary/5 blur-3xl"></div>
+
+        <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 relative z-10 text-center">
+          <div className="mb-16 text-center max-w-3xl mx-auto">
+            <h6 className="font-manrope text-primary font-black text-xs tracking-[0.4em] uppercase mb-6">Interactive Pilgrimage Experience</h6>
+            <h2 className="font-notoSerif text-4xl sm:text-5xl lg:text-7xl font-black text-primary leading-tight">Spiritual Steps & <br /><span className="text-primary/30 italic font-medium">Sacred Rituals</span></h2>
+            <div className="w-16 h-[2px] bg-secondary mx-auto mt-6"></div>
+            <p className="font-manrope text-sm text-primary/70 leading-relaxed font-light mt-6 max-w-xl mx-auto">
+              Understand each spiritual milestone. Toggle between Hajj and Umrah guides below to explore the chronological journey steps.
+            </p>
+          </div>
+
+          {/* Tab Selector */}
+          <div className="inline-flex bg-primary/5 p-1.5 rounded-full mb-16 shadow-inner border border-primary/5">
+            <button
+              onClick={() => setRitualTab('umrah')}
+              className={`px-8 py-3.5 rounded-full font-black text-xs uppercase tracking-widest transition-all duration-300 cursor-pointer ${
+                ritualTab === 'umrah'
+                  ? 'bg-primary text-secondary shadow-lg scale-105'
+                  : 'text-primary/60 hover:text-primary'
+              }`}
+            >
+              Umrah Rituals
+            </button>
+            <button
+              onClick={() => setRitualTab('hajj')}
+              className={`px-8 py-3.5 rounded-full font-black text-xs uppercase tracking-widest transition-all duration-300 cursor-pointer ${
+                ritualTab === 'hajj'
+                  ? 'bg-primary text-secondary shadow-lg scale-105'
+                  : 'text-primary/60 hover:text-primary'
+              }`}
+            >
+              Hajj Pilgrimage
+            </button>
+          </div>
+
+          {/* Ritual Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {ritualTab === 'umrah' ? (
+              <>
+                {/* Step 1 */}
+                <div className="bg-white p-8 rounded-2xl border border-primary/5 shadow-sm hover:shadow-2xl transition-all duration-300 text-left flex flex-col justify-between group h-full">
+                  <div>
+                    <div className="flex justify-between items-start mb-6">
+                      <span className="font-notoSerif text-4xl font-black text-primary/10 group-hover:text-secondary/40 transition-colors">01</span>
+                      <span className="material-symbols-outlined text-4xl text-secondary bg-primary/5 p-3 rounded-2xl">clean_hands</span>
+                    </div>
+                    <h4 className="font-notoSerif text-2xl font-bold text-primary mb-3">Ihram & Niyyah</h4>
+                    <p className="text-primary/70 text-xs font-light leading-relaxed mb-6">
+                      Entering a state of spiritual purity at the Miqat boundary, donning white garments, and declaring the sacred intention (Niyyah) for Umrah while reciting the Talbiyah.
+                    </p>
+                  </div>
+                  <Link to="/contact" className="text-secondary hover:text-primary font-bold text-xs uppercase tracking-wider flex items-center gap-2 group-hover:translate-x-1.5 transition-transform">
+                    Learn Requirements <span className="material-symbols-outlined text-xs">arrow_forward</span>
+                  </Link>
+                </div>
+
+                {/* Step 2 */}
+                <div className="bg-white p-8 rounded-2xl border border-primary/5 shadow-sm hover:shadow-2xl transition-all duration-300 text-left flex flex-col justify-between group h-full">
+                  <div>
+                    <div className="flex justify-between items-start mb-6">
+                      <span className="font-notoSerif text-4xl font-black text-primary/10 group-hover:text-secondary/40 transition-colors">02</span>
+                      <span className="material-symbols-outlined text-4xl text-secondary bg-primary/5 p-3 rounded-2xl">sync</span>
+                    </div>
+                    <h4 className="font-notoSerif text-2xl font-bold text-primary mb-3">Tawaf Al-Kaaba</h4>
+                    <p className="text-primary/70 text-xs font-light leading-relaxed mb-6">
+                      Walking around the Holy Kaaba seven times counter-clockwise in absolute devotion, starting and ending at the Black Stone (Hajar Al-Aswad) with constant prayer and supplication.
+                    </p>
+                  </div>
+                  <Link to="/contact" className="text-secondary hover:text-primary font-bold text-xs uppercase tracking-wider flex items-center gap-2 group-hover:translate-x-1.5 transition-transform">
+                    Tawaf Etiquette <span className="material-symbols-outlined text-xs">arrow_forward</span>
+                  </Link>
+                </div>
+
+                {/* Step 3 */}
+                <div className="bg-white p-8 rounded-2xl border border-primary/5 shadow-sm hover:shadow-2xl transition-all duration-300 text-left flex flex-col justify-between group h-full">
+                  <div>
+                    <div className="flex justify-between items-start mb-6">
+                      <span className="font-notoSerif text-4xl font-black text-primary/10 group-hover:text-secondary/40 transition-colors">03</span>
+                      <span className="material-symbols-outlined text-4xl text-secondary bg-primary/5 p-3 rounded-2xl">directions_walk</span>
+                    </div>
+                    <h4 className="font-notoSerif text-2xl font-bold text-primary mb-3">Sa'ee (Safa & Marwah)</h4>
+                    <p className="text-primary/70 text-xs font-light leading-relaxed mb-6">
+                      Walking seven times between the historic hills of Safa and Marwah to honor the historic search for water by Bibi Hajar (AS) for her infant son Prophet Ismail (AS).
+                    </p>
+                  </div>
+                  <Link to="/contact" className="text-secondary hover:text-primary font-bold text-xs uppercase tracking-wider flex items-center gap-2 group-hover:translate-x-1.5 transition-transform">
+                    Sa'ee Guidelines <span className="material-symbols-outlined text-xs">arrow_forward</span>
+                  </Link>
+                </div>
+
+                {/* Step 4 */}
+                <div className="bg-white p-8 rounded-2xl border border-primary/5 shadow-sm hover:shadow-2xl transition-all duration-300 text-left flex flex-col justify-between group h-full">
+                  <div>
+                    <div className="flex justify-between items-start mb-6">
+                      <span className="font-notoSerif text-4xl font-black text-primary/10 group-hover:text-secondary/40 transition-colors">04</span>
+                      <span className="material-symbols-outlined text-4xl text-secondary bg-primary/5 p-3 rounded-2xl">content_cut</span>
+                    </div>
+                    <h4 className="font-notoSerif text-2xl font-bold text-primary mb-3">Halq or Taqseer</h4>
+                    <p className="text-primary/70 text-xs font-light leading-relaxed mb-6">
+                      Shaving the head entirely (Halq) or trimming the hair (Taqseer) to officially exit the sacred state of Ihram and conclude the beautiful rites of the Umrah pilgrimage.
+                    </p>
+                  </div>
+                  <Link to="/contact" className="text-secondary hover:text-primary font-bold text-xs uppercase tracking-wider flex items-center gap-2 group-hover:translate-x-1.5 transition-transform">
+                    Halq Procedures <span className="material-symbols-outlined text-xs">arrow_forward</span>
+                  </Link>
+                </div>
+              </>
+            ) : (
+              <>
+                {/* Step 1 */}
+                <div className="bg-white p-8 rounded-2xl border border-primary/5 shadow-sm hover:shadow-2xl transition-all duration-300 text-left flex flex-col justify-between group h-full">
+                  <div>
+                    <div className="flex justify-between items-start mb-6">
+                      <span className="font-notoSerif text-4xl font-black text-primary/10 group-hover:text-secondary/40 transition-colors">01</span>
+                      <span className="material-symbols-outlined text-4xl text-secondary bg-primary/5 p-3 rounded-2xl">camping</span>
+                    </div>
+                    <h4 className="font-notoSerif text-2xl font-bold text-primary mb-3">Mina (Tarwiyah)</h4>
+                    <p className="text-primary/70 text-xs font-light leading-relaxed mb-6">
+                      Gathering in the iconic valley of Mina on the 8th of Dhul-Hijjah to perform prayers, recite Talbiyah, and prepare spiritually for the core standing on Mount Arafat.
+                    </p>
+                  </div>
+                  <Link to="/contact" className="text-secondary hover:text-primary font-bold text-xs uppercase tracking-wider flex items-center gap-2 group-hover:translate-x-1.5 transition-transform">
+                    Mina Preparation <span className="material-symbols-outlined text-xs">arrow_forward</span>
+                  </Link>
+                </div>
+
+                {/* Step 2 */}
+                <div className="bg-white p-8 rounded-2xl border border-primary/5 shadow-sm hover:shadow-2xl transition-all duration-300 text-left flex flex-col justify-between group h-full">
+                  <div>
+                    <div className="flex justify-between items-start mb-6">
+                      <span className="font-notoSerif text-4xl font-black text-primary/10 group-hover:text-secondary/40 transition-colors">02</span>
+                      <span className="material-symbols-outlined text-4xl text-secondary bg-primary/5 p-3 rounded-2xl">wb_sunny</span>
+                    </div>
+                    <h4 className="font-notoSerif text-2xl font-bold text-primary mb-3">Arafat Standing</h4>
+                    <p className="text-primary/70 text-xs font-light leading-relaxed mb-6">
+                      The core ritual of Hajj on the 9th of Dhul-Hijjah. Standing in prayer and deep repentance at Mount Arafat from noon until sunset, seeking absolute forgiveness.
+                    </p>
+                  </div>
+                  <Link to="/contact" className="text-secondary hover:text-primary font-bold text-xs uppercase tracking-wider flex items-center gap-2 group-hover:translate-x-1.5 transition-transform">
+                    Arafah Significance <span className="material-symbols-outlined text-xs">arrow_forward</span>
+                  </Link>
+                </div>
+
+                {/* Step 3 */}
+                <div className="bg-white p-8 rounded-2xl border border-primary/5 shadow-sm hover:shadow-2xl transition-all duration-300 text-left flex flex-col justify-between group h-full">
+                  <div>
+                    <div className="flex justify-between items-start mb-6">
+                      <span className="font-notoSerif text-4xl font-black text-primary/10 group-hover:text-secondary/40 transition-colors">03</span>
+                      <span className="material-symbols-outlined text-4xl text-secondary bg-primary/5 p-3 rounded-2xl">nights_stay</span>
+                    </div>
+                    <h4 className="font-notoSerif text-2xl font-bold text-primary mb-3">Muzdalifah Night</h4>
+                    <p className="text-primary/70 text-xs font-light leading-relaxed mb-6">
+                      Traveling after sunset to Muzdalifah, collecting pebbles for the stoning ritual, praying combined evening prayers under the open sky, and resting until Fajr.
+                    </p>
+                  </div>
+                  <Link to="/contact" className="text-secondary hover:text-primary font-bold text-xs uppercase tracking-wider flex items-center gap-2 group-hover:translate-x-1.5 transition-transform">
+                    Muzdalifah Rites <span className="material-symbols-outlined text-xs">arrow_forward</span>
+                  </Link>
+                </div>
+
+                {/* Step 4 */}
+                <div className="bg-white p-8 rounded-2xl border border-primary/5 shadow-sm hover:shadow-2xl transition-all duration-300 text-left flex flex-col justify-between group h-full">
+                  <div>
+                    <div className="flex justify-between items-start mb-6">
+                      <span className="font-notoSerif text-4xl font-black text-primary/10 group-hover:text-secondary/40 transition-colors">04</span>
+                      <span className="material-symbols-outlined text-4xl text-secondary bg-primary/5 p-3 rounded-2xl">explore</span>
+                    </div>
+                    <h4 className="font-notoSerif text-2xl font-bold text-primary mb-3">Jamarat & Sacrifice</h4>
+                    <p className="text-primary/70 text-xs font-light leading-relaxed mb-6">
+                      Stoning the Jamarat pillars in Mina to symbolize rejecting evil, followed by sacrificial animal offering, shaving/trimming hair, and celebrating Eid Al-Adha.
+                    </p>
+                  </div>
+                  <Link to="/contact" className="text-secondary hover:text-primary font-bold text-xs uppercase tracking-wider flex items-center gap-2 group-hover:translate-x-1.5 transition-transform">
+                    Jamarat Guidelines <span className="material-symbols-outlined text-xs">arrow_forward</span>
+                  </Link>
+                </div>
+              </>
+            )}
           </div>
         </div>
       </section>
