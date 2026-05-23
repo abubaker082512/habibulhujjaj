@@ -189,7 +189,7 @@ const Flights = () => {
   }
 
   return (
-    <div className="min-h-screen bg-[#0B1B3D] font-manrope text-white overflow-x-hidden">
+    <div className="min-h-screen bg-background font-manrope text-primary overflow-x-hidden">
       <Navbar />
 
       {/* Redesigned Premium Hero Section */}
@@ -200,7 +200,7 @@ const Flights = () => {
             className="w-full h-full object-cover object-center filter brightness-[0.35]" 
             alt="Hero Background"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0B1B3D]/85 via-[#182d56]/60 to-[#0B1B3D]"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-primary/90 via-primary/75 to-background"></div>
           
           {/* Subtle animated light dots representing flight routes */}
           <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-[#FFC55B] rounded-full animate-ping opacity-60"></div>
@@ -454,37 +454,37 @@ const Flights = () => {
       </section>
 
       {/* Narrative Section 1 */}
-      <section className="py-24 bg-[#182d56]/40 relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+      <section className="py-24 bg-white relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/10 to-transparent"></div>
         <div className="container mx-auto px-4 text-center max-w-4xl relative z-10">
           <div className="inline-flex w-12 h-[2px] bg-[#FFC55B] mb-6"></div>
-          <h2 className="font-notoSerif text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6 uppercase tracking-tight">
-            YOUR NEXT ADVENTURE <span className="text-[#FFC55B]">BEGINS HERE!</span>
+          <h2 className="font-notoSerif text-2xl sm:text-3xl md:text-4xl font-bold text-primary mb-6 uppercase tracking-tight">
+            YOUR NEXT ADVENTURE <span className="text-secondary">BEGINS HERE!</span>
           </h2>
-          <p className="text-sm sm:text-base text-white/70 font-light leading-relaxed max-w-2xl mx-auto">
+          <p className="text-sm sm:text-base text-primary/70 font-light leading-relaxed max-w-2xl mx-auto">
             {cmsContent.adventureSubtitle}
           </p>
         </div>
       </section>
 
       {/* Narrative Section 2 (Trust) */}
-      <section className="py-24 bg-[#0B1B3D] relative overflow-hidden">
+      <section className="py-24 bg-background relative overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-emerald-500/5 rounded-full blur-3xl"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-secondary/10 rounded-full blur-3xl"></div>
         </div>
         
         <div className="container mx-auto px-4 text-center max-w-4xl relative z-10">
-          <h2 className="font-notoSerif text-2xl sm:text-3xl md:text-4xl font-bold mb-6 tracking-tight">
+          <h2 className="font-notoSerif text-2xl sm:text-3xl md:text-4xl font-bold text-primary mb-6 tracking-tight">
             {cmsContent.trustTitle.includes('REHMAN') ? 'TIRED OF OVERPRICED FLIGHTS AND HASSLES?' : cmsContent.trustTitle}
           </h2>
-          <p className="text-sm sm:text-base text-white/70 font-light leading-relaxed mb-12 max-w-2xl mx-auto">
+          <p className="text-sm sm:text-base text-primary/70 font-light leading-relaxed mb-12 max-w-2xl mx-auto">
             {cmsContent.trustSubtitle}
           </p>
           <a 
             href="https://wa.me/923004634548?text=Hello%20Habib%20Ul%20Hujjaj,%20I%20want%20to%20consult%20about%20booking%20flights."
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-2 bg-[#FFC55B] text-[#0B1B3D] px-8 py-3.5 rounded-full font-black text-xs uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-xl"
+            className="inline-flex items-center gap-2 bg-secondary text-primary px-8 py-3.5 rounded-full font-black text-xs uppercase tracking-widest hover:bg-primary hover:text-white transition-all shadow-xl shadow-secondary/10"
           >
             <span className="material-symbols-outlined text-[16px] font-bold">chat</span>
             Book Your Free Consultation
@@ -493,15 +493,15 @@ const Flights = () => {
       </section>
 
       {/* Redesigned Destinations Grid */}
-      <section className="py-24 bg-[#182d56]/20 relative">
-        <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/5 to-transparent"></div>
+      <section className="py-24 bg-white relative">
+        <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/10 to-transparent"></div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           
           <div className="text-center mb-16">
-            <h2 className="font-notoSerif text-3xl sm:text-4xl font-bold text-white mb-4 tracking-tight">
+            <h2 className="font-notoSerif text-3xl sm:text-4xl font-bold text-primary mb-4 tracking-tight">
               {cmsContent.destinationsTitle}
             </h2>
-            <p className="text-white/60 text-sm font-light max-w-xl mx-auto">{cmsContent.destinationsSubtitle}</p>
+            <p className="text-primary/60 text-sm font-light max-w-xl mx-auto">{cmsContent.destinationsSubtitle}</p>
             <div className="w-12 h-1 bg-[#FFC55B] mx-auto mt-4 rounded-full"></div>
           </div>
 
@@ -521,27 +521,27 @@ const Flights = () => {
                 return (
                   <div 
                     key={dest.id} 
-                    className="bg-[#182d56]/40 rounded-3xl overflow-hidden border border-white/5 shadow-xl hover:shadow-[0_20px_50px_rgba(255,197,91,0.15)] hover:border-[#FFC55B]/30 hover:-translate-y-1.5 transition-all duration-500 group flex flex-col h-full relative"
+                    className="bg-background rounded-3xl overflow-hidden border border-primary/5 shadow-md hover:shadow-2xl hover:border-secondary/50 hover:-translate-y-1.5 transition-all duration-500 group flex flex-col h-full relative"
                   >
                     {/* Glowing effect inside card */}
-                    <div className="absolute top-0 right-0 w-24 h-24 bg-[#FFC55B]/5 rounded-full blur-xl group-hover:bg-[#FFC55B]/10 transition-all"></div>
+                    <div className="absolute top-0 right-0 w-24 h-24 bg-secondary/5 rounded-full blur-xl group-hover:bg-secondary/10 transition-all"></div>
 
                     {/* Image block */}
-                    <div className="h-52 relative overflow-hidden bg-[#0B1B3D]">
+                    <div className="h-52 relative overflow-hidden bg-background">
                       <img 
                         src={dest.image_url} 
                         alt={dest.name} 
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" 
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#0b1b3d] via-transparent to-transparent opacity-85"></div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-85"></div>
                       
                       {/* Price Badge */}
-                      <div className="absolute top-4 left-4 bg-secondary text-primary px-3.5 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest shadow-xl border border-white/10">
+                      <div className="absolute top-4 left-4 bg-secondary text-primary px-3.5 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest shadow-xl border border-primary/5">
                         From PKR {dest.price_start.toLocaleString()}
                       </div>
 
                       {/* Transit Badge */}
-                      <div className="absolute bottom-4 left-4 text-[9px] font-bold text-secondary uppercase tracking-[0.2em] bg-primary/80 backdrop-blur-sm px-3 py-1 rounded-md border border-white/5">
+                      <div className="absolute bottom-4 left-4 text-[9px] font-bold text-white uppercase tracking-[0.2em] bg-primary/80 backdrop-blur-sm px-3 py-1 rounded-md border border-primary/5">
                         {transit}
                       </div>
                     </div>
@@ -550,19 +550,19 @@ const Flights = () => {
                     <div className="p-6 flex flex-col flex-grow text-left">
                       {/* Boarding Pass Header */}
                       <div className="flex justify-between items-center mb-4">
-                        <span className="text-[10px] text-white/40 font-black uppercase tracking-widest">{airline}</span>
+                        <span className="text-[10px] text-primary/40 font-black uppercase tracking-widest">{airline}</span>
                         <div className="flex items-center gap-2">
-                          <span className="text-[11px] font-black text-secondary uppercase">LHE</span>
-                          <span className="material-symbols-outlined text-[10px] text-white/40">arrow_forward</span>
-                          <span className="text-[11px] font-black text-secondary uppercase">{code}</span>
+                          <span className="text-[11px] font-black text-primary uppercase">LHE</span>
+                          <span className="material-symbols-outlined text-[10px] text-primary/30">arrow_forward</span>
+                          <span className="text-[11px] font-black text-primary uppercase">{code}</span>
                         </div>
                       </div>
 
-                      <h3 className="font-notoSerif text-2xl font-bold text-white mb-2 group-hover:text-secondary transition-colors">{dest.name}</h3>
-                      <p className="text-white/60 text-xs font-light mb-6 leading-relaxed flex-grow line-clamp-3">{dest.description}</p>
+                      <h3 className="font-notoSerif text-2xl font-bold text-primary mb-2 group-hover:text-secondary transition-colors">{dest.name}</h3>
+                      <p className="text-primary/60 text-xs font-light mb-6 leading-relaxed flex-grow line-clamp-3">{dest.description}</p>
                       
                       {/* Premium Amenities list */}
-                      <div className="grid grid-cols-2 gap-y-2 mb-6 pt-4 border-t border-white/5 text-[10px] font-bold text-white/50 uppercase tracking-wider">
+                      <div className="grid grid-cols-2 gap-y-2 mb-6 pt-4 border-t border-primary/5 text-[10px] font-bold text-primary/50 uppercase tracking-wider">
                         <div className="flex items-center gap-1.5">
                           <span className="material-symbols-outlined text-[12px] text-secondary">backpack</span>
                           46kg Bag
@@ -586,7 +586,7 @@ const Flights = () => {
                           href={`https://wa.me/923004634548?text=Hello%20Habib%20Ul%20Hujjaj,%20I'd%20like%20to%20view%20details%20and%20itinerary%20for%20flights%20to%20${encodeURIComponent(dest.name)}`}
                           target="_blank"
                           rel="noreferrer"
-                          className="border border-white/10 hover:border-white/20 hover:bg-white/5 text-white px-4 py-3 rounded-lg font-bold text-[10px] uppercase tracking-widest transition-all flex items-center justify-center"
+                          className="border border-primary/20 hover:bg-primary hover:text-white text-primary px-4 py-3 rounded-lg font-bold text-[10px] uppercase tracking-widest transition-all flex items-center justify-center"
                         >
                           Details
                         </a>
@@ -601,26 +601,26 @@ const Flights = () => {
       </section>
 
       {/* Features List Section */}
-      <section className="py-24 bg-[#0B1B3D] relative">
-        <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/5 to-transparent"></div>
+      <section className="py-24 bg-background relative">
+        <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/10 to-transparent"></div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             
             {/* Features Columns */}
             <div className="lg:col-span-7 space-y-8 text-left">
               <div className="inline-flex w-8 h-[2px] bg-[#FFC55B] mb-2"></div>
-              <h3 className="font-notoSerif text-3xl font-bold text-white tracking-tight uppercase mb-4">
-                THE PREFERRED CHOICE FOR <span className="text-[#FFC55B]">HOLY TRAVEL</span>
+              <h3 className="font-notoSerif text-3xl font-bold text-primary tracking-tight uppercase mb-4">
+                THE PREFERRED CHOICE FOR <span className="text-secondary">HOLY TRAVEL</span>
               </h3>
               
               <div className="space-y-6">
                 {[1, 2, 3, 4, 5].map(i => (
                   <div key={i} className="flex items-start gap-4 sm:gap-6 group">
-                    <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-[#FFC55B]/10 border border-[#FFC55B]/20 text-[#FFC55B] flex items-center justify-center font-notoSerif text-lg font-bold group-hover:bg-[#FFC55B] group-hover:text-[#0B1B3D] transition-all duration-300">
+                    <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-primary/5 border border-primary/10 text-primary flex items-center justify-center font-notoSerif text-lg font-bold group-hover:bg-secondary group-hover:text-primary group-hover:border-secondary transition-all duration-300">
                       {i}
                     </div>
                     <div>
-                      <h4 className="text-base sm:text-lg font-bold text-white group-hover:text-[#FFC55B] transition-colors">{cmsContent[`feature${i}`]}</h4>
+                      <h4 className="text-base sm:text-lg font-bold text-primary group-hover:text-secondary transition-colors">{cmsContent[`feature${i}`]}</h4>
                     </div>
                   </div>
                 ))}
@@ -629,13 +629,13 @@ const Flights = () => {
 
             {/* Visual Right Column */}
             <div className="lg:col-span-5 relative">
-              <div className="absolute -inset-2 rounded-3xl bg-[#FFC55B]/10 blur-xl"></div>
+              <div className="absolute -inset-2 rounded-3xl bg-secondary/5 blur-xl"></div>
               <img 
                 src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&q=80" 
-                className="rounded-3xl shadow-2xl border border-white/5 w-full object-cover" 
+                className="rounded-3xl shadow-2xl border border-primary/10 w-full object-cover" 
                 alt="Travel experiences" 
               />
-              <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-[#FFC55B]/10 rounded-full blur-xl"></div>
+              <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-secondary/5 rounded-full blur-xl"></div>
             </div>
 
           </div>
@@ -643,16 +643,16 @@ const Flights = () => {
       </section>
 
       {/* Most Popular Places */}
-      <section className="py-24 bg-[#182d56]/20 relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/5 to-transparent"></div>
+      <section className="py-24 bg-white relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/10 to-transparent"></div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-          <h2 className="font-notoSerif text-3xl sm:text-4xl font-bold text-center text-white mb-16 tracking-tight uppercase">
+          <h2 className="font-notoSerif text-3xl sm:text-4xl font-bold text-center text-primary mb-16 tracking-tight uppercase">
             {cmsContent.popularTitle}
             <div className="w-12 h-1 bg-[#FFC55B] mx-auto mt-4 rounded-full"></div>
           </h2>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="relative h-96 rounded-2xl overflow-hidden group shadow-lg border border-white/5">
+            <div className="relative h-96 rounded-2xl overflow-hidden group shadow-lg border border-primary/10">
               <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&q=80" className="w-full h-full object-cover group-hover:scale-105 transition-all duration-500" alt="Dubai" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
               <div className="absolute bottom-6 left-6 text-left">
@@ -661,7 +661,7 @@ const Flights = () => {
               </div>
             </div>
             
-            <div className="relative h-96 rounded-2xl overflow-hidden group shadow-lg border border-white/5">
+            <div className="relative h-96 rounded-2xl overflow-hidden group shadow-lg border border-primary/10">
               <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&q=80" className="w-full h-full object-cover group-hover:scale-105 transition-all duration-500" alt="Paris" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
               <div className="absolute bottom-6 left-6 text-left">
@@ -670,7 +670,7 @@ const Flights = () => {
               </div>
             </div>
 
-            <div className="relative h-96 rounded-2xl overflow-hidden group shadow-lg border border-white/5">
+            <div className="relative h-96 rounded-2xl overflow-hidden group shadow-lg border border-primary/10">
               <img src="https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=800&q=80" className="w-full h-full object-cover group-hover:scale-105 transition-all duration-500" alt="Istanbul" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
               <div className="absolute bottom-6 left-6 text-left">
@@ -679,7 +679,7 @@ const Flights = () => {
               </div>
             </div>
 
-            <div className="relative h-96 rounded-2xl overflow-hidden group shadow-lg border border-white/5">
+            <div className="relative h-96 rounded-2xl overflow-hidden group shadow-lg border border-primary/10">
               <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800&q=80" className="w-full h-full object-cover group-hover:scale-105 transition-all duration-500" alt="Tokyo" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
               <div className="absolute bottom-6 left-6 text-left">

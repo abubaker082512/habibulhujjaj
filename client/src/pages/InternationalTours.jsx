@@ -6,7 +6,7 @@ import axios from 'axios'
 
 const API_BASE = import.meta.env.VITE_API_URL || ''
 
-const tours = [
+const staticTours = [
   {
     id: 1,
     title: 'Turkey Tour',
@@ -110,7 +110,7 @@ const buildTourWhatsAppUrl = (tour) => {
 
 const InternationalTours = () => {
   const [pageMedia, setPageMedia] = useState({})
-  const [tours, setTours] = useState([])
+  const [tours, setTours] = useState(staticTours)
 
   useEffect(() => {
     const savedMedia = localStorage.getItem('pageMedia')
@@ -133,11 +133,16 @@ const InternationalTours = () => {
 
     axios.get(`${API_BASE}/api/tours`)
       .then(res => {
-        if (Array.isArray(res.data) && res.data.length > 0) {
+        if (res.data && Array.isArray(res.data) && res.data.length > 0) {
           setTours(res.data)
+        } else {
+          setTours(staticTours)
         }
       })
-      .catch(err => console.error('Failed to fetch tours:', err))
+      .catch(err => {
+        console.error('Failed to fetch tours:', err)
+        setTours(staticTours)
+      })
   }, [])
 
   return (

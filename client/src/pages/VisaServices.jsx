@@ -7,9 +7,10 @@ import { buildServiceInquiryMessage, buildWhatsAppUrl } from '../utils/whatsapp'
 
 const API_BASE = import.meta.env.VITE_API_URL || ''
 
-const visaServices = [
+const staticVisaServices = [
   {
     id: 1,
+    title: 'Camp / Umrah Visa', // wait, let's keep exact titles from line 10-83
     title: 'Umrah Visa',
     description: 'Specialized visa processing for pilgrims traveling to Saudi Arabia for Umrah rituals. We handle all documentation and government approvals.',
     icon: 'mosque',
@@ -84,7 +85,7 @@ const visaServices = [
 
 const VisaServices = () => {
   const [pageMedia, setPageMedia] = useState({})
-  const [visaServices, setVisaServices] = useState([])
+  const [visaServices, setVisaServices] = useState(staticVisaServices)
 
   useEffect(() => {
     const savedMedia = localStorage.getItem('pageMedia')
@@ -107,11 +108,16 @@ const VisaServices = () => {
 
     axios.get(`${API_BASE}/api/visa`)
       .then(res => {
-        if (Array.isArray(res.data) && res.data.length > 0) {
+        if (res.data && Array.isArray(res.data) && res.data.length > 0) {
           setVisaServices(res.data)
+        } else {
+          setVisaServices(staticVisaServices)
         }
       })
-      .catch(err => console.error('Failed to fetch visa services:', err))
+      .catch(err => {
+        console.error('Failed to fetch visa services:', err)
+        setVisaServices(staticVisaServices)
+      })
   }, [])
 
   return (
