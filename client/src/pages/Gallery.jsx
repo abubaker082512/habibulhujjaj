@@ -6,19 +6,25 @@ import axios from 'axios'
 const API_BASE = import.meta.env.VITE_API_URL || ''
 
 const galleryItems = [
-  { id: 1, type: 'wide', src: '/assets/gallery images/1.png', label: 'Sanctity of the Holy Kaaba', category: 'Kaaba' },
-  { id: 2, type: 'tall', src: '/assets/gallery images/2.jpg', label: 'Elegance of Masjid Al-Haram', category: 'Kaaba' },
-  { id: 3, type: 'standard', src: '/assets/gallery images/3.jpg', label: 'Medina Al-Munawwarah Peace', category: 'Masjid Nabawi' },
-  { id: 4, type: 'standard', src: '/assets/gallery images/4.webp', label: 'Spires of Devotion', category: 'Masjid Nabawi' },
-  { id: 5, type: 'tall', src: '/assets/gallery images/5.avif', label: 'Holy Ziyarat Pilgrimage', category: 'Ziyarat' },
-  { id: 6, type: 'wide', src: '/assets/gallery images/6.jpg', label: 'Blessed Moments of Hujjaj', category: 'Umrah Groups' },
-  { id: 7, type: 'standard', src: '/assets/gallery images/7.webp', label: 'Sacred Sites Ziyarat', category: 'Ziyarat' },
-  { id: 8, type: 'standard', src: '/assets/gallery images/8.webp', label: 'Pilgrim Groups', category: 'Umrah Groups' },
-  { id: 9, type: 'wide', src: '/assets/gallery images/9.webp', label: 'Masjid Nabawi Umrah Group', category: 'Umrah Groups' },
-  { id: 10, type: 'standard', src: '/assets/gallery images/10.jpg', label: 'Spiritual Ziyarat Sights', category: 'Ziyarat' }
+  { id: 1,  type: 'wide',     src: '/assets/gallery images/1.png',           label: 'Sanctity of the Holy Kaaba',       category: 'Kaaba' },
+  { id: 2,  type: 'tall',     src: '/assets/gallery images/2.jpg',           label: 'Elegance of Masjid Al-Haram',      category: 'Kaaba' },
+  { id: 3,  type: 'standard', src: '/assets/gallery images/3.jpg',           label: 'Medina Al-Munawwarah Peace',       category: 'Masjid Nabawi' },
+  { id: 4,  type: 'standard', src: '/assets/gallery images/4.webp',          label: 'Spires of Devotion',               category: 'Masjid Nabawi' },
+  { id: 5,  type: 'tall',     src: '/assets/gallery images/5.avif',          label: 'Holy Ziyarat Pilgrimage',          category: 'Ziyarat' },
+  { id: 6,  type: 'wide',     src: '/assets/gallery images/6.jpg',           label: 'Blessed Moments of Hujjaj',        category: 'Umrah Groups' },
+  { id: 7,  type: 'standard', src: '/assets/gallery images/7.webp',          label: 'Sacred Sites Ziyarat',             category: 'Ziyarat' },
+  { id: 8,  type: 'standard', src: '/assets/gallery images/8.webp',          label: 'Pilgrim Groups',                   category: 'Umrah Groups' },
+  { id: 9,  type: 'wide',     src: '/assets/gallery images/9.webp',          label: 'Masjid Nabawi Umrah Group',        category: 'Umrah Groups' },
+  { id: 10, type: 'standard', src: '/assets/gallery images/10.jpg',          label: 'Spiritual Ziyarat Sights',         category: 'Ziyarat' },
+  { id: 11, type: 'wide',     src: '/assets/gallery images/11.jpeg',         label: 'Sacred Moments in Makkah',         category: 'Kaaba' },
+  { id: 12, type: 'tall',     src: '/assets/gallery images/12.jpeg',         label: 'Journey of Faith',                 category: 'Umrah Groups' },
+  { id: 13, type: 'standard', src: '/assets/gallery images/13.jpeg',         label: 'Blessed Pilgrimage',               category: 'Umrah Groups' },
+  { id: 14, type: 'wide',     src: '/assets/gallery images/Dubai tour.jpg',  label: 'Dubai City Tour',                  category: 'International Tours' },
+  { id: 15, type: 'tall',     src: '/assets/gallery images/Turkey tour.jpg', label: 'Turkey Heritage Tour',             category: 'International Tours' },
 ]
 
 const filters = ['All', 'Kaaba', 'Masjid Nabawi', 'Ziyarat', 'Umrah Groups', 'International Tours']
+
 
 const Gallery = () => {
   const [activeFilter, setActiveFilter] = useState('All')
