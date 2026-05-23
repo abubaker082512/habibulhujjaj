@@ -1040,7 +1040,7 @@ const Home = () => {
             <h2 className="font-notoSerif text-4xl sm:text-5xl font-black text-primary">Voices of Gratitude</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
-            <div className="bg-white p-10 md:p-12 rounded-2xl shadow-[0_10px_50px_rgba(0,0,0,0.03)] border border-gray-100 relative group hover:-translate-y-2 transition-all">
+            <div className="bg-white p-10 md:p-12 rounded-2xl shadow-[0_10px_50px_rgba(0,0,0,0.03)] border border-gray-100 relative group hover:-translate-y-2 transition-all text-left">
               <div className="absolute -top-6 left-10 w-12 h-12 bg-secondary text-primary rounded-full flex items-center justify-center shadow-xl">
                 <span className="material-symbols-outlined font-black">format_quote</span>
               </div>
@@ -1049,16 +1049,16 @@ const Home = () => {
                   <span key={i} className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
                 ))}
               </div>
-              <p className="italic text-primary/60 mb-10 leading-relaxed font-manrope text-lg">"Our Umrah journey with Habib Ul Hujjaj was flawless. From the visa process to the hotels being so close to the Haram, everything was perfectly managed."</p>
+              <p className="italic text-primary/60 mb-10 leading-relaxed font-manrope text-lg">"Performing Hajj with Habib Ul Hujjaj was a deeply spiritual and flawless experience. Their VIP Category 'A' tents in Mina were exceptionally comfortable, and the guidance of their scholars at every step allowed us to focus completely on our devotion."</p>
               <div className="flex items-center gap-5">
                 <img className="w-14 h-14 rounded-full object-cover border-2 border-secondary" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="Customer" />
                 <div>
-                  <span className="block font-black text-primary uppercase text-xs tracking-widest">Ahmed Raza</span>
-                  <span className="text-[10px] text-primary/30 font-bold uppercase">Karachi, PK</span>
+                  <span className="block font-black text-primary uppercase text-xs tracking-widest">Haji Muhammad Farooq</span>
+                  <span className="text-[10px] text-primary/30 font-bold uppercase">Rawalpindi, PK</span>
                 </div>
               </div>
             </div>
-            <div className="bg-white p-10 md:p-12 rounded-2xl shadow-[0_10px_50px_rgba(0,0,0,0.03)] border border-gray-100 relative group hover:-translate-y-2 transition-all">
+            <div className="bg-white p-10 md:p-12 rounded-2xl shadow-[0_10px_50px_rgba(0,0,0,0.03)] border border-gray-100 relative group hover:-translate-y-2 transition-all text-left">
               <div className="absolute -top-6 left-10 w-12 h-12 bg-secondary text-primary rounded-full flex items-center justify-center shadow-xl">
                 <span className="material-symbols-outlined font-black">format_quote</span>
               </div>
@@ -1067,16 +1067,16 @@ const Home = () => {
                   <span key={i} className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
                 ))}
               </div>
-              <p className="italic text-primary/60 mb-10 leading-relaxed font-manrope text-lg">"I booked the Turkey tour for my family. The guide was incredibly knowledgeable and the itinerary wasn't rushed. A truly premium experience."</p>
+              <p className="italic text-primary/60 mb-10 leading-relaxed font-manrope text-lg">"My family and I booked their 5-Star Premium Umrah Package. The proximity of Pullman ZamZam to the Holy Haram was a blessing for my elderly parents. The ground support transfers in private GMCs were incredibly prompt and professional."</p>
               <div className="flex items-center gap-5">
                 <img className="w-14 h-14 rounded-full object-cover border-2 border-secondary" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" alt="Customer" />
                 <div>
-                  <span className="block font-black text-primary uppercase text-xs tracking-widest">Saba Khan</span>
-                  <span className="text-[10px] text-primary/30 font-bold uppercase">Lahore, PK</span>
+                  <span className="block font-black text-primary uppercase text-xs tracking-widest">Dr. Amna Yasmin</span>
+                  <span className="text-[10px] text-primary/30 font-bold uppercase">Faisalabad, PK</span>
                 </div>
               </div>
             </div>
-            <div className="bg-white p-10 md:p-12 rounded-2xl shadow-[0_10px_50px_rgba(0,0,0,0.03)] border border-gray-100 relative group hover:-translate-y-2 transition-all">
+            <div className="bg-white p-10 md:p-12 rounded-2xl shadow-[0_10px_50px_rgba(0,0,0,0.03)] border border-gray-100 relative group hover:-translate-y-2 transition-all text-left">
               <div className="absolute -top-6 left-10 w-12 h-12 bg-secondary text-primary rounded-full flex items-center justify-center shadow-xl">
                 <span className="material-symbols-outlined font-black">format_quote</span>
               </div>
@@ -1085,11 +1085,11 @@ const Home = () => {
                   <span key={i} className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
                 ))}
               </div>
-              <p className="italic text-primary/60 mb-10 leading-relaxed font-manrope text-lg">"The ground staff in Makkah were like family. They helped us with our elderly parents during Tawaaf. Compassion at its best."</p>
+              <p className="italic text-primary/60 mb-10 leading-relaxed font-manrope text-lg">"We chose their combined Umrah + Turkey package. It was a perfect blend of spiritual fulfillment in the Holy Cities followed by a majestic heritage tour of Istanbul. Truly a world-class travel group!"</p>
               <div className="flex items-center gap-5">
                 <img className="w-14 h-14 rounded-full object-cover border-2 border-secondary" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80" alt="Customer" />
                 <div>
-                  <span className="block font-black text-primary uppercase text-xs tracking-widest">Dr. Mohammad Ali</span>
+                  <span className="block font-black text-primary uppercase text-xs tracking-widest">Syed Kashif Ali</span>
                   <span className="text-[10px] text-primary/30 font-bold uppercase">Islamabad, PK</span>
                 </div>
               </div>

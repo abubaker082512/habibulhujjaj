@@ -107,7 +107,7 @@ const FAQ = () => {
       {/* Hero Section */}
       <section className="relative min-h-[50vh] flex items-center pt-32 overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img className="w-full h-full object-cover" src={pageMedia.faq_hero_image || "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=1600&q=80"} alt="FAQ" />
+          <img className="w-full h-full object-cover" src={pageMedia.faq_hero_image || "https://images.unsplash.com/photo-1564507592333-c60657eea523?w=1600&q=80"} alt="FAQ" />
           <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/40 to-transparent"></div>
         </div>
         <div className="relative z-10 max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 lg:px-24 w-full">
