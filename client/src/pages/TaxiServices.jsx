@@ -835,7 +835,7 @@ const TaxiServices = () => {
                     value={bookingForm.name} 
                     onChange={e => setBookingForm({...bookingForm, name: e.target.value})}
                   />
-                  {formErrors.name && <p className="text-[#FFC55B] text-[10px] mt-1 font-bold">{formErrors.name}</p>}
+                  {formErrors.name && <p className="text-red-500 text-[10px] mt-1 font-bold">{formErrors.name}</p>}
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -880,7 +880,7 @@ const TaxiServices = () => {
                         onChange={e => setBookingForm({...bookingForm, phone: e.target.value})}
                       />
                     </div>
-                    {formErrors.phone && <p className="text-[#FFC55B] text-[10px] mt-1 font-bold">{formErrors.phone}</p>}
+                    {formErrors.phone && <p className="text-red-500 text-[10px] mt-1 font-bold">{formErrors.phone}</p>}
                   </div>
                 </div>
 
@@ -894,7 +894,7 @@ const TaxiServices = () => {
                       value={bookingForm.date} 
                       onChange={e => setBookingForm({...bookingForm, date: e.target.value})}
                     />
-                    {formErrors.date && <p className="text-[#FFC55B] text-[10px] mt-1 font-bold">{formErrors.date}</p>}
+                    {formErrors.date && <p className="text-red-500 text-[10px] mt-1 font-bold">{formErrors.date}</p>}
                   </div>
                   <div>
                     <label className="block text-[10px] text-white/40 font-bold uppercase tracking-widest mb-1.5">Pickup Time *</label>

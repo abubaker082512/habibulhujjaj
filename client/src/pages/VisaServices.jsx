@@ -52,6 +52,33 @@ const visaServices = [
     processing: '10-15 Business Days',
     documents: ['Valid Passport', 'Passport Photos', 'Travel Insurance', 'Bank Statements', 'Cover Letter'],
     fee: 'PKR 25,000'
+  },
+  {
+    id: 6,
+    title: 'UK Standard Visitor Visa',
+    description: 'Travel to the United Kingdom for leisure, business, or family visits. We assist with application drafting, document audit, and appointment booking.',
+    icon: 'home',
+    processing: '15-20 Business Days',
+    documents: ['Valid Passport', 'Passport Photos', 'Bank Statements (6 Months)', 'Employment Proof', 'Travel Plan'],
+    fee: 'PKR 45,000'
+  },
+  {
+    id: 7,
+    title: 'Malaysia Tourist eVisa',
+    description: 'Quick electronic tourist visa for Malaysia. Complete paperless process with direct online government submission.',
+    icon: 'layers',
+    processing: '2-3 Business Days',
+    documents: ['Valid Passport', 'Passport Photos', 'Flight Bookings', 'Hotel Confirmation'],
+    fee: 'PKR 9,500'
+  },
+  {
+    id: 8,
+    title: 'Singapore Tourist eVisa',
+    description: 'Streamlined online tourist visa for Singapore. Fast document evaluation and high-success rate visa submission.',
+    icon: 'local_airport',
+    processing: '4-5 Business Days',
+    documents: ['Valid Passport', 'Passport Photos', 'Bank Statement', 'Hotel Reservation', 'Letter of Introduction'],
+    fee: 'PKR 11,500'
   }
 ]
 

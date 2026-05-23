@@ -279,7 +279,7 @@ const Flights = () => {
                             className="w-full p-2.5 pl-9 bg-[#0B1B3D] rounded-lg border border-white/5 text-white placeholder-white/30 text-xs focus:border-[#FFC55B] outline-none transition-all"
                           />
                         </div>
-                        {formErrors.fullName && <p className="text-[#FFC55B] text-[10px] mt-1 font-bold">{formErrors.fullName}</p>}
+                        {formErrors.fullName && <p className="text-red-500 text-[10px] mt-1 font-bold">{formErrors.fullName}</p>}
                       </div>
 
                       {/* Phone */}
@@ -318,7 +318,7 @@ const Flights = () => {
                             />
                           </div>
                         </div>
-                        {formErrors.phone && <p className="text-[#FFC55B] text-[10px] mt-1 font-bold">{formErrors.phone}</p>}
+                        {formErrors.phone && <p className="text-red-500 text-[10px] mt-1 font-bold">{formErrors.phone}</p>}
                       </div>
                     </div>
 
@@ -372,7 +372,7 @@ const Flights = () => {
                             className="w-full p-2.5 bg-[#0B1B3D] rounded-lg border border-white/5 text-white text-xs focus:border-[#FFC55B] outline-none transition-all"
                           />
                         </div>
-                        {formErrors.departureDate && <p className="text-[#FFC55B] text-[10px] mt-1 font-bold">{formErrors.departureDate}</p>}
+                        {formErrors.departureDate && <p className="text-red-500 text-[10px] mt-1 font-bold">{formErrors.departureDate}</p>}
                       </div>
 
                       {/* Return Date */}
@@ -389,7 +389,7 @@ const Flights = () => {
                             className={`w-full p-2.5 bg-[#0B1B3D] rounded-lg border border-white/5 text-white text-xs focus:border-[#FFC55B] outline-none transition-all ${formType === 'oneWay' ? 'opacity-30 cursor-not-allowed' : ''}`}
                           />
                         </div>
-                        {formErrors.returnDate && <p className="text-[#FFC55B] text-[10px] mt-1 font-bold">{formErrors.returnDate}</p>}
+                        {formErrors.returnDate && <p className="text-red-500 text-[10px] mt-1 font-bold">{formErrors.returnDate}</p>}
                       </div>
                     </div>
 
@@ -512,45 +512,89 @@ const Flights = () => {
             </div>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-              {destinations.map(dest => (
-                <div 
-                  key={dest.id} 
-                  className="bg-[#182d56]/40 rounded-2xl overflow-hidden border border-white/5 shadow-lg hover:shadow-2xl hover:border-white/10 transition-all duration-300 group flex flex-col h-full"
-                >
-                  <div className="h-48 sm:h-56 relative overflow-hidden bg-[#0B1B3D]">
-                    <img 
-                      src={dest.image_url} 
-                      alt={dest.name} 
-                      className="w-full h-full object-cover group-hover:scale-105 transition-all duration-500" 
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0B1B3D] via-transparent to-transparent opacity-65"></div>
-                    <div className="absolute top-4 left-4 bg-[#FFC55B] text-[#0B1B3D] px-3.5 py-1.5 rounded-lg text-[10px] font-black uppercase tracking-wider shadow">
-                      From Rs {dest.price_start.toLocaleString()}
+              {destinations.map((dest, idx) => {
+                // Curated mock details for premium boarding pass design
+                const transit = idx % 2 === 0 ? "Direct Flight" : "1 Stopover";
+                const airline = idx % 4 === 0 ? "Qatar Airways" : idx % 4 === 1 ? "Saudi Airlines" : idx % 4 === 2 ? "Emirates" : "Turkish Airlines";
+                const code = dest.name === 'London' ? 'LHR' : dest.name === 'Paris' ? 'CDG' : dest.name === 'Dubai' ? 'DXB' : 'IST';
+                
+                return (
+                  <div 
+                    key={dest.id} 
+                    className="bg-[#182d56]/40 rounded-3xl overflow-hidden border border-white/5 shadow-xl hover:shadow-[0_20px_50px_rgba(255,197,91,0.15)] hover:border-[#FFC55B]/30 hover:-translate-y-1.5 transition-all duration-500 group flex flex-col h-full relative"
+                  >
+                    {/* Glowing effect inside card */}
+                    <div className="absolute top-0 right-0 w-24 h-24 bg-[#FFC55B]/5 rounded-full blur-xl group-hover:bg-[#FFC55B]/10 transition-all"></div>
+
+                    {/* Image block */}
+                    <div className="h-52 relative overflow-hidden bg-[#0B1B3D]">
+                      <img 
+                        src={dest.image_url} 
+                        alt={dest.name} 
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" 
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#0b1b3d] via-transparent to-transparent opacity-85"></div>
+                      
+                      {/* Price Badge */}
+                      <div className="absolute top-4 left-4 bg-secondary text-primary px-3.5 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest shadow-xl border border-white/10">
+                        From PKR {dest.price_start.toLocaleString()}
+                      </div>
+
+                      {/* Transit Badge */}
+                      <div className="absolute bottom-4 left-4 text-[9px] font-bold text-secondary uppercase tracking-[0.2em] bg-primary/80 backdrop-blur-sm px-3 py-1 rounded-md border border-white/5">
+                        {transit}
+                      </div>
+                    </div>
+
+                    {/* Card Body */}
+                    <div className="p-6 flex flex-col flex-grow text-left">
+                      {/* Boarding Pass Header */}
+                      <div className="flex justify-between items-center mb-4">
+                        <span className="text-[10px] text-white/40 font-black uppercase tracking-widest">{airline}</span>
+                        <div className="flex items-center gap-2">
+                          <span className="text-[11px] font-black text-secondary uppercase">LHE</span>
+                          <span className="material-symbols-outlined text-[10px] text-white/40">arrow_forward</span>
+                          <span className="text-[11px] font-black text-secondary uppercase">{code}</span>
+                        </div>
+                      </div>
+
+                      <h3 className="font-notoSerif text-2xl font-bold text-white mb-2 group-hover:text-secondary transition-colors">{dest.name}</h3>
+                      <p className="text-white/60 text-xs font-light mb-6 leading-relaxed flex-grow line-clamp-3">{dest.description}</p>
+                      
+                      {/* Premium Amenities list */}
+                      <div className="grid grid-cols-2 gap-y-2 mb-6 pt-4 border-t border-white/5 text-[10px] font-bold text-white/50 uppercase tracking-wider">
+                        <div className="flex items-center gap-1.5">
+                          <span className="material-symbols-outlined text-[12px] text-secondary">backpack</span>
+                          46kg Bag
+                        </div>
+                        <div className="flex items-center gap-1.5">
+                          <span className="material-symbols-outlined text-[12px] text-secondary">restaurant</span>
+                          Meal Incl.
+                        </div>
+                      </div>
+
+                      {/* Buttons */}
+                      <div className="flex gap-2.5 mt-auto">
+                        <button 
+                          onClick={() => handleDirectWhatsAppBook(dest.name, dest.price_start)}
+                          className="flex-grow bg-secondary text-primary py-3 rounded-lg font-black text-[10px] uppercase tracking-widest hover:scale-[1.03] active:scale-95 transition-all flex items-center justify-center gap-1.5 shadow-lg shadow-secondary/10"
+                        >
+                          <svg className="w-3.5 h-3.5 fill-primary" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.553 4.122 1.523 5.857L0 24l6.334-1.51A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.791 9.791 0 01-5.003-1.371l-.359-.214-3.759.896.944-3.668-.235-.378A9.78 9.78 0 012.182 12C2.182 6.579 6.579 2.182 12 2.182c5.421 0 9.818 4.397 9.818 9.818 0 5.421-4.397 9.818-9.818 9.818z"/></svg>
+                          WhatsApp Book
+                        </button>
+                        <a 
+                          href={`https://wa.me/923004634548?text=Hello%20Habib%20Ul%20Hujjaj,%20I'd%20like%20to%20view%20details%20and%20itinerary%20for%20flights%20to%20${encodeURIComponent(dest.name)}`}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="border border-white/10 hover:border-white/20 hover:bg-white/5 text-white px-4 py-3 rounded-lg font-bold text-[10px] uppercase tracking-widest transition-all flex items-center justify-center"
+                        >
+                          Details
+                        </a>
+                      </div>
                     </div>
                   </div>
-                  <div className="p-5 flex flex-col flex-grow text-left">
-                    <h3 className="font-notoSerif text-xl sm:text-2xl font-bold text-white mb-2">{dest.name}</h3>
-                    <p className="text-white/60 text-xs font-light mb-6 leading-relaxed flex-grow line-clamp-3">{dest.description}</p>
-                    
-                    <div className="flex gap-2 mt-auto">
-                      <button 
-                        onClick={() => handleDirectWhatsAppBook(dest.name, dest.price_start)}
-                        className="flex-1 bg-[#FFC55B] text-[#0B1B3D] py-2.5 rounded font-black text-[10px] uppercase tracking-wider hover:brightness-110 active:scale-95 transition-all flex items-center justify-center gap-1.5 shadow"
-                      >
-                        <span className="material-symbols-outlined text-xs font-bold">send</span> Book Now
-                      </button>
-                      <a 
-                        href={`https://wa.me/923004634548?text=Hello%20Habib%20Ul%20Hujjaj,%20I'd%20like%20to%20view%20details%20and%20itinerary%20for%20flights%20to%20${encodeURIComponent(dest.name)}`}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="flex-1 border border-white/10 text-white py-2.5 rounded font-bold text-[10px] uppercase tracking-wider hover:bg-white/5 active:scale-95 transition-all flex items-center justify-center"
-                      >
-                        View Details
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           )}
         </div>

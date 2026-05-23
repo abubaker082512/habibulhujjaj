@@ -55,18 +55,26 @@ const staticPackages = [
 ]
 
 const Packages = () => {
-  const [packages, setPackages] = useState(staticPackages)
+  const [packages, setPackages] = useState([])
+  const [loading, setLoading] = useState(true)
   const [pageMedia, setPageMedia] = useState({})
 
   useEffect(() => {
+    setLoading(true)
     axios.get(`${API_BASE}/api/packages`)
       .then(res => {
         if (Array.isArray(res.data) && res.data.length > 0) {
           setPackages(res.data)
+        } else {
+          setPackages(staticPackages)
         }
       })
       .catch((err) => {
         console.error('Failed to fetch packages:', err)
+        setPackages(staticPackages)
+      })
+      .finally(() => {
+        setLoading(false)
       })
 
     const savedMedia = localStorage.getItem('pageMedia')
@@ -96,7 +104,7 @@ const Packages = () => {
       {/* Hero Section */}
       <section className="relative min-h-[60vh] flex items-center pt-32 overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img className="w-full h-full object-cover" src={pageMedia.packages_hero_image || "/assets/umrah-packages-hero.webp"} alt="Makkah" />
+          <img className="w-full h-full object-cover" src={pageMedia.packages_hero_image || "/assets/umrah_packages_hero.png"} alt="Makkah" />
           <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/40 to-transparent"></div>
         </div>
         <div className="relative z-10 max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 lg:px-24 w-full">
@@ -146,55 +154,71 @@ const Packages = () => {
 
           {/* Package Grid */}
           <section className="flex-1">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
-              {(packages.length > 0 ? packages : staticPackages).map((pkg, i) => {
-                const staticPkg = staticPackages[i % staticPackages.length]
-                const image = pkg.image_url || pkg.image || staticPkg?.image
-                const badge = pkg.badge || staticPkg?.badge || ''
-                const badgeColor = pkg.badgeColor || 'bg-primary'
-                const days = pkg.days || pkg.duration || staticPkg?.days || '15 Days'
-                const airline = pkg.airline || pkg.airline || staticPkg?.airline || 'Qatar Airways'
-                const price = typeof pkg.price === 'number' ? pkg.price : (parseFloat(String(pkg.price).replace(/[^0-9.]/g, '')) || 0)
-
-                return (
-                  <div key={pkg.id || i} className="bg-white border border-gray-100 shadow-sm overflow-hidden flex flex-col group cursor-pointer transition-transform hover:-translate-y-1">
-                    <div className="relative h-56 sm:h-64 md:h-72 overflow-hidden">
-                      <img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src={image} alt={pkg.title || pkg.name} />
-                      {badge && (
-                        <div className={`absolute top-4 left-4 ${badgeColor} text-white px-4 py-1 text-xs font-bold uppercase tracking-widest rounded`}>{badge}</div>
-                      )}
-                    </div>
-                    <div className="p-4 md:p-6 lg:p-8 flex-1 flex flex-col">
-                      <div className="flex flex-col sm:flex-row sm:justify-between gap-2 mb-4">
-                        <div>
-                          <h3 className="font-notoSerif text-2xl text-primary font-bold">{pkg.title || pkg.name}</h3>
-                          <div className="flex items-center mt-1 text-black/60 text-sm">
-                            <span className="material-symbols-outlined text-sm mr-2">location_on</span>
-                            <span>{pkg.location || pkg.hotel || 'Makkah & Madinah'}</span>
-                          </div>
-                        </div>
-                        <div className="text-right">
-                          <div className="text-xs text-black/40 uppercase font-bold tracking-tighter">Starting from</div>
-                          <div className="text-2xl font-notoSerif font-bold text-primary">PKR {price > 0 ? price.toLocaleString() : 'N/A'}</div>
-                        </div>
-                      </div>
-                      <div className="flex gap-4 mb-8 flex-wrap">
-                        <div className="bg-gray-50 flex items-center px-3 py-1 rounded text-xs font-medium border border-gray-100">
-                          <span className="material-symbols-outlined text-sm mr-2 text-primary">calendar_today</span>{days}
-                        </div>
-                        <div className="bg-gray-50 flex items-center px-3 py-1 rounded text-xs font-medium border border-gray-100">
-                          <span className="material-symbols-outlined text-sm mr-2 text-primary">flight</span>{airline}
-                        </div>
-                      </div>
-                      <div className="mt-auto grid grid-cols-2 gap-4">
-                        <Link to={`/package/${pkg.id || pkg._id || i + 1}`} className="py-3 bg-primary/5 text-primary font-bold rounded-md hover:bg-primary/10 transition-colors border border-primary/20 text-sm text-center">View Details</Link>
-                        <a href={buildWhatsAppUrl(buildPackageShortMessage(pkg))} target="_blank" rel="noreferrer" className="py-3 bg-primary text-white font-bold rounded-md hover:opacity-90 transition-colors text-sm text-center">Book Now on WhatsApp</a>
-                      </div>
+            {loading ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
+                {[1, 2, 3, 4].map(i => (
+                  <div key={i} className="bg-white border border-gray-100 shadow-sm overflow-hidden flex flex-col rounded-xl animate-pulse">
+                    <div className="h-56 sm:h-64 md:h-72 bg-gray-200"></div>
+                    <div className="p-4 md:p-6 lg:p-8 flex-grow flex flex-col space-y-4">
+                      <div className="h-6 bg-gray-200 rounded w-3/4"></div>
+                      <div className="h-4 bg-gray-200 rounded w-1/2"></div>
+                      <div className="h-4 bg-gray-200 rounded w-1/4"></div>
+                      <div className="h-10 bg-gray-200 rounded-md mt-auto"></div>
                     </div>
                   </div>
-                )
-              })}
-            </div>
+                ))}
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
+                {packages.map((pkg, i) => {
+                  const staticPkg = staticPackages[i % staticPackages.length]
+                  const image = pkg.image_url || pkg.image || staticPkg?.image
+                  const badge = pkg.badge || staticPkg?.badge || ''
+                  const badgeColor = pkg.badgeColor || 'bg-primary'
+                  const days = pkg.days || pkg.duration || staticPkg?.days || '15 Days'
+                  const airline = pkg.airline || pkg.airline || staticPkg?.airline || 'Qatar Airways'
+                  const price = typeof pkg.price === 'number' ? pkg.price : (parseFloat(String(pkg.price).replace(/[^0-9.]/g, '')) || 0)
+
+                  return (
+                    <div key={pkg.id || i} className="bg-white border border-gray-100 shadow-sm overflow-hidden flex flex-col group cursor-pointer transition-transform hover:-translate-y-1 rounded-xl">
+                      <div className="relative h-56 sm:h-64 md:h-72 overflow-hidden">
+                        <img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src={image} alt={pkg.title || pkg.name} />
+                        {badge && (
+                          <div className={`absolute top-4 left-4 ${badgeColor} text-white px-4 py-1 text-xs font-bold uppercase tracking-widest rounded`}>{badge}</div>
+                        )}
+                      </div>
+                      <div className="p-4 md:p-6 lg:p-8 flex-grow flex flex-col">
+                        <div className="flex flex-col sm:flex-row sm:justify-between gap-2 mb-4">
+                          <div>
+                            <h3 className="font-notoSerif text-2xl text-primary font-bold">{pkg.title || pkg.name}</h3>
+                            <div className="flex items-center mt-1 text-black/60 text-sm">
+                              <span className="material-symbols-outlined text-sm mr-2">location_on</span>
+                              <span>{pkg.location || pkg.hotel || 'Makkah & Madinah'}</span>
+                            </div>
+                          </div>
+                          <div className="text-right">
+                            <div className="text-xs text-black/40 uppercase font-bold tracking-tighter">Starting from</div>
+                            <div className="text-2xl font-notoSerif font-bold text-primary">PKR {price > 0 ? price.toLocaleString() : 'N/A'}</div>
+                          </div>
+                        </div>
+                        <div className="flex gap-4 mb-8 flex-wrap">
+                          <div className="bg-gray-50 flex items-center px-3 py-1 rounded text-xs font-medium border border-gray-100">
+                            <span className="material-symbols-outlined text-sm mr-2 text-primary">calendar_today</span>{days}
+                          </div>
+                          <div className="bg-gray-50 flex items-center px-3 py-1 rounded text-xs font-medium border border-gray-100">
+                            <span className="material-symbols-outlined text-sm mr-2 text-primary">flight</span>{airline}
+                          </div>
+                        </div>
+                        <div className="mt-auto grid grid-cols-2 gap-4">
+                          <Link to={`/package/${pkg.id || pkg._id || i + 1}`} className="py-3 bg-primary/5 text-primary font-bold rounded-md hover:bg-primary/10 transition-colors border border-primary/20 text-sm text-center">View Details</Link>
+                          <a href={buildWhatsAppUrl(buildPackageShortMessage(pkg))} target="_blank" rel="noreferrer" className="py-3 bg-primary text-white font-bold rounded-md hover:opacity-90 transition-colors text-sm text-center">Book Now on WhatsApp</a>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
           </section>
         </div>
       </main>

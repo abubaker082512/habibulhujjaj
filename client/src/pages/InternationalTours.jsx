@@ -13,7 +13,7 @@ const tours = [
     subtitle: 'Istanbul, Cappadocia, Antalya',
     duration: '10 Days / 9 Nights',
     price: 'PKR 285,000',
-    image: 'https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=800',
+    image: '/assets/gallery images/Turkey tour.jpg',
     highlights: ['Blue Mosque', 'Cappadocia', 'Grand Bazaar', 'Pamukkale'],
     icon: 'place'
   },
@@ -23,7 +23,7 @@ const tours = [
     subtitle: 'Dubai, Abu Dhabi, Sharjah',
     duration: '7 Days / 6 Nights',
     price: 'PKR 195,000',
-    image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800',
+    image: '/assets/gallery images/Dubai tour.jpg',
     highlights: ['Burj Khalifa', 'Desert Safari', 'Dubai Frame', 'Sheikh Zayed Mosque'],
     icon: 'place'
   },
@@ -33,7 +33,7 @@ const tours = [
     subtitle: 'Kuala Lumpur, Genting, Penang',
     duration: '8 Days / 7 Nights',
     price: 'PKR 175,000',
-    image: 'https://images.unsplash.com/photo-1596422748573-cbb5bf090104?w=800',
+    image: '/assets/Malaysia.jpg',
     highlights: ['Petronas Towers', 'Genting Highlands', 'Batu Caves', 'Gurney Drive'],
     icon: 'place'
   },
@@ -43,8 +43,48 @@ const tours = [
     subtitle: 'Paris, Swiss, Rome',
     duration: '12 Days / 11 Nights',
     price: 'PKR 550,000',
-    image: 'https://images.unsplash.com/photo-1502602892935-72c3ac7c352?w=800',
+    image: '/assets/Europe.jpg',
     highlights: ['Eiffel Tower', 'Swiss Alps', 'Colosseum', 'Lucerne'],
+    icon: 'place'
+  },
+  {
+    id: 5,
+    title: 'Singapore Tour',
+    subtitle: 'Sentosa Island, Gardens by the Bay',
+    duration: '6 Days / 5 Nights',
+    price: 'PKR 210,000',
+    image: '/assets/singapore_tour.png',
+    highlights: ['Gardens by the Bay', 'Universal Studios', 'Sentosa Island', 'Marina Bay Sands'],
+    icon: 'place'
+  },
+  {
+    id: 6,
+    title: 'Thailand Tour',
+    subtitle: 'Bangkok, Pattaya, Phuket',
+    duration: '8 Days / 7 Nights',
+    price: 'PKR 165,000',
+    image: '/assets/thailand_tour.png',
+    highlights: ['Grand Palace', 'Phi Phi Islands', 'Pattaya Floating Market', 'Coral Island'],
+    icon: 'place'
+  },
+  {
+    id: 7,
+    title: 'Baku Tour',
+    subtitle: 'Baku City, Gabala, Quba',
+    duration: '7 Days / 6 Nights',
+    price: 'PKR 185,000',
+    image: '/assets/baku_tour.png',
+    highlights: ['Flame Towers', 'Old City (Icherisheher)', 'Nizami Street', 'Nohur Lake'],
+    icon: 'place'
+  },
+  {
+    id: 8,
+    title: 'Maldives Tour',
+    subtitle: 'Male Atoll Luxury Resorts',
+    duration: '5 Days / 4 Nights',
+    price: 'PKR 395,000',
+    image: '/assets/maldives_tour.png',
+    highlights: ['Overwater Bungalows', 'Snorkeling & Diving', 'Sandbank Picnic', 'Sunset Cruise'],
     icon: 'place'
   }
 ]

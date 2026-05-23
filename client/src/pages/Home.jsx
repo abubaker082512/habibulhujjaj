@@ -54,6 +54,7 @@ const staticPackages = [
 
 const Home = () => {
   const [packages, setPackages] = useState([])
+  const [loadingPackages, setLoadingPackages] = useState(true)
   const [activeSlide, setActiveSlide] = useState(0)
   const [formErrors, setFormErrors] = useState({})
 
@@ -109,6 +110,7 @@ const Home = () => {
 
   useEffect(() => {
     // Fetch packages from backend
+    setLoadingPackages(true)
     axios.get(`${API_BASE}/api/packages`)
       .then(res => {
         if (Array.isArray(res.data) && res.data.length > 0) {
@@ -120,6 +122,9 @@ const Home = () => {
       .catch((err) => {
         console.error('Failed to fetch packages:', err)
         setPackages(staticPackages)
+      })
+      .finally(() => {
+        setLoadingPackages(false)
       })
 
     // Fetch CMS content from API with localStorage fallback
@@ -328,7 +333,7 @@ const Home = () => {
                   placeholder="e.g. Muhammad Ali"
                   className="w-full bg-transparent border-0 border-b border-white/20 focus:border-secondary focus:ring-0 focus:outline-none font-manrope text-sm py-3 px-0 text-white placeholder-white/30 transition-colors"
                 />
-                {formErrors.name && <p className="text-secondary text-[10px] mt-1 font-bold">{formErrors.name}</p>}
+                {formErrors.name && <p className="text-red-500 text-[10px] mt-1 font-bold">{formErrors.name}</p>}
               </div>
 
               {/* Phone */}
@@ -361,7 +366,7 @@ const Home = () => {
                     className="w-full bg-transparent border-0 border-b border-white/20 focus:border-secondary focus:ring-0 focus:outline-none font-manrope text-sm py-3 px-0 text-white placeholder-white/30 transition-colors"
                   />
                 </div>
-                {formErrors.phone && <p className="text-secondary text-[10px] mt-1 font-bold">{formErrors.phone}</p>}
+                {formErrors.phone && <p className="text-red-500 text-[10px] mt-1 font-bold">{formErrors.phone}</p>}
               </div>
 
               {/* Departure City */}
@@ -449,45 +454,60 @@ const Home = () => {
           </div>
           <Link className="text-primary font-black text-sm uppercase tracking-widest border-b-4 border-secondary pb-2 mt-8 md:mt-0 transition-all hover:pr-6" to="/packages">View All</Link>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
-          {packages.slice(0, 4).map((pkg, i) => {
-            const staticPkg = staticPackages[i % staticPackages.length]
-            const image = pkg.image_url || pkg.image || staticPkg.image
-            const badge = pkg.category || pkg.badge || staticPkg.badge
-            const duration = pkg.duration || pkg.days || staticPkg.days
-            const location = pkg.hotel_name || pkg.location || staticPkg.location
-            const price = typeof pkg.price === 'number' ? pkg.price : (parseFloat(String(pkg.price).replace(/[^0-9.]/g, '')) || staticPkg.price)
-            
-            return (
-              <Link to={`/package/${pkg.id || pkg._id || staticPkg.id}`} key={pkg.id || i} className="bg-white group cursor-pointer overflow-hidden shadow-[0_10px_40px_-15px_rgba(0,28,29,0.1)] hover:shadow-[0_20px_50px_-15px_rgba(0,28,29,0.2)] transition-all hover:-translate-y-2 block rounded-xl border border-gray-50">
-                <div className="relative h-64 overflow-hidden">
-                  <img className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" src={image} alt={pkg.title} />
-                  <div className="absolute top-5 left-5 bg-secondary text-primary text-[10px] font-black px-4 py-2 tracking-widest uppercase rounded shadow-xl">{badge}</div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+        {loadingPackages ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
+            {[1, 2, 3, 4].map(i => (
+              <div key={i} className="bg-white overflow-hidden shadow-[0_10px_40px_-15px_rgba(0,28,29,0.1)] block rounded-xl border border-gray-50 animate-pulse">
+                <div className="h-64 bg-gray-200"></div>
+                <div className="p-6 md:p-8 space-y-4">
+                  <div className="h-6 bg-gray-200 rounded w-3/4"></div>
+                  <div className="h-4 bg-gray-200 rounded w-1/2"></div>
+                  <div className="h-10 bg-gray-200 rounded mt-4"></div>
                 </div>
-                <div className="p-6 md:p-8">
-                  <h3 className="font-notoSerif text-2xl font-bold text-primary mb-3 line-clamp-1 group-hover:text-secondary transition-colors">{pkg.title}</h3>
-                  <div className="flex items-center gap-2 text-primary/40 text-[11px] font-bold uppercase tracking-widest mb-6">
-                    <span className="material-symbols-outlined text-sm">location_on</span>
-                    <span className="line-clamp-1">{location}</span>
-                    <span className="mx-1">/</span>
-                    <span className="material-symbols-outlined text-sm">schedule</span>
-                    <span>{duration}</span>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
+            {packages.slice(0, 4).map((pkg, i) => {
+              const staticPkg = staticPackages[i % staticPackages.length]
+              const image = pkg.image_url || pkg.image || staticPkg.image
+              const badge = pkg.category || pkg.badge || staticPkg.badge
+              const duration = pkg.duration || pkg.days || staticPkg.days
+              const location = pkg.hotel_name || pkg.location || staticPkg.location
+              const price = typeof pkg.price === 'number' ? pkg.price : (parseFloat(String(pkg.price).replace(/[^0-9.]/g, '')) || staticPkg.price)
+              
+              return (
+                <Link to={`/package/${pkg.id || pkg._id || staticPkg.id}`} key={pkg.id || i} className="bg-white group cursor-pointer overflow-hidden shadow-[0_10px_40px_-15px_rgba(0,28,29,0.1)] hover:shadow-[0_20px_50px_-15px_rgba(0,28,29,0.2)] transition-all hover:-translate-y-2 block rounded-xl border border-gray-50">
+                  <div className="relative h-64 overflow-hidden">
+                    <img className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" src={image} alt={pkg.title} />
+                    <div className="absolute top-5 left-5 bg-secondary text-primary text-[10px] font-black px-4 py-2 tracking-widest uppercase rounded shadow-xl">{badge}</div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                   </div>
-                  <div className="flex items-center justify-between pt-6 border-t border-gray-100">
-                    <div>
-                      <span className="block text-[10px] font-black text-primary/30 uppercase tracking-[0.2em] mb-1">Starting At</span>
-                      <span className="text-2xl font-black text-primary tracking-tighter">PKR {price.toLocaleString()}</span>
+                  <div className="p-6 md:p-8">
+                    <h3 className="font-notoSerif text-2xl font-bold text-primary mb-3 line-clamp-1 group-hover:text-secondary transition-colors">{pkg.title}</h3>
+                    <div className="flex items-center gap-2 text-primary/40 text-[11px] font-bold uppercase tracking-widest mb-6">
+                      <span className="material-symbols-outlined text-sm">location_on</span>
+                      <span className="line-clamp-1">{location}</span>
+                      <span className="mx-1">/</span>
+                      <span className="material-symbols-outlined text-sm">schedule</span>
+                      <span>{duration}</span>
                     </div>
-                    <div className="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center text-primary group-hover:bg-secondary group-hover:text-primary transition-all">
-                      <span className="material-symbols-outlined font-bold">arrow_forward</span>
+                    <div className="flex items-center justify-between pt-6 border-t border-gray-100">
+                      <div>
+                        <span className="block text-[10px] font-black text-primary/30 uppercase tracking-[0.2em] mb-1">Starting At</span>
+                        <span className="text-2xl font-black text-primary tracking-tighter">PKR {price.toLocaleString()}</span>
+                      </div>
+                      <div className="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center text-primary group-hover:bg-secondary group-hover:text-primary transition-all">
+                        <span className="material-symbols-outlined font-bold">arrow_forward</span>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </Link>
-            )
-          })}
-        </div>
+                </Link>
+              )
+            })}
+          </div>
+        )}
       </section>
 
       {/* Sacred Hajj Pilgrimage Section */}
@@ -590,6 +610,121 @@ const Home = () => {
                   Download Hajj Guide
                 </Link>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Sacred Landmarks & Ziyarats Showcase */}
+      <section className="py-24 md:py-32 px-4 sm:px-6 md:px-8 max-w-screen-2xl mx-auto bg-white overflow-hidden">
+        <div className="mb-16 md:mb-24 text-center max-w-3xl mx-auto">
+          <h6 className="font-manrope text-primary font-black text-xs tracking-[0.4em] uppercase mb-6">Historical Sacred Sites</h6>
+          <h2 className="font-notoSerif text-4xl sm:text-5xl lg:text-7xl font-black text-primary leading-tight">Sacred Ziyarats <br /><span className="text-primary/30 italic font-medium">& Landmarks</span></h2>
+          <div className="w-16 h-[2px] bg-secondary mx-auto mt-6"></div>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          {/* Ghar-e-Hira */}
+          <div className="bg-background rounded-2xl border border-gray-100 shadow-[0_10px_30px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_50px_rgba(11,27,61,0.08)] transition-all hover:-translate-y-1.5 flex flex-col h-full group overflow-hidden">
+            <div className="h-60 overflow-hidden relative">
+              <img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="/assets/cave_hira.png" alt="Ghar-e-Hira" />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent"></div>
+              <div className="absolute top-4 left-4 bg-secondary text-primary text-[9px] font-black uppercase tracking-widest px-3 py-1.5 rounded shadow flex items-center gap-1.5">
+                <span className="material-symbols-outlined text-[10px] font-bold">explore</span>
+                Mecca Ziyarat
+              </div>
+            </div>
+            <div className="p-6 md:p-8 flex flex-col flex-grow text-left">
+              <h3 className="font-notoSerif text-2xl font-bold text-primary mb-3">Ghar-e-Hira</h3>
+              <p className="text-primary/60 text-xs font-light leading-relaxed mb-6 flex-grow">
+                The sacred sanctuary on Mount Noor where the Holy Prophet (PBUH) spent periods of deep contemplation and received the first divine revelation of the Holy Quran through Angel Jibreel.
+              </p>
+              <a 
+                href="https://wa.me/923004634548?text=Assalamu%20Alaikum%20Habib%20Ul%20Hujjaj!%20%F0%9F%8C%99%20I%20want%20to%20inquire%20about%20Ziyarat%20services%20to%20Ghar-e-Hira%20during%20my%20pilgrimage." 
+                target="_blank" 
+                rel="noreferrer" 
+                className="mt-auto w-full py-3 bg-primary text-secondary hover:bg-secondary hover:text-primary rounded-lg font-black text-[10px] uppercase tracking-widest transition-all flex items-center justify-center gap-2 shadow"
+              >
+                Enquire Tour <span className="material-symbols-outlined text-xs">arrow_forward</span>
+              </a>
+            </div>
+          </div>
+
+          {/* Ghar-e-Saur */}
+          <div className="bg-background rounded-2xl border border-gray-100 shadow-[0_10px_30px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_50px_rgba(11,27,61,0.08)] transition-all hover:-translate-y-1.5 flex flex-col h-full group overflow-hidden">
+            <div className="h-60 overflow-hidden relative">
+              <img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="/assets/cave_saur.png" alt="Ghar-e-Saur" />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent"></div>
+              <div className="absolute top-4 left-4 bg-secondary text-primary text-[9px] font-black uppercase tracking-widest px-3 py-1.5 rounded shadow flex items-center gap-1.5">
+                <span className="material-symbols-outlined text-[10px] font-bold">explore</span>
+                Mecca Ziyarat
+              </div>
+            </div>
+            <div className="p-6 md:p-8 flex flex-col flex-grow text-left">
+              <h3 className="font-notoSerif text-2xl font-bold text-primary mb-3">Ghar-e-Saur</h3>
+              <p className="text-primary/60 text-xs font-light leading-relaxed mb-6 flex-grow">
+                The historic cave on Mount Thawr where the Holy Prophet (PBUH) and his companion Hazrat Abu Bakr (RA) took refuge for three days during their monumental migration (Hijrah) to Madinah.
+              </p>
+              <a 
+                href="https://wa.me/923004634548?text=Assalamu%20Alaikum%20Habib%20Ul%20Hujjaj!%20%F0%9F%8C%99%20I%20want%20to%20inquire%20about%20Ziyarat%20services%20to%20Ghar-e-Saur%20during%20my%20pilgrimage." 
+                target="_blank" 
+                rel="noreferrer" 
+                className="mt-auto w-full py-3 bg-primary text-secondary hover:bg-secondary hover:text-primary rounded-lg font-black text-[10px] uppercase tracking-widest transition-all flex items-center justify-center gap-2 shadow"
+              >
+                Enquire Tour <span className="material-symbols-outlined text-xs">arrow_forward</span>
+              </a>
+            </div>
+          </div>
+
+          {/* Jabal-ar-Rahmah */}
+          <div className="bg-background rounded-2xl border border-gray-100 shadow-[0_10px_30px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_50px_rgba(11,27,61,0.08)] transition-all hover:-translate-y-1.5 flex flex-col h-full group overflow-hidden">
+            <div className="h-60 overflow-hidden relative">
+              <img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="/assets/mount_arafat.png" alt="Mount of Mercy" />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent"></div>
+              <div className="absolute top-4 left-4 bg-secondary text-primary text-[9px] font-black uppercase tracking-widest px-3 py-1.5 rounded shadow flex items-center gap-1.5">
+                <span className="material-symbols-outlined text-[10px] font-bold">explore</span>
+                Arafat landmark
+              </div>
+            </div>
+            <div className="p-6 md:p-8 flex flex-col flex-grow text-left">
+              <h3 className="font-notoSerif text-2xl font-bold text-primary mb-3">Mount of Mercy</h3>
+              <p className="text-primary/60 text-xs font-light leading-relaxed mb-6 flex-grow">
+                Known as Jabal ar-Rahmah in Arafat plain, this is the historic hill where the Prophet (PBUH) delivered his profound Farewell Sermon. Standing here is the core ritual of the Hajj pilgrimage.
+              </p>
+              <a 
+                href="https://wa.me/923004634548?text=Assalamu%20Alaikum%20Habib%20Ul%20Hujjaj!%20%F0%9F%8C%99%20I%20want%20to%20inquire%20about%20Ziyarat%20services%20to%20Jabal-ar-Rahmah%20in%20Arafat." 
+                target="_blank" 
+                rel="noreferrer" 
+                className="mt-auto w-full py-3 bg-primary text-secondary hover:bg-secondary hover:text-primary rounded-lg font-black text-[10px] uppercase tracking-widest transition-all flex items-center justify-center gap-2 shadow"
+              >
+                Enquire Tour <span className="material-symbols-outlined text-xs">arrow_forward</span>
+              </a>
+            </div>
+          </div>
+
+          {/* Masjid-e-Quba */}
+          <div className="bg-background rounded-2xl border border-gray-100 shadow-[0_10px_30px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_50px_rgba(11,27,61,0.08)] transition-all hover:-translate-y-1.5 flex flex-col h-full group overflow-hidden">
+            <div className="h-60 overflow-hidden relative">
+              <img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="/assets/masjid_quba.png" alt="Masjid-e-Quba" />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent"></div>
+              <div className="absolute top-4 left-4 bg-secondary text-primary text-[9px] font-black uppercase tracking-widest px-3 py-1.5 rounded shadow flex items-center gap-1.5">
+                <span className="material-symbols-outlined text-[10px] font-bold">explore</span>
+                Madinah Ziyarat
+              </div>
+            </div>
+            <div className="p-6 md:p-8 flex flex-col flex-grow text-left">
+              <h3 className="font-notoSerif text-2xl font-bold text-primary mb-3">Masjid-e-Quba</h3>
+              <p className="text-primary/60 text-xs font-light leading-relaxed mb-6 flex-grow">
+                The very first mosque built in Islamic history, located on the outskirts of Madinah. Performing two rak'ahs of prayer here is spiritually equated to the reward of performing an entire Umrah.
+              </p>
+              <a 
+                href="https://wa.me/923004634548?text=Assalamu%20Alaikum%20Habib%20Ul%20Hujjaj!%20%F0%9F%8C%99%20I%20want%20to%20inquire%20about%20Ziyarat%20services%20to%20Masjid-e-Quba%20and%20other%20sites%20in%20Madinah." 
+                target="_blank" 
+                rel="noreferrer" 
+                className="mt-auto w-full py-3 bg-primary text-secondary hover:bg-secondary hover:text-primary rounded-lg font-black text-[10px] uppercase tracking-widest transition-all flex items-center justify-center gap-2 shadow"
+              >
+                Enquire Tour <span className="material-symbols-outlined text-xs">arrow_forward</span>
+              </a>
             </div>
           </div>
         </div>
