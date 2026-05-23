@@ -552,19 +552,19 @@ const TaxiServices = () => {
   }
 
   return (
-    <div className="bg-[#0B1B3D] font-manrope text-white min-h-screen">
+    <div className="bg-primary font-manrope text-white min-h-screen">
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative min-h-[50vh] flex items-center pt-32 overflow-hidden bg-[#0B1B3D] text-white">
+      <section className="relative min-h-[50vh] flex items-center pt-32 overflow-hidden bg-primary text-white">
         <div className="absolute inset-0 z-0 opacity-20">
           <img className="w-full h-full object-cover" src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?w=1600&q=80" alt="Taxi Services" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0B1B3D] via-[#0B1B3D]/80 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/80 to-transparent"></div>
         </div>
         <div className="relative z-10 max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 lg:px-24 w-full text-center">
-          <span className="text-[#FFC55B] text-xs font-black tracking-[0.4em] uppercase block mb-4">Premium Ground Transport</span>
+          <span className="text-secondary text-xs font-black tracking-[0.4em] uppercase block mb-4">Premium Ground Transport</span>
           <h1 className="font-notoSerif text-4xl sm:text-5xl lg:text-7xl font-black mb-6 leading-tight">
-            VIP Taxi & <span className="text-[#FFC55B]">Luxury Fleet</span>
+            VIP Taxi & <span className="text-secondary">Luxury Fleet</span>
           </h1>
           <p className="text-white/80 text-base sm:text-lg mb-8 max-w-3xl mx-auto leading-relaxed">
             Travel in complete peace of mind. We offer private, custom transfers between Jeddah Airports, Makkah Hotels, Madinah Holy Sites, and train stations. Book your ideal vehicle now.
@@ -572,13 +572,13 @@ const TaxiServices = () => {
           <div className="flex flex-wrap justify-center gap-4">
             <button 
               onClick={() => scrollToId('our-vehicles')}
-              className="bg-[#FFC55B] text-[#0B1B3D] px-8 py-3 rounded-full font-black text-xs uppercase tracking-widest transition-all hover:scale-105 shadow-xl"
+              className="bg-secondary text-primary px-8 py-3 rounded-full font-black text-xs uppercase tracking-widest transition-all hover:scale-105 hover:bg-white hover:text-primary shadow-xl cursor-pointer"
             >
               Browse Fleet
             </button>
             <button 
               onClick={() => scrollToId('select-route')}
-              className="bg-transparent border border-white/30 text-white px-8 py-3 rounded-full font-black text-xs uppercase tracking-widest transition-all hover:bg-white/5"
+              className="bg-transparent border border-white/30 text-white px-8 py-3 rounded-full font-black text-xs uppercase tracking-widest transition-all hover:bg-white/5 cursor-pointer"
             >
               View Route Prices
             </button>
@@ -587,101 +587,101 @@ const TaxiServices = () => {
       </section>
 
       {loading ? (
-        <div className="py-32 bg-[#0B1B3D] flex flex-col items-center justify-center text-center min-h-[50vh]">
+        <div className="py-32 bg-primary flex flex-col items-center justify-center text-center min-h-[50vh]">
           <div className="relative w-20 h-20 mb-8">
             <div className="absolute inset-0 rounded-full border-4 border-white/5"></div>
-            <div className="absolute inset-0 rounded-full border-4 border-t-[#FFC55B] border-r-[#FFC55B]/30 animate-spin"></div>
+            <div className="absolute inset-0 rounded-full border-4 border-t-secondary border-r-secondary/30 animate-spin"></div>
           </div>
           <p className="text-white/60 font-notoSerif text-lg tracking-wider animate-pulse">Loading Sacred Ground Transfers...</p>
         </div>
       ) : (
         <>
           {/* STEP 1: OUR VEHICLES FLEET SECTION */}
-          <section id="our-vehicles" className="py-24 bg-background text-[#0B1B3D]">
+          <section id="our-vehicles" className="py-24 bg-background text-primary">
             <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 lg:px-24">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-[#0B1B3D] text-xs font-black tracking-[0.3em] uppercase block mb-3">VIP Fleet Catalog</span>
-            <h2 className="font-notoSerif text-3xl sm:text-4xl lg:text-5xl font-black text-[#0B1B3D]">Our Vehicles</h2>
-            <div className="w-16 h-1 bg-[#FFC55B] mx-auto mt-4"></div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {fleet.map((vehicle) => (
-              <div key={vehicle.id} className="bg-white rounded-2xl overflow-hidden border border-gray-150 shadow-md hover:shadow-2xl transition-all duration-500 flex flex-col group">
-                {/* Vehicle Image Container */}
-                <div className="h-56 bg-gray-50 flex items-center justify-center p-4 relative overflow-hidden">
-                  <img 
-                    src={vehicle.image_url} 
-                    alt={vehicle.name} 
-                    className="max-h-full max-w-full object-contain group-hover:scale-110 transition-transform duration-500"
-                  />
-                </div>
-                
-                {/* Vehicle Specs & Details */}
-                <div className="bg-[#003334] p-6 text-white text-center flex-1 flex flex-col justify-between">
-                  <div>
-                    <h3 className="font-notoSerif text-2xl font-black mb-4 tracking-wider uppercase">{vehicle.name}</h3>
-                    <div className="w-12 h-[1px] bg-white/20 mx-auto mb-4"></div>
-                    
-                    <ul className="space-y-3 mb-8 text-xs text-white/80 font-medium">
-                      <li className="flex items-center justify-center gap-2">
-                        <span className="material-symbols-outlined text-sm text-[#FFC55B]">group</span>
-                        {vehicle.seats}
-                      </li>
-                      <li className="flex items-center justify-center gap-2">
-                        <span className="material-symbols-outlined text-sm text-[#FFC55B]">backpack</span>
-                        {vehicle.luggage}
-                      </li>
-                      <li className="flex items-center justify-center gap-2">
-                        <span className="material-symbols-outlined text-sm text-[#FFC55B]">ac_unit</span>
-                        {vehicle.ac}
-                      </li>
-                    </ul>
-                  </div>
-
-                  {/* Buttons */}
-                  <div className="grid grid-cols-2 gap-3">
-                    <a 
-                      href={`https://wa.me/923004634548?text=Hello%20Habib%20Ul%20Hujjaj%2C%20I%20am%20inquiring%20about%20the%20${vehicle.name}%20vehicle%20service.`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="border border-[#FFC55B] text-[#FFC55B] py-3 rounded-lg font-black text-[10px] sm:text-xs uppercase tracking-widest hover:bg-[#FFC55B] hover:text-[#0B1B3D] transition-all duration-300"
-                    >
-                      WhatsApp
-                    </a>
-                    <button 
-                      onClick={() => {
-                        setSelectedVehicle(vehicle)
-                        scrollToId('select-route')
-                      }}
-                      className="bg-[#FFC55B] text-[#0B1B3D] py-3 rounded-lg font-black text-[10px] sm:text-xs uppercase tracking-widest hover:brightness-110 transition-all duration-300"
-                    >
-                      BOOK NOW
-                    </button>
-                  </div>
-                </div>
+              <div className="text-center max-w-2xl mx-auto mb-16">
+                <span className="text-primary text-xs font-black tracking-[0.3em] uppercase block mb-3">VIP Fleet Catalog</span>
+                <h2 className="font-notoSerif text-3xl sm:text-4xl lg:text-5xl font-black text-primary">Our Vehicles</h2>
+                <div className="w-16 h-1 bg-secondary mx-auto mt-4"></div>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {fleet.map((vehicle) => (
+                  <div key={vehicle.id} className="bg-white rounded-2xl overflow-hidden border border-primary/5 shadow-md hover:shadow-2xl transition-all duration-500 flex flex-col group">
+                    {/* Vehicle Image Container */}
+                    <div className="h-56 bg-primary/5 flex items-center justify-center p-4 relative overflow-hidden">
+                      <img 
+                        src={vehicle.image_url} 
+                        alt={vehicle.name} 
+                        className="max-h-full max-w-full object-contain group-hover:scale-110 transition-transform duration-500"
+                      />
+                    </div>
+                    
+                    {/* Vehicle Specs & Details */}
+                    <div className="bg-primary p-6 text-white text-center flex-1 flex flex-col justify-between">
+                      <div>
+                        <h3 className="font-notoSerif text-2xl font-black mb-4 tracking-wider uppercase">{vehicle.name}</h3>
+                        <div className="w-12 h-[1px] bg-white/20 mx-auto mb-4"></div>
+                        
+                        <ul className="space-y-3 mb-8 text-xs text-white/80 font-medium">
+                          <li className="flex items-center justify-center gap-2">
+                            <span className="material-symbols-outlined text-sm text-secondary">group</span>
+                            {vehicle.seats}
+                          </li>
+                          <li className="flex items-center justify-center gap-2">
+                            <span className="material-symbols-outlined text-sm text-secondary">backpack</span>
+                            {vehicle.luggage}
+                          </li>
+                          <li className="flex items-center justify-center gap-2">
+                            <span className="material-symbols-outlined text-sm text-secondary">ac_unit</span>
+                            {vehicle.ac}
+                          </li>
+                        </ul>
+                      </div>
+
+                      {/* Buttons */}
+                      <div className="grid grid-cols-2 gap-3">
+                        <a 
+                          href={`https://wa.me/923004634548?text=Hello%20Habib%20Ul%20Hujjaj%2C%20I%20am%20inquiring%20about%20the%20${vehicle.name}%20vehicle%20service.`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="border border-secondary text-secondary py-3 rounded-lg font-black text-[10px] sm:text-xs uppercase tracking-widest hover:bg-secondary hover:text-primary transition-all duration-300 flex items-center justify-center"
+                        >
+                          WhatsApp
+                        </a>
+                        <button 
+                          onClick={() => {
+                            setSelectedVehicle(vehicle)
+                            scrollToId('select-route')
+                          }}
+                          className="bg-secondary text-primary py-3 rounded-lg font-black text-[10px] sm:text-xs uppercase tracking-widest hover:brightness-110 transition-all duration-300 cursor-pointer"
+                        >
+                          BOOK NOW
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
 
       {/* STEP 2: CHOOSE ROUTE SECTION */}
-      <section id="select-route" className="py-24 bg-[#0B1B3D] text-white">
+      <section id="select-route" className="py-24 bg-primary text-white">
         <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 lg:px-24">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-[#FFC55B] text-xs font-black tracking-[0.3em] uppercase block mb-3">Sacred Routes Catalog</span>
+            <span className="text-secondary text-xs font-black tracking-[0.3em] uppercase block mb-3">Sacred Routes Catalog</span>
             <h2 className="font-notoSerif text-3xl sm:text-4xl lg:text-5xl font-black text-white">Select Your Destination</h2>
             <p className="text-white/60 text-sm mt-3">Select a route below to view available vehicles and route-specific pricing.</p>
-            <div className="w-16 h-1 bg-[#FFC55B] mx-auto mt-4"></div>
+            <div className="w-16 h-1 bg-secondary mx-auto mt-4"></div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {routes.map((route) => (
               <div 
                 key={route.id} 
-                className={`bg-[#182d56] rounded-xl overflow-hidden border transition-all duration-500 flex flex-col justify-between group ${
-                  selectedRoute?.id === route.id ? 'border-[#FFC55B] ring-2 ring-[#FFC55B]/45 scale-[1.03]' : 'border-white/5 hover:border-white/20'
+                className={`bg-white/5 rounded-xl overflow-hidden border transition-all duration-500 flex flex-col justify-between group ${
+                  selectedRoute?.id === route.id ? 'border-secondary ring-2 ring-secondary/45 scale-[1.03]' : 'border-white/5 hover:border-white/20'
                 }`}
               >
                 {/* Route Header Image */}
@@ -691,22 +691,22 @@ const TaxiServices = () => {
                     alt={route.name} 
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-60"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#182d56] to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent"></div>
                 </div>
 
                 {/* Route Content */}
                 <div className="p-5 flex-1 flex flex-col justify-between text-center">
-                  <h3 className="font-notoSerif text-base sm:text-lg font-bold mb-6 text-white group-hover:text-[#FFC55B] transition-colors">{route.name}</h3>
+                  <h3 className="font-notoSerif text-base sm:text-lg font-bold mb-6 text-white group-hover:text-secondary transition-colors">{route.name}</h3>
                   
                   <button 
                     onClick={() => {
                       setSelectedRoute(route)
                       setTimeout(() => scrollToId('route-pricing'), 100)
                     }}
-                    className={`w-full py-3 rounded-full font-bold text-xs uppercase tracking-widest transition-all ${
+                    className={`w-full py-3 rounded-full font-bold text-xs uppercase tracking-widest transition-all cursor-pointer ${
                       selectedRoute?.id === route.id 
-                        ? 'bg-[#FFC55B] text-[#0B1B3D]' 
-                        : 'bg-white text-[#0B1B3D] hover:bg-gray-100'
+                        ? 'bg-secondary text-primary' 
+                        : 'bg-white text-primary hover:bg-secondary hover:text-primary'
                     }`}
                   >
                     {selectedRoute?.id === route.id ? 'Selected' : 'Book Now'}
@@ -720,23 +720,23 @@ const TaxiServices = () => {
 
       {/* STEP 3: ROUTE PRICING & OPTIONS SECTION */}
       {selectedRoute && (
-        <section id="route-pricing" className="py-24 bg-[#12244a] border-t border-white/5 scroll-mt-6">
+        <section id="route-pricing" className="py-24 bg-white border-t border-primary/10 scroll-mt-6 text-primary">
           <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 lg:px-24">
             <div className="text-center max-w-3xl mx-auto mb-16">
-              <span className="text-[#FFC55B] text-xs font-black tracking-[0.3em] uppercase block mb-3">Vehicle Prices for Selected Route</span>
-              <h2 className="font-notoSerif text-3xl sm:text-4xl lg:text-5xl font-black text-white">{selectedRoute.name}</h2>
-              <p className="text-white/60 text-sm mt-3">Showing live rates for all vehicle classes. Prices are fully inclusive of tolls, driver, fuel, and meet & greet assistance.</p>
-              <div className="w-16 h-1 bg-[#FFC55B] mx-auto mt-4"></div>
+              <span className="text-primary text-xs font-black tracking-[0.3em] uppercase block mb-3">Vehicle Prices for Selected Route</span>
+              <h2 className="font-notoSerif text-3xl sm:text-4xl lg:text-5xl font-black text-primary">{selectedRoute.name}</h2>
+              <p className="text-primary/60 text-sm mt-3">Showing live rates for all vehicle classes. Prices are fully inclusive of tolls, driver, fuel, and meet & greet assistance.</p>
+              <div className="w-16 h-1 bg-secondary mx-auto mt-4"></div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {fleet.map((vehicle) => {
                 const price = selectedRoute.prices[vehicle.id] || { sar: 250, usd: 67 }
                 return (
-                  <div key={vehicle.id} className="bg-[#003334] rounded-2xl overflow-hidden border border-white/10 p-5 flex flex-col justify-between text-center group hover:border-[#FFC55B]/40 transition-all duration-300">
+                  <div key={vehicle.id} className="bg-background rounded-2xl overflow-hidden border border-primary/5 p-5 flex flex-col justify-between text-center group hover:border-secondary/40 shadow-sm hover:shadow-xl transition-all duration-300">
                     <div>
                       {/* Vehicle Image */}
-                      <div className="h-32 flex items-center justify-center p-2 mb-4 bg-white/5 rounded-xl">
+                      <div className="h-32 flex items-center justify-center p-2 mb-4 bg-white border border-primary/5 rounded-xl shadow-inner">
                         <img 
                           src={vehicle.image_url} 
                           alt={vehicle.name} 
@@ -745,11 +745,11 @@ const TaxiServices = () => {
                       </div>
 
                       {/* Title & Info */}
-                      <h4 className="font-notoSerif text-base font-bold text-white mb-2">{vehicle.name} – {selectedRoute.name}</h4>
+                      <h4 className="font-notoSerif text-base font-bold text-primary mb-2">{vehicle.name} – {selectedRoute.name}</h4>
                       
                       {/* Price Display */}
                       <div className="my-6">
-                        <p className="text-xl font-black text-[#FFC55B]">{price.sar} SAR <span className="text-xs text-white/50 font-medium">(≈ {price.usd} $)</span></p>
+                        <p className="text-xl font-black text-secondary">{price.sar} SAR <span className="text-xs text-primary/50 font-medium">(≈ {price.usd} $)</span></p>
                       </div>
                     </div>
 
@@ -760,7 +760,7 @@ const TaxiServices = () => {
                         setBookingRoute(selectedRoute)
                         setBookingModalOpen(true)
                       }}
-                      className="w-full bg-[#FFC55B] text-[#0B1B3D] py-3 rounded-xl font-bold text-xs uppercase tracking-widest hover:brightness-110 transition-all"
+                      className="w-full bg-secondary text-primary py-3 rounded-xl font-bold text-xs uppercase tracking-widest hover:brightness-110 transition-all cursor-pointer"
                     >
                       Book Now
                     </button>
@@ -773,33 +773,33 @@ const TaxiServices = () => {
       )}
 
       {/* WHY CHOOSE US / STATS SECTION */}
-      <section className="bg-background py-24 text-[#0B1B3D]">
+      <section className="bg-background py-24 text-primary">
         <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 lg:px-24">
           <div className="text-center max-w-2xl mx-auto mb-20">
-            <span className="text-[#0B1B3D] text-xs font-black tracking-[0.3em] uppercase block mb-3">Why Travel With Us</span>
-            <h2 className="font-notoSerif text-3xl sm:text-4xl font-bold text-[#0B1B3D]">Safe & Luxury Transport</h2>
-            <div className="w-16 h-1 bg-[#FFC55B] mx-auto mt-4"></div>
+            <span className="text-primary text-xs font-black tracking-[0.3em] uppercase block mb-3">Why Travel With Us</span>
+            <h2 className="font-notoSerif text-3xl sm:text-4xl font-bold text-primary">Safe & Luxury Transport</h2>
+            <div className="w-16 h-1 bg-secondary mx-auto mt-4"></div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            <div className="bg-gray-50 p-8 rounded-2xl border border-gray-100 text-center hover:shadow-xl transition-all duration-300">
-              <span className="material-symbols-outlined text-5xl text-[#FFC55B] mb-6">workspace_premium</span>
-              <h4 className="font-notoSerif text-xl font-bold mb-3 text-[#0B1B3D]">Chilled Luxury Fleet</h4>
-              <p className="text-gray-500 text-sm leading-relaxed">
+            <div className="bg-white p-8 rounded-2xl border border-primary/5 text-center shadow-md hover:shadow-2xl transition-all duration-300">
+              <span className="material-symbols-outlined text-5xl text-secondary mb-6">workspace_premium</span>
+              <h4 className="font-notoSerif text-xl font-bold mb-3 text-primary">Chilled Luxury Fleet</h4>
+              <p className="text-primary/70 text-sm leading-relaxed">
                 Enjoy fully air-conditioned, new-model sedans, SUVs, minivans, and coaches. Deeply cleaned after every transfer.
               </p>
             </div>
-            <div className="bg-gray-50 p-8 rounded-2xl border border-gray-100 text-center hover:shadow-xl transition-all duration-300">
-              <span className="material-symbols-outlined text-5xl text-[#FFC55B] mb-6">face</span>
-              <h4 className="font-notoSerif text-xl font-bold mb-3 text-[#0B1B3D]">Licensed Holy-Site Drivers</h4>
-              <p className="text-gray-500 text-sm leading-relaxed">
+            <div className="bg-white p-8 rounded-2xl border border-primary/5 text-center shadow-md hover:shadow-2xl transition-all duration-300">
+              <span className="material-symbols-outlined text-5xl text-secondary mb-6">face</span>
+              <h4 className="font-notoSerif text-xl font-bold mb-3 text-primary">Licensed Holy-Site Drivers</h4>
+              <p className="text-primary/70 text-sm leading-relaxed">
                 Our highly polite, reliable drivers possess deep, specialized knowledge of sacred landmarks, mosques, and terminals.
               </p>
             </div>
-            <div className="bg-gray-50 p-8 rounded-2xl border border-gray-100 text-center hover:shadow-xl transition-all duration-300">
-              <span className="material-symbols-outlined text-5xl text-[#FFC55B] mb-6">schedule</span>
-              <h4 className="font-notoSerif text-xl font-bold mb-3 text-[#0B1B3D]">24/7 Meet & Greet Service</h4>
-              <p className="text-gray-500 text-sm leading-relaxed">
+            <div className="bg-white p-8 rounded-2xl border border-primary/5 text-center shadow-md hover:shadow-2xl transition-all duration-300">
+              <span className="material-symbols-outlined text-5xl text-secondary mb-6">schedule</span>
+              <h4 className="font-notoSerif text-xl font-bold mb-3 text-primary">24/7 Meet & Greet Service</h4>
+              <p className="text-primary/70 text-sm leading-relaxed">
                 Always prompt. We track all incoming flight numbers real-time and coordinate immediate passenger pickup directly from terminals.
               </p>
             </div>
@@ -810,17 +810,17 @@ const TaxiServices = () => {
       {/* BOOKING MODAL */}
       {bookingModalOpen && bookingCar && bookingRoute && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-          <div className="bg-[#182d56] border border-white/10 rounded-2xl max-w-lg w-full overflow-hidden shadow-2xl relative animate-fadeIn text-left">
+          <div className="bg-primary border border-white/10 rounded-2xl max-w-lg w-full overflow-hidden shadow-2xl relative animate-fadeIn text-left">
             <button 
               onClick={() => setBookingModalOpen(false)}
-              className="absolute top-4 right-4 text-white/50 hover:text-white transition-colors"
+              className="absolute top-4 right-4 text-white/50 hover:text-white transition-colors cursor-pointer"
             >
               <span className="material-symbols-outlined">close</span>
             </button>
 
             <div className="p-6 md:p-8">
               <h3 className="font-notoSerif text-2xl font-bold text-white mb-2">Book Your Vehicle</h3>
-              <p className="text-[#FFC55B] text-xs font-semibold mb-6">
+              <p className="text-secondary text-xs font-semibold mb-6">
                 {bookingCar.name} • {bookingRoute.name}
               </p>
 
@@ -830,7 +830,7 @@ const TaxiServices = () => {
                   <input 
                     type="text" 
                     required 
-                    className="w-full bg-[#0B1B3D] border border-white/15 rounded-lg py-2 px-3 text-sm focus:border-[#FFC55B] focus:ring-0 text-white"
+                    className="w-full bg-black/20 border border-white/10 rounded-lg py-2 px-3 text-sm focus:border-secondary focus:ring-0 text-white"
                     placeholder="Enter your name" 
                     value={bookingForm.name} 
                     onChange={e => setBookingForm({...bookingForm, name: e.target.value})}
@@ -843,7 +843,7 @@ const TaxiServices = () => {
                     <label className="block text-[10px] text-white/40 font-bold uppercase tracking-widest mb-1.5">Email (Optional)</label>
                     <input 
                       type="email" 
-                      className="w-full bg-[#0B1B3D] border border-white/15 rounded-lg py-2 px-3 text-sm focus:border-[#FFC55B] focus:ring-0 text-white"
+                      className="w-full bg-black/20 border border-white/10 rounded-lg py-2 px-3 text-sm focus:border-secondary focus:ring-0 text-white"
                       placeholder="Email address" 
                       value={bookingForm.email} 
                       onChange={e => setBookingForm({...bookingForm, email: e.target.value})}
@@ -856,25 +856,25 @@ const TaxiServices = () => {
                         name="countryCode"
                         value={bookingForm.countryCode}
                         onChange={e => setBookingForm({...bookingForm, countryCode: e.target.value})}
-                        className="bg-[#0B1B3D] border border-white/15 rounded-lg py-2 px-2 text-xs text-white cursor-pointer w-20 shrink-0 focus:border-[#FFC55B] outline-none"
+                        className="bg-black/20 border border-white/10 rounded-lg py-2 px-2 text-xs text-white cursor-pointer w-20 shrink-0 focus:border-secondary outline-none"
                       >
-                        <option value="+92" className="bg-[#0B1B3D]">PK (+92)</option>
-                        <option value="+966" className="bg-[#0B1B3D]">SA (+966)</option>
-                        <option value="+971" className="bg-[#0B1B3D]">AE (+971)</option>
-                        <option value="+44" className="bg-[#0B1B3D]">UK (+44)</option>
-                        <option value="+1" className="bg-[#0B1B3D]">US (+1)</option>
-                        <option value="+90" className="bg-[#0B1B3D]">TR (+90)</option>
-                        <option value="+965" className="bg-[#0B1B3D]">KW (+965)</option>
-                        <option value="+974" className="bg-[#0B1B3D]">QA (+974)</option>
-                        <option value="+973" className="bg-[#0B1B3D]">BH (+973)</option>
-                        <option value="+968" className="bg-[#0B1B3D]">OM (+968)</option>
-                        <option value="+91" className="bg-[#0B1B3D]">IN (+91)</option>
-                        <option value="+880" className="bg-[#0B1B3D]">BD (+880)</option>
+                        <option value="+92" className="bg-primary text-white">PK (+92)</option>
+                        <option value="+966" className="bg-primary text-white">SA (+966)</option>
+                        <option value="+971" className="bg-primary text-white">AE (+971)</option>
+                        <option value="+44" className="bg-primary text-white">UK (+44)</option>
+                        <option value="+1" className="bg-primary text-white">US (+1)</option>
+                        <option value="+90" className="bg-primary text-white">TR (+90)</option>
+                        <option value="+965" className="bg-primary text-white">KW (+965)</option>
+                        <option value="+974" className="bg-primary text-white">QA (+974)</option>
+                        <option value="+973" className="bg-primary text-white">BH (+973)</option>
+                        <option value="+968" className="bg-primary text-white">OM (+968)</option>
+                        <option value="+91" className="bg-primary text-white">IN (+91)</option>
+                        <option value="+880" className="bg-primary text-white">BD (+880)</option>
                       </select>
                       <input 
                         type="tel" 
                         required 
-                        className="w-full bg-[#0B1B3D] border border-white/15 rounded-lg py-2 px-3 text-sm focus:border-[#FFC55B] focus:ring-0 text-white flex-grow"
+                        className="w-full bg-black/20 border border-white/10 rounded-lg py-2 px-3 text-sm focus:border-secondary focus:ring-0 text-white flex-grow"
                         placeholder="e.g. 300 1234567" 
                         value={bookingForm.phone} 
                         onChange={e => setBookingForm({...bookingForm, phone: e.target.value})}
@@ -890,7 +890,7 @@ const TaxiServices = () => {
                     <input 
                       type="date" 
                       required
-                      className="w-full bg-[#0B1B3D] border border-white/15 rounded-lg py-2 px-3 text-sm focus:border-[#FFC55B] focus:ring-0 text-white"
+                      className="w-full bg-black/20 border border-white/10 rounded-lg py-2 px-3 text-sm focus:border-secondary focus:ring-0 text-white text-scheme-dark"
                       value={bookingForm.date} 
                       onChange={e => setBookingForm({...bookingForm, date: e.target.value})}
                     />
@@ -901,7 +901,7 @@ const TaxiServices = () => {
                     <input 
                       type="time" 
                       required
-                      className="w-full bg-[#0B1B3D] border border-white/15 rounded-lg py-2 px-3 text-sm focus:border-[#FFC55B] focus:ring-0 text-white"
+                      className="w-full bg-black/20 border border-white/10 rounded-lg py-2 px-3 text-sm focus:border-secondary focus:ring-0 text-white"
                       value={bookingForm.time} 
                       onChange={e => setBookingForm({...bookingForm, time: e.target.value})}
                     />
@@ -912,18 +912,18 @@ const TaxiServices = () => {
                   <div>
                     <label className="block text-[10px] text-white/40 font-bold uppercase tracking-widest mb-1.5">Travelers</label>
                     <select 
-                      className="w-full bg-[#0B1B3D] border border-white/15 rounded-lg py-2 px-3 text-sm focus:border-[#FFC55B] focus:ring-0 text-white"
+                      className="w-full bg-black/20 border border-white/10 rounded-lg py-2 px-3 text-sm focus:border-secondary focus:ring-0 text-white"
                       value={bookingForm.travelers} 
                       onChange={e => setBookingForm({...bookingForm, travelers: e.target.value})}
                     >
                       {[...Array(50).keys()].map(n => (
-                        <option key={n + 1} value={n + 1} className="bg-[#0B1B3D]">{n + 1} Person{n > 0 ? 's' : ''}</option>
+                        <option key={n + 1} value={n + 1} className="bg-primary text-white">{n + 1} Person{n > 0 ? 's' : ''}</option>
                       ))}
                     </select>
                   </div>
                   <div>
                     <label className="block text-[10px] text-white/40 font-bold uppercase tracking-widest mb-1.5">Fare</label>
-                    <div className="w-full bg-[#0B1B3D]/60 border border-white/5 rounded-lg py-2 px-3 text-sm font-bold text-[#FFC55B]">
+                    <div className="w-full bg-black/30 border border-white/5 rounded-lg py-2 px-3 text-sm font-bold text-secondary">
                       {bookingRoute.prices[bookingCar.id]?.sar} SAR (≈ ${bookingRoute.prices[bookingCar.id]?.usd})
                     </div>
                   </div>
@@ -932,7 +932,7 @@ const TaxiServices = () => {
                 <div>
                   <label className="block text-[10px] text-white/40 font-bold uppercase tracking-widest mb-1.5">Special Instructions</label>
                   <textarea 
-                    className="w-full bg-[#0B1B3D] border border-white/15 rounded-lg py-2 px-3 text-sm focus:border-[#FFC55B] focus:ring-0 text-white"
+                    className="w-full bg-black/20 border border-white/10 rounded-lg py-2 px-3 text-sm focus:border-secondary focus:ring-0 text-white"
                     placeholder="Flight Number, hotel name, extra baggage notes..." 
                     rows={2} 
                     value={bookingForm.message} 
@@ -943,11 +943,11 @@ const TaxiServices = () => {
                 <button 
                   type="submit" 
                   disabled={submitting}
-                  className="w-full bg-[#FFC55B] text-[#0B1B3D] py-3.5 rounded-lg font-black text-xs uppercase tracking-widest hover:brightness-110 transition-all flex items-center justify-center gap-2 mt-4"
+                  className="w-full bg-secondary text-primary py-3.5 rounded-lg font-black text-xs uppercase tracking-widest hover:brightness-110 transition-all flex items-center justify-center gap-2 mt-4 cursor-pointer"
                 >
                   {submitting ? (
                     <>
-                      <div className="w-4 h-4 border-2 border-[#0B1B3D] border-t-transparent rounded-full animate-spin"></div>
+                      <div className="w-4 h-4 border-2 border-primary border-t-transparent rounded-full animate-spin"></div>
                       Processing...
                     </>
                   ) : success ? (

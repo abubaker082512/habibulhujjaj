@@ -192,8 +192,8 @@ const Home = () => {
             }`}
           >
             <img className="w-full h-full object-cover scale-105" src={slide.image} alt={slide.title} />
-            {/* Soft premium dark gradient overlay for text readability without washing out the image */}
-            <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/35 to-transparent"></div>
+            {/* Soft premium dynamic theme gradient overlay for text readability without washing out the image */}
+            <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/45 to-transparent"></div>
           </div>
         ))}
 
@@ -345,18 +345,18 @@ const Home = () => {
                     className="bg-transparent border-0 border-b border-white/20 focus:border-secondary focus:ring-0 focus:outline-none font-manrope text-sm py-3 px-0 text-white cursor-pointer w-24 shrink-0"
                     defaultValue="+92"
                   >
-                    <option value="+92" className="bg-[#0B1B3D] text-white">PK (+92)</option>
-                    <option value="+966" className="bg-[#0B1B3D] text-white">SA (+966)</option>
-                    <option value="+971" className="bg-[#0B1B3D] text-white">AE (+971)</option>
-                    <option value="+44" className="bg-[#0B1B3D] text-white">UK (+44)</option>
-                    <option value="+1" className="bg-[#0B1B3D] text-white">US (+1)</option>
-                    <option value="+90" className="bg-[#0B1B3D] text-white">TR (+90)</option>
-                    <option value="+965" className="bg-[#0B1B3D] text-white">KW (+965)</option>
-                    <option value="+974" className="bg-[#0B1B3D] text-white">QA (+974)</option>
-                    <option value="+973" className="bg-[#0B1B3D] text-white">BH (+973)</option>
-                    <option value="+968" className="bg-[#0B1B3D] text-white">OM (+968)</option>
-                    <option value="+91" className="bg-[#0B1B3D] text-white">IN (+91)</option>
-                    <option value="+880" className="bg-[#0B1B3D] text-white">BD (+880)</option>
+                    <option value="+92" className="bg-primary text-white">PK (+92)</option>
+                    <option value="+966" className="bg-primary text-white">SA (+966)</option>
+                    <option value="+971" className="bg-primary text-white">AE (+971)</option>
+                    <option value="+44" className="bg-primary text-white">UK (+44)</option>
+                    <option value="+1" className="bg-primary text-white">US (+1)</option>
+                    <option value="+90" className="bg-primary text-white">TR (+90)</option>
+                    <option value="+965" className="bg-primary text-white">KW (+965)</option>
+                    <option value="+974" className="bg-primary text-white">QA (+974)</option>
+                    <option value="+973" className="bg-primary text-white">BH (+973)</option>
+                    <option value="+968" className="bg-primary text-white">OM (+968)</option>
+                    <option value="+91" className="bg-primary text-white">IN (+91)</option>
+                    <option value="+880" className="bg-primary text-white">BD (+880)</option>
                   </select>
                   <input
                     name="phone"
