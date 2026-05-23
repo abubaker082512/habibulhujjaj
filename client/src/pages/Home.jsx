@@ -18,7 +18,7 @@ const staticPackages = [
     days: '15 Days',
     badge: 'Economy',
     badgeColor: 'bg-primary',
-    image: 'https://images.unsplash.com/photo-1591604129909-2b4ce4e6e6d2?w=800&q=80'
+    image: '/assets/gallery images/12.jpeg'
   },
   {
     id: 2,
@@ -28,7 +28,7 @@ const staticPackages = [
     days: '15 Days',
     badge: '3 Star',
     badgeColor: 'bg-primary',
-    image: 'https://images.unsplash.com/photo-1564507004663-b6dfb3c8924d?w=800&q=80'
+    image: '/assets/gallery images/13.jpeg'
   },
   {
     id: 3,
@@ -38,7 +38,7 @@ const staticPackages = [
     days: '10 Days',
     badge: '4 Star',
     badgeColor: 'bg-primary',
-    image: 'https://images.unsplash.com/photo-1572949645079-6416a599c6ae?w=800&q=80'
+    image: '/assets/gallery images/4.webp'
   },
   {
     id: 4,
@@ -48,7 +48,7 @@ const staticPackages = [
     days: '7 Days',
     badge: 'Luxury',
     badgeColor: 'bg-primary',
-    image: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800&q=80'
+    image: '/assets/gallery images/2.jpg'
   }
 ]
 
@@ -490,6 +490,111 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Sacred Hajj Pilgrimage Section */}
+      <section className="py-24 md:py-32 bg-background relative overflow-hidden">
+        {/* Decorative elements */}
+        <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/10 to-transparent"></div>
+        <div className="absolute -right-40 -top-40 w-96 h-96 rounded-full bg-secondary/5 blur-3xl"></div>
+        <div className="absolute -left-40 -bottom-40 w-96 h-96 rounded-full bg-primary/5 blur-3xl"></div>
+
+        <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+            {/* Visual Column */}
+            <div className="relative group order-2 lg:order-1">
+              <div className="absolute -inset-4 bg-secondary/20 rounded-[2rem] blur-2xl group-hover:bg-secondary/30 transition-all duration-700"></div>
+              <div className="relative rounded-[2rem] overflow-hidden shadow-[0_30px_60px_-15px_rgba(11,27,61,0.25)] border border-primary/5">
+                <img 
+                  className="w-full h-[400px] md:h-[600px] object-cover group-hover:scale-105 transition-transform duration-1000" 
+                  src="/assets/hajj_pilgrimage.png" 
+                  alt="Holy Kaaba Hajj Pilgrimage" 
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent"></div>
+                
+                {/* Float Card */}
+                <div className="absolute bottom-8 left-8 right-8 bg-white/90 backdrop-blur-md p-6 rounded-2xl border border-white/20 shadow-2xl flex items-center justify-between">
+                  <div className="text-left">
+                    <span className="text-[10px] font-black text-primary/40 uppercase tracking-[0.2em] block mb-1">Registration Status</span>
+                    <span className="text-sm font-black text-primary uppercase tracking-wider flex items-center gap-2">
+                      <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                      Hajj 2026/1447H Now Open
+                    </span>
+                  </div>
+                  <Link 
+                    to="/contact" 
+                    className="bg-primary text-secondary hover:bg-secondary hover:text-primary px-5 py-3 rounded-lg font-black text-[10px] uppercase tracking-widest transition-all shadow"
+                  >
+                    Register Now
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            {/* Content Column */}
+            <div className="space-y-10 text-left order-1 lg:order-2">
+              <div>
+                <h6 className="font-manrope text-primary font-black text-xs tracking-[0.3em] uppercase mb-6 flex items-center gap-4">
+                  <span className="w-10 h-[1px] bg-primary"></span>
+                  The Pinnacle of Devotion
+                </h6>
+                <h2 className="font-notoSerif text-4xl sm:text-5xl lg:text-7xl font-black text-primary leading-[1.1] mb-8 tracking-tight">
+                  Sacred Hajj <br />
+                  <span className="text-primary/40 italic font-medium">Pilgrimage 1447H</span>
+                </h2>
+                <p className="font-manrope text-base text-primary/70 leading-relaxed font-light max-w-xl">
+                  Fulfill your lifelong obligation with complete serenity and trust. At Habib Ul Hujjaj, we combine spiritual scholarly excellence with luxury ground support to honor every step of your sacred journey.
+                </p>
+              </div>
+
+              {/* Service Features */}
+              <div className="space-y-6">
+                <div className="flex items-start gap-4">
+                  <span className="material-symbols-outlined text-secondary bg-primary p-2.5 rounded-xl font-bold shadow-lg">workspace_premium</span>
+                  <div>
+                    <h4 className="font-bold text-primary text-lg font-manrope">VIP Category 'A' Tents</h4>
+                    <p className="text-primary/60 text-sm font-light mt-1">Direct proximity in Mina & Arafat featuring full air conditioning, private catering, and high-end beds.</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <span className="material-symbols-outlined text-secondary bg-primary p-2.5 rounded-xl font-bold shadow-lg">mosque</span>
+                  <div>
+                    <h4 className="font-bold text-primary text-lg font-manrope">Certified Scholarly Seminars</h4>
+                    <p className="text-primary/60 text-sm font-light mt-1">Dedicated scholar guides escorting our groups, ensuring all rituals are performed with absolute theological correctness.</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <span className="material-symbols-outlined text-secondary bg-primary p-2.5 rounded-xl font-bold shadow-lg">hotel</span>
+                  <div>
+                    <h4 className="font-bold text-primary text-lg font-manrope">Luxury 5-Star Accommodations</h4>
+                    <p className="text-primary/60 text-sm font-light mt-1">Steps away from Masjid al-Haram and Masjid an-Nabawi in premium properties like Swissotel & Fairmont Clock Tower.</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex flex-wrap gap-4 pt-4">
+                <a 
+                  href="https://wa.me/923004634548?text=Assalamu%20Alaikum%20Habib%20Ul%20Hujjaj!%20%F0%9F%8C%99%20I%20want%20to%20inquire%20about%20your%20Hajj%202026/1447H%20packages%20and%20avail%20expert%20guidance." 
+                  target="_blank" 
+                  rel="noreferrer" 
+                  className="bg-secondary text-primary px-8 py-4.5 rounded-md font-black text-xs uppercase tracking-widest flex items-center justify-center gap-2.5 hover:scale-105 transition-all shadow-xl shadow-secondary/20"
+                >
+                  <svg className="w-5 h-5 fill-primary" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.553 4.122 1.523 5.857L0 24l6.334-1.51A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.791 9.791 0 01-5.003-1.371l-.359-.214-3.759.896.944-3.668-.235-.378A9.78 9.78 0 012.182 12C2.182 6.579 6.579 2.182 12 2.182c5.421 0 9.818 4.397 9.818 9.818 0 5.421-4.397 9.818-9.818 9.818z"/></svg>
+                  Hajj Inquiry on WhatsApp
+                </a>
+                <Link 
+                  to="/contact" 
+                  className="bg-transparent border border-primary/20 hover:bg-primary/5 text-primary px-8 py-4.5 rounded-md font-bold text-xs uppercase tracking-widest transition-all"
+                >
+                  Download Hajj Guide
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Why Choose Us */}
       <section className="py-24 md:py-32 bg-primary text-white relative overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-10 mix-blend-overlay">
@@ -551,7 +656,7 @@ const Home = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {/* Turkey */}
           <div className="relative h-[400px] md:h-[600px] group cursor-pointer overflow-hidden rounded-2xl">
-            <img className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" src="https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=800&q=80" alt="Turkey" />
+            <img className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" src="/assets/gallery images/Turkey tour.jpg" alt="Turkey" />
             <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent"></div>
             <Link to="/international-tours" className="absolute inset-0 p-8 flex flex-col justify-end text-white">
               <h3 className="font-notoSerif text-3xl font-bold mb-2">Turkey</h3>
@@ -564,7 +669,7 @@ const Home = () => {
           </div>
           {/* Dubai */}
           <div className="relative h-[400px] md:h-[600px] group cursor-pointer overflow-hidden rounded-2xl">
-            <img className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&q=80" alt="Dubai" />
+            <img className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" src="/assets/gallery images/Dubai tour.jpg" alt="Dubai" />
             <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent"></div>
             <Link to="/international-tours" className="absolute inset-0 p-8 flex flex-col justify-end text-white">
               <h3 className="font-notoSerif text-3xl font-bold mb-2">Dubai</h3>

@@ -17,7 +17,7 @@ const staticPackages = [
     airline: 'Qatar Airways',
     badge: 'Best Seller',
     badgeColor: 'bg-[#0B1B3D]',
-    image: 'https://images.unsplash.com/photo-1572949645079-6416a599c6ae?w=800',
+    image: '/assets/gallery images/2.jpg',
   },
   {
     id: 2,
@@ -28,7 +28,7 @@ const staticPackages = [
     airline: 'Saudi Airlines',
     badge: 'Popular Choice',
     badgeColor: 'bg-[#0B1B3D]',
-    image: 'https://images.unsplash.com/photo-1564769662533-3f5aae93cec2?w=800',
+    image: '/assets/gallery images/3.jpg',
   },
   {
     id: 3,
@@ -39,7 +39,7 @@ const staticPackages = [
     airline: 'Full Iftar/Suhur',
     badge: 'Limited',
     badgeColor: 'bg-[#0B1B3D]',
-    image: 'https://images.unslash.com/photo-1580338834642-8a3acf79b1b8?w=800',
+    image: '/assets/gallery images/6.jpg',
   },
   {
     id: 4,
@@ -50,7 +50,7 @@ const staticPackages = [
     airline: 'Private GMC Transfer',
     badge: 'Gold Standard',
     badgeColor: 'bg-[#0B1B3D]',
-    image: 'https://images.unsplash.com/photo-1596435688717-2d2f3b0fc47a?w=800',
+    image: '/assets/gallery images/10.jpg',
   }
 ]
 
@@ -202,7 +202,7 @@ const Packages = () => {
       {/* CTA */}
       <section className="py-16 md:py-24 bg-primary text-white relative overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-10">
-          <img className="w-full h-full object-cover" src="https://images.unsplash.com/photo-1465378977933-3f5aae93cec2?w=800" alt="Pattern" />
+          <img className="w-full h-full object-cover" src="/assets/gallery images/11.jpeg" alt="Pattern" />
         </div>
         <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 relative z-10 text-center">
           <h6 className="font-manrope text-white/70 font-bold text-sm tracking-[0.2em] uppercase mb-4">Ready to Begin?</h6>
