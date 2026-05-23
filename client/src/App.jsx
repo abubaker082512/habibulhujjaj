@@ -15,10 +15,12 @@ import TaxiServices from './pages/TaxiServices'
 import FAQ from './pages/FAQ'
 import Contact from './pages/Contact'
 import InternationalTours from './pages/InternationalTours'
+import ThemeCustomizer from './components/ThemeCustomizer'
 
 function App() {
   return (
     <Router>
+      <ThemeCustomizer />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/flights" element={<Flights />} />
