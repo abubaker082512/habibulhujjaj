@@ -93,7 +93,7 @@ const FAQ = () => {
   }, [])
 
   return (
-    <div className="bg-white font-manrope text-black min-h-screen">
+    <div className="bg-background font-manrope text-black min-h-screen">
       <Navbar />
 
       {/* Hero Section */}
@@ -116,7 +116,7 @@ const FAQ = () => {
       </section>
 
       {/* FAQ Content */}
-      <section className="py-16 md:py-24 px-4 sm:px-6 md:px-8 max-w-screen-2xl mx-auto bg-white">
+      <section className="py-16 md:py-24 px-4 sm:px-6 md:px-8 max-w-screen-2xl mx-auto bg-background">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 md:gap-8">
           {/* Category Tabs */}
           <div className="lg:col-span-1">

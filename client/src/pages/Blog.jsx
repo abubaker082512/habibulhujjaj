@@ -194,7 +194,7 @@ const Blog = () => {
   }, [])
 
   return (
-    <div className="bg-white font-manrope text-black min-h-screen">
+    <div className="bg-background font-manrope text-black min-h-screen">
       <Navbar />
 
       {/* Hero Section */}

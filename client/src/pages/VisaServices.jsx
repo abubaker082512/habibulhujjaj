@@ -88,7 +88,7 @@ const VisaServices = () => {
   }, [])
 
   return (
-    <div className="bg-white font-manrope text-black min-h-screen">
+    <div className="bg-background font-manrope text-black min-h-screen">
       <Navbar />
 
       {/* Hero Section */}
@@ -111,7 +111,7 @@ const VisaServices = () => {
       </section>
 
       {/* Visa Cards */}
-      <section className="py-16 md:py-24 px-4 sm:px-6 md:px-8 max-w-screen-2xl mx-auto bg-white">
+      <section className="py-16 md:py-24 px-4 sm:px-6 md:px-8 max-w-screen-2xl mx-auto bg-background">
         <div className="flex flex-col md:flex-row justify-between items-end mb-12 md:mb-16">
           <div className="max-w-2xl">
             <h6 className="font-manrope text-primary font-bold text-sm tracking-[0.2em] uppercase mb-4">Our Services</h6>

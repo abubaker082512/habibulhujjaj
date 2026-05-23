@@ -152,7 +152,7 @@ const Flights = () => {
   }
 
   return (
-    <div className="min-h-screen bg-[#001c1d] font-manrope text-white overflow-x-hidden">
+    <div className="min-h-screen bg-[#0B1B3D] font-manrope text-white overflow-x-hidden">
       <Navbar />
 
       {/* Redesigned Premium Hero Section */}
@@ -163,11 +163,11 @@ const Flights = () => {
             className="w-full h-full object-cover object-center filter brightness-[0.35]" 
             alt="Hero Background"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#001c1d]/85 via-[#002f30]/60 to-[#001c1d]"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0B1B3D]/85 via-[#182d56]/60 to-[#0B1B3D]"></div>
           
           {/* Subtle animated light dots representing flight routes */}
-          <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-[#ffc65c] rounded-full animate-ping opacity-60"></div>
-          <div className="absolute top-1/3 right-1/4 w-3 h-3 bg-[#ffc65c] rounded-full animate-ping delay-1000 opacity-40"></div>
+          <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-[#FFC55B] rounded-full animate-ping opacity-60"></div>
+          <div className="absolute top-1/3 right-1/4 w-3 h-3 bg-[#FFC55B] rounded-full animate-ping delay-1000 opacity-40"></div>
         </div>
         
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 max-w-7xl">
@@ -176,8 +176,8 @@ const Flights = () => {
             {/* Left Column: Premium Text Content */}
             <div className="lg:col-span-6 space-y-6 text-left animate-fadeIn">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm">
-                <span className="material-symbols-outlined text-[#ffc65c] text-sm animate-pulse">flight_takeoff</span>
-                <span className="text-[10px] font-black tracking-widest text-[#ffc65c] uppercase">Habib Ul Hujjaj VIP Ticketing</span>
+                <span className="material-symbols-outlined text-[#FFC55B] text-sm animate-pulse">flight_takeoff</span>
+                <span className="text-[10px] font-black tracking-widest text-[#FFC55B] uppercase">Habib Ul Hujjaj VIP Ticketing</span>
               </div>
               <h1 className="font-notoSerif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.1] uppercase tracking-tight">
                 {cmsContent.heroTitle.includes('REHMAN') ? 'BOOK YOUR DREAM JOURNEY WITH HABIB UL HUJJAJ' : cmsContent.heroTitle}
@@ -187,12 +187,12 @@ const Flights = () => {
               </p>
               
               <div className="flex flex-wrap gap-4 pt-4">
-                <div className="flex items-center gap-2 bg-[#002f30]/40 border border-white/5 py-2 px-3.5 rounded-xl">
-                  <span className="material-symbols-outlined text-[#ffc65c] text-lg">verified_user</span>
+                <div className="flex items-center gap-2 bg-[#182d56]/40 border border-white/5 py-2 px-3.5 rounded-xl">
+                  <span className="material-symbols-outlined text-[#FFC55B] text-lg">verified_user</span>
                   <span className="text-xs text-white/80 font-bold">100% Secure Bookings</span>
                 </div>
-                <div className="flex items-center gap-2 bg-[#002f30]/40 border border-white/5 py-2 px-3.5 rounded-xl">
-                  <span className="material-symbols-outlined text-[#ffc65c] text-lg">support_agent</span>
+                <div className="flex items-center gap-2 bg-[#182d56]/40 border border-white/5 py-2 px-3.5 rounded-xl">
+                  <span className="material-symbols-outlined text-[#FFC55B] text-lg">support_agent</span>
                   <span className="text-xs text-white/80 font-bold">24/7 Dedicated Support</span>
                 </div>
               </div>
@@ -201,26 +201,26 @@ const Flights = () => {
             {/* Right Column: Instant WhatsApp Flight Booking Form */}
             <div className="lg:col-span-6 animate-slideUp">
               <div className="relative">
-                <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-[#ffc65c] to-emerald-500 opacity-20 blur-xl"></div>
+                <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-[#FFC55B] to-emerald-500 opacity-20 blur-xl"></div>
                 
-                <div className="relative bg-[#002f30]/85 border border-white/10 p-6 sm:p-8 rounded-3xl shadow-2xl backdrop-blur-xl">
+                <div className="relative bg-[#182d56]/85 border border-white/10 p-6 sm:p-8 rounded-3xl shadow-2xl backdrop-blur-xl">
                   <h3 className="font-notoSerif text-xl sm:text-2xl font-bold text-white text-left mb-1">Instant Flight Enquiry</h3>
                   <p className="text-xs text-white/60 text-left mb-6">Submit details and negotiate prices directly on WhatsApp!</p>
 
                   <form onSubmit={handleFormSubmit} className="space-y-4">
                     {/* Toggle Trip Type */}
-                    <div className="grid grid-cols-2 gap-2 p-1 bg-[#001c1d] rounded-lg border border-white/5">
+                    <div className="grid grid-cols-2 gap-2 p-1 bg-[#0B1B3D] rounded-lg border border-white/5">
                       <button 
                         type="button" 
                         onClick={() => setFormType('roundTrip')}
-                        className={`py-2 px-3 rounded text-xs font-bold transition-all ${formType === 'roundTrip' ? 'bg-[#ffc65c] text-[#001c1d] shadow' : 'text-white/60 hover:text-white'}`}
+                        className={`py-2 px-3 rounded text-xs font-bold transition-all ${formType === 'roundTrip' ? 'bg-[#FFC55B] text-[#0B1B3D] shadow' : 'text-white/60 hover:text-white'}`}
                       >
                         🔄 Round Trip
                       </button>
                       <button 
                         type="button" 
                         onClick={() => setFormType('oneWay')}
-                        className={`py-2 px-3 rounded text-xs font-bold transition-all ${formType === 'oneWay' ? 'bg-[#ffc65c] text-[#001c1d] shadow' : 'text-white/60 hover:text-white'}`}
+                        className={`py-2 px-3 rounded text-xs font-bold transition-all ${formType === 'oneWay' ? 'bg-[#FFC55B] text-[#0B1B3D] shadow' : 'text-white/60 hover:text-white'}`}
                       >
                         🛫 One Way
                       </button>
@@ -229,7 +229,7 @@ const Flights = () => {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       {/* Name */}
                       <div className="text-left">
-                        <label className="text-[10px] font-black text-[#ffc65c] uppercase tracking-wider block mb-1.5">Full Name</label>
+                        <label className="text-[10px] font-black text-[#FFC55B] uppercase tracking-wider block mb-1.5">Full Name</label>
                         <div className="relative">
                           <span className="material-symbols-outlined absolute left-3 top-3 text-white/40 text-sm">person</span>
                           <input 
@@ -239,14 +239,14 @@ const Flights = () => {
                             value={formData.fullName}
                             onChange={handleInputChange}
                             placeholder="Enter your name" 
-                            className="w-full p-2.5 pl-9 bg-[#001c1d] rounded-lg border border-white/5 text-white placeholder-white/30 text-xs focus:border-[#ffc65c] outline-none transition-all"
+                            className="w-full p-2.5 pl-9 bg-[#0B1B3D] rounded-lg border border-white/5 text-white placeholder-white/30 text-xs focus:border-[#FFC55B] outline-none transition-all"
                           />
                         </div>
                       </div>
 
                       {/* Phone */}
                       <div className="text-left">
-                        <label className="text-[10px] font-black text-[#ffc65c] uppercase tracking-wider block mb-1.5">WhatsApp Number</label>
+                        <label className="text-[10px] font-black text-[#FFC55B] uppercase tracking-wider block mb-1.5">WhatsApp Number</label>
                         <div className="relative">
                           <span className="material-symbols-outlined absolute left-3 top-3 text-white/40 text-sm">phone_iphone</span>
                           <input 
@@ -256,7 +256,7 @@ const Flights = () => {
                             value={formData.phone}
                             onChange={handleInputChange}
                             placeholder="e.g. 03001234567" 
-                            className="w-full p-2.5 pl-9 bg-[#001c1d] rounded-lg border border-white/5 text-white placeholder-white/30 text-xs focus:border-[#ffc65c] outline-none transition-all"
+                            className="w-full p-2.5 pl-9 bg-[#0B1B3D] rounded-lg border border-white/5 text-white placeholder-white/30 text-xs focus:border-[#FFC55B] outline-none transition-all"
                           />
                         </div>
                       </div>
@@ -265,7 +265,7 @@ const Flights = () => {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       {/* Origin */}
                       <div className="text-left">
-                        <label className="text-[10px] font-black text-[#ffc65c] uppercase tracking-wider block mb-1.5">Origin City</label>
+                        <label className="text-[10px] font-black text-[#FFC55B] uppercase tracking-wider block mb-1.5">Origin City</label>
                         <div className="relative">
                           <span className="material-symbols-outlined absolute left-3 top-3 text-white/40 text-sm">flight_takeoff</span>
                           <input 
@@ -275,14 +275,14 @@ const Flights = () => {
                             value={formData.origin}
                             onChange={handleInputChange}
                             placeholder="e.g. Lahore (LHE)" 
-                            className="w-full p-2.5 pl-9 bg-[#001c1d] rounded-lg border border-white/5 text-white placeholder-white/30 text-xs focus:border-[#ffc65c] outline-none transition-all"
+                            className="w-full p-2.5 pl-9 bg-[#0B1B3D] rounded-lg border border-white/5 text-white placeholder-white/30 text-xs focus:border-[#FFC55B] outline-none transition-all"
                           />
                         </div>
                       </div>
 
                       {/* Destination */}
                       <div className="text-left">
-                        <label className="text-[10px] font-black text-[#ffc65c] uppercase tracking-wider block mb-1.5">Destination City</label>
+                        <label className="text-[10px] font-black text-[#FFC55B] uppercase tracking-wider block mb-1.5">Destination City</label>
                         <div className="relative">
                           <span className="material-symbols-outlined absolute left-3 top-3 text-white/40 text-sm">flight_land</span>
                           <input 
@@ -292,7 +292,7 @@ const Flights = () => {
                             value={formData.destination}
                             onChange={handleInputChange}
                             placeholder="e.g. Jeddah (JED)" 
-                            className="w-full p-2.5 pl-9 bg-[#001c1d] rounded-lg border border-white/5 text-white placeholder-white/30 text-xs focus:border-[#ffc65c] outline-none transition-all"
+                            className="w-full p-2.5 pl-9 bg-[#0B1B3D] rounded-lg border border-white/5 text-white placeholder-white/30 text-xs focus:border-[#FFC55B] outline-none transition-all"
                           />
                         </div>
                       </div>
@@ -301,7 +301,7 @@ const Flights = () => {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       {/* Departure Date */}
                       <div className="text-left">
-                        <label className="text-[10px] font-black text-[#ffc65c] uppercase tracking-wider block mb-1.5">Departure Date</label>
+                        <label className="text-[10px] font-black text-[#FFC55B] uppercase tracking-wider block mb-1.5">Departure Date</label>
                         <div className="relative">
                           <input 
                             type="date" 
@@ -309,14 +309,14 @@ const Flights = () => {
                             required
                             value={formData.departureDate}
                             onChange={handleInputChange}
-                            className="w-full p-2.5 bg-[#001c1d] rounded-lg border border-white/5 text-white text-xs focus:border-[#ffc65c] outline-none transition-all"
+                            className="w-full p-2.5 bg-[#0B1B3D] rounded-lg border border-white/5 text-white text-xs focus:border-[#FFC55B] outline-none transition-all"
                           />
                         </div>
                       </div>
 
                       {/* Return Date */}
                       <div className="text-left">
-                        <label className={`text-[10px] font-black text-[#ffc65c] uppercase tracking-wider block mb-1.5 ${formType === 'oneWay' ? 'opacity-30' : ''}`}>Return Date</label>
+                        <label className={`text-[10px] font-black text-[#FFC55B] uppercase tracking-wider block mb-1.5 ${formType === 'oneWay' ? 'opacity-30' : ''}`}>Return Date</label>
                         <div className="relative">
                           <input 
                             type="date" 
@@ -325,7 +325,7 @@ const Flights = () => {
                             required={formType === 'roundTrip'}
                             value={formType === 'oneWay' ? '' : formData.returnDate}
                             onChange={handleInputChange}
-                            className={`w-full p-2.5 bg-[#001c1d] rounded-lg border border-white/5 text-white text-xs focus:border-[#ffc65c] outline-none transition-all ${formType === 'oneWay' ? 'opacity-30 cursor-not-allowed' : ''}`}
+                            className={`w-full p-2.5 bg-[#0B1B3D] rounded-lg border border-white/5 text-white text-xs focus:border-[#FFC55B] outline-none transition-all ${formType === 'oneWay' ? 'opacity-30 cursor-not-allowed' : ''}`}
                           />
                         </div>
                       </div>
@@ -334,12 +334,12 @@ const Flights = () => {
                     <div className="grid grid-cols-2 gap-4">
                       {/* Class */}
                       <div className="text-left">
-                        <label className="text-[10px] font-black text-[#ffc65c] uppercase tracking-wider block mb-1.5">Class</label>
+                        <label className="text-[10px] font-black text-[#FFC55B] uppercase tracking-wider block mb-1.5">Class</label>
                         <select 
                           name="travelClass"
                           value={formData.travelClass}
                           onChange={handleInputChange}
-                          className="w-full p-2.5 bg-[#001c1d] rounded-lg border border-white/5 text-white text-xs focus:border-[#ffc65c] outline-none transition-all"
+                          className="w-full p-2.5 bg-[#0B1B3D] rounded-lg border border-white/5 text-white text-xs focus:border-[#FFC55B] outline-none transition-all"
                         >
                           <option value="Economy">Economy Class</option>
                           <option value="Premium Economy">Premium Econ</option>
@@ -350,12 +350,12 @@ const Flights = () => {
 
                       {/* Passengers */}
                       <div className="text-left">
-                        <label className="text-[10px] font-black text-[#ffc65c] uppercase tracking-wider block mb-1.5">Passengers</label>
+                        <label className="text-[10px] font-black text-[#FFC55B] uppercase tracking-wider block mb-1.5">Passengers</label>
                         <select 
                           name="passengers"
                           value={formData.passengers}
                           onChange={handleInputChange}
-                          className="w-full p-2.5 bg-[#001c1d] rounded-lg border border-white/5 text-white text-xs focus:border-[#ffc65c] outline-none transition-all"
+                          className="w-full p-2.5 bg-[#0B1B3D] rounded-lg border border-white/5 text-white text-xs focus:border-[#FFC55B] outline-none transition-all"
                         >
                           <option value="1 Passenger">1 Passenger</option>
                           <option value="2 Passengers">2 Passengers</option>
@@ -368,11 +368,11 @@ const Flights = () => {
 
                     <button 
                       type="submit" 
-                      className="w-full bg-[#ffc65c] text-[#001c1d] py-3.5 rounded-lg font-black text-xs uppercase tracking-widest hover:brightness-110 active:scale-95 transition-all flex items-center justify-center gap-2 shadow-lg mt-4"
+                      className="w-full bg-[#FFC55B] text-[#0B1B3D] py-3.5 rounded-lg font-black text-xs uppercase tracking-widest hover:brightness-110 active:scale-95 transition-all flex items-center justify-center gap-2 shadow-lg mt-4"
                     >
                       {formSubmitted ? (
                         <>
-                          <div className="w-4 h-4 border-2 border-[#001c1d] border-t-transparent rounded-full animate-spin"></div>
+                          <div className="w-4 h-4 border-2 border-[#0B1B3D] border-t-transparent rounded-full animate-spin"></div>
                           Connecting to WhatsApp...
                         </>
                       ) : (
@@ -392,12 +392,12 @@ const Flights = () => {
       </section>
 
       {/* Narrative Section 1 */}
-      <section className="py-24 bg-[#002f30]/40 relative overflow-hidden">
+      <section className="py-24 bg-[#182d56]/40 relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
         <div className="container mx-auto px-4 text-center max-w-4xl relative z-10">
-          <div className="inline-flex w-12 h-[2px] bg-[#ffc65c] mb-6"></div>
+          <div className="inline-flex w-12 h-[2px] bg-[#FFC55B] mb-6"></div>
           <h2 className="font-notoSerif text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6 uppercase tracking-tight">
-            YOUR NEXT ADVENTURE <span className="text-[#ffc65c]">BEGINS HERE!</span>
+            YOUR NEXT ADVENTURE <span className="text-[#FFC55B]">BEGINS HERE!</span>
           </h2>
           <p className="text-sm sm:text-base text-white/70 font-light leading-relaxed max-w-2xl mx-auto">
             {cmsContent.adventureSubtitle}
@@ -406,7 +406,7 @@ const Flights = () => {
       </section>
 
       {/* Narrative Section 2 (Trust) */}
-      <section className="py-24 bg-[#001c1d] relative overflow-hidden">
+      <section className="py-24 bg-[#0B1B3D] relative overflow-hidden">
         <div className="absolute inset-0 z-0">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-emerald-500/5 rounded-full blur-3xl"></div>
         </div>
@@ -422,7 +422,7 @@ const Flights = () => {
             href="https://wa.me/923004634548?text=Hello%20Habib%20Ul%20Hujjaj,%20I%20want%20to%20consult%20about%20booking%20flights."
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-2 bg-[#ffc65c] text-[#001c1d] px-8 py-3.5 rounded-full font-black text-xs uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-xl"
+            className="inline-flex items-center gap-2 bg-[#FFC55B] text-[#0B1B3D] px-8 py-3.5 rounded-full font-black text-xs uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-xl"
           >
             <span className="material-symbols-outlined text-[16px] font-bold">chat</span>
             Book Your Free Consultation
@@ -431,7 +431,7 @@ const Flights = () => {
       </section>
 
       {/* Redesigned Destinations Grid */}
-      <section className="py-24 bg-[#002f30]/20 relative">
+      <section className="py-24 bg-[#182d56]/20 relative">
         <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/5 to-transparent"></div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           
@@ -440,29 +440,29 @@ const Flights = () => {
               {cmsContent.destinationsTitle}
             </h2>
             <p className="text-white/60 text-sm font-light max-w-xl mx-auto">{cmsContent.destinationsSubtitle}</p>
-            <div className="w-12 h-1 bg-[#ffc65c] mx-auto mt-4 rounded-full"></div>
+            <div className="w-12 h-1 bg-[#FFC55B] mx-auto mt-4 rounded-full"></div>
           </div>
 
           {loading ? (
             <div className="flex flex-col items-center justify-center py-20 gap-4">
-              <div className="w-10 h-10 border-4 border-[#ffc65c] border-t-transparent rounded-full animate-spin"></div>
-              <p className="text-xs uppercase tracking-widest text-[#ffc65c]">Loading Premium Destinations...</p>
+              <div className="w-10 h-10 border-4 border-[#FFC55B] border-t-transparent rounded-full animate-spin"></div>
+              <p className="text-xs uppercase tracking-widest text-[#FFC55B]">Loading Premium Destinations...</p>
             </div>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
               {destinations.map(dest => (
                 <div 
                   key={dest.id} 
-                  className="bg-[#002f30]/40 rounded-2xl overflow-hidden border border-white/5 shadow-lg hover:shadow-2xl hover:border-white/10 transition-all duration-300 group flex flex-col h-full"
+                  className="bg-[#182d56]/40 rounded-2xl overflow-hidden border border-white/5 shadow-lg hover:shadow-2xl hover:border-white/10 transition-all duration-300 group flex flex-col h-full"
                 >
-                  <div className="h-48 sm:h-56 relative overflow-hidden bg-[#001c1d]">
+                  <div className="h-48 sm:h-56 relative overflow-hidden bg-[#0B1B3D]">
                     <img 
                       src={dest.image_url} 
                       alt={dest.name} 
                       className="w-full h-full object-cover group-hover:scale-105 transition-all duration-500" 
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#001c1d] via-transparent to-transparent opacity-65"></div>
-                    <div className="absolute top-4 left-4 bg-[#ffc65c] text-[#001c1d] px-3.5 py-1.5 rounded-lg text-[10px] font-black uppercase tracking-wider shadow">
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0B1B3D] via-transparent to-transparent opacity-65"></div>
+                    <div className="absolute top-4 left-4 bg-[#FFC55B] text-[#0B1B3D] px-3.5 py-1.5 rounded-lg text-[10px] font-black uppercase tracking-wider shadow">
                       From Rs {dest.price_start.toLocaleString()}
                     </div>
                   </div>
@@ -473,7 +473,7 @@ const Flights = () => {
                     <div className="flex gap-2 mt-auto">
                       <button 
                         onClick={() => handleDirectWhatsAppBook(dest.name, dest.price_start)}
-                        className="flex-1 bg-[#ffc65c] text-[#001c1d] py-2.5 rounded font-black text-[10px] uppercase tracking-wider hover:brightness-110 active:scale-95 transition-all flex items-center justify-center gap-1.5 shadow"
+                        className="flex-1 bg-[#FFC55B] text-[#0B1B3D] py-2.5 rounded font-black text-[10px] uppercase tracking-wider hover:brightness-110 active:scale-95 transition-all flex items-center justify-center gap-1.5 shadow"
                       >
                         <span className="material-symbols-outlined text-xs font-bold">send</span> Book Now
                       </button>
@@ -495,26 +495,26 @@ const Flights = () => {
       </section>
 
       {/* Features List Section */}
-      <section className="py-24 bg-[#001c1d] relative">
+      <section className="py-24 bg-[#0B1B3D] relative">
         <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/5 to-transparent"></div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             
             {/* Features Columns */}
             <div className="lg:col-span-7 space-y-8 text-left">
-              <div className="inline-flex w-8 h-[2px] bg-[#ffc65c] mb-2"></div>
+              <div className="inline-flex w-8 h-[2px] bg-[#FFC55B] mb-2"></div>
               <h3 className="font-notoSerif text-3xl font-bold text-white tracking-tight uppercase mb-4">
-                THE PREFERRED CHOICE FOR <span className="text-[#ffc65c]">HOLY TRAVEL</span>
+                THE PREFERRED CHOICE FOR <span className="text-[#FFC55B]">HOLY TRAVEL</span>
               </h3>
               
               <div className="space-y-6">
                 {[1, 2, 3, 4, 5].map(i => (
                   <div key={i} className="flex items-start gap-4 sm:gap-6 group">
-                    <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-[#ffc65c]/10 border border-[#ffc65c]/20 text-[#ffc65c] flex items-center justify-center font-notoSerif text-lg font-bold group-hover:bg-[#ffc65c] group-hover:text-[#001c1d] transition-all duration-300">
+                    <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-[#FFC55B]/10 border border-[#FFC55B]/20 text-[#FFC55B] flex items-center justify-center font-notoSerif text-lg font-bold group-hover:bg-[#FFC55B] group-hover:text-[#0B1B3D] transition-all duration-300">
                       {i}
                     </div>
                     <div>
-                      <h4 className="text-base sm:text-lg font-bold text-white group-hover:text-[#ffc65c] transition-colors">{cmsContent[`feature${i}`]}</h4>
+                      <h4 className="text-base sm:text-lg font-bold text-white group-hover:text-[#FFC55B] transition-colors">{cmsContent[`feature${i}`]}</h4>
                     </div>
                   </div>
                 ))}
@@ -523,13 +523,13 @@ const Flights = () => {
 
             {/* Visual Right Column */}
             <div className="lg:col-span-5 relative">
-              <div className="absolute -inset-2 rounded-3xl bg-[#ffc65c]/10 blur-xl"></div>
+              <div className="absolute -inset-2 rounded-3xl bg-[#FFC55B]/10 blur-xl"></div>
               <img 
                 src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&q=80" 
                 className="rounded-3xl shadow-2xl border border-white/5 w-full object-cover" 
                 alt="Travel experiences" 
               />
-              <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-[#ffc65c]/10 rounded-full blur-xl"></div>
+              <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-[#FFC55B]/10 rounded-full blur-xl"></div>
             </div>
 
           </div>
@@ -537,12 +537,12 @@ const Flights = () => {
       </section>
 
       {/* Most Popular Places */}
-      <section className="py-24 bg-[#002f30]/20 relative overflow-hidden">
+      <section className="py-24 bg-[#182d56]/20 relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/5 to-transparent"></div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <h2 className="font-notoSerif text-3xl sm:text-4xl font-bold text-center text-white mb-16 tracking-tight uppercase">
             {cmsContent.popularTitle}
-            <div className="w-12 h-1 bg-[#ffc65c] mx-auto mt-4 rounded-full"></div>
+            <div className="w-12 h-1 bg-[#FFC55B] mx-auto mt-4 rounded-full"></div>
           </h2>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">

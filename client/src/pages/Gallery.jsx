@@ -62,7 +62,7 @@ const Gallery = () => {
   }, [])
 
   return (
-    <div className="bg-white font-manrope text-black min-h-screen">
+    <div className="bg-background font-manrope text-black min-h-screen">
       <Navbar />
 
       {/* Hero Section */}
@@ -85,7 +85,7 @@ const Gallery = () => {
       </section>
 
       {/* Gallery Filter */}
-      <section className="max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 py-12 md:py-16 bg-white">
+      <section className="max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 py-12 md:py-16 bg-background">
         <div className="flex flex-col md:flex-row justify-between items-end mb-8 md:mb-12">
           <div className="max-w-2xl">
             <h6 className="font-manrope text-primary font-bold text-sm tracking-[0.2em] uppercase mb-4">Visual Chronicles</h6>

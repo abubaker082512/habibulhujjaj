@@ -16,7 +16,7 @@ const staticPackages = [
     days: '15 Days',
     airline: 'Qatar Airways',
     badge: 'Best Seller',
-    badgeColor: 'bg-[#013334]',
+    badgeColor: 'bg-[#0B1B3D]',
     image: 'https://images.unsplash.com/photo-1572949645079-6416a599c6ae?w=800',
   },
   {
@@ -27,7 +27,7 @@ const staticPackages = [
     days: '10 Days',
     airline: 'Saudi Airlines',
     badge: 'Popular Choice',
-    badgeColor: 'bg-[#013334]',
+    badgeColor: 'bg-[#0B1B3D]',
     image: 'https://images.unsplash.com/photo-1564769662533-3f5aae93cec2?w=800',
   },
   {
@@ -38,7 +38,7 @@ const staticPackages = [
     days: '30 Days',
     airline: 'Full Iftar/Suhur',
     badge: 'Limited',
-    badgeColor: 'bg-[#013334]',
+    badgeColor: 'bg-[#0B1B3D]',
     image: 'https://images.unslash.com/photo-1580338834642-8a3acf79b1b8?w=800',
   },
   {
@@ -49,7 +49,7 @@ const staticPackages = [
     days: '07 Days',
     airline: 'Private GMC Transfer',
     badge: 'Gold Standard',
-    badgeColor: 'bg-[#013334]',
+    badgeColor: 'bg-[#0B1B3D]',
     image: 'https://images.unsplash.com/photo-1596435688717-2d2f3b0fc47a?w=800',
   }
 ]
@@ -90,7 +90,7 @@ const Packages = () => {
   }, [])
 
   return (
-    <div className="bg-white font-manrope text-black">
+    <div className="bg-background font-manrope text-black">
       <Navbar />
       
       {/* Hero Section */}
@@ -113,7 +113,7 @@ const Packages = () => {
       </section>
 
       {/* Main Content */}
-      <main className="max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 py-12 md:py-16 bg-white">
+      <main className="max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 py-12 md:py-16 bg-background">
         <div className="flex flex-col lg:flex-row gap-8 md:gap-12">
           {/* Filter Sidebar */}
           <aside className="w-full lg:w-72 flex-shrink-0">

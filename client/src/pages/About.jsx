@@ -43,7 +43,7 @@ const About = () => {
   }, [])
 
   return (
-    <div className="bg-white text-black antialiased font-manrope">
+    <div className="bg-background text-black antialiased font-manrope">
       <Navbar />
 
       <main>
@@ -95,7 +95,7 @@ const About = () => {
         </section>
 
         {/* Mission & Vision */}
-        <section className="py-16 md:py-24 px-4 sm:px-6 md:px-8 lg:px-24 bg-white">
+        <section className="py-16 md:py-24 px-4 sm:px-6 md:px-8 lg:px-24 bg-background">
           <div className="max-w-screen-2xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
               {/* Mission */}

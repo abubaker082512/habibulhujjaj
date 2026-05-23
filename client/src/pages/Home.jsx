@@ -162,7 +162,7 @@ const Home = () => {
       .catch(err => console.error('Failed to fetch page media:', err))
   }, [])
   return (
-    <div className="bg-white font-manrope text-black">
+    <div className="bg-background font-manrope text-black">
       <Navbar />
       
       {/* SideNavBar (WhatsApp FAB) */}

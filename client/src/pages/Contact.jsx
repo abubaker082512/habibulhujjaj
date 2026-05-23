@@ -79,7 +79,7 @@ const Contact = () => {
   }
 
   return (
-    <div className="bg-white font-manrope text-black min-h-screen">
+    <div className="bg-background font-manrope text-black min-h-screen">
       <Navbar />
 
       {/* Hero Section */}
@@ -108,7 +108,7 @@ const Contact = () => {
       </section>
 
       {/* Contact Content */}
-      <section className="py-16 md:py-24 px-4 sm:px-6 md:px-8 max-w-screen-2xl mx-auto bg-white">
+      <section className="py-16 md:py-24 px-4 sm:px-6 md:px-8 max-w-screen-2xl mx-auto bg-background">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-12">
           {/* Contact Info Cards */}
           <div className="lg:col-span-1 space-y-6">
@@ -254,7 +254,7 @@ const Contact = () => {
       </section>
 
       {/* Map Section */}
-      <section className="pb-16 md:pb-24 px-4 sm:px-6 md:px-8 max-w-screen-2xl mx-auto bg-white">
+      <section className="pb-16 md:pb-24 px-4 sm:px-6 md:px-8 max-w-screen-2xl mx-auto bg-background">
         <div className="bg-white border border-gray-100 shadow-sm overflow-hidden">
           <div className="p-4 md:p-8 border-b border-gray-100">
             <h3 className="font-notoSerif text-2xl font-bold text-primary mb-2">Our Location</h3>

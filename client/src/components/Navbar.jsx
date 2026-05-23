@@ -25,7 +25,7 @@ const Navbar = ({ isVersion2 = false }) => {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-100 shadow-md">
-      <div className="flex justify-between items-center w-full px-4 sm:px-6 md:px-8 py-4 max-w-screen-2xl mx-auto text-[#001b1c]">
+      <div className="flex justify-between items-center w-full px-4 sm:px-6 md:px-8 py-4 max-w-screen-2xl mx-auto text-[#0B1B3D]">
         <Link to="/" className="flex items-center gap-2">
           <img src={logo} alt="Habib Ul Hujjaj Logo" className="h-10 md:h-14 lg:h-16 w-auto object-contain" />
         </Link>
@@ -35,7 +35,7 @@ const Navbar = ({ isVersion2 = false }) => {
               key={l.to}
               to={l.to}
               className={({ isActive }) =>
-                `font-manrope text-[13px] font-bold uppercase tracking-widest transition-all ${isActive ? 'text-[#ffc65c] border-b-2 border-[#ffc65c] pb-1' : 'text-[#001b1c] hover:text-[#ffc65c]'}`
+                `font-manrope text-[13px] font-bold uppercase tracking-widest transition-all ${isActive ? 'text-[#FFC55B] border-b-2 border-[#FFC55B] pb-1' : 'text-[#0B1B3D] hover:text-[#FFC55B]'}`
               }
             >
               {l.label}
@@ -43,10 +43,10 @@ const Navbar = ({ isVersion2 = false }) => {
           ))}
         </div>
         <div className="flex items-center gap-4 md:gap-6">
-          <Link to="/packages" className="hidden sm:inline-block bg-[#001b1c] text-[#ffc65c] px-6 py-2.5 rounded-md font-manrope text-xs font-black tracking-widest uppercase hover:scale-105 transition-all shadow-xl">Book Now</Link>
+          <Link to="/packages" className="hidden sm:inline-block bg-[#0B1B3D] text-[#FFC55B] px-6 py-2.5 rounded-md font-manrope text-xs font-black tracking-widest uppercase hover:scale-105 transition-all shadow-xl">Book Now</Link>
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden text-[#001b1c] p-2"
+            className="md:hidden text-[#0B1B3D] p-2"
             aria-label="Toggle menu"
           >
             <span className="material-symbols-outlined text-3xl">{mobileMenuOpen ? 'close' : 'menu'}</span>
@@ -63,7 +63,7 @@ const Navbar = ({ isVersion2 = false }) => {
               to={l.to}
               onClick={handleLinkClick}
               className={({ isActive }) =>
-                `block font-manrope text-sm font-bold uppercase tracking-widest py-4 px-6 rounded-lg ${isActive ? 'text-[#ffc65c] bg-[#001b1c]' : 'text-[#001b1c] hover:text-[#ffc65c] hover:bg-gray-50'}`
+                `block font-manrope text-sm font-bold uppercase tracking-widest py-4 px-6 rounded-lg ${isActive ? 'text-[#FFC55B] bg-[#0B1B3D]' : 'text-[#0B1B3D] hover:text-[#FFC55B] hover:bg-gray-50'}`
               }
             >
               {l.label}
@@ -72,7 +72,7 @@ const Navbar = ({ isVersion2 = false }) => {
           <Link
             to="/packages"
             onClick={handleLinkClick}
-            className="block bg-[#001b1c] text-[#ffc65c] text-center py-4 px-6 rounded-md font-manrope text-sm font-black tracking-widest uppercase mt-6"
+            className="block bg-[#0B1B3D] text-[#FFC55B] text-center py-4 px-6 rounded-md font-manrope text-sm font-black tracking-widest uppercase mt-6"
           >
             Book Now
           </Link>

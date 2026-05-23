@@ -78,7 +78,7 @@ const MediaUpload = ({ value, onChange, label = 'Media', type = 'image' }) => {
         </select>
       </div>
       <div className="flex items-center gap-4">
-        <label className="flex-1 flex items-center gap-2 bg-surface border border-outline-variant hover:border-[#001c1d] py-3 px-3 rounded-lg cursor-pointer transition-colors">
+        <label className="flex-1 flex items-center gap-2 bg-surface border border-outline-variant hover:border-[#0B1B3D] py-3 px-3 rounded-lg cursor-pointer transition-colors">
           <span className="material-symbols-outlined text-outline">{mediaType === 'video' ? 'videocam' : 'add_photo_alternate'}</span>
           <span className="text-sm text-on-surface-variant truncate flex-1">
             {uploading ? 'Uploading...' : 'Click to upload ' + (mediaType === 'video' ? 'video' : 'image')}
@@ -102,7 +102,7 @@ const MediaUpload = ({ value, onChange, label = 'Media', type = 'image' }) => {
       )}
       {value && !value.startsWith('data:') && (
         <input 
-          className="w-full bg-surface border border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 px-3 text-xs text-on-surface-variant rounded-lg" 
+          className="w-full bg-surface border border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-2 px-3 text-xs text-on-surface-variant rounded-lg" 
           value={value} 
           onChange={e => { onChange(e.target.value); setPreview(e.target.value) }} 
           placeholder="Or paste URL here" 
@@ -157,7 +157,7 @@ const ImageUpload = ({ value, onChange, label = 'Image' }) => {
     <div className="space-y-2">
       <label className="block text-xs font-bold uppercase tracking-widest text-outline">{label}</label>
       <div className="flex items-center gap-4">
-        <label className="flex-1 flex items-center gap-2 bg-surface border-0 border-b border-outline-variant focus-within:border-[#001c1d] py-2 px-1 cursor-pointer">
+        <label className="flex-1 flex items-center gap-2 bg-surface border-0 border-b border-outline-variant focus-within:border-[#0B1B3D] py-2 px-1 cursor-pointer">
           <span className="material-symbols-outlined text-outline text-sm">cloud_upload</span>
           <span className="text-sm text-on-surface-variant truncate flex-1">
             {uploading ? 'Uploading...' : 'Choose file'}
@@ -169,7 +169,7 @@ const ImageUpload = ({ value, onChange, label = 'Image' }) => {
         )}
       </div>
       {value && !value.startsWith('data:') && (
-        <input className="w-full bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-xs text-on-surface-variant" value={value} onChange={e => onChange(e.target.value)} placeholder="Or paste image URL" />
+        <input className="w-full bg-surface border-0 border-b border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-2 text-xs text-on-surface-variant" value={value} onChange={e => onChange(e.target.value)} placeholder="Or paste image URL" />
       )}
     </div>
   )
@@ -659,7 +659,7 @@ const AdminDashboard = () => {
   return (
     <div className="min-h-screen bg-surface">
       {/* Admin Header */}
-      <header className="bg-[#001c1d] text-white px-4 md:px-8 py-6 flex justify-between items-center shadow-lg">
+      <header className="bg-[#0B1B3D] text-white px-4 md:px-8 py-6 flex justify-between items-center shadow-lg">
         <div>
           <h1 className="font-notoSerif text-3xl font-black text-secondary tracking-tighter uppercase">Admin Console</h1>
           <p className="text-white/40 text-[10px] font-black tracking-[0.3em] uppercase">Habib Ul Hujjaj Legacy</p>
@@ -672,7 +672,7 @@ const AdminDashboard = () => {
 
       <div className="flex flex-col lg:flex-row">
         {/* Sidebar Tabs */}
-        <aside className="w-full lg:w-72 bg-[#001c1d] lg:min-h-[calc(100vh-100px)] p-6 border-t border-white/5">
+        <aside className="w-full lg:w-72 bg-[#0B1B3D] lg:min-h-[calc(100vh-100px)] p-6 border-t border-white/5">
           <nav className="flex lg:flex-col gap-3 overflow-x-auto lg:overflow-x-visible pb-4 lg:pb-0">
             {tabs.map(tab => (
               <button
@@ -714,13 +714,13 @@ const AdminDashboard = () => {
               <div className="bg-surface-container-lowest p-8 rounded-xl editorial-shadow mb-8">
                 <h3 className="font-notoSerif text-xl font-bold mb-6">{editingId.package ? 'Edit Umrah Package' : 'Add New Package'}</h3>
                 <form onSubmit={handleAddPackage} className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <input className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm" placeholder="Package Title" value={packageForm.title} onChange={e => setPackageForm({...packageForm, title: e.target.value})} required />
-                  <input className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm" placeholder="Price (PKR)" type="number" value={packageForm.price} onChange={e => setPackageForm({...packageForm, price: e.target.value})} required />
-                  <input className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm" placeholder="Location" value={packageForm.location} onChange={e => setPackageForm({...packageForm, location: e.target.value})} />
-                  <input className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm" placeholder="Duration (e.g., 10 Days)" value={packageForm.duration} onChange={e => setPackageForm({...packageForm, duration: e.target.value})} required />
-                  <input className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm" placeholder="Hotel Name" value={packageForm.hotel_name} onChange={e => setPackageForm({...packageForm, hotel_name: e.target.value})} />
-                  <input className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm" placeholder="Distance from Haram" value={packageForm.distance_from_haram} onChange={e => setPackageForm({...packageForm, distance_from_haram: e.target.value})} />
-                  <select className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm" value={packageForm.category} onChange={e => setPackageForm({...packageForm, category: e.target.value})}>
+                  <input className="bg-surface border-0 border-b border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-2 text-sm" placeholder="Package Title" value={packageForm.title} onChange={e => setPackageForm({...packageForm, title: e.target.value})} required />
+                  <input className="bg-surface border-0 border-b border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-2 text-sm" placeholder="Price (PKR)" type="number" value={packageForm.price} onChange={e => setPackageForm({...packageForm, price: e.target.value})} required />
+                  <input className="bg-surface border-0 border-b border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-2 text-sm" placeholder="Location" value={packageForm.location} onChange={e => setPackageForm({...packageForm, location: e.target.value})} />
+                  <input className="bg-surface border-0 border-b border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-2 text-sm" placeholder="Duration (e.g., 10 Days)" value={packageForm.duration} onChange={e => setPackageForm({...packageForm, duration: e.target.value})} required />
+                  <input className="bg-surface border-0 border-b border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-2 text-sm" placeholder="Hotel Name" value={packageForm.hotel_name} onChange={e => setPackageForm({...packageForm, hotel_name: e.target.value})} />
+                  <input className="bg-surface border-0 border-b border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-2 text-sm" placeholder="Distance from Haram" value={packageForm.distance_from_haram} onChange={e => setPackageForm({...packageForm, distance_from_haram: e.target.value})} />
+                  <select className="bg-surface border-0 border-b border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-2 text-sm" value={packageForm.category} onChange={e => setPackageForm({...packageForm, category: e.target.value})}>
                     <option>Economy</option>
                     <option>3 Star</option>
                     <option>4 Star</option>
@@ -728,7 +728,7 @@ const AdminDashboard = () => {
                     <option>Ramadan</option>
                     <option>December</option>
                   </select>
-                  <input className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm" placeholder="Airline" value={packageForm.airline} onChange={e => setPackageForm({...packageForm, airline: e.target.value})} />
+                  <input className="bg-surface border-0 border-b border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-2 text-sm" placeholder="Airline" value={packageForm.airline} onChange={e => setPackageForm({...packageForm, airline: e.target.value})} />
                   
                   {/* Image Upload */}
                   <div className="md:col-span-2">
@@ -739,10 +739,10 @@ const AdminDashboard = () => {
                     />
                   </div>
 
-                  <input className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm" placeholder="Badge (e.g., Best Seller)" value={packageForm.badge} onChange={e => setPackageForm({...packageForm, badge: e.target.value})} />
-                  <textarea className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm md:col-span-2" placeholder="Description" rows={3} value={packageForm.description} onChange={e => setPackageForm({...packageForm, description: e.target.value})} required />
+                  <input className="bg-surface border-0 border-b border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-2 text-sm" placeholder="Badge (e.g., Best Seller)" value={packageForm.badge} onChange={e => setPackageForm({...packageForm, badge: e.target.value})} />
+                  <textarea className="bg-surface border-0 border-b border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-2 text-sm md:col-span-2" placeholder="Description" rows={3} value={packageForm.description} onChange={e => setPackageForm({...packageForm, description: e.target.value})} required />
                   <div className="md:col-span-2 flex gap-4">
-                    <button type="submit" className="flex-1 bg-[#001c1d] text-white py-3 rounded font-bold text-sm hover:brightness-110 transition-all">
+                    <button type="submit" className="flex-1 bg-[#0B1B3D] text-white py-3 rounded font-bold text-sm hover:brightness-110 transition-all">
                       {editingId.package ? 'Save Updates' : 'Add Package'}
                     </button>
                     {editingId.package && (
@@ -772,11 +772,11 @@ const AdminDashboard = () => {
                         <div className="flex-1">
                           <h4 className="font-bold text-primary">{pkg.title}</h4>
                           <p className="text-sm text-on-surface-variant font-medium">{pkg.category} • {pkg.duration}</p>
-                          <p className="text-[#001c1d] font-bold">PKR {(pkg.price || 0).toLocaleString()}</p>
+                          <p className="text-[#0B1B3D] font-bold">PKR {(pkg.price || 0).toLocaleString()}</p>
                           <p className="text-[10px] text-outline mt-1 font-mono uppercase truncate max-w-[150px]">{pkg.id}</p>
                         </div>
                         <div className="flex flex-col gap-2 self-start">
-                          <button onClick={() => { setPackageForm({ title: pkg.title, description: pkg.description, price: String(pkg.price), category: pkg.category, duration: pkg.duration, location: pkg.location || '', hotel_name: pkg.hotel_name || '', distance_from_haram: pkg.distance_from_haram || '', image_url: pkg.image_url || '', airline: pkg.airline || '', stars: pkg.stars || 4, badge: pkg.badge || '' }); setEditingId(prev => ({ ...prev, package: pkg.id })); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="text-[#001c1d] hover:text-secondary transition-colors" title="Edit Package">
+                          <button onClick={() => { setPackageForm({ title: pkg.title, description: pkg.description, price: String(pkg.price), category: pkg.category, duration: pkg.duration, location: pkg.location || '', hotel_name: pkg.hotel_name || '', distance_from_haram: pkg.distance_from_haram || '', image_url: pkg.image_url || '', airline: pkg.airline || '', stars: pkg.stars || 4, badge: pkg.badge || '' }); setEditingId(prev => ({ ...prev, package: pkg.id })); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="text-[#0B1B3D] hover:text-secondary transition-colors" title="Edit Package">
                             <span className="material-symbols-outlined">edit</span>
                           </button>
                           <button onClick={() => handleDeletePackage(pkg.id)} className="text-red-500 hover:text-red-700 transition-colors" title="Delete Package">
@@ -798,17 +798,17 @@ const AdminDashboard = () => {
               <div className="bg-surface-container-lowest p-8 rounded-xl editorial-shadow mb-8">
                 <h3 className="font-notoSerif text-xl font-bold mb-6">{editingId.tour ? 'Edit International Tour' : 'Add New Tour'}</h3>
                 <form onSubmit={handleAddTour} className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <input required className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm" placeholder="Tour Title (e.g., Turkey Tour)" value={tourForm.title} onChange={e => setTourForm({...tourForm, title: e.target.value})} />
-                  <input className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm" placeholder="Subtitle (e.g., Istanbul, Cappadocia)" value={tourForm.subtitle} onChange={e => setTourForm({...tourForm, subtitle: e.target.value})} />
-                  <input className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm" placeholder="Duration (e.g., 10 Days)" value={tourForm.duration} onChange={e => setTourForm({...tourForm, duration: e.target.value})} />
-                  <input className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm" placeholder="Price (PKR)" value={tourForm.price} onChange={e => setTourForm({...tourForm, price: e.target.value})} />
+                  <input required className="bg-surface border-0 border-b border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-2 text-sm" placeholder="Tour Title (e.g., Turkey Tour)" value={tourForm.title} onChange={e => setTourForm({...tourForm, title: e.target.value})} />
+                  <input className="bg-surface border-0 border-b border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-2 text-sm" placeholder="Subtitle (e.g., Istanbul, Cappadocia)" value={tourForm.subtitle} onChange={e => setTourForm({...tourForm, subtitle: e.target.value})} />
+                  <input className="bg-surface border-0 border-b border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-2 text-sm" placeholder="Duration (e.g., 10 Days)" value={tourForm.duration} onChange={e => setTourForm({...tourForm, duration: e.target.value})} />
+                  <input className="bg-surface border-0 border-b border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-2 text-sm" placeholder="Price (PKR)" value={tourForm.price} onChange={e => setTourForm({...tourForm, price: e.target.value})} />
                   <div className="md:col-span-2">
                     <ImageUpload value={tourForm.image_url} onChange={(val) => setTourForm({...tourForm, image_url: val})} label="Tour Image" />
                   </div>
-                  <input className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm md:col-span-2" placeholder="Highlights (comma separated)" value={tourForm.highlights} onChange={e => setTourForm({...tourForm, highlights: e.target.value})} />
-                  <textarea className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm md:col-span-2" placeholder="Description" rows={3} value={tourForm.description} onChange={e => setTourForm({...tourForm, description: e.target.value})} />
+                  <input className="bg-surface border-0 border-b border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-2 text-sm md:col-span-2" placeholder="Highlights (comma separated)" value={tourForm.highlights} onChange={e => setTourForm({...tourForm, highlights: e.target.value})} />
+                  <textarea className="bg-surface border-0 border-b border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-2 text-sm md:col-span-2" placeholder="Description" rows={3} value={tourForm.description} onChange={e => setTourForm({...tourForm, description: e.target.value})} />
                   <div className="md:col-span-2 flex gap-4">
-                    <button type="submit" className="flex-1 bg-[#001c1d] text-white py-3 rounded font-bold text-sm hover:brightness-110 transition-all">
+                    <button type="submit" className="flex-1 bg-[#0B1B3D] text-white py-3 rounded font-bold text-sm hover:brightness-110 transition-all">
                       {editingId.tour ? 'Save Updates' : 'Add Tour'}
                     </button>
                     {editingId.tour && (
@@ -827,10 +827,10 @@ const AdminDashboard = () => {
                     <div className="flex-1 min-w-0">
                       <p className="font-bold text-primary truncate">{t.title}</p>
                       <p className="text-sm text-outline">{t.subtitle} • {t.duration}</p>
-                      <p className="text-[#001c1d] font-bold text-sm">PKR {(t.price||0).toLocaleString()}</p>
+                      <p className="text-[#0B1B3D] font-bold text-sm">PKR {(t.price||0).toLocaleString()}</p>
                     </div>
                     <div className="flex items-center gap-2 flex-shrink-0">
-                      <button onClick={() => { setTourForm({ title: t.title, subtitle: t.subtitle || '', description: t.description || '', price: String(t.price), duration: t.duration || '', image_url: t.image_url || '', highlights: Array.isArray(t.highlights) ? t.highlights.join(', ') : (t.highlights || '') }); setEditingId(prev => ({ ...prev, tour: t.id })); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="text-[#001c1d] hover:text-secondary p-1" title="Edit Tour">
+                      <button onClick={() => { setTourForm({ title: t.title, subtitle: t.subtitle || '', description: t.description || '', price: String(t.price), duration: t.duration || '', image_url: t.image_url || '', highlights: Array.isArray(t.highlights) ? t.highlights.join(', ') : (t.highlights || '') }); setEditingId(prev => ({ ...prev, tour: t.id })); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="text-[#0B1B3D] hover:text-secondary p-1" title="Edit Tour">
                         <span className="material-symbols-outlined">edit</span>
                       </button>
                       <button onClick={()=>handleDeleteTour(t.id)} className="text-red-500 hover:text-red-700 p-1" title="Delete Tour"><span className="material-symbols-outlined">delete</span></button>
@@ -849,13 +849,13 @@ const AdminDashboard = () => {
               <div className="bg-surface-container-lowest p-8 rounded-xl editorial-shadow mb-8">
                 <h3 className="font-notoSerif text-xl font-bold mb-6">{editingId.visa ? 'Edit Visa Service' : 'Add New Visa Service'}</h3>
                 <form onSubmit={handleAddVisa} className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <input required className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm" placeholder="Visa Title (e.g., Umrah Visa)" value={visaForm.title} onChange={e => setVisaForm({...visaForm, title: e.target.value})} />
-                  <input className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm" placeholder="Processing Time" value={visaForm.processing_time} onChange={e => setVisaForm({...visaForm, processing_time: e.target.value})} />
-                  <input className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm" placeholder="Fee (PKR)" value={visaForm.fee} onChange={e => setVisaForm({...visaForm, fee: e.target.value})} />
-                  <input className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm" placeholder="Required Documents (comma separated)" value={visaForm.documents} onChange={e => setVisaForm({...visaForm, documents: e.target.value})} />
-                  <textarea className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm md:col-span-2" placeholder="Description" rows={3} value={visaForm.description} onChange={e => setVisaForm({...visaForm, description: e.target.value})} />
+                  <input required className="bg-surface border-0 border-b border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-2 text-sm" placeholder="Visa Title (e.g., Umrah Visa)" value={visaForm.title} onChange={e => setVisaForm({...visaForm, title: e.target.value})} />
+                  <input className="bg-surface border-0 border-b border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-2 text-sm" placeholder="Processing Time" value={visaForm.processing_time} onChange={e => setVisaForm({...visaForm, processing_time: e.target.value})} />
+                  <input className="bg-surface border-0 border-b border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-2 text-sm" placeholder="Fee (PKR)" value={visaForm.fee} onChange={e => setVisaForm({...visaForm, fee: e.target.value})} />
+                  <input className="bg-surface border-0 border-b border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-2 text-sm" placeholder="Required Documents (comma separated)" value={visaForm.documents} onChange={e => setVisaForm({...visaForm, documents: e.target.value})} />
+                  <textarea className="bg-surface border-0 border-b border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-2 text-sm md:col-span-2" placeholder="Description" rows={3} value={visaForm.description} onChange={e => setVisaForm({...visaForm, description: e.target.value})} />
                   <div className="md:col-span-2 flex gap-4">
-                    <button type="submit" className="flex-1 bg-[#001c1d] text-white py-3 rounded font-bold text-sm hover:brightness-110 transition-all">
+                    <button type="submit" className="flex-1 bg-[#0B1B3D] text-white py-3 rounded font-bold text-sm hover:brightness-110 transition-all">
                       {editingId.visa ? 'Save Updates' : 'Add Visa Service'}
                     </button>
                     {editingId.visa && (
@@ -870,13 +870,13 @@ const AdminDashboard = () => {
                 <h3 className="font-notoSerif text-xl font-bold">Existing Visa Services ({visaServices.length})</h3>
                 {visaServices.map(v => (
                   <div key={v.id} className="bg-surface-container-lowest p-4 rounded-lg flex items-center gap-4 editorial-shadow">
-                    <span className="material-symbols-outlined text-3xl text-[#001c1d] flex-shrink-0">description</span>
+                    <span className="material-symbols-outlined text-3xl text-[#0B1B3D] flex-shrink-0">description</span>
                     <div className="flex-1 min-w-0">
                       <p className="font-bold text-primary">{v.title}</p>
                       <p className="text-sm text-outline">{v.processing_time} • {v.fee}</p>
                     </div>
                     <div className="flex items-center gap-2 flex-shrink-0">
-                      <button onClick={() => { setVisaForm({ title: v.title, description: v.description || '', processing_time: v.processing_time || '', fee: v.fee || '', documents: Array.isArray(v.documents) ? v.documents.join(', ') : (v.documents || '') }); setEditingId(prev => ({ ...prev, visa: v.id })); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="text-[#001c1d] hover:text-secondary p-1" title="Edit Visa Service">
+                      <button onClick={() => { setVisaForm({ title: v.title, description: v.description || '', processing_time: v.processing_time || '', fee: v.fee || '', documents: Array.isArray(v.documents) ? v.documents.join(', ') : (v.documents || '') }); setEditingId(prev => ({ ...prev, visa: v.id })); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="text-[#0B1B3D] hover:text-secondary p-1" title="Edit Visa Service">
                         <span className="material-symbols-outlined">edit</span>
                       </button>
                       <button onClick={()=>handleDeleteVisa(v.id)} className="text-red-500 hover:text-red-700 p-1" title="Delete Visa Service"><span className="material-symbols-outlined">delete</span></button>
@@ -895,16 +895,16 @@ const AdminDashboard = () => {
               <div className="bg-surface-container-lowest p-8 rounded-xl editorial-shadow mb-8">
                 <h3 className="font-notoSerif text-xl font-bold mb-6">{editingId.flight ? 'Edit Destination' : 'Add New Destination'}</h3>
                 <form onSubmit={handleAddFlight} className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <input required className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm" placeholder="Destination Name (e.g., London)" value={flightForm.name} onChange={e => setFlightForm({...flightForm, name: e.target.value})} />
-                  <input className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm" placeholder="Price Starts From (PKR)" type="number" value={flightForm.price_start} onChange={e => setFlightForm({...flightForm, price_start: e.target.value})} />
+                  <input required className="bg-surface border-0 border-b border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-2 text-sm" placeholder="Destination Name (e.g., London)" value={flightForm.name} onChange={e => setFlightForm({...flightForm, name: e.target.value})} />
+                  <input className="bg-surface border-0 border-b border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-2 text-sm" placeholder="Price Starts From (PKR)" type="number" value={flightForm.price_start} onChange={e => setFlightForm({...flightForm, price_start: e.target.value})} />
                   <div className="md:col-span-2">
                     <ImageUpload value={flightForm.image_url} onChange={(val) => setFlightForm({...flightForm, image_url: val})} label="Destination Image" />
                   </div>
-                  <input className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm" placeholder="Category (e.g., Most Popular)" value={flightForm.category} onChange={e => setFlightForm({...flightForm, category: e.target.value})} />
-                  <input className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm" placeholder="Booking URL (Optional)" value={flightForm.booking_url} onChange={e => setFlightForm({...flightForm, booking_url: e.target.value})} />
-                  <textarea className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm md:col-span-2" placeholder="Short Description" rows={2} value={flightForm.description} onChange={e => setFlightForm({...flightForm, description: e.target.value})} />
+                  <input className="bg-surface border-0 border-b border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-2 text-sm" placeholder="Category (e.g., Most Popular)" value={flightForm.category} onChange={e => setFlightForm({...flightForm, category: e.target.value})} />
+                  <input className="bg-surface border-0 border-b border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-2 text-sm" placeholder="Booking URL (Optional)" value={flightForm.booking_url} onChange={e => setFlightForm({...flightForm, booking_url: e.target.value})} />
+                  <textarea className="bg-surface border-0 border-b border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-2 text-sm md:col-span-2" placeholder="Short Description" rows={2} value={flightForm.description} onChange={e => setFlightForm({...flightForm, description: e.target.value})} />
                   <div className="md:col-span-2 flex gap-4">
-                    <button type="submit" className="flex-1 bg-[#001c1d] text-white py-3 rounded font-bold text-sm hover:brightness-110 transition-all">
+                    <button type="submit" className="flex-1 bg-[#0B1B3D] text-white py-3 rounded font-bold text-sm hover:brightness-110 transition-all">
                       {editingId.flight ? 'Save Updates' : 'Add Destination'}
                     </button>
                     {editingId.flight && (
@@ -924,10 +924,10 @@ const AdminDashboard = () => {
                       <div className="flex justify-between items-start">
                         <div>
                           <p className="font-bold text-primary">{f.name}</p>
-                          <p className="text-xs text-[#001c1d] font-bold">From PKR {(f.price_start || 0).toLocaleString()}</p>
+                          <p className="text-xs text-[#0B1B3D] font-bold">From PKR {(f.price_start || 0).toLocaleString()}</p>
                         </div>
                         <div className="flex items-center gap-2">
-                          <button onClick={() => { setFlightForm({ name: f.name, description: f.description || '', image_url: f.image_url || '', price_start: String(f.price_start), category: f.category || 'Most Popular', booking_url: f.booking_url || '' }); setEditingId(prev => ({ ...prev, flight: f.id })); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="text-[#001c1d] hover:text-secondary p-1" title="Edit Destination">
+                          <button onClick={() => { setFlightForm({ name: f.name, description: f.description || '', image_url: f.image_url || '', price_start: String(f.price_start), category: f.category || 'Most Popular', booking_url: f.booking_url || '' }); setEditingId(prev => ({ ...prev, flight: f.id })); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="text-[#0B1B3D] hover:text-secondary p-1" title="Edit Destination">
                             <span className="material-symbols-outlined text-sm">edit</span>
                           </button>
                           <button onClick={()=>handleDeleteFlight(f.id)} className="text-red-500 hover:text-red-700 p-1" title="Delete Destination"><span className="material-symbols-outlined text-sm">delete</span></button>
@@ -953,19 +953,19 @@ const AdminDashboard = () => {
                 <div className="flex items-center bg-surface-container-low p-1.5 rounded-xl border border-outline-variant mt-4 md:mt-0">
                   <button 
                     onClick={() => { setTaxiSubTab('pricing'); setEditingId(prev => ({ ...prev, taxi: null })); }}
-                    className={`px-5 py-2 rounded-lg font-bold text-xs uppercase tracking-wider transition-all ${taxiSubTab === 'pricing' ? 'bg-[#001c1d] text-[#ffc65c] shadow' : 'text-primary hover:bg-surface-container-high'}`}
+                    className={`px-5 py-2 rounded-lg font-bold text-xs uppercase tracking-wider transition-all ${taxiSubTab === 'pricing' ? 'bg-[#0B1B3D] text-[#FFC55B] shadow' : 'text-primary hover:bg-surface-container-high'}`}
                   >
                     💰 Pricing Matrix
                   </button>
                   <button 
                     onClick={() => setTaxiSubTab('fleet')}
-                    className={`px-5 py-2 rounded-lg font-bold text-xs uppercase tracking-wider transition-all ${taxiSubTab === 'fleet' ? 'bg-[#001c1d] text-[#ffc65c] shadow' : 'text-primary hover:bg-surface-container-high'}`}
+                    className={`px-5 py-2 rounded-lg font-bold text-xs uppercase tracking-wider transition-all ${taxiSubTab === 'fleet' ? 'bg-[#0B1B3D] text-[#FFC55B] shadow' : 'text-primary hover:bg-surface-container-high'}`}
                   >
                     🚗 Customize Fleet
                   </button>
                   <button 
                     onClick={() => setTaxiSubTab('routes')}
-                    className={`px-5 py-2 rounded-lg font-bold text-xs uppercase tracking-wider transition-all ${taxiSubTab === 'routes' ? 'bg-[#001c1d] text-[#ffc65c] shadow' : 'text-primary hover:bg-surface-container-high'}`}
+                    className={`px-5 py-2 rounded-lg font-bold text-xs uppercase tracking-wider transition-all ${taxiSubTab === 'routes' ? 'bg-[#0B1B3D] text-[#FFC55B] shadow' : 'text-primary hover:bg-surface-container-high'}`}
                   >
                     🗺️ Custom Routes
                   </button>
@@ -981,7 +981,7 @@ const AdminDashboard = () => {
                       <div className="flex flex-col">
                         <label className="text-[10px] font-bold uppercase tracking-widest text-outline mb-1.5">Select Route / Destination</label>
                         <select 
-                          className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2.5 text-sm"
+                          className="bg-surface border-0 border-b border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-2.5 text-sm"
                           value={taxiForm.name || 'Jeddah Airport To Makkah Hotel'} 
                           onChange={e => setTaxiForm({...taxiForm, name: e.target.value})}
                         >
@@ -1003,7 +1003,7 @@ const AdminDashboard = () => {
                           <input 
                             required 
                             placeholder="Enter Custom Route Name..." 
-                            className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm mt-2" 
+                            className="bg-surface border-0 border-b border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-2 text-sm mt-2" 
                             onChange={e => setTaxiForm({...taxiForm, name: e.target.value})}
                           />
                         )}
@@ -1012,7 +1012,7 @@ const AdminDashboard = () => {
                       <div className="flex flex-col">
                         <label className="text-[10px] font-bold uppercase tracking-widest text-outline mb-1.5">Select Fleet Vehicle</label>
                         <select 
-                          className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2.5 text-sm"
+                          className="bg-surface border-0 border-b border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-2.5 text-sm"
                           value={taxiForm.vehicle_type || 'CAMRY'} 
                           onChange={e => setTaxiForm({...taxiForm, vehicle_type: e.target.value})}
                         >
@@ -1031,7 +1031,7 @@ const AdminDashboard = () => {
                           <input 
                             required 
                             placeholder="Enter Custom Vehicle Name..." 
-                            className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm mt-2" 
+                            className="bg-surface border-0 border-b border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-2 text-sm mt-2" 
                             onChange={e => setTaxiForm({...taxiForm, vehicle_type: e.target.value})}
                           />
                         )}
@@ -1039,12 +1039,12 @@ const AdminDashboard = () => {
 
                       <div>
                         <label className="text-[10px] font-bold uppercase tracking-widest text-outline mb-1.5">Price in SAR</label>
-                        <input required className="w-full bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm" placeholder="Price (SAR)" type="number" value={taxiForm.price} onChange={e => setTaxiForm({...taxiForm, price: e.target.value})} />
+                        <input required className="w-full bg-surface border-0 border-b border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-2 text-sm" placeholder="Price (SAR)" type="number" value={taxiForm.price} onChange={e => setTaxiForm({...taxiForm, price: e.target.value})} />
                       </div>
 
                       <div>
                         <label className="text-[10px] font-bold uppercase tracking-widest text-outline mb-1.5">Route Category</label>
-                        <select className="w-full bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2.5 text-sm" value={taxiForm.category} onChange={e => setTaxiForm({...taxiForm, category: e.target.value})}>
+                        <select className="w-full bg-surface border-0 border-b border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-2.5 text-sm" value={taxiForm.category} onChange={e => setTaxiForm({...taxiForm, category: e.target.value})}>
                           <option value="One Way">One Way</option>
                           <option value="Round Trip">Round Trip</option>
                           <option value="Ziyarat">Ziyarat</option>
@@ -1052,7 +1052,7 @@ const AdminDashboard = () => {
                       </div>
 
                       <div className="md:col-span-2 flex gap-4 mt-4">
-                        <button type="submit" className="flex-1 bg-[#001c1d] text-[#ffc65c] py-3.5 rounded font-black text-xs uppercase tracking-widest hover:brightness-110 transition-all shadow-md">
+                        <button type="submit" className="flex-1 bg-[#0B1B3D] text-[#FFC55B] py-3.5 rounded font-black text-xs uppercase tracking-widest hover:brightness-110 transition-all shadow-md">
                           {editingId.taxi ? 'Save Price updates' : 'Apply Price To Route'}
                         </button>
                         {editingId.taxi && (
@@ -1070,7 +1070,7 @@ const AdminDashboard = () => {
                     <div className="bg-surface-container-lowest rounded-xl overflow-hidden editorial-shadow">
                       <table className="w-full text-left border-collapse">
                         <thead>
-                          <tr className="bg-[#001c1d]/5 text-[10px] font-bold uppercase tracking-widest text-outline border-b border-outline-variant">
+                          <tr className="bg-[#0B1B3D]/5 text-[10px] font-bold uppercase tracking-widest text-outline border-b border-outline-variant">
                             <th className="p-4">Route / Destination</th>
                             <th className="p-4">Vehicle Type</th>
                             <th className="p-4">Category</th>
@@ -1086,7 +1086,7 @@ const AdminDashboard = () => {
                               <td className="p-4"><span className="px-3 py-1 bg-surface-container-high rounded-full text-xs font-bold text-primary">{t.category}</span></td>
                               <td className="p-4 font-black text-secondary">{t.price} SAR</td>
                               <td className="p-4 text-right flex items-center justify-end gap-2">
-                                <button onClick={() => { setTaxiForm({ name: t.name, vehicle_type: t.vehicle_type, capacity: t.capacity || '', price: String(t.price || ''), image_url: t.image_url || '', description: t.description || '', category: t.category || 'One Way' }); setEditingId(prev => ({ ...prev, taxi: t.id })); }} className="text-[#001c1d] hover:text-secondary p-1.5 bg-gray-100 rounded" title="Edit Pricing">
+                                <button onClick={() => { setTaxiForm({ name: t.name, vehicle_type: t.vehicle_type, capacity: t.capacity || '', price: String(t.price || ''), image_url: t.image_url || '', description: t.description || '', category: t.category || 'One Way' }); setEditingId(prev => ({ ...prev, taxi: t.id })); }} className="text-[#0B1B3D] hover:text-secondary p-1.5 bg-gray-100 rounded" title="Edit Pricing">
                                   <span className="material-symbols-outlined text-sm">edit</span>
                                 </button>
                                 <button onClick={()=>handleDeleteTaxi(t.id)} className="text-red-500 hover:text-red-700 p-1.5 bg-red-50 rounded" title="Delete Pricing"><span className="material-symbols-outlined text-sm">delete</span></button>
@@ -1112,7 +1112,7 @@ const AdminDashboard = () => {
                       <div className="flex flex-col">
                         <label className="text-[10px] font-bold uppercase tracking-widest text-outline mb-1.5">Select Vehicle to Customize</label>
                         <select 
-                          className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2.5 text-sm"
+                          className="bg-surface border-0 border-b border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-2.5 text-sm"
                           value={vehicleMetaForm.vehicle_type} 
                           onChange={e => {
                             const vName = e.target.value;
@@ -1140,12 +1140,12 @@ const AdminDashboard = () => {
 
                       <div>
                         <label className="text-[10px] font-bold uppercase tracking-widest text-outline mb-1.5">Seats & Capacity Description</label>
-                        <input required className="w-full bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm" placeholder="e.g. 4 Person Seat Vehicle" value={vehicleMetaForm.capacity} onChange={e => setVehicleMetaForm({...vehicleMetaForm, capacity: e.target.value})} />
+                        <input required className="w-full bg-surface border-0 border-b border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-2 text-sm" placeholder="e.g. 4 Person Seat Vehicle" value={vehicleMetaForm.capacity} onChange={e => setVehicleMetaForm({...vehicleMetaForm, capacity: e.target.value})} />
                       </div>
 
                       <div className="md:col-span-2">
                         <label className="text-[10px] font-bold uppercase tracking-widest text-outline mb-1.5">Luggage & Comfort Features</label>
-                        <input required className="w-full bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm" placeholder="e.g. 3 Luggage, AC Chilled Vehicle" value={vehicleMetaForm.description} onChange={e => setVehicleMetaForm({...vehicleMetaForm, description: e.target.value})} />
+                        <input required className="w-full bg-surface border-0 border-b border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-2 text-sm" placeholder="e.g. 3 Luggage, AC Chilled Vehicle" value={vehicleMetaForm.description} onChange={e => setVehicleMetaForm({...vehicleMetaForm, description: e.target.value})} />
                       </div>
 
                       <div className="md:col-span-2">
@@ -1153,7 +1153,7 @@ const AdminDashboard = () => {
                       </div>
 
                       <div className="md:col-span-2 flex gap-4 mt-4">
-                        <button type="submit" className="flex-1 bg-[#001c1d] text-[#ffc65c] py-3.5 rounded font-black text-xs uppercase tracking-widest hover:brightness-110 transition-all shadow-md">
+                        <button type="submit" className="flex-1 bg-[#0B1B3D] text-[#FFC55B] py-3.5 rounded font-black text-xs uppercase tracking-widest hover:brightness-110 transition-all shadow-md">
                           Save Vehicle Specifications & Image
                         </button>
                       </div>
@@ -1169,7 +1169,7 @@ const AdminDashboard = () => {
                           <div>
                             {t.image_url && <img src={t.image_url} alt={t.vehicle_type} className="w-full h-32 object-contain bg-gray-50 rounded-xl mb-4 p-2" />}
                             <h4 className="font-bold text-lg text-primary uppercase mb-1">{t.vehicle_type}</h4>
-                            <p className="text-xs text-[#001c1d] font-bold mb-2">{t.capacity}</p>
+                            <p className="text-xs text-[#0B1B3D] font-bold mb-2">{t.capacity}</p>
                             <p className="text-xs text-outline font-medium">{t.description}</p>
                           </div>
                           <div className="flex justify-end gap-2 mt-6 border-t border-outline-variant pt-4">
@@ -1197,7 +1197,7 @@ const AdminDashboard = () => {
                       <div className="flex flex-col">
                         <label className="text-[10px] font-bold uppercase tracking-widest text-outline mb-1.5">Select Route to Customize</label>
                         <select 
-                          className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2.5 text-sm"
+                          className="bg-surface border-0 border-b border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-2.5 text-sm"
                           value={routeMetaForm.route_name} 
                           onChange={e => {
                             const rName = e.target.value;
@@ -1226,7 +1226,7 @@ const AdminDashboard = () => {
 
                       <div>
                         <label className="text-[10px] font-bold uppercase tracking-widest text-outline mb-1.5">Route Category</label>
-                        <select className="w-full bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2.5 text-sm" value={routeMetaForm.category} onChange={e => setRouteMetaForm({...routeMetaForm, category: e.target.value})}>
+                        <select className="w-full bg-surface border-0 border-b border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-2.5 text-sm" value={routeMetaForm.category} onChange={e => setRouteMetaForm({...routeMetaForm, category: e.target.value})}>
                           <option value="One Way">One Way</option>
                           <option value="Round Trip">Round Trip</option>
                           <option value="Ziyarat">Ziyarat</option>
@@ -1238,7 +1238,7 @@ const AdminDashboard = () => {
                       </div>
 
                       <div className="md:col-span-2 flex gap-4 mt-4">
-                        <button type="submit" className="flex-1 bg-[#001c1d] text-[#ffc65c] py-3.5 rounded font-black text-xs uppercase tracking-widest hover:brightness-110 transition-all shadow-md">
+                        <button type="submit" className="flex-1 bg-[#0B1B3D] text-[#FFC55B] py-3.5 rounded font-black text-xs uppercase tracking-widest hover:brightness-110 transition-all shadow-md">
                           Save Route Banner Image & Category
                         </button>
                       </div>
@@ -1287,8 +1287,8 @@ const AdminDashboard = () => {
                   <div className="md:col-span-2">
                     <ImageUpload value={galleryForm.src} onChange={(val) => setGalleryForm({...galleryForm, src: val})} label="Gallery Image" />
                   </div>
-                  <input className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm" placeholder="Label / Title" value={galleryForm.label} onChange={e => setGalleryForm({...galleryForm, label: e.target.value})} />
-                  <select className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm" value={galleryForm.category} onChange={e => setGalleryForm({...galleryForm, category: e.target.value})}>
+                  <input className="bg-surface border-0 border-b border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-2 text-sm" placeholder="Label / Title" value={galleryForm.label} onChange={e => setGalleryForm({...galleryForm, label: e.target.value})} />
+                  <select className="bg-surface border-0 border-b border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-2 text-sm" value={galleryForm.category} onChange={e => setGalleryForm({...galleryForm, category: e.target.value})}>
                     <option>Kaaba</option>
                     <option>Masjid Nabawi</option>
                     <option>Ziyarat</option>
@@ -1296,7 +1296,7 @@ const AdminDashboard = () => {
                     <option>International Tours</option>
                   </select>
                   <div className="md:col-span-2 flex gap-4">
-                    <button type="submit" className="flex-1 bg-[#001c1d] text-white py-3 rounded font-bold text-sm hover:brightness-110 transition-all">
+                    <button type="submit" className="flex-1 bg-[#0B1B3D] text-white py-3 rounded font-bold text-sm hover:brightness-110 transition-all">
                       {editingId.gallery ? 'Save Updates' : 'Add Image'}
                     </button>
                     {editingId.gallery && (
@@ -1316,7 +1316,7 @@ const AdminDashboard = () => {
                       <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg flex flex-col items-center justify-center gap-2">
                         <div className="flex gap-2">
                           {index > 0 && (
-                            <button onClick={() => handleMoveGallery(index, 'left')} className="text-white bg-[#001c1d] rounded-full p-1" title="Move Left">
+                            <button onClick={() => handleMoveGallery(index, 'left')} className="text-white bg-[#0B1B3D] rounded-full p-1" title="Move Left">
                               <span className="material-symbols-outlined text-sm">arrow_back</span>
                             </button>
                           )}
@@ -1327,7 +1327,7 @@ const AdminDashboard = () => {
                             <span className="material-symbols-outlined text-sm">delete</span>
                           </button>
                           {index < galleryItems.length - 1 && (
-                            <button onClick={() => handleMoveGallery(index, 'right')} className="text-white bg-[#001c1d] rounded-full p-1" title="Move Right">
+                            <button onClick={() => handleMoveGallery(index, 'right')} className="text-white bg-[#0B1B3D] rounded-full p-1" title="Move Right">
                               <span className="material-symbols-outlined text-sm">arrow_forward</span>
                             </button>
                           )}
@@ -1349,22 +1349,22 @@ const AdminDashboard = () => {
               <div className="bg-surface-container-lowest p-8 rounded-xl editorial-shadow mb-8">
                 <h3 className="font-notoSerif text-xl font-bold mb-6">{editingId.blog ? 'Edit Blog Post' : 'Add New Blog Post'}</h3>
                 <form onSubmit={handleAddBlog} className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <input required className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm" placeholder="Post Title" value={blogForm.title} onChange={e => setBlogForm({...blogForm, title: e.target.value})} />
-                  <select className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm" value={blogForm.category} onChange={e => setBlogForm({...blogForm, category: e.target.value})}>
+                  <input required className="bg-surface border-0 border-b border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-2 text-sm" placeholder="Post Title" value={blogForm.title} onChange={e => setBlogForm({...blogForm, title: e.target.value})} />
+                  <select className="bg-surface border-0 border-b border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-2 text-sm" value={blogForm.category} onChange={e => setBlogForm({...blogForm, category: e.target.value})}>
                     <option>Guides</option>
                     <option>Planning</option>
                     <option>Destinations</option>
                     <option>Packages</option>
                     <option>History</option>
                   </select>
-                  <input className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm" placeholder="Read Time (e.g., 5 min read)" value={blogForm.read_time} onChange={e => setBlogForm({...blogForm, read_time: e.target.value})} />
+                  <input className="bg-surface border-0 border-b border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-2 text-sm" placeholder="Read Time (e.g., 5 min read)" value={blogForm.read_time} onChange={e => setBlogForm({...blogForm, read_time: e.target.value})} />
                   <div className="md:col-span-2">
                     <ImageUpload value={blogForm.image_url} onChange={(val) => setBlogForm({...blogForm, image_url: val})} label="Featured Image" />
                   </div>
-                  <textarea className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm md:col-span-2" placeholder="Excerpt" rows={2} value={blogForm.excerpt} onChange={e => setBlogForm({...blogForm, excerpt: e.target.value})} />
-                  <textarea className="bg-surface border-0 border-b border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 text-sm md:col-span-2" placeholder="Full Content" rows={4} value={blogForm.content} onChange={e => setBlogForm({...blogForm, content: e.target.value})} />
+                  <textarea className="bg-surface border-0 border-b border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-2 text-sm md:col-span-2" placeholder="Excerpt" rows={2} value={blogForm.excerpt} onChange={e => setBlogForm({...blogForm, excerpt: e.target.value})} />
+                  <textarea className="bg-surface border-0 border-b border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-2 text-sm md:col-span-2" placeholder="Full Content" rows={4} value={blogForm.content} onChange={e => setBlogForm({...blogForm, content: e.target.value})} />
                   <div className="md:col-span-2 flex gap-4">
-                    <button type="submit" className="flex-1 bg-[#001c1d] text-white py-3 rounded font-bold text-sm hover:brightness-110 transition-all">
+                    <button type="submit" className="flex-1 bg-[#0B1B3D] text-white py-3 rounded font-bold text-sm hover:brightness-110 transition-all">
                       {editingId.blog ? 'Save Updates' : 'Publish Post'}
                     </button>
                     {editingId.blog && (
@@ -1385,7 +1385,7 @@ const AdminDashboard = () => {
                       <p className="text-sm text-outline">{b.category} • {b.read_time}</p>
                     </div>
                     <div className="flex items-center gap-2 flex-shrink-0">
-                      <button onClick={() => { setBlogForm({ title: b.title, excerpt: b.excerpt || '', content: b.content || '', category: b.category || 'Guides', image_url: b.image_url || '', read_time: b.read_time || '' }); setEditingId(prev => ({ ...prev, blog: b.id })); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="text-[#001c1d] hover:text-secondary p-1" title="Edit Blog Post">
+                      <button onClick={() => { setBlogForm({ title: b.title, excerpt: b.excerpt || '', content: b.content || '', category: b.category || 'Guides', image_url: b.image_url || '', read_time: b.read_time || '' }); setEditingId(prev => ({ ...prev, blog: b.id })); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="text-[#0B1B3D] hover:text-secondary p-1" title="Edit Blog Post">
                         <span className="material-symbols-outlined">edit</span>
                       </button>
                       <button onClick={()=>handleDeleteBlog(b.id)} className="text-red-500 hover:text-red-700 p-1" title="Delete Blog Post"><span className="material-symbols-outlined">delete</span></button>
@@ -1405,7 +1405,7 @@ const AdminDashboard = () => {
                 <button 
                   onClick={savePageMedia}
                   disabled={mediaSaving}
-                  className="bg-[#001c1d] text-white px-8 py-3 rounded font-bold hover:brightness-110 transition-all flex items-center gap-2"
+                  className="bg-[#0B1B3D] text-white px-8 py-3 rounded font-bold hover:brightness-110 transition-all flex items-center gap-2"
                 >
                   <span className="material-symbols-outlined">{mediaSaving ? 'hourglass_empty' : 'save'}</span>
                   {mediaSaving ? 'Saving...' : 'Save All Changes'}
@@ -1418,7 +1418,7 @@ const AdminDashboard = () => {
               {pageMediaConfig.map((section) => (
                 <div key={section.page + section.section} className="bg-surface-container-lowest p-8 rounded-xl editorial-shadow mb-8">
                   <div className="mb-6">
-                    <span className="inline-block bg-[#001c1d] text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-2">{section.page}</span>
+                    <span className="inline-block bg-[#0B1B3D] text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-2">{section.page}</span>
                     <h3 className="font-notoSerif text-xl font-bold text-primary">{section.section}</h3>
                   </div>
                   
@@ -1442,9 +1442,9 @@ const AdminDashboard = () => {
               ))}
 
               {/* Info Box */}
-              <div className="bg-[#001c1d]/10 border border-[#001c1d]/30 p-6 rounded-xl">
+              <div className="bg-[#0B1B3D]/10 border border-[#0B1B3D]/30 p-6 rounded-xl">
                 <div className="flex items-start gap-3">
-                  <span className="material-symbols-outlined text-[#001c1d]">info</span>
+                  <span className="material-symbols-outlined text-[#0B1B3D]">info</span>
                   <div>
                     <h4 className="font-bold text-sm mb-1">How Page Media Works</h4>
                     <p className="text-xs text-on-surface-variant">
@@ -1484,12 +1484,12 @@ const AdminDashboard = () => {
                       <div key={sub.id} className="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant relative group shadow-sm hover:shadow transition-shadow">
                         <div className="flex justify-between items-start gap-4 mb-4">
                           <div>
-                            <span className="inline-block bg-[#001c1d] text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider mb-2">
+                            <span className="inline-block bg-[#0B1B3D] text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider mb-2">
                               {sub.subject || 'General inquiry'}
                             </span>
-                            <h4 className="font-bold text-[#001c1d] text-lg">{sub.name}</h4>
+                            <h4 className="font-bold text-[#0B1B3D] text-lg">{sub.name}</h4>
                             <p className="text-xs text-on-surface-variant font-medium mt-1">
-                              {sub.email ? `Email: ${sub.email} | ` : ''}Phone: <span className="font-bold text-[#001c1d]">{sub.phone}</span>
+                              {sub.email ? `Email: ${sub.email} | ` : ''}Phone: <span className="font-bold text-[#0B1B3D]">{sub.phone}</span>
                             </p>
                           </div>
                           <div className="text-right">
@@ -1694,7 +1694,7 @@ const ContentCMS = () => {
             onClick={() => setActiveContentTab(tab.id)}
             className={`px-6 py-3 rounded-lg font-bold text-sm whitespace-nowrap transition-all ${
               activeContentTab === tab.id 
-                ? 'bg-[#001c1d] text-white' 
+                ? 'bg-[#0B1B3D] text-white' 
                 : 'bg-surface-container-low text-on-surface-variant hover:bg-surface-container'
             }`}
           >
@@ -1711,7 +1711,7 @@ const ContentCMS = () => {
             <div>
               <label className="block text-xs font-bold uppercase tracking-widest text-outline mb-2">Hero Section Title</label>
               <input 
-                className="w-full bg-surface border border-outline-variant focus:border-[#001c1d] focus:ring-0 py-3 px-4 rounded-lg text-sm"
+                className="w-full bg-surface border border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-3 px-4 rounded-lg text-sm"
                 value={homeContent.heroTitle}
                 onChange={(e) => setHomeContent({...homeContent, heroTitle: e.target.value})}
               />
@@ -1719,7 +1719,7 @@ const ContentCMS = () => {
             <div>
               <label className="block text-xs font-bold uppercase tracking-widest text-outline mb-2">Hero Section Subtitle</label>
               <textarea 
-                className="w-full bg-surface border border-outline-variant focus:border-[#001c1d] focus:ring-0 py-3 px-4 rounded-lg text-sm"
+                className="w-full bg-surface border border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-3 px-4 rounded-lg text-sm"
                 rows={3}
                 value={homeContent.heroSubtitle}
                 onChange={(e) => setHomeContent({...homeContent, heroSubtitle: e.target.value})}
@@ -1729,7 +1729,7 @@ const ContentCMS = () => {
               <div>
                 <label className="block text-xs font-bold uppercase tracking-widest text-outline mb-2">Featured Section Title</label>
                 <input 
-                  className="w-full bg-surface border border-outline-variant focus:border-[#001c1d] focus:ring-0 py-3 px-4 rounded-lg text-sm"
+                  className="w-full bg-surface border border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-3 px-4 rounded-lg text-sm"
                   value={homeContent.featuredTitle}
                   onChange={(e) => setHomeContent({...homeContent, featuredTitle: e.target.value})}
                 />
@@ -1737,7 +1737,7 @@ const ContentCMS = () => {
               <div>
                 <label className="block text-xs font-bold uppercase tracking-widest text-outline mb-2">Tours Section Title</label>
                 <input 
-                  className="w-full bg-surface border border-outline-variant focus:border-[#001c1d] focus:ring-0 py-3 px-4 rounded-lg text-sm"
+                  className="w-full bg-surface border border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-3 px-4 rounded-lg text-sm"
                   value={homeContent.toursTitle}
                   onChange={(e) => setHomeContent({...homeContent, toursTitle: e.target.value})}
                 />
@@ -1746,7 +1746,7 @@ const ContentCMS = () => {
             <div>
               <label className="block text-xs font-bold uppercase tracking-widest text-outline mb-2">CTA Section Title</label>
               <input 
-                className="w-full bg-surface border border-outline-variant focus:border-[#001c1d] focus:ring-0 py-3 px-4 rounded-lg text-sm"
+                className="w-full bg-surface border border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-3 px-4 rounded-lg text-sm"
                 value={homeContent.ctaTitle}
                 onChange={(e) => setHomeContent({...homeContent, ctaTitle: e.target.value})}
               />
@@ -1754,7 +1754,7 @@ const ContentCMS = () => {
             <div>
               <label className="block text-xs font-bold uppercase tracking-widest text-outline mb-2">CTA Section Subtitle</label>
               <textarea 
-                className="w-full bg-surface border border-outline-variant focus:border-[#001c1d] focus:ring-0 py-3 px-4 rounded-lg text-sm"
+                className="w-full bg-surface border border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-3 px-4 rounded-lg text-sm"
                 rows={2}
                 value={homeContent.ctaSubtitle}
                 onChange={(e) => setHomeContent({...homeContent, ctaSubtitle: e.target.value})}
@@ -1762,7 +1762,7 @@ const ContentCMS = () => {
             </div>
             <button 
               onClick={() => saveContent('home', homeContent)}
-              className="bg-[#001c1d] text-white px-8 py-3 rounded-lg font-bold text-sm hover:brightness-110 transition-all"
+              className="bg-[#0B1B3D] text-white px-8 py-3 rounded-lg font-bold text-sm hover:brightness-110 transition-all"
             >
               {saving ? 'Saving...' : 'Save Home Page Content'}
             </button>
@@ -1778,7 +1778,7 @@ const ContentCMS = () => {
             <div>
               <label className="block text-xs font-bold uppercase tracking-widest text-outline mb-2">Hero Title</label>
               <input 
-                className="w-full bg-surface border border-outline-variant focus:border-[#001c1d] focus:ring-0 py-3 px-4 rounded-lg text-sm"
+                className="w-full bg-surface border border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-3 px-4 rounded-lg text-sm"
                 value={aboutContent.heroTitle}
                 onChange={(e) => setAboutContent({...aboutContent, heroTitle: e.target.value})}
               />
@@ -1786,7 +1786,7 @@ const ContentCMS = () => {
             <div>
               <label className="block text-xs font-bold uppercase tracking-widest text-outline mb-2">Hero Subtitle</label>
               <textarea 
-                className="w-full bg-surface border border-outline-variant focus:border-[#001c1d] focus:ring-0 py-3 px-4 rounded-lg text-sm"
+                className="w-full bg-surface border border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-3 px-4 rounded-lg text-sm"
                 rows={2}
                 value={aboutContent.heroSubtitle}
                 onChange={(e) => setAboutContent({...aboutContent, heroSubtitle: e.target.value})}
@@ -1795,7 +1795,7 @@ const ContentCMS = () => {
             <div>
               <label className="block text-xs font-bold uppercase tracking-widest text-outline mb-2">Story Title</label>
               <input 
-                className="w-full bg-surface border border-outline-variant focus:border-[#001c1d] focus:ring-0 py-3 px-4 rounded-lg text-sm"
+                className="w-full bg-surface border border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-3 px-4 rounded-lg text-sm"
                 value={aboutContent.storyTitle}
                 onChange={(e) => setAboutContent({...aboutContent, storyTitle: e.target.value})}
               />
@@ -1803,7 +1803,7 @@ const ContentCMS = () => {
             <div>
               <label className="block text-xs font-bold uppercase tracking-widest text-outline mb-2">Story Paragraph 1</label>
               <textarea 
-                className="w-full bg-surface border border-outline-variant focus:border-[#001c1d] focus:ring-0 py-3 px-4 rounded-lg text-sm"
+                className="w-full bg-surface border border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-3 px-4 rounded-lg text-sm"
                 rows={3}
                 value={aboutContent.storyText1}
                 onChange={(e) => setAboutContent({...aboutContent, storyText1: e.target.value})}
@@ -1812,7 +1812,7 @@ const ContentCMS = () => {
             <div>
               <label className="block text-xs font-bold uppercase tracking-widest text-outline mb-2">Story Paragraph 2</label>
               <textarea 
-                className="w-full bg-surface border border-outline-variant focus:border-[#001c1d] focus:ring-0 py-3 px-4 rounded-lg text-sm"
+                className="w-full bg-surface border border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-3 px-4 rounded-lg text-sm"
                 rows={3}
                 value={aboutContent.storyText2}
                 onChange={(e) => setAboutContent({...aboutContent, storyText2: e.target.value})}
@@ -1821,7 +1821,7 @@ const ContentCMS = () => {
             <div>
               <label className="block text-xs font-bold uppercase tracking-widest text-outline mb-2">Mission Statement</label>
               <input 
-                className="w-full bg-surface border border-outline-variant focus:border-[#001c1d] focus:ring-0 py-3 px-4 rounded-lg text-sm"
+                className="w-full bg-surface border border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-3 px-4 rounded-lg text-sm"
                 value={aboutContent.missionTitle}
                 onChange={(e) => setAboutContent({...aboutContent, missionTitle: e.target.value})}
               />
@@ -1829,7 +1829,7 @@ const ContentCMS = () => {
             <div>
               <label className="block text-xs font-bold uppercase tracking-widest text-outline mb-2">Vision Statement</label>
               <input 
-                className="w-full bg-surface border border-outline-variant focus:border-[#001c1d] focus:ring-0 py-3 px-4 rounded-lg text-sm"
+                className="w-full bg-surface border border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-3 px-4 rounded-lg text-sm"
                 value={aboutContent.visionTitle}
                 onChange={(e) => setAboutContent({...aboutContent, visionTitle: e.target.value})}
               />
@@ -1838,7 +1838,7 @@ const ContentCMS = () => {
               <div>
                 <label className="block text-xs font-bold uppercase tracking-widest text-outline mb-2">Years (e.g. 25+)</label>
                 <input 
-                  className="w-full bg-surface border border-outline-variant focus:border-[#001c1d] focus:ring-0 py-3 px-4 rounded-lg text-sm"
+                  className="w-full bg-surface border border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-3 px-4 rounded-lg text-sm"
                   value={aboutContent.statsYears}
                   onChange={(e) => setAboutContent({...aboutContent, statsYears: e.target.value})}
                 />
@@ -1846,7 +1846,7 @@ const ContentCMS = () => {
               <div>
                 <label className="block text-xs font-bold uppercase tracking-widest text-outline mb-2">Pilgrims (e.g. 50K+)</label>
                 <input 
-                  className="w-full bg-surface border border-outline-variant focus:border-[#001c1d] focus:ring-0 py-3 px-4 rounded-lg text-sm"
+                  className="w-full bg-surface border border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-3 px-4 rounded-lg text-sm"
                   value={aboutContent.statsPilgrims}
                   onChange={(e) => setAboutContent({...aboutContent, statsPilgrims: e.target.value})}
                 />
@@ -1854,7 +1854,7 @@ const ContentCMS = () => {
               <div>
                 <label className="block text-xs font-bold uppercase tracking-widest text-outline mb-2">Destinations</label>
                 <input 
-                  className="w-full bg-surface border border-outline-variant focus:border-[#001c1d] focus:ring-0 py-3 px-4 rounded-lg text-sm"
+                  className="w-full bg-surface border border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-3 px-4 rounded-lg text-sm"
                   value={aboutContent.statsDestinations}
                   onChange={(e) => setAboutContent({...aboutContent, statsDestinations: e.target.value})}
                 />
@@ -1862,7 +1862,7 @@ const ContentCMS = () => {
               <div>
                 <label className="block text-xs font-bold uppercase tracking-widest text-outline mb-2">Rating</label>
                 <input 
-                  className="w-full bg-surface border border-outline-variant focus:border-[#001c1d] focus:ring-0 py-3 px-4 rounded-lg text-sm"
+                  className="w-full bg-surface border border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-3 px-4 rounded-lg text-sm"
                   value={aboutContent.statsRating}
                   onChange={(e) => setAboutContent({...aboutContent, statsRating: e.target.value})}
                 />
@@ -1870,7 +1870,7 @@ const ContentCMS = () => {
             </div>
             <button 
               onClick={() => saveContent('about', aboutContent)}
-              className="bg-[#001c1d] text-white px-8 py-3 rounded-lg font-bold text-sm hover:brightness-110 transition-all"
+              className="bg-[#0B1B3D] text-white px-8 py-3 rounded-lg font-bold text-sm hover:brightness-110 transition-all"
             >
               {saving ? 'Saving...' : 'Save About Page Content'}
             </button>
@@ -1886,52 +1886,52 @@ const ContentCMS = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label className="block text-xs font-bold uppercase tracking-widest text-outline mb-2">Hero Title</label>
-                <input className="w-full bg-surface border border-outline-variant focus:border-[#001c1d] focus:ring-0 py-3 px-4 rounded-lg text-sm" value={flightsContent.heroTitle} onChange={(e) => setFlightsContent({...flightsContent, heroTitle: e.target.value})} />
+                <input className="w-full bg-surface border border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-3 px-4 rounded-lg text-sm" value={flightsContent.heroTitle} onChange={(e) => setFlightsContent({...flightsContent, heroTitle: e.target.value})} />
               </div>
               <div>
                 <label className="block text-xs font-bold uppercase tracking-widest text-outline mb-2">Hero Subtitle</label>
-                <input className="w-full bg-surface border border-outline-variant focus:border-[#001c1d] focus:ring-0 py-3 px-4 rounded-lg text-sm" value={flightsContent.heroSubtitle} onChange={(e) => setFlightsContent({...flightsContent, heroSubtitle: e.target.value})} />
+                <input className="w-full bg-surface border border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-3 px-4 rounded-lg text-sm" value={flightsContent.heroSubtitle} onChange={(e) => setFlightsContent({...flightsContent, heroSubtitle: e.target.value})} />
               </div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label className="block text-xs font-bold uppercase tracking-widest text-outline mb-2">Adventure Title</label>
-                <input className="w-full bg-surface border border-outline-variant focus:border-[#001c1d] focus:ring-0 py-3 px-4 rounded-lg text-sm" value={flightsContent.adventureTitle} onChange={(e) => setFlightsContent({...flightsContent, adventureTitle: e.target.value})} />
+                <input className="w-full bg-surface border border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-3 px-4 rounded-lg text-sm" value={flightsContent.adventureTitle} onChange={(e) => setFlightsContent({...flightsContent, adventureTitle: e.target.value})} />
               </div>
               <div>
                 <label className="block text-xs font-bold uppercase tracking-widest text-outline mb-2">Adventure Subtitle</label>
-                <textarea className="w-full bg-surface border border-outline-variant focus:border-[#001c1d] focus:ring-0 py-3 px-4 rounded-lg text-sm" rows={2} value={flightsContent.adventureSubtitle} onChange={(e) => setFlightsContent({...flightsContent, adventureSubtitle: e.target.value})} />
+                <textarea className="w-full bg-surface border border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-3 px-4 rounded-lg text-sm" rows={2} value={flightsContent.adventureSubtitle} onChange={(e) => setFlightsContent({...flightsContent, adventureSubtitle: e.target.value})} />
               </div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label className="block text-xs font-bold uppercase tracking-widest text-outline mb-2">Trust Title</label>
-                <input className="w-full bg-surface border border-outline-variant focus:border-[#001c1d] focus:ring-0 py-3 px-4 rounded-lg text-sm" value={flightsContent.trustTitle} onChange={(e) => setFlightsContent({...flightsContent, trustTitle: e.target.value})} />
+                <input className="w-full bg-surface border border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-3 px-4 rounded-lg text-sm" value={flightsContent.trustTitle} onChange={(e) => setFlightsContent({...flightsContent, trustTitle: e.target.value})} />
               </div>
               <div>
                 <label className="block text-xs font-bold uppercase tracking-widest text-outline mb-2">Trust Subtitle</label>
-                <textarea className="w-full bg-surface border border-outline-variant focus:border-[#001c1d] focus:ring-0 py-3 px-4 rounded-lg text-sm" rows={2} value={flightsContent.trustSubtitle} onChange={(e) => setFlightsContent({...flightsContent, trustSubtitle: e.target.value})} />
+                <textarea className="w-full bg-surface border border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-3 px-4 rounded-lg text-sm" rows={2} value={flightsContent.trustSubtitle} onChange={(e) => setFlightsContent({...flightsContent, trustSubtitle: e.target.value})} />
               </div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label className="block text-xs font-bold uppercase tracking-widest text-outline mb-2">Destinations Title</label>
-                <input className="w-full bg-surface border border-outline-variant focus:border-[#001c1d] focus:ring-0 py-3 px-4 rounded-lg text-sm" value={flightsContent.destinationsTitle} onChange={(e) => setFlightsContent({...flightsContent, destinationsTitle: e.target.value})} />
+                <input className="w-full bg-surface border border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-3 px-4 rounded-lg text-sm" value={flightsContent.destinationsTitle} onChange={(e) => setFlightsContent({...flightsContent, destinationsTitle: e.target.value})} />
               </div>
               <div>
                 <label className="block text-xs font-bold uppercase tracking-widest text-outline mb-2">Destinations Subtitle</label>
-                <input className="w-full bg-surface border border-outline-variant focus:border-[#001c1d] focus:ring-0 py-3 px-4 rounded-lg text-sm" value={flightsContent.destinationsSubtitle} onChange={(e) => setFlightsContent({...flightsContent, destinationsSubtitle: e.target.value})} />
+                <input className="w-full bg-surface border border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-3 px-4 rounded-lg text-sm" value={flightsContent.destinationsSubtitle} onChange={(e) => setFlightsContent({...flightsContent, destinationsSubtitle: e.target.value})} />
               </div>
             </div>
             <div className="space-y-4">
               <label className="block text-xs font-bold uppercase tracking-widest text-outline">Service Features (Why Choose Us)</label>
               {[1, 2, 3, 4, 5].map(i => (
-                <input key={i} className="w-full bg-surface border border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 px-4 rounded-lg text-sm" value={flightsContent[`feature${i}`]} onChange={(e) => setFlightsContent({...flightsContent, [`feature${i}`]: e.target.value})} placeholder={`Feature ${i}`} />
+                <input key={i} className="w-full bg-surface border border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-2 px-4 rounded-lg text-sm" value={flightsContent[`feature${i}`]} onChange={(e) => setFlightsContent({...flightsContent, [`feature${i}`]: e.target.value})} placeholder={`Feature ${i}`} />
               ))}
             </div>
             <button 
               onClick={() => saveContent('flights', flightsContent)}
-              className="bg-[#001c1d] text-white px-8 py-3 rounded-lg font-bold text-sm hover:brightness-110 transition-all"
+              className="bg-[#0B1B3D] text-white px-8 py-3 rounded-lg font-bold text-sm hover:brightness-110 transition-all"
             >
               {saving ? 'Saving...' : 'Save Flights Page Content'}
             </button>
@@ -1948,7 +1948,7 @@ const ContentCMS = () => {
               <div>
                 <label className="block text-xs font-bold uppercase tracking-widest text-outline mb-2">Phone Number 1</label>
                 <input 
-                  className="w-full bg-surface border border-outline-variant focus:border-[#001c1d] focus:ring-0 py-3 px-4 rounded-lg text-sm"
+                  className="w-full bg-surface border border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-3 px-4 rounded-lg text-sm"
                   value={contactContent.phone1}
                   onChange={(e) => setContactContent({...contactContent, phone1: e.target.value})}
                 />
@@ -1956,7 +1956,7 @@ const ContentCMS = () => {
               <div>
                 <label className="block text-xs font-bold uppercase tracking-widest text-outline mb-2">Phone Number 2</label>
                 <input 
-                  className="w-full bg-surface border border-outline-variant focus:border-[#001c1d] focus:ring-0 py-3 px-4 rounded-lg text-sm"
+                  className="w-full bg-surface border border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-3 px-4 rounded-lg text-sm"
                   value={contactContent.phone2}
                   onChange={(e) => setContactContent({...contactContent, phone2: e.target.value})}
                 />
@@ -1965,7 +1965,7 @@ const ContentCMS = () => {
             <div>
               <label className="block text-xs font-bold uppercase tracking-widest text-outline mb-2">Email Address</label>
               <input 
-                className="w-full bg-surface border border-outline-variant focus:border-[#001c1d] focus:ring-0 py-3 px-4 rounded-lg text-sm"
+                className="w-full bg-surface border border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-3 px-4 rounded-lg text-sm"
                 value={contactContent.email}
                 onChange={(e) => setContactContent({...contactContent, email: e.target.value})}
               />
@@ -1973,7 +1973,7 @@ const ContentCMS = () => {
             <div>
               <label className="block text-xs font-bold uppercase tracking-widest text-outline mb-2">WhatsApp Number</label>
               <input 
-                className="w-full bg-surface border border-outline-variant focus:border-[#001c1d] focus:ring-0 py-3 px-4 rounded-lg text-sm"
+                className="w-full bg-surface border border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-3 px-4 rounded-lg text-sm"
                 value={contactContent.whatsapp}
                 onChange={(e) => setContactContent({...contactContent, whatsapp: e.target.value})}
               />
@@ -1981,7 +1981,7 @@ const ContentCMS = () => {
             <div>
               <label className="block text-xs font-bold uppercase tracking-widest text-outline mb-2">Lahore Address</label>
               <input 
-                className="w-full bg-surface border border-outline-variant focus:border-[#001c1d] focus:ring-0 py-3 px-4 rounded-lg text-sm"
+                className="w-full bg-surface border border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-3 px-4 rounded-lg text-sm"
                 value={contactContent.addressLahore}
                 onChange={(e) => setContactContent({...contactContent, addressLahore: e.target.value})}
               />
@@ -1989,14 +1989,14 @@ const ContentCMS = () => {
             <div>
               <label className="block text-xs font-bold uppercase tracking-widest text-outline mb-2">Karachi Address</label>
               <input 
-                className="w-full bg-surface border border-outline-variant focus:border-[#001c1d] focus:ring-0 py-3 px-4 rounded-lg text-sm"
+                className="w-full bg-surface border border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-3 px-4 rounded-lg text-sm"
                 value={contactContent.addressKarachi}
                 onChange={(e) => setContactContent({...contactContent, addressKarachi: e.target.value})}
               />
             </div>
             <button 
               onClick={() => saveContent('contact', contactContent)}
-              className="bg-[#001c1d] text-white px-8 py-3 rounded-lg font-bold text-sm hover:brightness-110 transition-all"
+              className="bg-[#0B1B3D] text-white px-8 py-3 rounded-lg font-bold text-sm hover:brightness-110 transition-all"
             >
               {saving ? 'Saving...' : 'Save Contact Content'}
             </button>
@@ -2011,7 +2011,7 @@ const ContentCMS = () => {
             <h3 className="font-notoSerif text-xl font-bold">Frequently Asked Questions</h3>
             <button 
               onClick={addFaq}
-              className="bg-[#001c1d] text-white px-6 py-2 rounded-lg font-bold text-sm hover:brightness-110 transition-all flex items-center gap-2"
+              className="bg-[#0B1B3D] text-white px-6 py-2 rounded-lg font-bold text-sm hover:brightness-110 transition-all flex items-center gap-2"
             >
               <span className="material-symbols-outlined text-sm">add</span>
               Add FAQ
@@ -2021,7 +2021,7 @@ const ContentCMS = () => {
             {faqContent.map((faq, index) => (
               <div key={faq.id} className="bg-surface-container-lowest p-6 rounded-xl editorial-shadow">
                 <div className="flex items-center justify-between mb-4">
-                  <span className="text-xs font-bold text-[#001c1d] uppercase">FAQ #{index + 1}</span>
+                  <span className="text-xs font-bold text-[#0B1B3D] uppercase">FAQ #{index + 1}</span>
                   <div className="flex items-center gap-2">
                     <select 
                       value={faq.category}
@@ -2047,7 +2047,7 @@ const ContentCMS = () => {
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-widest text-outline mb-2">Question</label>
                     <input 
-                      className="w-full bg-surface border border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 px-3 rounded-lg text-sm"
+                      className="w-full bg-surface border border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-2 px-3 rounded-lg text-sm"
                       value={faq.question}
                       onChange={(e) => updateFaq(faq.id, 'question', e.target.value)}
                     />
@@ -2055,7 +2055,7 @@ const ContentCMS = () => {
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-widest text-outline mb-2">Answer</label>
                     <textarea 
-                      className="w-full bg-surface border border-outline-variant focus:border-[#001c1d] focus:ring-0 py-2 px-3 rounded-lg text-sm"
+                      className="w-full bg-surface border border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-2 px-3 rounded-lg text-sm"
                       rows={3}
                       value={faq.answer}
                       onChange={(e) => updateFaq(faq.id, 'answer', e.target.value)}
@@ -2067,7 +2067,7 @@ const ContentCMS = () => {
           </div>
           <button 
             onClick={() => saveContent('faq', faqContent)}
-            className="bg-[#001c1d] text-white px-8 py-3 rounded-lg font-bold text-sm hover:brightness-110 transition-all mt-6"
+            className="bg-[#0B1B3D] text-white px-8 py-3 rounded-lg font-bold text-sm hover:brightness-110 transition-all mt-6"
           >
             {saving ? 'Saving...' : 'Save All FAQs'}
           </button>
@@ -2109,7 +2109,7 @@ const ContentCMS = () => {
               <div>
                 <label className="block text-xs font-bold uppercase tracking-widest text-outline mb-2">Company Description</label>
                 <textarea 
-                  className="w-full bg-surface border border-outline-variant focus:border-[#001c1d] focus:ring-0 py-3 px-4 rounded-lg text-sm"
+                  className="w-full bg-surface border border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-3 px-4 rounded-lg text-sm"
                   rows={3}
                   value={footerContent.description}
                   onChange={(e) => setFooterContent({...footerContent, description: e.target.value})}
@@ -2118,7 +2118,7 @@ const ContentCMS = () => {
               <div>
                 <label className="block text-xs font-bold uppercase tracking-widest text-outline mb-2">Copyright Text</label>
                 <input 
-                  className="w-full bg-surface border border-outline-variant focus:border-[#001c1d] focus:ring-0 py-3 px-4 rounded-lg text-sm"
+                  className="w-full bg-surface border border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-3 px-4 rounded-lg text-sm"
                   value={footerContent.copyright}
                   onChange={(e) => setFooterContent({...footerContent, copyright: e.target.value})}
                 />
@@ -2126,7 +2126,7 @@ const ContentCMS = () => {
               <div>
                 <label className="block text-xs font-bold uppercase tracking-widest text-outline mb-2">Quick Links (comma separated)</label>
                 <input 
-                  className="w-full bg-surface border border-outline-variant focus:border-[#001c1d] focus:ring-0 py-3 px-4 rounded-lg text-sm"
+                  className="w-full bg-surface border border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-3 px-4 rounded-lg text-sm"
                   value={footerContent.quickLinks.join(', ')}
                   onChange={(e) => setFooterContent({...footerContent, quickLinks: e.target.value.split(',').map(s => s.trim())})}
                 />
@@ -2136,7 +2136,7 @@ const ContentCMS = () => {
                 <div>
                   <label className="block text-xs font-bold uppercase tracking-widest text-outline mb-2">Facebook URL</label>
                   <input 
-                    className="w-full bg-surface border border-outline-variant focus:border-[#001c1d] focus:ring-0 py-3 px-4 rounded-lg text-sm"
+                    className="w-full bg-surface border border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-3 px-4 rounded-lg text-sm"
                     value={footerContent.socialLinks.facebook}
                     onChange={(e) => setFooterContent({...footerContent, socialLinks: {...footerContent.socialLinks, facebook: e.target.value}})}
                     placeholder="https://facebook.com/..."
@@ -2145,7 +2145,7 @@ const ContentCMS = () => {
                 <div>
                   <label className="block text-xs font-bold uppercase tracking-widest text-outline mb-2">Instagram URL</label>
                   <input 
-                    className="w-full bg-surface border border-outline-variant focus:border-[#001c1d] focus:ring-0 py-3 px-4 rounded-lg text-sm"
+                    className="w-full bg-surface border border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-3 px-4 rounded-lg text-sm"
                     value={footerContent.socialLinks.instagram}
                     onChange={(e) => setFooterContent({...footerContent, socialLinks: {...footerContent.socialLinks, instagram: e.target.value}})}
                     placeholder="https://instagram.com/..."
@@ -2154,7 +2154,7 @@ const ContentCMS = () => {
                 <div>
                   <label className="block text-xs font-bold uppercase tracking-widest text-outline mb-2">Twitter/X URL</label>
                   <input 
-                    className="w-full bg-surface border border-outline-variant focus:border-[#001c1d] focus:ring-0 py-3 px-4 rounded-lg text-sm"
+                    className="w-full bg-surface border border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-3 px-4 rounded-lg text-sm"
                     value={footerContent.socialLinks.twitter}
                     onChange={(e) => setFooterContent({...footerContent, socialLinks: {...footerContent.socialLinks, twitter: e.target.value}})}
                     placeholder="https://twitter.com/..."
@@ -2163,7 +2163,7 @@ const ContentCMS = () => {
                 <div>
                   <label className="block text-xs font-bold uppercase tracking-widest text-outline mb-2">YouTube URL</label>
                   <input 
-                    className="w-full bg-surface border border-outline-variant focus:border-[#001c1d] focus:ring-0 py-3 px-4 rounded-lg text-sm"
+                    className="w-full bg-surface border border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-3 px-4 rounded-lg text-sm"
                     value={footerContent.socialLinks.youtube}
                     onChange={(e) => setFooterContent({...footerContent, socialLinks: {...footerContent.socialLinks, youtube: e.target.value}})}
                     placeholder="https://youtube.com/..."
@@ -2172,7 +2172,7 @@ const ContentCMS = () => {
               </div>
               <button 
                 onClick={() => saveContent('footer', footerContent)}
-                className="bg-[#001c1d] text-white px-8 py-3 rounded-lg font-bold text-sm hover:brightness-110 transition-all"
+                className="bg-[#0B1B3D] text-white px-8 py-3 rounded-lg font-bold text-sm hover:brightness-110 transition-all"
               >
                 {saving ? 'Saving...' : 'Save Footer Content'}
               </button>
@@ -2189,7 +2189,7 @@ const ContentCMS = () => {
             <button 
               onClick={() => saveContent('media', mediaContent)}
               disabled={saving}
-              className="bg-[#001c1d] text-white px-8 py-3 rounded-lg font-bold text-sm hover:brightness-110 transition-all flex items-center gap-2"
+              className="bg-[#0B1B3D] text-white px-8 py-3 rounded-lg font-bold text-sm hover:brightness-110 transition-all flex items-center gap-2"
             >
               <span className="material-symbols-outlined">{saving ? 'hourglass_empty' : 'save'}</span>
               {saving ? 'Saving...' : 'Save All Media'}
@@ -2201,7 +2201,7 @@ const ContentCMS = () => {
           {/* Homepage Media */}
           <div className="bg-surface-container-lowest p-8 rounded-xl editorial-shadow mb-8">
             <h3 className="font-notoSerif text-xl font-bold mb-6 flex items-center gap-3">
-              <span className="material-symbols-outlined text-[#001c1d]">home</span>
+              <span className="material-symbols-outlined text-[#0B1B3D]">home</span>
               Homepage Media
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -2265,7 +2265,7 @@ const ContentCMS = () => {
           {/* About Page Media */}
           <div className="bg-surface-container-lowest p-8 rounded-xl editorial-shadow mb-8">
             <h3 className="font-notoSerif text-xl font-bold mb-6 flex items-center gap-3">
-              <span className="material-symbols-outlined text-[#013334]">info</span>
+              <span className="material-symbols-outlined text-[#0B1B3D]">info</span>
               About Page Media
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -2311,7 +2311,7 @@ const ContentCMS = () => {
           {/* Contact Page Media */}
           <div className="bg-surface-container-lowest p-8 rounded-xl editorial-shadow mb-8">
             <h3 className="font-notoSerif text-xl font-bold mb-6 flex items-center gap-3">
-              <span className="material-symbols-outlined text-[#013334]">contact_phone</span>
+              <span className="material-symbols-outlined text-[#0B1B3D]">contact_phone</span>
               Contact Page Media
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -2348,7 +2348,7 @@ const ContentCMS = () => {
           {/* Umrah Packages Page Media */}
           <div className="bg-surface-container-lowest p-8 rounded-xl editorial-shadow mb-8">
             <h3 className="font-notoSerif text-xl font-bold mb-6 flex items-center gap-3">
-              <span className="material-symbols-outlined text-[#013334]">mosque</span>
+              <span className="material-symbols-outlined text-[#0B1B3D]">mosque</span>
               Umrah Packages Page Media
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -2376,7 +2376,7 @@ const ContentCMS = () => {
           {/* International Tours Page Media */}
           <div className="bg-surface-container-lowest p-8 rounded-xl editorial-shadow mb-8">
             <h3 className="font-notoSerif text-xl font-bold mb-6 flex items-center gap-3">
-              <span className="material-symbols-outlined text-[#013334]">flight</span>
+              <span className="material-symbols-outlined text-[#0B1B3D]">flight</span>
               International Tours Page Media
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -2404,7 +2404,7 @@ const ContentCMS = () => {
           {/* Visa Services Page Media */}
           <div className="bg-surface-container-lowest p-8 rounded-xl editorial-shadow mb-8">
             <h3 className="font-notoSerif text-xl font-bold mb-6 flex items-center gap-3">
-              <span className="material-symbols-outlined text-[#013334]">description</span>
+              <span className="material-symbols-outlined text-[#0B1B3D]">description</span>
               Visa Services Page Media
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -2432,7 +2432,7 @@ const ContentCMS = () => {
           {/* Gallery Page Media */}
           <div className="bg-surface-container-lowest p-8 rounded-xl editorial-shadow mb-8">
             <h3 className="font-notoSerif text-xl font-bold mb-6 flex items-center gap-3">
-              <span className="material-symbols-outlined text-[#013334]">photo_library</span>
+              <span className="material-symbols-outlined text-[#0B1B3D]">photo_library</span>
               Gallery Page Media
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -2460,7 +2460,7 @@ const ContentCMS = () => {
           {/* FAQ Page Media */}
           <div className="bg-surface-container-lowest p-8 rounded-xl editorial-shadow mb-8">
             <h3 className="font-notoSerif text-xl font-bold mb-6 flex items-center gap-3">
-              <span className="material-symbols-outlined text-[#013334]">quiz</span>
+              <span className="material-symbols-outlined text-[#0B1B3D]">quiz</span>
               FAQ Page Media
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -2479,7 +2479,7 @@ const ContentCMS = () => {
           {/* Blog Page Media */}
           <div className="bg-surface-container-lowest p-8 rounded-xl editorial-shadow mb-8">
             <h3 className="font-notoSerif text-xl font-bold mb-6 flex items-center gap-3">
-              <span className="material-symbols-outlined text-[#013334]">article</span>
+              <span className="material-symbols-outlined text-[#0B1B3D]">article</span>
               Blog Page Media
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -2498,7 +2498,7 @@ const ContentCMS = () => {
           {/* Navbar & Misc Media */}
           <div className="bg-surface-container-lowest p-8 rounded-xl editorial-shadow">
             <h3 className="font-notoSerif text-xl font-bold mb-6 flex items-center gap-3">
-              <span className="material-symbols-outlined text-[#013334]">settings</span>
+              <span className="material-symbols-outlined text-[#0B1B3D]">settings</span>
               Navigation & Misc Media
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -2587,7 +2587,7 @@ const SiteSettings = () => {
         <button 
           onClick={saveSettings}
           disabled={saving}
-          className="bg-[#013334] text-white px-8 py-3 rounded-lg font-bold text-sm hover:brightness-110 transition-all flex items-center gap-2"
+          className="bg-[#0B1B3D] text-white px-8 py-3 rounded-lg font-bold text-sm hover:brightness-110 transition-all flex items-center gap-2"
         >
           <span className="material-symbols-outlined">{saving ? 'hourglass_empty' : 'save'}</span>
           {saving ? 'Saving...' : 'Save Settings'}
@@ -2598,14 +2598,14 @@ const SiteSettings = () => {
         {/* General Settings */}
         <div className="bg-surface-container-lowest p-8 rounded-xl editorial-shadow">
           <h3 className="font-notoSerif text-xl font-bold mb-6 flex items-center gap-3">
-            <span className="material-symbols-outlined text-[#013334]">settings</span>
+            <span className="material-symbols-outlined text-[#0B1B3D]">settings</span>
             General Settings
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label className="block text-xs font-bold uppercase tracking-widest text-outline mb-2">Site Name</label>
               <input 
-                className="w-full bg-surface border border-outline-variant focus:border-[#013334] focus:ring-0 py-3 px-4 rounded-lg text-sm"
+                className="w-full bg-surface border border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-3 px-4 rounded-lg text-sm"
                 value={settings.siteName}
                 onChange={(e) => setSettings({...settings, siteName: e.target.value})}
               />
@@ -2613,7 +2613,7 @@ const SiteSettings = () => {
             <div>
               <label className="block text-xs font-bold uppercase tracking-widest text-outline mb-2">Tagline</label>
               <input 
-                className="w-full bg-surface border border-outline-variant focus:border-[#013334] focus:ring-0 py-3 px-4 rounded-lg text-sm"
+                className="w-full bg-surface border border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-3 px-4 rounded-lg text-sm"
                 value={settings.tagline}
                 onChange={(e) => setSettings({...settings, tagline: e.target.value})}
               />
@@ -2624,14 +2624,14 @@ const SiteSettings = () => {
         {/* Contact Information */}
         <div className="bg-surface-container-lowest p-8 rounded-xl editorial-shadow">
           <h3 className="font-notoSerif text-xl font-bold mb-6 flex items-center gap-3">
-            <span className="material-symbols-outlined text-[#013334]">contact_phone</span>
+            <span className="material-symbols-outlined text-[#0B1B3D]">contact_phone</span>
             Contact Information
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label className="block text-xs font-bold uppercase tracking-widest text-outline mb-2">Primary Email</label>
               <input 
-                className="w-full bg-surface border border-outline-variant focus:border-[#013334] focus:ring-0 py-3 px-4 rounded-lg text-sm"
+                className="w-full bg-surface border border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-3 px-4 rounded-lg text-sm"
                 type="email"
                 value={settings.email}
                 onChange={(e) => setSettings({...settings, email: e.target.value})}
@@ -2640,7 +2640,7 @@ const SiteSettings = () => {
             <div>
               <label className="block text-xs font-bold uppercase tracking-widest text-outline mb-2">Phone Number</label>
               <input 
-                className="w-full bg-surface border border-outline-variant focus:border-[#013334] focus:ring-0 py-3 px-4 rounded-lg text-sm"
+                className="w-full bg-surface border border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-3 px-4 rounded-lg text-sm"
                 value={settings.phone}
                 onChange={(e) => setSettings({...settings, phone: e.target.value})}
               />
@@ -2648,7 +2648,7 @@ const SiteSettings = () => {
             <div>
               <label className="block text-xs font-bold uppercase tracking-widest text-outline mb-2">WhatsApp Number</label>
               <input 
-                className="w-full bg-surface border border-outline-variant focus:border-[#013334] focus:ring-0 py-3 px-4 rounded-lg text-sm"
+                className="w-full bg-surface border border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-3 px-4 rounded-lg text-sm"
                 value={settings.whatsapp}
                 onChange={(e) => setSettings({...settings, whatsapp: e.target.value})}
               />
@@ -2656,7 +2656,7 @@ const SiteSettings = () => {
             <div>
               <label className="block text-xs font-bold uppercase tracking-widest text-outline mb-2">Working Hours</label>
               <input 
-                className="w-full bg-surface border border-outline-variant focus:border-[#013334] focus:ring-0 py-3 px-4 rounded-lg text-sm"
+                className="w-full bg-surface border border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-3 px-4 rounded-lg text-sm"
                 value={settings.workingHours}
                 onChange={(e) => setSettings({...settings, workingHours: e.target.value})}
               />
@@ -2665,7 +2665,7 @@ const SiteSettings = () => {
           <div className="mt-6">
             <label className="block text-xs font-bold uppercase tracking-widest text-outline mb-2">Address</label>
             <input 
-              className="w-full bg-surface border border-outline-variant focus:border-[#013334] focus:ring-0 py-3 px-4 rounded-lg text-sm"
+              className="w-full bg-surface border border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-3 px-4 rounded-lg text-sm"
               value={settings.address}
               onChange={(e) => setSettings({...settings, address: e.target.value})}
             />
@@ -2675,14 +2675,14 @@ const SiteSettings = () => {
         {/* SEO Settings */}
         <div className="bg-surface-container-lowest p-8 rounded-xl editorial-shadow">
           <h3 className="font-notoSerif text-xl font-bold mb-6 flex items-center gap-3">
-            <span className="material-symbols-outlined text-[#013334]">search</span>
+            <span className="material-symbols-outlined text-[#0B1B3D]">search</span>
             SEO Settings
           </h3>
           <div className="space-y-6">
             <div>
               <label className="block text-xs font-bold uppercase tracking-widest text-outline mb-2">Meta Title</label>
               <input 
-                className="w-full bg-surface border border-outline-variant focus:border-[#013334] focus:ring-0 py-3 px-4 rounded-lg text-sm"
+                className="w-full bg-surface border border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-3 px-4 rounded-lg text-sm"
                 value={settings.metaTitle}
                 onChange={(e) => setSettings({...settings, metaTitle: e.target.value})}
               />
@@ -2690,7 +2690,7 @@ const SiteSettings = () => {
             <div>
               <label className="block text-xs font-bold uppercase tracking-widest text-outline mb-2">Meta Description</label>
               <textarea 
-                className="w-full bg-surface border border-outline-variant focus:border-[#013334] focus:ring-0 py-3 px-4 rounded-lg text-sm"
+                className="w-full bg-surface border border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-3 px-4 rounded-lg text-sm"
                 rows={3}
                 value={settings.metaDescription}
                 onChange={(e) => setSettings({...settings, metaDescription: e.target.value})}
@@ -2699,7 +2699,7 @@ const SiteSettings = () => {
             <div>
               <label className="block text-xs font-bold uppercase tracking-widest text-outline mb-2">Meta Keywords</label>
               <input 
-                className="w-full bg-surface border border-outline-variant focus:border-[#013334] focus:ring-0 py-3 px-4 rounded-lg text-sm"
+                className="w-full bg-surface border border-outline-variant focus:border-[#0B1B3D] focus:ring-0 py-3 px-4 rounded-lg text-sm"
                 value={settings.metaKeywords}
                 onChange={(e) => setSettings({...settings, metaKeywords: e.target.value})}
               />
@@ -2708,9 +2708,9 @@ const SiteSettings = () => {
         </div>
 
         {/* Info Box */}
-        <div className="bg-[#013334]/10 border border-[#013334]/30 p-6 rounded-xl">
+        <div className="bg-[#0B1B3D]/10 border border-[#0B1B3D]/30 p-6 rounded-xl">
           <div className="flex items-start gap-3">
-            <span className="material-symbols-outlined text-[#013334]">info</span>
+            <span className="material-symbols-outlined text-[#0B1B3D]">info</span>
             <div>
               <h4 className="font-bold text-sm mb-1">About Settings</h4>
               <p className="text-xs text-on-surface-variant">

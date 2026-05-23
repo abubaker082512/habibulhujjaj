@@ -527,19 +527,19 @@ const TaxiServices = () => {
   }
 
   return (
-    <div className="bg-[#001b1c] font-manrope text-white min-h-screen">
+    <div className="bg-[#0B1B3D] font-manrope text-white min-h-screen">
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative min-h-[50vh] flex items-center pt-32 overflow-hidden bg-[#001b1c] text-white">
+      <section className="relative min-h-[50vh] flex items-center pt-32 overflow-hidden bg-[#0B1B3D] text-white">
         <div className="absolute inset-0 z-0 opacity-20">
           <img className="w-full h-full object-cover" src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?w=1600&q=80" alt="Taxi Services" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#001b1c] via-[#001b1c]/80 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0B1B3D] via-[#0B1B3D]/80 to-transparent"></div>
         </div>
         <div className="relative z-10 max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 lg:px-24 w-full text-center">
-          <span className="text-[#ffc65c] text-xs font-black tracking-[0.4em] uppercase block mb-4">Premium Ground Transport</span>
+          <span className="text-[#FFC55B] text-xs font-black tracking-[0.4em] uppercase block mb-4">Premium Ground Transport</span>
           <h1 className="font-notoSerif text-4xl sm:text-5xl lg:text-7xl font-black mb-6 leading-tight">
-            VIP Taxi & <span className="text-[#ffc65c]">Luxury Fleet</span>
+            VIP Taxi & <span className="text-[#FFC55B]">Luxury Fleet</span>
           </h1>
           <p className="text-white/80 text-base sm:text-lg mb-8 max-w-3xl mx-auto leading-relaxed">
             Travel in complete peace of mind. We offer private, custom transfers between Jeddah Airports, Makkah Hotels, Madinah Holy Sites, and train stations. Book your ideal vehicle now.
@@ -547,7 +547,7 @@ const TaxiServices = () => {
           <div className="flex flex-wrap justify-center gap-4">
             <button 
               onClick={() => scrollToId('our-vehicles')}
-              className="bg-[#ffc65c] text-[#001b1c] px-8 py-3 rounded-full font-black text-xs uppercase tracking-widest transition-all hover:scale-105 shadow-xl"
+              className="bg-[#FFC55B] text-[#0B1B3D] px-8 py-3 rounded-full font-black text-xs uppercase tracking-widest transition-all hover:scale-105 shadow-xl"
             >
               Browse Fleet
             </button>
@@ -562,22 +562,22 @@ const TaxiServices = () => {
       </section>
 
       {loading ? (
-        <div className="py-32 bg-[#001b1c] flex flex-col items-center justify-center text-center min-h-[50vh]">
+        <div className="py-32 bg-[#0B1B3D] flex flex-col items-center justify-center text-center min-h-[50vh]">
           <div className="relative w-20 h-20 mb-8">
             <div className="absolute inset-0 rounded-full border-4 border-white/5"></div>
-            <div className="absolute inset-0 rounded-full border-4 border-t-[#ffc65c] border-r-[#ffc65c]/30 animate-spin"></div>
+            <div className="absolute inset-0 rounded-full border-4 border-t-[#FFC55B] border-r-[#FFC55B]/30 animate-spin"></div>
           </div>
           <p className="text-white/60 font-notoSerif text-lg tracking-wider animate-pulse">Loading Sacred Ground Transfers...</p>
         </div>
       ) : (
         <>
           {/* STEP 1: OUR VEHICLES FLEET SECTION */}
-          <section id="our-vehicles" className="py-24 bg-white text-[#001b1c]">
+          <section id="our-vehicles" className="py-24 bg-background text-[#0B1B3D]">
             <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 lg:px-24">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-[#013334] text-xs font-black tracking-[0.3em] uppercase block mb-3">VIP Fleet Catalog</span>
-            <h2 className="font-notoSerif text-3xl sm:text-4xl lg:text-5xl font-black text-[#013334]">Our Vehicles</h2>
-            <div className="w-16 h-1 bg-[#ffc65c] mx-auto mt-4"></div>
+            <span className="text-[#0B1B3D] text-xs font-black tracking-[0.3em] uppercase block mb-3">VIP Fleet Catalog</span>
+            <h2 className="font-notoSerif text-3xl sm:text-4xl lg:text-5xl font-black text-[#0B1B3D]">Our Vehicles</h2>
+            <div className="w-16 h-1 bg-[#FFC55B] mx-auto mt-4"></div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -600,15 +600,15 @@ const TaxiServices = () => {
                     
                     <ul className="space-y-3 mb-8 text-xs text-white/80 font-medium">
                       <li className="flex items-center justify-center gap-2">
-                        <span className="material-symbols-outlined text-sm text-[#ffc65c]">group</span>
+                        <span className="material-symbols-outlined text-sm text-[#FFC55B]">group</span>
                         {vehicle.seats}
                       </li>
                       <li className="flex items-center justify-center gap-2">
-                        <span className="material-symbols-outlined text-sm text-[#ffc65c]">backpack</span>
+                        <span className="material-symbols-outlined text-sm text-[#FFC55B]">backpack</span>
                         {vehicle.luggage}
                       </li>
                       <li className="flex items-center justify-center gap-2">
-                        <span className="material-symbols-outlined text-sm text-[#ffc65c]">ac_unit</span>
+                        <span className="material-symbols-outlined text-sm text-[#FFC55B]">ac_unit</span>
                         {vehicle.ac}
                       </li>
                     </ul>
@@ -620,7 +620,7 @@ const TaxiServices = () => {
                       href={`https://wa.me/923004634548?text=Hello%20Habib%20Ul%20Hujjaj%2C%20I%20am%20inquiring%20about%20the%20${vehicle.name}%20vehicle%20service.`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="border border-[#ffc65c] text-[#ffc65c] py-3 rounded-lg font-black text-[10px] sm:text-xs uppercase tracking-widest hover:bg-[#ffc65c] hover:text-[#001c1d] transition-all duration-300"
+                      className="border border-[#FFC55B] text-[#FFC55B] py-3 rounded-lg font-black text-[10px] sm:text-xs uppercase tracking-widest hover:bg-[#FFC55B] hover:text-[#0B1B3D] transition-all duration-300"
                     >
                       WhatsApp
                     </a>
@@ -629,7 +629,7 @@ const TaxiServices = () => {
                         setSelectedVehicle(vehicle)
                         scrollToId('select-route')
                       }}
-                      className="bg-[#ffc65c] text-[#001c1d] py-3 rounded-lg font-black text-[10px] sm:text-xs uppercase tracking-widest hover:brightness-110 transition-all duration-300"
+                      className="bg-[#FFC55B] text-[#0B1B3D] py-3 rounded-lg font-black text-[10px] sm:text-xs uppercase tracking-widest hover:brightness-110 transition-all duration-300"
                     >
                       BOOK NOW
                     </button>
@@ -642,21 +642,21 @@ const TaxiServices = () => {
       </section>
 
       {/* STEP 2: CHOOSE ROUTE SECTION */}
-      <section id="select-route" className="py-24 bg-[#001c1d] text-white">
+      <section id="select-route" className="py-24 bg-[#0B1B3D] text-white">
         <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 lg:px-24">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-[#ffc65c] text-xs font-black tracking-[0.3em] uppercase block mb-3">Sacred Routes Catalog</span>
+            <span className="text-[#FFC55B] text-xs font-black tracking-[0.3em] uppercase block mb-3">Sacred Routes Catalog</span>
             <h2 className="font-notoSerif text-3xl sm:text-4xl lg:text-5xl font-black text-white">Select Your Destination</h2>
             <p className="text-white/60 text-sm mt-3">Select a route below to view available vehicles and route-specific pricing.</p>
-            <div className="w-16 h-1 bg-[#ffc65c] mx-auto mt-4"></div>
+            <div className="w-16 h-1 bg-[#FFC55B] mx-auto mt-4"></div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {routes.map((route) => (
               <div 
                 key={route.id} 
-                className={`bg-[#002f30] rounded-xl overflow-hidden border transition-all duration-500 flex flex-col justify-between group ${
-                  selectedRoute?.id === route.id ? 'border-[#ffc65c] ring-2 ring-[#ffc65c]/45 scale-[1.03]' : 'border-white/5 hover:border-white/20'
+                className={`bg-[#182d56] rounded-xl overflow-hidden border transition-all duration-500 flex flex-col justify-between group ${
+                  selectedRoute?.id === route.id ? 'border-[#FFC55B] ring-2 ring-[#FFC55B]/45 scale-[1.03]' : 'border-white/5 hover:border-white/20'
                 }`}
               >
                 {/* Route Header Image */}
@@ -666,12 +666,12 @@ const TaxiServices = () => {
                     alt={route.name} 
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-60"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#002f30] to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#182d56] to-transparent"></div>
                 </div>
 
                 {/* Route Content */}
                 <div className="p-5 flex-1 flex flex-col justify-between text-center">
-                  <h3 className="font-notoSerif text-base sm:text-lg font-bold mb-6 text-white group-hover:text-[#ffc65c] transition-colors">{route.name}</h3>
+                  <h3 className="font-notoSerif text-base sm:text-lg font-bold mb-6 text-white group-hover:text-[#FFC55B] transition-colors">{route.name}</h3>
                   
                   <button 
                     onClick={() => {
@@ -680,8 +680,8 @@ const TaxiServices = () => {
                     }}
                     className={`w-full py-3 rounded-full font-bold text-xs uppercase tracking-widest transition-all ${
                       selectedRoute?.id === route.id 
-                        ? 'bg-[#ffc65c] text-[#001c1d]' 
-                        : 'bg-white text-[#001c1d] hover:bg-gray-100'
+                        ? 'bg-[#FFC55B] text-[#0B1B3D]' 
+                        : 'bg-white text-[#0B1B3D] hover:bg-gray-100'
                     }`}
                   >
                     {selectedRoute?.id === route.id ? 'Selected' : 'Book Now'}
@@ -695,20 +695,20 @@ const TaxiServices = () => {
 
       {/* STEP 3: ROUTE PRICING & OPTIONS SECTION */}
       {selectedRoute && (
-        <section id="route-pricing" className="py-24 bg-[#002526] border-t border-white/5 scroll-mt-6">
+        <section id="route-pricing" className="py-24 bg-[#12244a] border-t border-white/5 scroll-mt-6">
           <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 lg:px-24">
             <div className="text-center max-w-3xl mx-auto mb-16">
-              <span className="text-[#ffc65c] text-xs font-black tracking-[0.3em] uppercase block mb-3">Vehicle Prices for Selected Route</span>
+              <span className="text-[#FFC55B] text-xs font-black tracking-[0.3em] uppercase block mb-3">Vehicle Prices for Selected Route</span>
               <h2 className="font-notoSerif text-3xl sm:text-4xl lg:text-5xl font-black text-white">{selectedRoute.name}</h2>
               <p className="text-white/60 text-sm mt-3">Showing live rates for all vehicle classes. Prices are fully inclusive of tolls, driver, fuel, and meet & greet assistance.</p>
-              <div className="w-16 h-1 bg-[#ffc65c] mx-auto mt-4"></div>
+              <div className="w-16 h-1 bg-[#FFC55B] mx-auto mt-4"></div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {fleet.map((vehicle) => {
                 const price = selectedRoute.prices[vehicle.id] || { sar: 250, usd: 67 }
                 return (
-                  <div key={vehicle.id} className="bg-[#003334] rounded-2xl overflow-hidden border border-white/10 p-5 flex flex-col justify-between text-center group hover:border-[#ffc65c]/40 transition-all duration-300">
+                  <div key={vehicle.id} className="bg-[#003334] rounded-2xl overflow-hidden border border-white/10 p-5 flex flex-col justify-between text-center group hover:border-[#FFC55B]/40 transition-all duration-300">
                     <div>
                       {/* Vehicle Image */}
                       <div className="h-32 flex items-center justify-center p-2 mb-4 bg-white/5 rounded-xl">
@@ -724,7 +724,7 @@ const TaxiServices = () => {
                       
                       {/* Price Display */}
                       <div className="my-6">
-                        <p className="text-xl font-black text-[#ffc65c]">{price.sar} SAR <span className="text-xs text-white/50 font-medium">(≈ {price.usd} $)</span></p>
+                        <p className="text-xl font-black text-[#FFC55B]">{price.sar} SAR <span className="text-xs text-white/50 font-medium">(≈ {price.usd} $)</span></p>
                       </div>
                     </div>
 
@@ -735,7 +735,7 @@ const TaxiServices = () => {
                         setBookingRoute(selectedRoute)
                         setBookingModalOpen(true)
                       }}
-                      className="w-full bg-[#ffc65c] text-[#001c1d] py-3 rounded-xl font-bold text-xs uppercase tracking-widest hover:brightness-110 transition-all"
+                      className="w-full bg-[#FFC55B] text-[#0B1B3D] py-3 rounded-xl font-bold text-xs uppercase tracking-widest hover:brightness-110 transition-all"
                     >
                       Book Now
                     </button>
@@ -748,32 +748,32 @@ const TaxiServices = () => {
       )}
 
       {/* WHY CHOOSE US / STATS SECTION */}
-      <section className="bg-white py-24 text-[#001b1c]">
+      <section className="bg-background py-24 text-[#0B1B3D]">
         <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 lg:px-24">
           <div className="text-center max-w-2xl mx-auto mb-20">
-            <span className="text-[#013334] text-xs font-black tracking-[0.3em] uppercase block mb-3">Why Travel With Us</span>
-            <h2 className="font-notoSerif text-3xl sm:text-4xl font-bold text-[#013334]">Safe & Luxury Transport</h2>
-            <div className="w-16 h-1 bg-[#ffc65c] mx-auto mt-4"></div>
+            <span className="text-[#0B1B3D] text-xs font-black tracking-[0.3em] uppercase block mb-3">Why Travel With Us</span>
+            <h2 className="font-notoSerif text-3xl sm:text-4xl font-bold text-[#0B1B3D]">Safe & Luxury Transport</h2>
+            <div className="w-16 h-1 bg-[#FFC55B] mx-auto mt-4"></div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             <div className="bg-gray-50 p-8 rounded-2xl border border-gray-100 text-center hover:shadow-xl transition-all duration-300">
-              <span className="material-symbols-outlined text-5xl text-[#ffc65c] mb-6">workspace_premium</span>
-              <h4 className="font-notoSerif text-xl font-bold mb-3 text-[#013334]">Chilled Luxury Fleet</h4>
+              <span className="material-symbols-outlined text-5xl text-[#FFC55B] mb-6">workspace_premium</span>
+              <h4 className="font-notoSerif text-xl font-bold mb-3 text-[#0B1B3D]">Chilled Luxury Fleet</h4>
               <p className="text-gray-500 text-sm leading-relaxed">
                 Enjoy fully air-conditioned, new-model sedans, SUVs, minivans, and coaches. Deeply cleaned after every transfer.
               </p>
             </div>
             <div className="bg-gray-50 p-8 rounded-2xl border border-gray-100 text-center hover:shadow-xl transition-all duration-300">
-              <span className="material-symbols-outlined text-5xl text-[#ffc65c] mb-6">face</span>
-              <h4 className="font-notoSerif text-xl font-bold mb-3 text-[#013334]">Licensed Holy-Site Drivers</h4>
+              <span className="material-symbols-outlined text-5xl text-[#FFC55B] mb-6">face</span>
+              <h4 className="font-notoSerif text-xl font-bold mb-3 text-[#0B1B3D]">Licensed Holy-Site Drivers</h4>
               <p className="text-gray-500 text-sm leading-relaxed">
                 Our highly polite, reliable drivers possess deep, specialized knowledge of sacred landmarks, mosques, and terminals.
               </p>
             </div>
             <div className="bg-gray-50 p-8 rounded-2xl border border-gray-100 text-center hover:shadow-xl transition-all duration-300">
-              <span className="material-symbols-outlined text-5xl text-[#ffc65c] mb-6">schedule</span>
-              <h4 className="font-notoSerif text-xl font-bold mb-3 text-[#013334]">24/7 Meet & Greet Service</h4>
+              <span className="material-symbols-outlined text-5xl text-[#FFC55B] mb-6">schedule</span>
+              <h4 className="font-notoSerif text-xl font-bold mb-3 text-[#0B1B3D]">24/7 Meet & Greet Service</h4>
               <p className="text-gray-500 text-sm leading-relaxed">
                 Always prompt. We track all incoming flight numbers real-time and coordinate immediate passenger pickup directly from terminals.
               </p>
@@ -785,7 +785,7 @@ const TaxiServices = () => {
       {/* BOOKING MODAL */}
       {bookingModalOpen && bookingCar && bookingRoute && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-          <div className="bg-[#002f30] border border-white/10 rounded-2xl max-w-lg w-full overflow-hidden shadow-2xl relative animate-fadeIn text-left">
+          <div className="bg-[#182d56] border border-white/10 rounded-2xl max-w-lg w-full overflow-hidden shadow-2xl relative animate-fadeIn text-left">
             <button 
               onClick={() => setBookingModalOpen(false)}
               className="absolute top-4 right-4 text-white/50 hover:text-white transition-colors"
@@ -795,7 +795,7 @@ const TaxiServices = () => {
 
             <div className="p-6 md:p-8">
               <h3 className="font-notoSerif text-2xl font-bold text-white mb-2">Book Your Vehicle</h3>
-              <p className="text-[#ffc65c] text-xs font-semibold mb-6">
+              <p className="text-[#FFC55B] text-xs font-semibold mb-6">
                 {bookingCar.name} • {bookingRoute.name}
               </p>
 
@@ -805,7 +805,7 @@ const TaxiServices = () => {
                   <input 
                     type="text" 
                     required 
-                    className="w-full bg-[#001c1d] border border-white/15 rounded-lg py-2 px-3 text-sm focus:border-[#ffc65c] focus:ring-0 text-white"
+                    className="w-full bg-[#0B1B3D] border border-white/15 rounded-lg py-2 px-3 text-sm focus:border-[#FFC55B] focus:ring-0 text-white"
                     placeholder="Enter your name" 
                     value={bookingForm.name} 
                     onChange={e => setBookingForm({...bookingForm, name: e.target.value})}
@@ -817,7 +817,7 @@ const TaxiServices = () => {
                     <label className="block text-[10px] text-white/40 font-bold uppercase tracking-widest mb-1.5">Email (Optional)</label>
                     <input 
                       type="email" 
-                      className="w-full bg-[#001c1d] border border-white/15 rounded-lg py-2 px-3 text-sm focus:border-[#ffc65c] focus:ring-0 text-white"
+                      className="w-full bg-[#0B1B3D] border border-white/15 rounded-lg py-2 px-3 text-sm focus:border-[#FFC55B] focus:ring-0 text-white"
                       placeholder="Email address" 
                       value={bookingForm.email} 
                       onChange={e => setBookingForm({...bookingForm, email: e.target.value})}
@@ -828,7 +828,7 @@ const TaxiServices = () => {
                     <input 
                       type="tel" 
                       required 
-                      className="w-full bg-[#001c1d] border border-white/15 rounded-lg py-2 px-3 text-sm focus:border-[#ffc65c] focus:ring-0 text-white"
+                      className="w-full bg-[#0B1B3D] border border-white/15 rounded-lg py-2 px-3 text-sm focus:border-[#FFC55B] focus:ring-0 text-white"
                       placeholder="e.g. +92 300 1234567" 
                       value={bookingForm.phone} 
                       onChange={e => setBookingForm({...bookingForm, phone: e.target.value})}
@@ -842,7 +842,7 @@ const TaxiServices = () => {
                     <input 
                       type="date" 
                       required
-                      className="w-full bg-[#001c1d] border border-white/15 rounded-lg py-2 px-3 text-sm focus:border-[#ffc65c] focus:ring-0 text-white"
+                      className="w-full bg-[#0B1B3D] border border-white/15 rounded-lg py-2 px-3 text-sm focus:border-[#FFC55B] focus:ring-0 text-white"
                       value={bookingForm.date} 
                       onChange={e => setBookingForm({...bookingForm, date: e.target.value})}
                     />
@@ -852,7 +852,7 @@ const TaxiServices = () => {
                     <input 
                       type="time" 
                       required
-                      className="w-full bg-[#001c1d] border border-white/15 rounded-lg py-2 px-3 text-sm focus:border-[#ffc65c] focus:ring-0 text-white"
+                      className="w-full bg-[#0B1B3D] border border-white/15 rounded-lg py-2 px-3 text-sm focus:border-[#FFC55B] focus:ring-0 text-white"
                       value={bookingForm.time} 
                       onChange={e => setBookingForm({...bookingForm, time: e.target.value})}
                     />
@@ -863,18 +863,18 @@ const TaxiServices = () => {
                   <div>
                     <label className="block text-[10px] text-white/40 font-bold uppercase tracking-widest mb-1.5">Travelers</label>
                     <select 
-                      className="w-full bg-[#001c1d] border border-white/15 rounded-lg py-2 px-3 text-sm focus:border-[#ffc65c] focus:ring-0 text-white"
+                      className="w-full bg-[#0B1B3D] border border-white/15 rounded-lg py-2 px-3 text-sm focus:border-[#FFC55B] focus:ring-0 text-white"
                       value={bookingForm.travelers} 
                       onChange={e => setBookingForm({...bookingForm, travelers: e.target.value})}
                     >
                       {[...Array(50).keys()].map(n => (
-                        <option key={n + 1} value={n + 1} className="bg-[#001c1d]">{n + 1} Person{n > 0 ? 's' : ''}</option>
+                        <option key={n + 1} value={n + 1} className="bg-[#0B1B3D]">{n + 1} Person{n > 0 ? 's' : ''}</option>
                       ))}
                     </select>
                   </div>
                   <div>
                     <label className="block text-[10px] text-white/40 font-bold uppercase tracking-widest mb-1.5">Fare</label>
-                    <div className="w-full bg-[#001c1d]/60 border border-white/5 rounded-lg py-2 px-3 text-sm font-bold text-[#ffc65c]">
+                    <div className="w-full bg-[#0B1B3D]/60 border border-white/5 rounded-lg py-2 px-3 text-sm font-bold text-[#FFC55B]">
                       {bookingRoute.prices[bookingCar.id]?.sar} SAR (≈ ${bookingRoute.prices[bookingCar.id]?.usd})
                     </div>
                   </div>
@@ -883,7 +883,7 @@ const TaxiServices = () => {
                 <div>
                   <label className="block text-[10px] text-white/40 font-bold uppercase tracking-widest mb-1.5">Special Instructions</label>
                   <textarea 
-                    className="w-full bg-[#001c1d] border border-white/15 rounded-lg py-2 px-3 text-sm focus:border-[#ffc65c] focus:ring-0 text-white"
+                    className="w-full bg-[#0B1B3D] border border-white/15 rounded-lg py-2 px-3 text-sm focus:border-[#FFC55B] focus:ring-0 text-white"
                     placeholder="Flight Number, hotel name, extra baggage notes..." 
                     rows={2} 
                     value={bookingForm.message} 
@@ -894,11 +894,11 @@ const TaxiServices = () => {
                 <button 
                   type="submit" 
                   disabled={submitting}
-                  className="w-full bg-[#ffc65c] text-[#001c1d] py-3.5 rounded-lg font-black text-xs uppercase tracking-widest hover:brightness-110 transition-all flex items-center justify-center gap-2 mt-4"
+                  className="w-full bg-[#FFC55B] text-[#0B1B3D] py-3.5 rounded-lg font-black text-xs uppercase tracking-widest hover:brightness-110 transition-all flex items-center justify-center gap-2 mt-4"
                 >
                   {submitting ? (
                     <>
-                      <div className="w-4 h-4 border-2 border-[#001c1d] border-t-transparent rounded-full animate-spin"></div>
+                      <div className="w-4 h-4 border-2 border-[#0B1B3D] border-t-transparent rounded-full animate-spin"></div>
                       Processing...
                     </>
                   ) : success ? (

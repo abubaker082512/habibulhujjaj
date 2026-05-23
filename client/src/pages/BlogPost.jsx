@@ -110,7 +110,7 @@ const BlogPost = () => {
         <div className="min-h-screen flex items-center justify-center pt-20">
           <div className="text-center">
             <h1 className="font-notoSerif text-3xl text-primary mb-4">Article Not Found</h1>
-            <Link to="/blog" className="text-[#013334] font-bold">← Back to Blog</Link>
+            <Link to="/blog" className="text-primary font-bold">← Back to Blog</Link>
           </div>
         </div>
         <Footer />
@@ -119,7 +119,7 @@ const BlogPost = () => {
   }
 
   return (
-    <div className="bg-white font-manrope text-black min-h-screen">
+    <div className="bg-background font-manrope text-black min-h-screen">
       <Navbar />
       
       {/* Hero */}

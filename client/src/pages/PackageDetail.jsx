@@ -172,7 +172,7 @@ const PackageDetail = () => {
       <div className="bg-surface font-manrope text-on-surface min-h-screen flex items-center justify-center">
         <Navbar />
         <div className="text-center">
-          <div className="w-16 h-16 border-4 border-[#013334] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <div className="w-16 h-16 border-4 border-[#0B1B3D] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
           <p className="font-notoSerif text-xl text-primary">Loading Package Details...</p>
         </div>
       </div>
@@ -186,7 +186,7 @@ const PackageDetail = () => {
         <div className="text-center mt-24">
           <span className="material-symbols-outlined text-6xl text-error mb-4 block">error</span>
           <h2 className="font-notoSerif text-3xl text-primary mb-4">Package Not Found</h2>
-          <Link to="/packages" className="bg-[#013334] text-white px-8 py-3 rounded font-bold uppercase tracking-widest text-sm inline-block mt-4">Browse All Packages</Link>
+          <Link to="/packages" className="bg-[#0B1B3D] text-white px-8 py-3 rounded font-bold uppercase tracking-widest text-sm inline-block mt-4">Browse All Packages</Link>
         </div>
       </div>
     )
