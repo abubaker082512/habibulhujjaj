@@ -11,6 +11,7 @@ import Gallery from './pages/Gallery'
 import Blog from './pages/Blog'
 import BlogPost from './pages/BlogPost'
 import VisaServices from './pages/VisaServices'
+import VisaDetail from './pages/VisaDetail'
 import TaxiServices from './pages/TaxiServices'
 import FAQ from './pages/FAQ'
 import Contact from './pages/Contact'
@@ -33,6 +34,7 @@ function App() {
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:id" element={<BlogPost />} />
         <Route path="/visa-services" element={<VisaServices />} />
+        <Route path="/visa-services/:id" element={<VisaDetail />} />
         <Route path="/taxi-services" element={<TaxiServices />} />
         <Route path="/faq" element={<FAQ />} />
         <Route path="/contact" element={<Contact />} />

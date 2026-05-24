@@ -10,76 +10,75 @@ const API_BASE = import.meta.env.VITE_API_URL || ''
 const staticVisaServices = [
   {
     id: 1,
-    title: 'Camp / Umrah Visa', // wait, let's keep exact titles from line 10-83
     title: 'Umrah Visa',
-    description: 'Specialized visa processing for pilgrims traveling to Saudi Arabia for Umrah rituals. We handle all documentation and government approvals.',
+    description: 'Dedicated electronic visa processing for pilgrims traveling to Saudi Arabia for Umrah rituals. Includes system authorization and mandatory tourist health insurance.',
     icon: 'mosque',
     processing: '3-5 Business Days',
-    documents: ['Valid Passport', 'Passport Photos', 'Vaccination Certificate', 'Travel Itinerary'],
-    fee: 'PKR 15,000'
+    documents: ['Original Passport', 'CNIC Scanned Copy', 'Photos (White Background)', 'Vaccination Certificate'],
+    fee: 'PKR 45,000'
   },
   {
     id: 2,
     title: 'Saudi Tourist Visa',
-    description: 'Explore the Kingdom of Saudi Arabia with our tourist visa services. Discover historical sites, modern cities, and cultural heritage.',
+    description: 'Explore the Kingdom of Saudi Arabia. Ideal for tourism, family visits, and performing Umrah. Includes 1-year multiple entry eVisa and standard medical insurance.',
     icon: 'flight',
     processing: '5-7 Business Days',
-    documents: ['Valid Passport', 'Passport Photos', 'Hotel Booking', 'Return Ticket'],
-    fee: 'PKR 12,000'
+    documents: ['Valid Passport (6m)', 'CNIC Copy', 'Photos (White Background)', 'Bank Statement (3m)'],
+    fee: 'PKR 75,000'
   },
   {
     id: 3,
     title: 'Dubai Visa',
-    description: 'Visit the dazzling city of Dubai with our streamlined visa processing. Perfect for tourism, business, or transit.',
+    description: 'Visit Dubai and the UAE with streamlined eVisa processing. Ideal for holidays, quick transit, or business. Standard 30-day or 60-day tourist entry options.',
     icon: 'apartment',
     processing: '3-5 Business Days',
-    documents: ['Valid Passport', 'Passport Photos', 'Bank Statement', 'Hotel Booking'],
-    fee: 'PKR 8,000'
+    documents: ['Valid Passport', 'CNIC Scanned Copy', 'Passport Photos', 'FRC (If with family)'],
+    fee: 'PKR 30,400'
   },
   {
     id: 4,
     title: 'Turkey Visa',
-    description: 'Discover the rich history and stunning landscapes of Turkey. Our team ensures a hassle-free visa application process.',
+    description: 'Discover the rich history and beautiful landscapes of Turkey. Vetting of financial status, Gerry\'s/VFS appointment booking, and flight/hotel reservation drafting.',
     icon: 'travel_explore',
     processing: '7-10 Business Days',
-    documents: ['Valid Passport', 'Passport Photos', 'Travel Insurance', 'Proof of Accommodation'],
-    fee: 'PKR 18,000'
+    documents: ['Passport (6 Months)', '2 Photos (Biometric)', '6-Month Bank Statement', 'FBR Tax Returns & NTN'],
+    fee: 'PKR 52,000'
   },
   {
     id: 5,
     title: 'Schengen Visa',
-    description: 'Travel across 27 European countries with a single Schengen visa. We guide you through the complex application process.',
+    description: 'Travel across 27 European countries under a single tourist permit. Complete document evaluation, cover letter drafting, flight itinerary, and travel insurance.',
     icon: 'globe',
-    processing: '10-15 Business Days',
-    documents: ['Valid Passport', 'Passport Photos', 'Travel Insurance', 'Bank Statements', 'Cover Letter'],
-    fee: 'PKR 25,000'
+    processing: '15-20 Business Days',
+    documents: ['Passport (6 Months)', '6-Month Bank Statement', 'Tax Returns & NTN', 'Schengen Approved Insurance'],
+    fee: 'PKR 72,000'
   },
   {
     id: 6,
     title: 'UK Standard Visitor Visa',
-    description: 'Travel to the United Kingdom for leisure, business, or family visits. We assist with application drafting, document audit, and appointment booking.',
+    description: 'Travel to the United Kingdom for leisure or family visits. Complete application drafting, document audit, upload coordination, and VFS slot booking.',
     icon: 'home',
-    processing: '15-20 Business Days',
-    documents: ['Valid Passport', 'Passport Photos', 'Bank Statements (6 Months)', 'Employment Proof', 'Travel Plan'],
-    fee: 'PKR 45,000'
+    processing: '15-21 Business Days',
+    documents: ['Current & Past Passports', '6-Month Bank Statement', 'FRC & Property Docs', 'Job Letter & Salary Slips'],
+    fee: 'PKR 127,000'
   },
   {
     id: 7,
     title: 'Malaysia Tourist eVisa',
-    description: 'Quick electronic tourist visa for Malaysia. Complete paperless process with direct online government submission.',
+    description: 'Quick electronic tourist visa for Malaysia. Complete paperless application process with rapid online submission and high success rate.',
     icon: 'layers',
     processing: '2-3 Business Days',
-    documents: ['Valid Passport', 'Passport Photos', 'Flight Bookings', 'Hotel Confirmation'],
-    fee: 'PKR 9,500'
+    documents: ['Valid Passport Copy', 'Passport Photo', 'Return Flight Itinerary', 'Hotel Reservation Vouchers'],
+    fee: 'PKR 16,000'
   },
   {
     id: 8,
     title: 'Singapore Tourist eVisa',
-    description: 'Streamlined online tourist visa for Singapore. Fast document evaluation and high-success rate visa submission.',
+    description: 'Streamlined tourist e-Visa for Singapore. Includes authorized local sponsor coordination, document verification, and official portal submission.',
     icon: 'local_airport',
     processing: '4-5 Business Days',
-    documents: ['Valid Passport', 'Passport Photos', 'Bank Statement', 'Hotel Reservation', 'Letter of Introduction'],
-    fee: 'PKR 11,500'
+    documents: ['Passport Color Scans', 'CNIC Scanned Copy', 'Photos (White Background)', 'Bank Statement (3m)'],
+    fee: 'PKR 25,000'
   }
 ]
 
@@ -163,7 +162,7 @@ const VisaServices = () => {
               <div className="space-y-3 mb-6">
                 <div className="flex items-center gap-3 text-sm">
                   <span className="material-symbols-outlined text-primary text-lg">schedule</span>
-                  <span className="text-black/70">{visa.processing}</span>
+                  <span className="text-black/70">{visa.processing || visa.processing_time}</span>
                 </div>
                 <div className="flex items-center gap-3 text-sm">
                   <span className="material-symbols-outlined text-primary text-lg">payments</span>
@@ -174,7 +173,7 @@ const VisaServices = () => {
               <div className="border-t border-gray-100 pt-6">
                 <p className="text-xs font-bold uppercase tracking-widest text-black/40 mb-3">Required Documents</p>
                 <ul className="space-y-2">
-                  {(Array.isArray(visa.documents) ? visa.documents : typeof visa.documents === 'string' ? visa.documents.split(',') : []).map((doc, i) => (
+                  {(Array.isArray(visa.documents) ? visa.documents : typeof visa.documents === 'string' ? visa.documents.split(',') : []).slice(0, 4).map((doc, i) => (
                     <li key={i} className="flex items-center gap-2 text-sm text-black/60">
                       <span className="material-symbols-outlined text-primary text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
                       {typeof doc === 'string' ? doc.trim() : doc}
@@ -183,10 +182,16 @@ const VisaServices = () => {
                 </ul>
               </div>
 
-              <a href={buildWhatsAppUrl(buildServiceInquiryMessage({ serviceTitle: visa.title, serviceType: visa.description, serviceFee: visa.fee }))} target="_blank" rel="noreferrer" className="w-full mt-6 inline-flex bg-primary text-white py-3 rounded-md font-bold text-sm hover:opacity-90 transition-all items-center justify-center gap-2 text-center">
-                Apply Now
-                <span className="material-symbols-outlined text-sm">arrow_forward</span>
-              </a>
+              <div className="mt-6 space-y-3">
+                <Link to={`/visa-services/${visa.id}`} className="w-full inline-flex border-2 border-primary text-primary py-3 rounded-md font-bold text-sm hover:bg-primary/5 transition-all items-center justify-center gap-2 text-center">
+                  View Requirements
+                  <span className="material-symbols-outlined text-sm">visibility</span>
+                </Link>
+                <a href={buildWhatsAppUrl(buildServiceInquiryMessage({ serviceTitle: visa.title, serviceType: visa.description, serviceFee: visa.fee }))} target="_blank" rel="noreferrer" className="w-full inline-flex bg-primary text-white py-3 rounded-md font-bold text-sm hover:opacity-90 transition-all items-center justify-center gap-2 text-center">
+                  Apply Now
+                  <span className="material-symbols-outlined text-sm">arrow_forward</span>
+                </a>
+              </div>
             </div>
           ))}
         </div>
