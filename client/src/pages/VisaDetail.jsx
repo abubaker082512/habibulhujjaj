@@ -21,7 +21,7 @@ const detailedVisaData = {
     validity: '90 Days (Single Entry)',
     fee: 'PKR 45,000',
     entryType: 'Single Entry',
-    heroImage: 'https://images.unsplash.com/photo-1591604021695-0c69b7c05981?w=1600&q=80',
+    heroImage: '/assets/umrah_visa.png',
     overview: 'The Umrah Visa is a dedicated electronic entry permit issued by the Ministry of Hajj & Umrah, Kingdom of Saudi Arabia. It is specifically meant for pilgrims wishing to perform the sacred rituals of Umrah and visit the holy Mosques in Makkah and Madinah. Our service covers the complete electronic submission, Saudi system registration fees, and the mandatory electronic medical insurance for tourists.',
     pricingTable: [
       { category: 'Embassy / Portal Visa Fee', price: 'PKR 33,000' },
@@ -69,7 +69,7 @@ const detailedVisaData = {
     validity: '1 Year (Multiple Entry)',
     fee: 'PKR 75,000',
     entryType: 'Multiple Entry',
-    heroImage: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=1600&q=80',
+    heroImage: '/assets/saudi_tourist_visa.png',
     overview: 'The Saudi Tourist Visa is a premium 1-Year Multiple Entry permit designed for tourists and visitors. It allows travelers to explore Saudi Arabia\'s world-famous heritage sites (like Al Ula and Diriyah), attend cultural events, visit friends or family, and perform Umrah. Each stay can be up to 90 days, with a cumulative stay of 180 days per year.',
     pricingTable: [
       { category: 'Official Saudi Embassy eVisa Fee', price: 'PKR 58,000' },
@@ -117,7 +117,7 @@ const detailedVisaData = {
     validity: '60 Days (Single Entry)',
     fee: 'PKR 30,400',
     entryType: 'Single Entry (30 Days Stay)',
-    heroImage: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1600&q=80',
+    heroImage: '/assets/dubai_visa.png',
     overview: 'Explore the breathtaking skyline of Dubai, shopping festivals, and sandy beaches. We offer quick electronic visa processing for all seven United Arab Emirates. The 30-Day Tourist eVisa is the most popular, and requires only clear digital scans. We also offer 60-Day stay visas and Multiple Entry upgrades.',
     pricingTable: [
       { category: 'UAE GDRFA / ICP Govt Visa Fee', price: 'PKR 22,000' },
@@ -164,7 +164,7 @@ const detailedVisaData = {
     validity: '90 Days (Stay matches bookings)',
     fee: 'PKR 52,000',
     entryType: 'Single Entry Sticker',
-    heroImage: 'https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1600&q=80',
+    heroImage: '/assets/turkey_visa.png',
     overview: 'Pakistan ordinary passport holders require a sticker visa to enter Turkey, unless they qualify for an e-Visa by holding an active USA, UK, Schengen, or Ireland visa. We specialize in providing complete sticker visa file preparation, approved travel insurance, verifiable flight and hotel bookings, and fast VFS appointment slots.',
     pricingTable: [
       { category: 'Embassy Visa Fee & Gerry\'s VFS Service Charge', price: 'PKR 39,500' },
@@ -213,7 +213,7 @@ const detailedVisaData = {
     validity: 'Up to 90 Days',
     fee: 'PKR 72,000',
     entryType: 'Short Stay (C-Type Tourist)',
-    heroImage: 'https://images.unsplash.com/photo-1486299267070-83823f5448dd?w=1600&q=80',
+    heroImage: '/assets/schengen_visa.png',
     overview: 'The Schengen Visa represents the gold standard of global travel, enabling access to 27 European nations under one passport stamp. Because Schengen embassies inspect financial stability, family ties in Pakistan, and travel motives rigorously, our premium service focuses on creating a flawless, rock-solid application file that maximizes approval chances.',
     pricingTable: [
       { category: 'Embassy Visa Fee (~90 EUR) & VFS Appointment Service Fee', price: 'PKR 32,000' },
@@ -262,7 +262,7 @@ const detailedVisaData = {
     validity: '6 Months (Multiple Entry)',
     fee: 'PKR 127,000',
     entryType: 'Multiple Entry (6 Months)',
-    heroImage: 'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=1600&q=80',
+    heroImage: '/assets/uk_visa.png',
     overview: 'The UK Standard Visitor Visa allows Pakistani passport holders to travel to England, Scotland, Wales, and Northern Ireland for holidays, family visits, or short business trips. The UK Home Office has a strict online review framework. We take pride in building a bulletproof digital dossier, ensuring your source of income, tax compliance, and family links in Pakistan are completely clear.',
     pricingTable: [
       { category: 'Official UKVI Online Visa Application Fee (115 GBP)', price: 'PKR 42,000' },
@@ -310,7 +310,7 @@ const detailedVisaData = {
     validity: '90 Days (Stay up to 30 days)',
     fee: 'PKR 16,000',
     entryType: 'Single Entry eVisa',
-    heroImage: 'https://images.unsplash.com/photo-1544644181-1484b3fdfc62?w=1600&q=80',
+    heroImage: '/assets/malaysia_visa.png',
     overview: 'Malaysia is a breathtaking tourist destination blending rainforests, islands, and high-tech capital culture. The Malaysia eVisa is a paperless, quick electronic permit issued for tourists from Pakistan. The application is completely online, requiring zero physical embassy visits or passport courier fees.',
     pricingTable: [
       { category: 'Official Malaysian Government eVisa Fee & Portal Charges', price: 'PKR 9,800' },
@@ -356,7 +356,7 @@ const detailedVisaData = {
     validity: '30 Days (Stay matches bookings)',
     fee: 'PKR 25,000',
     entryType: 'Multiple Entry eVisa',
-    heroImage: 'https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=1600&q=80',
+    heroImage: '/assets/singapore_visa.png',
     overview: 'Experience the pristine beauty and hyper-modern sites of Singapore. Since Singapore places Pakistan under its Assessment Level II category, eVisas cannot be filed directly by individual applicants. They must be submitted via an authorized local sponsoring travel agency or a citizen in Singapore. Our fee covers the assigning of an authorized Singapore sponsor and handling the ICA portal submission.',
     pricingTable: [
       { category: 'Official Singapore ICA eVisa Portal Fee', price: 'PKR 7,500' },
